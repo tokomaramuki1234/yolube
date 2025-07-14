@@ -74,47 +74,7 @@
   line-height: 1.6;
 }
 
-/* Organization Info */
-.organization-info {
-  text-align: center;
-}
 
-.org-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 40px;
-}
-
-.org-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.org-card {
-  padding: 30px;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.org-card:hover {
-  transform: translateY(-5px);
-}
-
-.org-role {
-  font-size: 0.9rem;
-  color: var(--primary-color);
-  font-weight: 600;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-.org-name {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
 
 /* History Info */
 .history-info {
@@ -218,13 +178,7 @@
     font-size: 1.8rem;
   }
 
-  .org-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  }
 
-  .org-card {
-    padding: 20px;
-  }
 
   .timeline-item {
     grid-template-columns: 1fr;
@@ -264,9 +218,7 @@
     font-size: 1.5rem;
   }
 
-  .org-card {
-    padding: 15px;
-  }
+
 
   .timeline-content {
     padding: 15px;

@@ -38,35 +38,7 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="organization-info">
-          <h3 className="org-title">組織体制</h3>
-          <div className="org-grid">
-            <div className="org-card game-card">
-              <div className="org-role">代表</div>
-              <div className="org-name">木村 允</div>
-            </div>
-            
-            <div className="org-card game-card">
-              <div className="org-role">副代表（兼 相談役）</div>
-              <div className="org-name">しょ～じ</div>
-            </div>
-            
-            <div className="org-card game-card">
-              <div className="org-role">副代表</div>
-              <div className="org-name">マキノ</div>
-            </div>
-            
-            <div className="org-card game-card">
-              <div className="org-role">会計</div>
-              <div className="org-name">たろう</div>
-            </div>
-            
-            <div className="org-card game-card">
-              <div className="org-role">監事</div>
-              <div className="org-name">佐藤 存</div>
-            </div>
-          </div>
-        </div>
+
 
         <div className="history-info">
           <h3 className="history-title">沿革</h3>
