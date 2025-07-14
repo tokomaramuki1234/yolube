@@ -21,7 +21,7 @@ const Achievements = () => {
       icon: faCalendarAlt,
       number: '15+',
       label: '臨時イベント開催回数',
-      description: '様々なコラボイベント'
+      description: '様々なコラボイベントを展開中'
     },
     {
       icon: faDollarSign,
@@ -38,110 +38,87 @@ const Achievements = () => {
       features: [
         '観光スポット／イベント情報のカード化',
         'QRコード連携による多言語対応',
-        '秋田県内小学校全校への寄贈を予定'
+        '秋田県内小学校全校への寄贈を目指し開発中'
       ],
-      status: '現在開発中'
+      status: 'in-progress'
     },
     {
       title: 'ねねばねべ',
       description: '秋田弁の「～ね」「～ば」「～べ」を使って遊ぶカードタイプのテーブルゲーム。',
       features: [
-        '実際の秋田弁を使用したゲーム展開',
-        'ナマハゲ・レイジ要素によるユニークな体験',
-        '地域文化の継承と楽しさの融合'
+        '実際の秋田弁を使用したゲーム',
+        '敗北即ち、ナマハゲ・レイジ激震！',
+        '他のボドゲマーヘッズを出し抜くワザマエ試される重篤極まりないゲーム'
       ],
-      status: '現在開発中'
-    },
-    {
-      title: 'KANTO',
-      description: '秋田市の伝統芸能「竿灯」をモチーフに制作したカードタイプのテーブルゲーム。',
-      features: [
-        '竿灯会所属者による実体験ベース',
-        '運と戦略の絶妙なバランス',
-        '伝統芸能への理解を深める'
-      ],
-      status: '完成'
+      status: 'completed'
     }
   ];
 
   return (
     <section id="achievements" className="achievements section">
-      <h2 className="section-title">実績</h2>
-      <p className="section-subtitle">
-        これまでの活動実績と代表作品をご紹介します
-      </p>
+      <div className="section-container">
+        <h2 className="section-title">制作物</h2>
+        <p className="section-subtitle">
+          これまでの活動実績と開発中のテーブルゲームをご紹介します
+        </p>
 
-      <div className="achievements-content">
-        <div className="stats-section">
-          <h3 className="subsection-title">活動実績</h3>
-                       <div className="stats-grid">
-            {stats.map((stat, index) => (
-              <div key={index} className="stat-card game-card">
-                <div className="stat-icon">
-                  <FontAwesomeIcon icon={stat.icon} />
+        <div className="achievements-content">
+          {/* 統計情報 */}
+          <div className="stats-section">
+            <h3 className="subsection-title">活動実績</h3>
+            <div className="stats-grid">
+              {stats.map((stat, index) => (
+                <div key={index} className="stat-card">
+                  <FontAwesomeIcon icon={stat.icon} className="stat-icon" />
+                  <div className="stat-number">{stat.number}</div>
+                  <div className="stat-label">{stat.label}</div>
+                  <div className="stat-description">{stat.description}</div>
                 </div>
-                <div className="stat-number">{stat.number}</div>
-                <div className="stat-label">{stat.label}</div>
-                <div className="stat-description">{stat.description}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="games-section">
-          <h3 className="subsection-title">代表作品</h3>
-          
-          <div className="games-showcase">
-            <div className="showcase-images">
-              <img 
-                src="https://picsum.photos/400/300?random=8" 
-                alt="2024年10月に秋田県観光PR用テーブルゲーム「Hometown Traveler」の試作版をテストプレイしている参加者たち"
-                className="showcase-img main-img"
-              />
-              <div className="sub-images">
-                <img 
-                  src="https://picsum.photos/200/150?random=9" 
-                  alt="秋田弁カードゲーム「ねねばねべ」のカードデザインとゲームコンポーネント一式"
-                  className="showcase-img sub-img"
-                />
-                <img 
-                  src="https://picsum.photos/200/150?random=10" 
-                  alt="竿灯をテーマにしたカードゲーム「KANTO」をプレイ中の地元住民の様子"
-                  className="showcase-img sub-img"
-                />
-              </div>
-            </div>
-            <div className="showcase-text">
-              <h4>テーブルゲーム開発への想い</h4>
-              <p>
-                私たちは単なるゲーム制作にとどまらず、地域の魅力や文化を
-                「遊び」という形で表現し、多くの人に伝えることを目指しています。
-                各作品には秋田の特色が込められており、プレイヤーが楽しみながら
-                地域について学べる設計となっています。
-              </p>
+              ))}
             </div>
           </div>
 
-          <div className="games-grid">
-            {games.map((game, index) => (
-              <div key={index} className="game-card">
-                <div className="game-header">
-                  <h4 className="game-title">{game.title}</h4>
-                  <span className={`game-status ${game.status === '完成' ? 'completed' : 'in-progress'}`}>
-                    {game.status}
-                  </span>
+          {/* ゲーム開発実績 */}
+          <div className="games-section">
+            <h3 className="subsection-title">開発ゲーム</h3>
+            
+            {/* ショーケース */}
+            <div className="games-showcase">
+              <div className="showcase-images">
+                <img src="https://picsum.photos/600/400?random=20" alt="テーブルゲーム" className="main-img" />
+                <div className="sub-images">
+                  <img src="https://picsum.photos/300/200?random=21" alt="ゲーム詳細1" className="sub-img" />
+                  <img src="https://picsum.photos/300/200?random=22" alt="ゲーム詳細2" className="sub-img" />
                 </div>
-                <p className="game-description">{game.description}</p>
-                <ul className="game-features">
-                  {game.features.map((feature, featureIndex) => (
-                    <li key={featureIndex}>
-                      <FontAwesomeIcon icon={faGamepad} className="feature-bullet" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
               </div>
-            ))}
+              <div className="showcase-text">
+                <h4>地域文化を遊びで学ぶ</h4>
+                <p>遊びながら学び、楽しみながら地元を知ることができる体験を提供すべく開発しています。</p>
+              </div>
+            </div>
+
+            {/* ゲーム詳細 */}
+            <div className="games-grid">
+              {games.map((game, index) => (
+                <div key={index} className="game-card">
+                  <div className="game-header">
+                    <h4 className="game-title">{game.title}</h4>
+                    <span className={`game-status ${game.status}`}>
+                      {game.status === 'completed' ? '完成' : '開発中'}
+                    </span>
+                  </div>
+                  <p className="game-description">{game.description}</p>
+                  <ul className="game-features">
+                    {game.features.map((feature, featureIndex) => (
+                      <li key={featureIndex}>
+                        <FontAwesomeIcon icon={faGamepad} className="feature-bullet" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

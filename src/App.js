@@ -5,6 +5,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import News from './components/News';
 import About from './components/About';
 import Services from './components/Services';
 import Profile from './components/Profile';
@@ -27,6 +28,7 @@ function App() {
         return (
           <>
             <Hero />
+            <News />
             <About />
             <Services />
             <Achievements />

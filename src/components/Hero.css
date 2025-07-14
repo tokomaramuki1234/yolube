@@ -149,6 +149,15 @@
   justify-content: space-between;
   padding: 0 30px;
   z-index: 4;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* PCでのマウスホバー時に矢印を表示 */
+.hero-slider:hover .slider-controls {
+  opacity: 1;
+  visibility: visible;
 }
 
 .slider-btn {
@@ -261,13 +270,7 @@
   }
 
   .slider-controls {
-    padding: 0 20px;
-  }
-
-  .slider-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
+    display: none; /* スマホ版では矢印を非表示 */
   }
 }
 
@@ -289,12 +292,6 @@
   }
 
   .slider-controls {
-    padding: 0 15px;
-  }
-
-  .slider-btn {
-    width: 45px;
-    height: 45px;
-    font-size: 1rem;
+    display: none; /* スマホ版では矢印を非表示 */
   }
 } 

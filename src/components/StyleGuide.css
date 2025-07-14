@@ -80,7 +80,7 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.section-title {
+.style-guide .section-title {
   font-size: 2rem;
   color: #1e293b;
   margin: 0 0 30px 0;
@@ -102,10 +102,12 @@
 }
 
 .guide-section h2 {
-  font-size: 2rem;
-  color: #334155;
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--text-primary);
   margin: 20px 0;
-  font-weight: 600;
 }
 
 .guide-section h3 {
@@ -626,7 +628,7 @@ blockquote cite {
     margin-bottom: 30px;
   }
   
-  .section-title {
+  .style-guide .section-title {
     font-size: 1.5rem;
   }
   
@@ -662,7 +664,7 @@ blockquote cite {
     font-size: 1.75rem;
   }
   
-  .section-title {
+  .style-guide .section-title {
     font-size: 1.25rem;
   }
   

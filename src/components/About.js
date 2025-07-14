@@ -137,99 +137,84 @@ const About = () => {
 
   return (
     <section id="about" className="about section">
-      <div 
-        ref={heroRef}
-        className="about-hero"
-      >
-        {/* 流れるアイコン */}
+      {/* ヒーローセクション */}
+      <div className="about-hero" ref={heroRef}>
+        <div className="hero-content">
+          <div className="hero-text">
+            <h2 className="section-title">MISSION</h2>
+            <div className="hero-vision">
+              <div className="vision-main">遊び心で社会を変える</div>
+              <div className="vision-subtitle">テーブルゲームの魅力を最大限に活かして、地域社会の課題解決に取り組みます</div>
+            </div>
+          </div>
+        </div>
+        {/* 流れるアイコンのレンダリング */}
         {flowingIcons.map(icon => (
           <div
             key={icon.id}
             className="flowing-icon"
             style={{
+              backgroundImage: `url(/images/svg_${getImageName(icon.imageType)}.svg)`,
+              '--size': `${icon.size}px`,
+              '--duration': `${icon.duration}s`,
               '--start-x': `${icon.startX}%`,
               '--start-y': `${icon.startY}%`,
-              '--duration': `${icon.duration}s`,
-              '--size': `${icon.size}px`,
-              backgroundImage: `url(/images/svg_${getImageName(icon.imageType)}.svg)`,
             }}
           />
         ))}
-        
-        <div className="hero-content">
-          <div className="hero-text">
-            <h2 className="section-title">MISSION</h2>
-            <div className="hero-vision">
-              <h3 className="vision-main">遊び心で社会を変える</h3>
-                              <p className="vision-subtitle">YOLUBEは「遊び心で社会を変える」という理念のもと、テーブルゲームの力で地域社会の課題解決に取り組む団体です。遊びが持つ本質的な力—コミュニケーションの活性化、創造性の刺激、多様性の受容—を活用し、秋田県が直面する社会課題に新たなアプローチで挑戦します。</p>
-            </div>
-          </div>
-        </div>
       </div>
 
+      {/* VISIONセクション */}
       <div className="about-purposes">
-        <div className="purposes-header">
-          <h3>VISION</h3>
-          <p>テーブルゲームの力で新しい交流文化を創造</p>
-        </div>
-        <div className="purposes-grid">
-          <div className="purpose-card">
-            <div className="purpose-image">
-              <img 
-                src="https://picsum.photos/600/400?random=10" 
-                alt="多世代の人々がテーブルゲームを楽しんでいる様子"
-              />
+        <div className="section-container">
+          <h2 className="section-title">VISION</h2>
+          <div className="purposes-grid">
+            <div className="purpose-card">
+              <div className="purpose-image">
+                <img src="https://picsum.photos/600/400?random=5" alt="社会を変える" />
+              </div>
+              <div className="purpose-content">
+                <h4>すべてを乗り越える交流文化を創る</h4>
+                <p>年齢、性別、世代、立場を超えたフラットな交流文化を築きます。</p>
+              </div>
             </div>
-            <div className="purpose-content">
-              <h4>すべてを乗り越える交流文化を創る</h4>
-              <p>
-                テーブルゲームを通じ、世代・性別・国籍・立場・課題を乗り越えるための
-                地域交流文化を根付かせます。
-              </p>
-            </div>
-          </div>
-
-          <div className="purpose-card secondary-card">
-            <div className="purpose-image">
-              <img 
-                src="https://picsum.photos/600/400?random=11" 
-                alt="観光客と地元住民がゲームで交流している風景"
-              />
-            </div>
-            <div className="purpose-content">
-              <h4>体験交流型観光資源を創る</h4>
-              <p>
-                テーブルゲームを通じて、旅行者と地元住民が自然に交流する
-                機会を創出します。
-              </p>
+            
+            <div className="purpose-card">
+              <div className="purpose-image">
+                <img src="https://picsum.photos/600/400?random=6" alt="遊び心の実現" />
+              </div>
+              <div className="purpose-content">
+                <h4>体験交流型観光資源を創る</h4>
+                <p>テーブルゲームの交流文化自体を新たな観光資源とし、地域経済に貢献します。</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
+      {/* VALUEセクション */}
       <div className="about-values">
-        <div className="values-header">
-          <h3>VALUE</h3>
-          <p>遊びを通じて社会課題に挑戦</p>
-        </div>
-        <div className="values-grid">
-          <div className="value-card">
-            <div className="value-icon">
-              <FontAwesomeIcon icon={faBuilding} />
+        <div className="section-container">
+          <h2 className="section-title">VALUE</h2>
+          <div className="values-grid">
+            <div className="value-card">
+              <div className="value-icon">
+                <FontAwesomeIcon icon={faUsers} />
+              </div>
+              <div className="value-content">
+                <h4>遊び × 社会課題解決</h4>
+                <p>テーブルゲームを通じて企業のエンゲージメント向上、自殺予防、認知症予防、経済活性化など、様々な社会課題への寄与を目指します。</p>
+              </div>
             </div>
-            <div className="value-content">
-              <h4>遊び × 社会課題解決</h4>
-              <p>地方自治体の課題、地元企業のエンゲージメント向上をテーブルゲームで支援</p>
-            </div>
-          </div>
-          
-          <div className="value-card">
-            <div className="value-icon">
-              <FontAwesomeIcon icon={faUsers} />
-            </div>
-            <div className="value-content">
-              <h4>遊び × 地域活性化</h4>
-              <p>多様な世代・職業・価値観の人々が集うノーボーダーなコミュニケーションの場を提供</p>
+            
+            <div className="value-card">
+              <div className="value-icon">
+                <FontAwesomeIcon icon={faBuilding} />
+              </div>
+              <div className="value-content">
+                <h4>遊び × 地域活性化</h4>
+                <p>テーブルゲームが創り出す様々な形のコミュニケーションで人と人との繋がりを深め、地域活性化へ貢献します。</p>
+              </div>
             </div>
           </div>
         </div>

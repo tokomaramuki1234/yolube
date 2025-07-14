@@ -10,25 +10,181 @@ body {
   line-height: 1.6;
   color: #333;
   background-color: #fafafa;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 .App {
   min-height: 100vh;
 }
 
-/* カラー変数 */
+/* 統一されたタイポグラフィシステム */
 :root {
+  /* カラー変数 */
   --primary-color: #8BC780;
   --primary-dark: #6BA563;
   --primary-light: #A5D59C;
   --secondary-color: #FF6B6B;
   --accent-color: #FFD93D;
-  --text-primary: #333;
-  --text-secondary: #666;
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
   --bg-white: #fff;
   --bg-light: #f8f9fa;
   --shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   --shadow-hover: 0 4px 30px rgba(0, 0, 0, 0.15);
+
+  /* フォントサイズ階層 */
+  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-lg: 1.125rem;    /* 18px */
+  --font-size-xl: 1.25rem;     /* 20px */
+  --font-size-2xl: 1.5rem;     /* 24px */
+  --font-size-3xl: 1.875rem;   /* 30px */
+  --font-size-4xl: 2.25rem;    /* 36px */
+  --font-size-5xl: 3rem;       /* 48px */
+  --font-size-6xl: 3.75rem;    /* 60px */
+
+  /* フォントウェイト */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* 行の高さ */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* 文字間隔 */
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+}
+
+/* 統一されたタイポグラフィクラス */
+.text-xs { font-size: var(--font-size-xs); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-base { font-size: var(--font-size-base); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-xl { font-size: var(--font-size-xl); }
+.text-2xl { font-size: var(--font-size-2xl); }
+.text-3xl { font-size: var(--font-size-3xl); }
+.text-4xl { font-size: var(--font-size-4xl); }
+.text-5xl { font-size: var(--font-size-5xl); }
+.text-6xl { font-size: var(--font-size-6xl); }
+
+.font-light { font-weight: var(--font-weight-light); }
+.font-normal { font-weight: var(--font-weight-normal); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+.font-extrabold { font-weight: var(--font-weight-extrabold); }
+.font-black { font-weight: var(--font-weight-black); }
+
+.leading-tight { line-height: var(--line-height-tight); }
+.leading-snug { line-height: var(--line-height-snug); }
+.leading-normal { line-height: var(--line-height-normal); }
+.leading-relaxed { line-height: var(--line-height-relaxed); }
+.leading-loose { line-height: var(--line-height-loose); }
+
+.tracking-tighter { letter-spacing: var(--letter-spacing-tighter); }
+.tracking-tight { letter-spacing: var(--letter-spacing-tight); }
+.tracking-normal { letter-spacing: var(--letter-spacing-normal); }
+.tracking-wide { letter-spacing: var(--letter-spacing-wide); }
+.tracking-wider { letter-spacing: var(--letter-spacing-wider); }
+.tracking-widest { letter-spacing: var(--letter-spacing-widest); }
+
+/* 統一されたヘッダースタイル */
+h1, .h1 {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--text-primary);
+}
+
+h2, .h2 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--text-primary);
+}
+
+h3, .h3 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--text-primary);
+}
+
+h4, .h4 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--text-primary);
+}
+
+h5, .h5 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--text-primary);
+}
+
+h6, .h6 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--text-primary);
+}
+
+/* 統一されたテキストスタイル */
+p, .text-body {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--text-secondary);
+}
+
+.text-lead {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--text-secondary);
+}
+
+.text-small {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--text-muted);
+}
+
+.text-tiny {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--text-muted);
 }
 
 /* 共通スタイル */
@@ -42,35 +198,45 @@ body {
   padding: 80px 0;
 }
 
+/* 統一されたセクションタイトル */
 .section-title {
   text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 20px;
+  font-size: var(--font-size-4xl) !important;
+  font-weight: var(--font-weight-bold) !important;
+  line-height: var(--line-height-tight) !important;
+  letter-spacing: var(--letter-spacing-tight) !important;
+  color: var(--text-primary) !important;
+  margin-bottom: 1.25rem !important;
   position: relative;
-  padding: 0 40px;
+  padding: 0 2.5rem;
+  padding-bottom: 20px !important;
 }
 
 .section-title::after {
   content: '';
-  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 60px;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
-  margin: 20px auto;
+  background: linear-gradient(135deg, #8bc780, #6ba768);
   border-radius: 2px;
 }
 
+/* 統一されたセクションサブタイトル */
 .section-subtitle {
   text-align: center;
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  margin-bottom: 60px;
+  font-size: var(--font-size-lg) !important;
+  font-weight: var(--font-weight-normal) !important;
+  line-height: var(--line-height-relaxed) !important;
+  letter-spacing: var(--letter-spacing-normal) !important;
+  color: var(--text-secondary) !important;
+  margin-bottom: 3.75rem !important;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 40px;
+  padding: 0 2.5rem;
 }
 
 /* ボードゲーム風のカード */
@@ -106,11 +272,13 @@ body {
   padding: 15px 30px;
   border-radius: 50px;
   text-decoration: none;
-  font-weight: 600;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -172,18 +340,43 @@ body {
   }
   
   .section-title {
-    font-size: 2rem;
-    padding: 0 20px;
+    font-size: var(--font-size-3xl) !important;
+    padding: 0 1.25rem;
   }
   
   .section-subtitle {
-    padding: 0 20px;
+    font-size: var(--font-size-base) !important;
+    padding: 0 1.25rem;
   }
   
   .btn {
     padding: 12px 24px;
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm);
   }
+
+  h1, .h1 { font-size: var(--font-size-4xl); }
+  h2, .h2 { font-size: var(--font-size-3xl); }
+  h3, .h3 { font-size: var(--font-size-2xl); }
+  h4, .h4 { font-size: var(--font-size-xl); }
+  h5, .h5 { font-size: var(--font-size-lg); }
+  h6, .h6 { font-size: var(--font-size-base); }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: var(--font-size-2xl) !important;
+  }
+  
+  .section-subtitle {
+    font-size: var(--font-size-sm) !important;
+  }
+
+  h1, .h1 { font-size: var(--font-size-3xl); }
+  h2, .h2 { font-size: var(--font-size-2xl); }
+  h3, .h3 { font-size: var(--font-size-xl); }
+  h4, .h4 { font-size: var(--font-size-lg); }
+  h5, .h5 { font-size: var(--font-size-base); }
+  h6, .h6 { font-size: var(--font-size-sm); }
 }
 
 /* スクロールバーのカスタマイズ */

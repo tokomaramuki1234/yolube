@@ -1,50 +1,88 @@
+/* 統一されたセクションスタイル */
 .achievements {
-  background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+  background: white;
+  padding: 80px 0;
+}
+
+/* 統一されたセクションスタイル適用 */
+
+/* 統一されたコンテナ */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
 }
 
 .achievements-content {
   display: flex;
   flex-direction: column;
   gap: 80px;
-  padding: 0 40px;
 }
 
 .subsection-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text-primary);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2d3748;
   text-align: center;
   margin-bottom: 40px;
 }
 
-/* Stats Section */
+/* 統一されたスタッツセクション */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
 }
 
 .stat-card {
+  background: white;
+  border-radius: 16px;
   padding: 40px;
-  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #8bc780, #6ba768);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .stat-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card:hover::before {
+  opacity: 1;
 }
 
 .stat-icon {
   font-size: 3rem;
   margin-bottom: 20px;
   display: block;
-  animation: pulse 2s infinite;
+  color: #8bc780;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover .stat-icon {
+  transform: scale(1.1);
 }
 
 .stat-number {
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--primary-color);
+  color: #8bc780;
   margin-bottom: 10px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -52,22 +90,25 @@
 .stat-label {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #2d3748;
   margin-bottom: 10px;
 }
 
 .stat-description {
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: #4a5568;
 }
 
-/* Games Section */
+/* 統一されたゲームセクション */
 .games-showcase {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 50px;
   align-items: center;
   margin-bottom: 60px;
+  background: #f8f9fa;
+  border-radius: 16px;
+  padding: 50px;
 }
 
 .showcase-images {
@@ -80,14 +121,14 @@
   width: 100%;
   height: 300px;
   object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .main-img:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .sub-images {
@@ -100,29 +141,30 @@
   width: 100%;
   height: 140px;
   object-fit: cover;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .sub-img:hover {
   transform: scale(1.05);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .showcase-text h4 {
   font-size: 1.8rem;
-  color: var(--text-primary);
+  color: #2d3748;
   margin-bottom: 20px;
   font-weight: 700;
 }
 
 .showcase-text p {
-  color: var(--text-secondary);
+  color: #4a5568;
   line-height: 1.8;
   font-size: 1.1rem;
 }
 
+/* 統一されたゲームカードグリッド */
 .games-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -130,12 +172,35 @@
 }
 
 .game-card {
+  background: white;
+  border-radius: 16px;
   padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #8bc780, #6ba768);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .game-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.game-card:hover::before {
+  opacity: 1;
 }
 
 .game-header {
@@ -148,11 +213,11 @@
 .game-title {
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #2d3748;
 }
 
 .game-status {
-  padding: 5px 15px;
+  padding: 6px 16px;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
@@ -160,17 +225,17 @@
 }
 
 .game-status.completed {
-  background: var(--primary-color);
+  background: linear-gradient(135deg, #8bc780, #6ba768);
   color: white;
 }
 
 .game-status.in-progress {
-  background: var(--accent-color);
-  color: var(--text-primary);
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: white;
 }
 
 .game-description {
-  color: var(--text-secondary);
+  color: #4a5568;
   line-height: 1.6;
   margin-bottom: 25px;
 }
@@ -187,7 +252,7 @@
 .game-features li {
   position: relative;
   padding-left: 30px;
-  color: var(--text-secondary);
+  color: #4a5568;
   font-size: 0.95rem;
   line-height: 1.5;
 }
@@ -196,32 +261,42 @@
   position: absolute;
   left: 5px;
   top: 2px;
-  color: var(--primary-color);
+  color: #8bc780;
   font-size: 1rem;
 }
 
-/* アニメーション */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
+/* レスポンシブデザイン */
+@media (max-width: 1024px) {
+  .games-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
   }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
+
+  .games-showcase {
+    gap: 40px;
+    padding: 40px;
   }
 }
 
-/* レスポンシブデザイン */
 @media (max-width: 768px) {
-  .achievements-content {
-    gap: 60px;
+  .achievements {
+    padding: 60px 0;
+  }
+
+  .section-container {
     padding: 0 20px;
   }
 
+  .section-container {
+    padding: 0 20px;
+  }
+
+  .achievements-content {
+    gap: 60px;
+  }
+
   .stats-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
   }
 
@@ -244,6 +319,7 @@
   .games-showcase {
     grid-template-columns: 1fr;
     gap: 30px;
+    padding: 30px;
   }
 
   .showcase-images {
@@ -272,11 +348,6 @@
     font-size: 1.6rem;
   }
 
-  .games-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
   .game-card {
     padding: 30px;
   }
@@ -293,8 +364,12 @@
 }
 
 @media (max-width: 480px) {
+  .section-container {
+    padding: 0 15px;
+  }
+
   .stat-card {
-    padding: 20px;
+    padding: 24px;
   }
 
   .stat-icon {
@@ -305,8 +380,12 @@
     font-size: 1.8rem;
   }
 
+  .games-showcase {
+    padding: 24px;
+  }
+
   .game-card {
-    padding: 20px;
+    padding: 24px;
   }
 
   .game-title {

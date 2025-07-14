@@ -820,9 +820,7 @@
     padding: 0 20px;
   }
 
-  .hero-text .section-title {
-    font-size: 2.5rem;
-  }
+  /* Hero section title maintains its unique styling */
 
   .vision-main {
     font-size: 3rem;
@@ -945,9 +943,7 @@
 }
 
 @media (max-width: 480px) {
-  .hero-text .section-title {
-    font-size: 2rem;
-  }
+  /* Hero section title maintains its unique styling */
 
   .vision-main {
     font-size: 2.5rem;

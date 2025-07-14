@@ -8,10 +8,9 @@ const Services = () => {
     {
       id: 1,
       title: 'テーブルゲーム文化醸成事業',
-      description: 'テーブルゲームの認知度向上及び文化醸成を目的とした定期的な交流会を開催',
+      description: 'テーブルゲームの認知度向上及び文化醸成を目的とした定期的な交流会「Ke.」を開催',
       image: 'https://picsum.photos/600/400?random=15',
       icon: faDice,
-      color: 'primary',
       features: [
         '誰でも無料・予約なしで参加可能',
         '未経験者～中級者をターゲット',
@@ -24,11 +23,10 @@ const Services = () => {
       description: 'テーブルゲームによる集客及び顧客満足度向上の機会を提供',
       image: 'https://picsum.photos/600/400?random=16',
       icon: faStore,
-      color: 'secondary',
       features: [
-        '飲食店とのコラボ企画',
-        '保育園・介護施設での活動',
-        '地域課題に応じたカスタマイズ提案'
+        '地元企業とのコラボ企画',
+        '主に飲食店・保育園・介護施設での活動',
+        '課題に応じたカスタマイズの提案'
       ]
     },
     {
@@ -37,11 +35,10 @@ const Services = () => {
       description: '秋田県の観光資源、文化等の認知度向上及びインバウンド機会創出',
       image: 'https://picsum.photos/600/400?random=17',
       icon: faBullseye,
-      color: 'accent',
       features: [
-        '観光PRテーブルゲーム制作',
-        '地域文化をテーマにしたオリジナルゲーム',
-        '「遊び」と「学び」の融合'
+        '秋田をテーマにしたオリジナルゲームの制作',
+        'ただの教材ではなく、面白いゲーム作りにこだわる',
+        '「秋田には何もない」という固定観念を打ち破る'
       ]
     },
     {
@@ -50,54 +47,63 @@ const Services = () => {
       description: '社内コミュニケーション機会創出によるエンゲージメント向上',
       image: 'https://picsum.photos/600/400?random=18',
       icon: faHandshake,
-      color: 'success',
       features: [
-        '新卒・中途社員と役員の交流促進',
-        'チームビルディング強化',
-        '県内企業向けカスタマイズ研修'
+        '職場では得難いコミュニケーション機会を提供',
+        '様々な視座や気付きを得るための支援をゲームで実施',
+        '血の通った社内交流の構築を目指す'
       ]
     },
     {
       id: 5,
-      title: 'インバウンド基盤開発事業',
-      description: '小規模団体のインバウンド対応課題をテーブルゲーム×Webで解決',
+      title: 'インバウンド事業',
+      description: 'テーブルゲームを通じた国際交流促進と文化発信',
       image: 'https://picsum.photos/600/400?random=19',
       icon: faGlobe,
-      color: 'info',
       features: [
-        '多言語対応の観光情報サイト',
-        'QRコード連携システム',
-        '観光資源管理団体への支援'
+        '秋田をテーマに、多言語対応のゲームを開発',
+        '県内の観光団体に対し、ゲームとITでインバウンド対策を支援',
+        '地元民の想いを正しく伝えることを第一義とする'
       ]
     }
   ];
 
   return (
     <section id="services" className="services section">
-      <h2 className="section-title">事業内容</h2>
-      <p className="section-subtitle">
-        5つの主要事業で地域社会の課題解決に取り組んでいます
-      </p>
+      <div className="section-container">
+        <h2 className="section-title">WORKS</h2>
+        <p className="section-subtitle">
+          テーブルゲームの力で地域と社会に価値を創造する5つの事業を展開しています。
+        </p>
 
-
-
-      <div className="services-grid">
-        {services.map((service) => (
-          <div key={service.id} className={`service-tile ${service.color}`}>
-            <div className="tile-image">
-              <img src={service.image} alt={service.title} />
-              <div className="tile-overlay">
-                <div className="tile-icon">
-                  <FontAwesomeIcon icon={service.icon} />
-                </div>
-              </div>
+        <div className="services-overview">
+          <div className="overview-content">
+            <div className="overview-text">
+              <h3>遊びが創る新しい価値</h3>
+              <p>私たちはテーブルゲームを単なる娯楽として捉えるのではなく、コミュニケーションツール、学習ツール、そして地域活性化のためのイノベーションツールとして活用しています。人と人との繋がりを生み出し、地域課題の解決に貢献する持続可能な事業を目指します。</p>
             </div>
-            <div className="tile-content">
-              <h3 className="tile-title">{service.title}</h3>
-              <p className="tile-description">{service.description}</p>
+            <div className="overview-images">
+              <img src="https://picsum.photos/400/300?random=13" alt="テーブルゲーム交流" className="overview-img-1" />
+              <img src="https://picsum.photos/400/300?random=14" alt="地域コミュニティ" className="overview-img-2" />
             </div>
           </div>
-        ))}
+        </div>
+
+        <div className="services-grid">
+          {services.map((service) => (
+            <div key={service.id} className="service-card">
+              <div className="service-icon">
+                <FontAwesomeIcon icon={service.icon} />
+              </div>
+              <h3 className="service-title">{service.title}</h3>
+              <p className="service-description">{service.description}</p>
+              <div className="service-features">
+                {service.features.map((feature, index) => (
+                  <span key={index} className="service-tag">{feature}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

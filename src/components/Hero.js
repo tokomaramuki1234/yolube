@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { selectRandomImagesForSliders, generateFallbackImage } from '../utils/imageLoader';
 import './Hero.css';
 
 const Hero = () => {
@@ -10,42 +11,45 @@ const Hero = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
+  // 初期状態でランダム画像を設定（ちらつき防止）
+  const [randomImages] = useState(() => selectRandomImagesForSliders());
+
   const slides = [
     {
       id: 1,
-      image: 'https://picsum.photos/1920/1080?random=1',
-      alt: '木村允代表が2024年春の秋田市文化創造館で参加者30名とテーブルゲーム交流会を開催している様子',
+      image: randomImages[0] || generateFallbackImage(0), // フォールバック画像
+      alt: '秋田県とYOMOPULU',
       title: '遊び心で社会を変える',
       subtitle: 'テーブルゲームの力で地域社会の課題解決に取り組みます',
-      cta: '事業について',
-      label: '文化醸成'
+      cta: 'YOLUBEについて',
+      label: 'About YOLUBE'
     },
     {
       id: 2,
-      image: 'https://picsum.photos/1920/1080?random=2',
-      alt: '2024年夏にみんなの実家門脇家で地域住民と子どもたちが一緒にカードゲームを楽しんでいる風景',
-      title: 'すべてを乗り越える交流文化',
-      subtitle: '世代・性別・国籍を超えた地域交流文化を創造します',
-      cta: '実績を見る',
-      label: '地域活性化'
+      image: randomImages[1] || generateFallbackImage(1), // フォールバック画像
+      alt: 'テーブルゲーム交流会：Ke.のシンボル',
+      title: 'ノーボーダーなテーブルゲーム交流会',
+      subtitle: '世代・性別・国籍を超えた交流文化を秋田に築きます',
+      cta: '『け』について',
+      label: 'テーブルゲーム文化醸成事業'
     },
     {
       id: 3,
-      image: 'https://picsum.photos/1920/1080?random=3',
-      alt: '2024年秋田県観光PR用テーブルゲーム「Hometown Traveler」のプロトタイプを制作中の木村代表の作業風景',
-      title: '体験交流型観光資源',
-      subtitle: 'テーブルゲームを通じた新しい観光体験を提供します',
-      cta: 'ゲームを見る',
-      label: 'ゲーム開発'
+      image: randomImages[2] || generateFallbackImage(2), // フォールバック画像
+      alt: 'YOLUBEが自主制作しているテーブルゲームのサンプル画像',
+      title: '「秋田」で遊びを創り出す',
+      subtitle: '地元の魅力を伝えるテーブルゲームを開発します',
+      cta: 'ゲームについて',
+      label: 'ゲーム開発事業'
     },
     {
       id: 4,
-      image: 'https://picsum.photos/1920/1080?random=4',
-      alt: '2024年冬に秋田ベイパラダイスで企業研修として実施されたテーブルゲームセッションの様子',
-      title: 'エンゲージメント向上',
-      subtitle: 'テーブルゲームを活用した革新的な企業研修を提供します',
-      cta: '研修について',
-      label: '企業研修'
+      image: randomImages[3] || generateFallbackImage(3), // フォールバック画像
+      alt: 'テーブルゲームを活用した企業研修の様子',
+      title: '遊び心いっぱいの研修、試してみませんか？',
+      subtitle: '主体的に学び、多角的に考える研修を目指します',
+      cta: '企業研修について',
+      label: '企業研修事業'
     }
   ];
 
@@ -148,7 +152,12 @@ const Hero = () => {
                 <div className="container">
                   <div className="slide-text">
                     <h1 className="slide-title">
-                      {slide.title}
+                      {slide.title.split('\n').map((line, index) => (
+                        <span key={index}>
+                          {line}
+                          {index < slide.title.split('\n').length - 1 && <br />}
+                        </span>
+                      ))}
                     </h1>
                     <p className="slide-subtitle">
                       {slide.subtitle}
