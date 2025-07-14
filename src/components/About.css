@@ -1,0 +1,1124 @@
+.about {
+  padding: 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* ヒーローセクション */
+.about-hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 0;
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 流れるアイコンのアニメーション */
+.flowing-icon {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
+  animation: flowDiagonal var(--duration) linear infinite;
+  left: var(--start-x);
+  top: var(--start-y);
+}
+
+@keyframes flowDiagonal {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.3;
+  }
+  85% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(-100%, 80vh);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 強制的な中央揃え - 最優先 */
+#about .about-hero .hero-content {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+#about .about-hero .hero-text {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+#about .about-hero .hero-text * {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#about .about-hero .hero-vision {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+#about .about-hero .vision-main,
+#about .about-hero .vision-subtitle,
+#about .about-hero .section-title {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+}
+
+.about-hero .hero-text .section-title {
+  font-size: 3.5rem !important;
+  font-weight: 300 !important;
+  margin-bottom: 30px !important;
+  letter-spacing: 0.05em !important;
+  color: var(--text-primary) !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.about-hero .hero-vision {
+  margin-top: 40px !important;
+  text-align: center !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.about-hero .vision-main {
+  font-size: 4.5rem !important;
+  font-weight: 900 !important;
+  line-height: 1.1 !important;
+  margin-bottom: 20px !important;
+  background: linear-gradient(135deg, #8BC780 0%, #6BA768 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.about-hero .vision-subtitle {
+  font-size: 1.4rem !important;
+  font-weight: 300 !important;
+  color: var(--text-secondary) !important;
+  opacity: 0.9 !important;
+  line-height: 1.6 !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+/* イントロセクション */
+.about-intro {
+  padding: 120px 0;
+  background: white;
+}
+
+.intro-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.intro-image {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.intro-image img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.intro-image:hover img {
+  transform: scale(1.05);
+}
+
+.intro-content {
+  padding: 40px;
+}
+
+.intro-content h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.intro-content h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
+.intro-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+.intro-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  border: 2px solid rgba(139, 199, 128, 0.1);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  }
+
+/* 事業内容セクション - モダンカードデザイン */
+.business-content {
+  padding: 140px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.business-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(139, 199, 128, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.business-header {
+  text-align: center;
+  margin-bottom: 100px;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.business-header h3 {
+  font-size: 4rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.02em;
+}
+
+.business-header p {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.business-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.business-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    0 1px 8px rgba(0, 0, 0, 0.1);
+}
+
+.business-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transition: all 0.4s ease;
+}
+
+.business-card.primary::before {
+  background: linear-gradient(90deg, #8bc780, #6ba768);
+}
+
+.business-card.secondary::before {
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.business-card.accent::before {
+  background: linear-gradient(90deg, #f093fb, #f5576c);
+}
+
+.business-card.highlight::before {
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+}
+
+.business-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.business-card:hover::before {
+  height: 6px;
+}
+
+.business-number {
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.3;
+}
+
+.business-card.primary .business-number {
+  background: linear-gradient(135deg, #8bc780, #6ba768);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.business-card.secondary .business-number {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.business-card.accent .business-number {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.business-card.highlight .business-number {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.business-info {
+  position: relative;
+  z-index: 1;
+}
+
+.business-info h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.business-info p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #4a5568;
+  margin-bottom: 24px;
+}
+
+.business-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 6px 12px;
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  transition: all 0.3s ease;
+}
+
+.business-card.primary .tag {
+  background: rgba(139, 199, 128, 0.1);
+  color: #6ba768;
+  border-color: rgba(139, 199, 128, 0.2);
+}
+
+.business-card.accent .tag {
+  background: rgba(240, 147, 251, 0.1);
+  color: #f5576c;
+  border-color: rgba(240, 147, 251, 0.2);
+}
+
+.business-card.highlight .tag {
+  background: rgba(79, 172, 254, 0.1);
+  color: #00f2fe;
+  border-color: rgba(79, 172, 254, 0.2);
+}
+
+.tag:hover {
+  transform: scale(1.05);
+}
+  
+  /* VISIONセクション */
+.about-purposes {
+  padding: 120px 0;
+  background: linear-gradient(135deg, #f8fffe 0%, #f0f8f5 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-purposes::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(139, 199, 128, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(107, 167, 104, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.purposes-header {
+  text-align: center;
+  margin-bottom: 80px;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.purposes-header h3 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+  position: relative;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+.purposes-header h3::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(135deg, #8BC780, #6BA768);
+  border-radius: 2px;
+}
+
+.purposes-header p {
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-top: 30px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+}
+
+.purposes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.purpose-card {
+  background: white;
+  border-radius: 20px;
+  padding: 0;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  border: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: slideInLeft 0.8s ease-out 0.6s forwards;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.purpose-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(139, 199, 128, 0.05) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.purpose-card.secondary-card {
+  animation-delay: 0.8s;
+}
+
+.purpose-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 
+    0 24px 48px rgba(0, 0, 0, 0.12),
+    0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.purpose-card:hover::after {
+  opacity: 1;
+}
+
+.purpose-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+}
+
+.purpose-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.purpose-card:hover .purpose-image img {
+  transform: scale(1.1);
+}
+
+.purpose-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.purpose-content {
+  padding: 32px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.purpose-card h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.purpose-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* VALUEセクション - クリーンデザイン */
+.about-values {
+  padding: 120px 0;
+  background: #fafbfc;
+  position: relative;
+}
+
+.values-header {
+  text-align: center;
+  margin-bottom: 80px;
+  padding: 0 40px;
+}
+
+.values-header h3 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.values-header p {
+  font-size: 1.2rem;
+  color: #666;
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.value-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 180px;
+}
+
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 20px 40px rgba(0, 0, 0, 0.12);
+  border-color: rgba(139, 199, 128, 0.2);
+}
+
+.value-icon {
+  width: 64px;
+  height: 64px;
+  background: #8bc780;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.value-card:hover .value-icon {
+  background: #6ba768;
+  transform: scale(1.05);
+}
+
+.value-icon i {
+  font-size: 1.8rem;
+  color: white;
+}
+
+.value-content {
+  flex: 1;
+}
+
+.value-content h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.value-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 1024px) {
+
+  .intro-card {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .business-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .business-header h3 {
+    font-size: 3.5rem;
+  }
+
+  .purposes-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 80px 0;
+    min-height: 70vh;
+  }
+  
+  .flowing-icon {
+    opacity: 0.1;
+    transform: scale(0.6);
+  }
+  
+  .hero-content {
+    padding: 0 20px;
+  }
+
+  .hero-text .section-title {
+    font-size: 2.5rem;
+  }
+
+  .vision-main {
+    font-size: 3rem;
+  }
+
+  .vision-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .about-intro,
+  .about-purposes {
+    padding: 80px 0;
+  }
+
+  .business-content {
+    padding: 100px 0;
+  }
+
+  .business-header {
+    margin-bottom: 70px;
+  }
+
+  .business-header h3 {
+    font-size: 3rem;
+  }
+
+  .business-header p {
+    font-size: 1.2rem;
+  }
+
+  .business-card {
+    padding: 32px;
+  }
+
+  .business-number {
+    font-size: 4rem;
+  }
+
+  .about-values {
+    padding: 100px 0;
+  }
+
+  .values-header h3 {
+    font-size: 3rem;
+  }
+
+  .values-header p {
+    font-size: 1.3rem;
+  }
+
+  .about-values::before,
+  .about-values::after {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .intro-card,
+  .purposes-header,
+  .purposes-grid,
+  .values-header,
+  .values-grid {
+    padding: 0 20px;
+  }
+
+  .intro-content h3 {
+    font-size: 2rem;
+  }
+
+  .intro-stats {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .purposes-header h3 {
+    font-size: 3.2rem;
+  }
+
+  .values-header h3 {
+    font-size: 2.8rem;
+  }
+
+  .purpose-card {
+    min-height: 300px;
+    padding: 40px 30px;
+  }
+
+  .purpose-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 25px;
+  }
+
+  .purpose-icon i {
+    font-size: 3rem;
+  }
+  
+  .purpose-card h4 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
+  }
+
+  .purpose-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .value-card {
+    flex-direction: row;
+    gap: 20px;
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text .section-title {
+    font-size: 2rem;
+  }
+
+  .vision-main {
+    font-size: 2.5rem;
+  }
+
+  .intro-content h3 {
+    font-size: 1.8rem;
+  }
+
+  .business-content {
+    padding: 80px 0;
+  }
+
+  .business-header {
+    margin-bottom: 60px;
+    padding: 0 20px;
+  }
+
+  .business-header h3 {
+    font-size: 2.5rem;
+  }
+
+  .business-header p {
+    font-size: 1.1rem;
+  }
+
+  .business-grid {
+    padding: 0 20px;
+    gap: 20px;
+  }
+
+  .business-card {
+    padding: 28px 24px;
+  }
+
+  .business-number {
+    font-size: 3.5rem;
+    margin-bottom: 16px;
+  }
+
+  .business-info h4 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  .business-info p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .tag {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
+
+  .purposes-header h3 {
+    font-size: 2.2rem;
+  }
+
+  .values-header h3 {
+    font-size: 2.5rem;
+  }
+
+  .values-header p {
+    font-size: 1.2rem;
+  }
+
+  .value-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 20px;
+    gap: 16px;
+  }
+
+  .value-content h4 {
+    font-size: 1.2rem;
+  }
+
+  .value-content p {
+    font-size: 0.95rem;
+  }
+
+  .about-values::before,
+  .about-values::after {
+    width: 300px;
+    height: 300px;
+  }
+
+  .purposes-header h3::after {
+    width: 60px;
+    height: 2px;
+  }
+
+  .purposes-header h3 {
+    font-size: 3rem;
+  }
+
+  .purpose-card {
+    min-height: 280px;
+    padding: 35px 25px;
+    border-radius: 20px;
+  }
+
+  .purpose-icon {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 20px;
+  }
+
+  .purpose-icon i {
+    font-size: 2.5rem;
+  }
+
+  .purpose-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  .purpose-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+
+}
+
+/* 強制的な中央揃え - 最優先 */
+#about .about-hero .hero-content {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 40px !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+#about .about-hero .hero-text {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+#about .about-hero .hero-text * {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#about .about-hero .hero-vision {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  margin-top: 40px !important;
+}
+
+#about .about-hero .vision-main,
+#about .about-hero .vision-subtitle,
+#about .about-hero .section-title {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+}

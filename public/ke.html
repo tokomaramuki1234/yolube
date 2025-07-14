@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テーブルゲーム交流会 Ke. | YOLUBE - 秋田でつながる、会話の輪</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        /* リセットCSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        /* カラー変数 */
+        :root {
+            --primary-color: #8BC780;
+            --primary-dark: #6BA563;
+            --primary-light: #A5D59C;
+            --secondary-color: #FF6B6B;
+            --accent-color: #FFD93D;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --bg-white: #fff;
+            --bg-light: #f8f9fa;
+            --shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 4px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 共通スタイル */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ヘッダー */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(139, 199, 128, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .header.scrolled .logo img {
+            filter: none;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            cursor: pointer;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-list a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: width 0.3s ease;
+        }
+
+        .nav-list a:hover::after {
+            width: 100%;
+        }
+
+        .nav-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-list a.active {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .nav-list a.active::after {
+            width: 100%;
+        }
+
+        .header.scrolled .nav-list a {
+            color: #333;
+            text-shadow: none;
+        }
+
+        .header.scrolled .nav-list a:hover {
+            color: var(--primary-color);
+        }
+
+        /* モバイルメニュー */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-toggle:hover span {
+            background: var(--primary-color);
+        }
+
+        .header.scrolled .mobile-menu-toggle span {
+            background: #333;
+        }
+
+        .header.scrolled .mobile-menu-toggle:hover span {
+            background: var(--primary-color);
+        }
+
+        /* コンテンツ */
+        .hero-pattern {
+            background-image: radial-gradient(circle at 25% 25%, rgba(139, 199, 128, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 75% 75%, rgba(139, 199, 128, 0.1) 0%, transparent 50%);
+        }
+
+        .ke-character {
+            filter: drop-shadow(0 10px 20px rgba(139, 199, 128, 0.3));
+        }
+
+        .lang-hidden {
+            display: none;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .brand-color {
+            color: var(--primary-color);
+        }
+
+        .brand-bg {
+            background-color: var(--primary-color);
+        }
+
+        .game-card {
+            background: var(--bg-white);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            border: 3px solid #e9ecef;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-color);
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--secondary-color));
+        }
+
+        /* フッター */
+        .footer {
+            background: linear-gradient(135deg, var(--text-primary) 0%, #2c3e50 100%);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-main {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+        }
+
+        .footer-logo img {
+            width: 100%;
+            height: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-description p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .footer-description p:first-child {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-section span {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            margin-bottom: 30px;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .footer-copyright p {
+            margin-bottom: 5px;
+        }
+
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            .nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(15px);
+                transform: translateY(-100%);
+                transition: transform 0.3s ease;
+                opacity: 0;
+                visibility: hidden;
+                border-bottom: 1px solid rgba(139, 199, 128, 0.2);
+                box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav.nav-open {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                gap: 10px;
+                padding: 20px 0;
+            }
+
+            .nav-list a {
+                color: #333;
+                text-shadow: none;
+                padding: 10px 20px;
+                border-radius: 8px;
+                margin: 0 20px;
+                display: block;
+            }
+
+            .nav-list a:hover {
+                background: rgba(139, 199, 128, 0.1);
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .footer {
+                padding: 40px 0 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+
+            .footer-logo {
+                max-width: 150px;
+                margin: 0 auto;
+            }
+
+            .footer-description {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer {
+                padding: 30px 0 15px;
+            }
+
+            .footer-content {
+                gap: 30px;
+            }
+
+            .footer-links {
+                gap: 25px;
+            }
+
+            .footer-section h4 {
+                font-size: 1rem;
+            }
+
+            .footer-section a,
+            .footer-section span {
+                font-size: 0.85rem;
+            }
+
+            .footer-copyright {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/images/YOLUBE_logo.png" alt="YOLUBE" />
+                </div>
+                
+                <nav class="nav" id="nav">
+                    <ul class="nav-list">
+                        <li>
+                            <a href="#home" class="active">
+                                <span class="lang-ja">ホーム</span>
+                                <span class="lang-en lang-hidden">Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#about">
+                                <span class="lang-ja">概要</span>
+                                <span class="lang-en lang-hidden">About</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#games">
+                                <span class="lang-ja">ゲーム</span>
+                                <span class="lang-en lang-hidden">Games</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#schedule">
+                                <span class="lang-ja">スケジュール</span>
+                                <span class="lang-en lang-hidden">Schedule</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#access">
+                                <span class="lang-ja">アクセス</span>
+                                <span class="lang-en lang-hidden">Access</span>
+                            </a>
+                        </li>
+                        <li>
+                            <button id="langToggle" class="px-3 py-1 rounded-full border border-green-300 text-green-600 hover:bg-green-50 transition-colors">
+                                <span class="lang-ja">EN</span>
+                                <span class="lang-en lang-hidden">JP</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main style="margin-top: 70px;">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center hero-pattern relative overflow-hidden">
+            <div class="container mx-auto px-4 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <img src="https://page1.genspark.site/v1/base64_upload/f402a3c34b95ce00f4a413d889a18406" 
+                         alt="け" 
+                         class="ke-character w-80 h-80 md:w-96 md:h-96 mx-auto mb-8 object-contain">
+                    
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4 lang-ja">
+                        テーブルゲーム交流会
+                    </h1>
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4 lang-en lang-hidden">
+                        Tabletop Game Meetup
+                    </h1>
+                    
+                    <p class="text-2xl md:text-3xl brand-color font-medium mb-8 lang-ja">
+                        テーブルゲームでつながる、会話の輪
+                    </p>
+                    <p class="text-2xl md:text-3xl brand-color font-medium mb-8 lang-en lang-hidden">
+                        Let's socialize through tabletop games!
+                    </p>
+                    
+                    <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 mb-8 shadow-lg">
+                        <div class="grid md:grid-cols-3 gap-6 text-center">
+                            <div>
+                                <i class="fas fa-gift text-4xl brand-color mb-3"></i>
+                                <h3 class="text-xl font-bold text-gray-800 mb-2 lang-ja">参加費無料</h3>
+                                <h3 class="text-xl font-bold text-gray-800 mb-2 lang-en lang-hidden">Free Entry</h3>
+                                <p class="text-gray-600 lang-ja">どなたでも気軽に参加できます</p>
+                                <p class="text-gray-600 lang-en lang-hidden">Everyone can join freely</p>
+                            </div>
+                            <div>
+                                <i class="fas fa-clock text-4xl brand-color mb-3"></i>
+                                <h3 class="text-xl font-bold text-gray-800 mb-2 lang-ja">予約不要</h3>
+                                <h3 class="text-xl font-bold text-gray-800 mb-2 lang-en lang-hidden">No Reservation</h3>
+                                <p class="text-gray-600 lang-ja">出入り自由で気軽に参加</p>
+                                <p class="text-gray-600 lang-en lang-hidden">Drop-in and drop-out freely</p>
+                            </div>
+                            <div>
+                                <i class="fas fa-users text-4xl brand-color mb-3"></i>
+                                <h3 class="text-xl font-bold text-gray-800 mb-2 lang-ja">初心者歓迎</h3>
+                                <h3 class="text-xl font-bold text-gray-800 mb-2 lang-en lang-hidden">Beginners Welcome</h3>
+                                <p class="text-gray-600 lang-ja">3歳から100歳まで楽しめます</p>
+                                <p class="text-gray-600 lang-en lang-hidden">Ages 3 to 100 can enjoy</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#about" class="inline-block brand-bg text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-green-600 transition-colors shadow-lg">
+                        <span class="lang-ja">詳細を見る</span>
+                        <span class="lang-en lang-hidden">Learn More</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-8 lang-ja">「Ke.」について</h2>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-8 lang-en lang-hidden">About "Ke."</h2>
+                    
+                    <div class="bg-gray-50 rounded-2xl p-8 mb-12">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6 lang-ja">
+                            テーブルゲーム交流会「Ke.」は、テーブルゲーム未経験者を対象としたゲーム交流会です。
+                            将棋や花札などの日本古来の遊びから、カタンやドミニオンなどの定番ゲームまで、
+                            100種類以上のテーブルゲームを用意しております。
+                        </p>
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6 lang-en lang-hidden">
+                            The tabletop game meetup "Ke." is a game exchange event aimed at those with no prior experience in tabletop gaming.
+                            We have prepared over 100 types of tabletop games, from traditional Japanese games like Shogi and Hanafuda
+                            to popular games like Catan and Dominion.
+                        </p>
+                        
+                        <p class="text-lg text-gray-700 leading-relaxed lang-ja">
+                            参加費無料、予約不要、途中入退室自由、年齢・性別・ゲーム経験の有無、一切問わずく楽しめます！
+                            是非お越しください！
+                        </p>
+                        <p class="text-lg text-gray-700 leading-relaxed lang-en lang-hidden">
+                            Free participation, no reservation required, free entry and exit at any time,
+                            everyone can enjoy regardless of age, gender, or gaming experience!
+                            Please come and join us!
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4 lang-ja">当日の流れ</h3>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4 lang-en lang-hidden">Event Flow</h3>
+                            <div class="space-y-3 text-left">
+                                <div class="flex items-center">
+                                    <span class="w-6 h-6 brand-bg text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">1</span>
+                                    <span class="lang-ja">受付</span>
+                                    <span class="lang-en lang-hidden">Reception</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="w-6 h-6 brand-bg text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">2</span>
+                                    <span class="lang-ja">参加登録</span>
+                                    <span class="lang-en lang-hidden">Registration</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="w-6 h-6 brand-bg text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">3</span>
+                                    <span class="lang-ja">名札作成</span>
+                                    <span class="lang-en lang-hidden">Name Tag Creation</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="w-6 h-6 brand-bg text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">4</span>
+                                    <span class="lang-ja">ゲーム選び</span>
+                                    <span class="lang-en lang-hidden">Game Selection</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="w-6 h-6 brand-bg text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">5</span>
+                                    <span class="lang-ja">ゲームプレイ</span>
+                                    <span class="lang-en lang-hidden">Game Play</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="w-6 h-6 brand-bg text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">6</span>
+                                    <span class="lang-ja">ゲーム片づけ</span>
+                                    <span class="lang-en lang-hidden">Game Cleanup</span>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-4 lang-ja">※遊び方がわからない場合はスタッフへお声かけください</p>
+                            <p class="text-sm text-gray-600 mt-4 lang-en lang-hidden">※If you don't know how to play, please ask our staff</p>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4 lang-ja">参加者の声</h3>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4 lang-en lang-hidden">Participant Voices</h3>
+                            <div class="space-y-4">
+                                <div class="bg-white rounded-lg p-4 shadow-sm">
+                                    <p class="text-gray-700 italic mb-2 lang-ja">「初めてでしたが、みなさん優しく教えてくれて楽しかったです！」</p>
+                                    <p class="text-gray-700 italic mb-2 lang-en lang-hidden">"It was my first time, but everyone was kind and taught me. It was fun!"</p>
+                                    <p class="text-sm text-gray-500 lang-ja">- 20代 女性</p>
+                                    <p class="text-sm text-gray-500 lang-en lang-hidden">- 20s Female</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 shadow-sm">
+                                    <p class="text-gray-700 italic mb-2 lang-ja">「毎回参加してます。新しいゲームとの出会いが楽しみ！」</p>
+                                    <p class="text-gray-700 italic mb-2 lang-en lang-hidden">"I participate every time. I look forward to meeting new games!"</p>
+                                    <p class="text-sm text-gray-500 lang-ja">- 40代 男性</p>
+                                    <p class="text-sm text-gray-500 lang-en lang-hidden">- 40s Male</p>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 shadow-sm">
+                                    <p class="text-gray-700 italic mb-2 lang-ja">「家族で参加しました。子供も大人も一緒に楽しめて良かったです。」</p>
+                                    <p class="text-gray-700 italic mb-2 lang-en lang-hidden">"We participated as a family. It was great that both children and adults could enjoy together."</p>
+                                    <p class="text-sm text-gray-500 lang-ja">- 30代 母親</p>
+                                    <p class="text-sm text-gray-500 lang-en lang-hidden">- 30s Mother</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Games Section -->
+        <section id="games" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-4xl font-bold text-gray-800 text-center mb-12 lang-ja">楽しめるゲーム</h2>
+                    <h2 class="text-4xl font-bold text-gray-800 text-center mb-12 lang-en lang-hidden">Enjoyable Games</h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-8 mb-12">
+                        <div class="game-card bg-white rounded-xl p-6 shadow-md">
+                            <div class="w-16 h-16 brand-bg rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-chess text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 text-center mb-3 lang-ja">日本古来のゲーム</h3>
+                            <h3 class="text-xl font-bold text-gray-800 text-center mb-3 lang-en lang-hidden">Traditional Japanese Games</h3>
+                            <p class="text-gray-600 text-center mb-4 lang-ja">将棋、花札、囲碁など、日本の伝統的なゲームを楽しめます</p>
+                            <p class="text-gray-600 text-center mb-4 lang-en lang-hidden">Enjoy traditional Japanese games like Shogi, Hanafuda, and Go</p>
+                            <div class="text-center">
+                                <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium lang-ja">初心者向け</span>
+                                <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium lang-en lang-hidden">Beginner-friendly</span>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card bg-white rounded-xl p-6 shadow-md">
+                            <div class="w-16 h-16 brand-bg rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-dice-d20 text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 text-center mb-3 lang-ja">定番ボードゲーム</h3>
+                            <h3 class="text-xl font-bold text-gray-800 text-center mb-3 lang-en lang-hidden">Classic Board Games</h3>
+                            <p class="text-gray-600 text-center mb-4 lang-ja">カタン、ドミニオン、スプレンダーなど人気の定番ゲーム</p>
+                            <p class="text-gray-600 text-center mb-4 lang-en lang-hidden">Popular classics like Catan, Dominion, and Splendor</p>
+                            <div class="text-center">
+                                <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium lang-ja">経験者向け</span>
+                                <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium lang-en lang-hidden">For experienced</span>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card bg-white rounded-xl p-6 shadow-md">
+                            <div class="w-16 h-16 brand-bg rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-map text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 text-center mb-3 lang-ja">地域特別ゲーム</h3>
+                            <h3 class="text-xl font-bold text-gray-800 text-center mb-3 lang-en lang-hidden">Regional Special Games</h3>
+                            <p class="text-gray-600 text-center mb-4 lang-ja">秋田県観光テーマ「ホームタウントラベラー」</p>
+                            <p class="text-gray-600 text-center mb-4 lang-en lang-hidden">Akita tourism themed "Hometown Traveler"</p>
+                            <div class="text-center">
+                                <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium lang-ja">秋田限定</span>
+                                <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium lang-en lang-hidden">Akita Limited</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-6 lang-ja">秋田県観光テーマボードゲーム</h3>
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-6 lang-en lang-hidden">Akita Tourism Themed Board Game</h3>
+                        <h4 class="text-3xl font-bold brand-color text-center mb-6">「ホームタウントラベラー」</h4>
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <p class="text-gray-700 mb-4 lang-ja">
+                                    秋田県の魅力を楽しく学べるオリジナルボードゲーム。県内の観光スポットを巡りながら、
+                                    秋田の文化や歴史を体験できます。
+                                </p>
+                                <p class="text-gray-700 mb-4 lang-en lang-hidden">
+                                    An original board game where you can learn about the charm of Akita Prefecture in a fun way.
+                                    You can experience Akita's culture and history while visiting tourist spots in the prefecture.
+                                </p>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-center lang-ja">
+                                        <i class="fas fa-check brand-color mr-2"></i>
+                                        プレイ時間：60-90分
+                                    </li>
+                                    <li class="flex items-center lang-ja">
+                                        <i class="fas fa-check brand-color mr-2"></i>
+                                        プレイ人数：2-4人
+                                    </li>
+                                    <li class="flex items-center lang-ja">
+                                        <i class="fas fa-check brand-color mr-2"></i>
+                                        対象年齢：10歳以上
+                                    </li>
+                                    <li class="flex items-center lang-en lang-hidden">
+                                        <i class="fas fa-check brand-color mr-2"></i>
+                                        Play time: 60-90 minutes
+                                    </li>
+                                    <li class="flex items-center lang-en lang-hidden">
+                                        <i class="fas fa-check brand-color mr-2"></i>
+                                        Players: 2-4 people
+                                    </li>
+                                    <li class="flex items-center lang-en lang-hidden">
+                                        <i class="fas fa-check brand-color mr-2"></i>
+                                        Age: 10 years and up
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="bg-gradient-to-br from-green-100 to-blue-100 rounded-xl p-6">
+                                <div class="text-center">
+                                    <i class="fas fa-map-marked-alt text-6xl brand-color mb-4"></i>
+                                    <p class="text-gray-700 font-medium lang-ja">秋田を旅する体験型ゲーム</p>
+                                    <p class="text-gray-700 font-medium lang-en lang-hidden">Experience game touring Akita</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section id="schedule" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl font-bold text-gray-800 text-center mb-12 lang-ja">開催スケジュール</h2>
+                    <h2 class="text-4xl font-bold text-gray-800 text-center mb-12 lang-en lang-hidden">Event Schedule</h2>
+                    
+                    <div class="bg-gray-50 rounded-2xl p-8">
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="border-b-2 border-gray-200">
+                                        <th class="text-left py-3 px-4 font-bold text-gray-800 lang-ja">日付</th>
+                                        <th class="text-left py-3 px-4 font-bold text-gray-800 lang-ja">会場</th>
+                                        <th class="text-left py-3 px-4 font-bold text-gray-800 lang-ja">時間</th>
+                                        <th class="text-left py-3 px-4 font-bold text-gray-800 lang-en lang-hidden">Date</th>
+                                        <th class="text-left py-3 px-4 font-bold text-gray-800 lang-en lang-hidden">Venue</th>
+                                        <th class="text-left py-3 px-4 font-bold text-gray-800 lang-en lang-hidden">Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-100">
+                                        <td class="py-4 px-4 font-medium text-gray-800">2024/09/28 (SAT)</td>
+                                        <td class="py-4 px-4 text-gray-600 lang-ja">秋田市文化創造館</td>
+                                        <td class="py-4 px-4 text-gray-600 lang-en lang-hidden">Akita Cultural Creation Center</td>
+                                        <td class="py-4 px-4 text-gray-600">09:30 - 20:30</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-100">
+                                        <td class="py-4 px-4 font-medium text-gray-800">2024/12/21 (SAT)</td>
+                                        <td class="py-4 px-4 text-gray-600 lang-ja">みんなの実家 門脇家</td>
+                                        <td class="py-4 px-4 text-gray-600 lang-en lang-hidden">Minna no Jikka Kadowaki-ke</td>
+                                        <td class="py-4 px-4 text-gray-600">09:30 - 20:30</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-100">
+                                        <td class="py-4 px-4 font-medium text-gray-800">2024/02/10 (SAT)</td>
+                                        <td class="py-4 px-4 text-gray-600 lang-ja">あきた文化交流発信センター</td>
+                                        <td class="py-4 px-4 text-gray-600 lang-en lang-hidden">Akita Cultural Exchange Center</td>
+                                        <td class="py-4 px-4 text-gray-600">10:30 - 17:30</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="mt-8 p-4 bg-white rounded-lg border-l-4 border-green-400">
+                            <p class="text-gray-700 lang-ja">
+                                <i class="fas fa-info-circle brand-color mr-2"></i>
+                                最新のスケジュールは公式SNSでお知らせします。TxGAME（TbyGAME）のSNSもフォローしてください。
+                            </p>
+                            <p class="text-gray-700 lang-en lang-hidden">
+                                <i class="fas fa-info-circle brand-color mr-2"></i>
+                                Latest schedule will be announced on official SNS. Please follow TxGAME (TbyGAME) SNS as well.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Access Section -->
+        <section id="access" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl font-bold text-gray-800 text-center mb-12 lang-ja">アクセス</h2>
+                    <h2 class="text-4xl font-bold text-gray-800 text-center mb-12 lang-en lang-hidden">Access</h2>
+                    
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-800 mb-4 lang-ja">主要開催地</h3>
+                                <h3 class="text-2xl font-bold text-gray-800 mb-4 lang-en lang-hidden">Main Venue</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-map-marker-alt brand-color text-xl mr-3 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800 lang-ja">秋田市文化創造館</h4>
+                                            <h4 class="font-bold text-gray-800 lang-en lang-hidden">Akita Cultural Creation Center</h4>
+                                            <p class="text-gray-600">〒010-0875 秋田県秋田市千秋明徳町3-16</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <i class="fas fa-train brand-color text-xl mr-3 mt-1"></i>
+                                        <div>
+                                            <p class="text-gray-600 lang-ja">JR秋田駅から徒歩15分</p>
+                                            <p class="text-gray-600 lang-en lang-hidden">15 minutes walk from JR Akita Station</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <i class="fas fa-car brand-color text-xl mr-3 mt-1"></i>
+                                        <div>
+                                            <p class="text-gray-600 lang-ja">駐車場あり（無料）</p>
+                                            <p class="text-gray-600 lang-en lang-hidden">Parking available (free)</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <i class="fas fa-ship brand-color text-xl mr-3 mt-1"></i>
+                                        <div>
+                                            <p class="text-gray-600 lang-ja">秋田ベイパラダイスまで車で30分</p>
+                                            <p class="text-gray-600 lang-en lang-hidden">30 minutes by car to Akita Bay Paradise</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="bg-gray-100 rounded-lg p-4 h-64 flex items-center justify-center">
+                                    <div class="text-center">
+                                        <i class="fas fa-map text-4xl text-gray-400 mb-2"></i>
+                                        <p class="text-gray-500 lang-ja">Google Maps</p>
+                                        <p class="text-gray-500 lang-en lang-hidden">Google Maps</p>
+                                        <p class="text-sm text-gray-400 mt-2 lang-ja">実際の地図はこちらに表示されます</p>
+                                        <p class="text-sm text-gray-400 mt-2 lang-en lang-hidden">Actual map will be displayed here</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl font-bold text-gray-800 text-center mb-12 lang-ja">よくある質問</h2>
+                    <h2 class="text-4xl font-bold text-gray-800 text-center mb-12 lang-en lang-hidden">FAQ</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 lang-ja">Q: 初心者でも大丈夫ですか？</h3>
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 lang-en lang-hidden">Q: Is it okay for beginners?</h3>
+                            <p class="text-gray-600 lang-ja">A: はい、大丈夫です！初心者の方を対象としたイベントです。スタッフがルールを丁寧に説明しますので、安心してご参加ください。</p>
+                            <p class="text-gray-600 lang-en lang-hidden">A: Yes, it's fine! This event is targeted at beginners. Our staff will carefully explain the rules, so please feel free to participate.</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 lang-ja">Q: 持ち物はありますか？</h3>
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 lang-en lang-hidden">Q: What should I bring?</h3>
+                            <p class="text-gray-600 lang-ja">A: 特にありません。ゲームはすべて会場で用意しております。手ぶらでお越しください。</p>
+                            <p class="text-gray-600 lang-en lang-hidden">A: Nothing special. All games are prepared at the venue. Please come empty-handed.</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 lang-ja">Q: 年齢制限はありますか？</h3>
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 lang-en lang-hidden">Q: Is there an age limit?</h3>
+                            <p class="text-gray-600 lang-ja">A: 3歳から100歳まで、どなたでもご参加いただけます。お子様連れでも大歓迎です。</p>
+                            <p class="text-gray-600 lang-en lang-hidden">A: Anyone from 3 to 100 years old can participate. Families with children are very welcome.</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 lang-ja">Q: 途中退場はできますか？</h3>
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 lang-en lang-hidden">Q: Can I leave early?</h3>
+                            <p class="text-gray-600 lang-ja">A: はい、出入り自由です。お忙しい方も気軽にご参加ください。</p>
+                            <p class="text-gray-600 lang-en lang-hidden">A: Yes, entry and exit are free. Even busy people can feel free to participate.</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 lang-ja">Q: 一人でも参加できますか？</h3>
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 lang-en lang-hidden">Q: Can I participate alone?</h3>
+                            <p class="text-gray-600 lang-ja">A: もちろんです！一人での参加者も多く、スタッフがゲーム相手の調整をサポートします。</p>
+                            <p class="text-gray-600 lang-en lang-hidden">A: Of course! Many participants come alone, and our staff will help coordinate game partners.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SNS Section -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-8 lang-ja">SNSで最新情報をチェック</h2>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-8 lang-en lang-hidden">Check Latest Updates on SNS</h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <a href="#" class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+                            <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fab fa-twitter text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Twitter</h3>
+                            <p class="text-gray-600 lang-ja">最新情報を随時発信</p>
+                            <p class="text-gray-600 lang-en lang-hidden">Latest updates regularly shared</p>
+                        </a>
+                        
+                        <a href="#" class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+                            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fab fa-facebook text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Facebook</h3>
+                            <p class="text-gray-600 lang-ja">詳細な情報を発信</p>
+                            <p class="text-gray-600 lang-en lang-hidden">Detailed information shared</p>
+                        </a>
+                        
+                        <a href="#" class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+                            <div class="w-16 h-16 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fab fa-instagram text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Instagram</h3>
+                            <p class="text-gray-600 lang-ja">写真で楽しい雰囲気をお届け</p>
+                            <p class="text-gray-600 lang-en lang-hidden">Fun atmosphere delivered through photos</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsors Section -->
+        <section class="py-20 bg-gray-800">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl font-bold text-white mb-8 lang-ja">後援・協賛</h2>
+                    <h2 class="text-4xl font-bold text-white mb-8 lang-en lang-hidden">Sponsors & Support</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 text-white">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4 brand-color lang-ja">後援</h3>
+                            <h3 class="text-2xl font-bold mb-4 brand-color lang-en lang-hidden">Support</h3>
+                            <ul class="space-y-2 text-lg">
+                                <li class="lang-ja">秋田市</li>
+                                <li class="lang-ja">秋田県教育委員会</li>
+                                <li class="lang-ja">ABS 秋田放送</li>
+                                <li class="lang-en lang-hidden">Akita City</li>
+                                <li class="lang-en lang-hidden">Akita Prefectural Board of Education</li>
+                                <li class="lang-en lang-hidden">ABS Akita Broadcasting</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4 brand-color lang-ja">協賛・協力</h3>
+                            <h3 class="text-2xl font-bold mb-4 brand-color lang-en lang-hidden">Sponsors & Cooperation</h3>
+                            <ul class="space-y-2 text-lg">
+                                <li>CNA 秋田ケーブルテレビ</li>
+                                <li class="lang-ja">秋田観新社</li>
+                                <li class="lang-ja">株式会社 EGEN</li>
+                                <li class="lang-en lang-hidden">Akita Kanshin-sha</li>
+                                <li class="lang-en lang-hidden">EGEN Co., Ltd.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-6 bg-gray-700 rounded-lg">
+                        <p class="text-white text-lg lang-ja">
+                            <i class="fas fa-heart text-red-400 mr-2"></i>
+                            協賛・協力者募集中！
+                        </p>
+                        <p class="text-white text-lg lang-en lang-hidden">
+                            <i class="fas fa-heart text-red-400 mr-2"></i>
+                            We are currently seeking sponsorship and cooperation!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-logo">
+                        <img src="/images/YOLUBE_logo.png" alt="YOLUBE" />
+                    </div>
+                    
+                    <div class="footer-description">
+                        <p class="lang-ja">遊び心で社会を変える</p>
+                        <p class="lang-en lang-hidden">Changing society through playfulness</p>
+                        <p class="lang-ja">テーブルゲームの力で地域社会の課題解決に取り組んでいます</p>
+                        <p class="lang-en lang-hidden">We are working to solve regional social issues through the power of tabletop games</p>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4 class="lang-ja">イベント情報</h4>
+                        <h4 class="lang-en lang-hidden">Event Info</h4>
+                        <ul>
+                            <li><a href="#about" class="lang-ja">「Ke.」について</a></li>
+                            <li><a href="#games" class="lang-ja">楽しめるゲーム</a></li>
+                            <li><a href="#schedule" class="lang-ja">開催スケジュール</a></li>
+                            <li><a href="#access" class="lang-ja">アクセス</a></li>
+                            <li><a href="#about" class="lang-en lang-hidden">About "Ke."</a></li>
+                            <li><a href="#games" class="lang-en lang-hidden">Games</a></li>
+                            <li><a href="#schedule" class="lang-en lang-hidden">Schedule</a></li>
+                            <li><a href="#access" class="lang-en lang-hidden">Access</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h4 class="lang-ja">ゲーム種類</h4>
+                        <h4 class="lang-en lang-hidden">Game Types</h4>
+                        <ul>
+                            <li><span class="lang-ja">日本古来のゲーム</span></li>
+                            <li><span class="lang-ja">定番ボードゲーム</span></li>
+                            <li><span class="lang-ja">地域特別ゲーム</span></li>
+                            <li><span class="lang-ja">ホームタウントラベラー</span></li>
+                            <li><span class="lang-en lang-hidden">Traditional Japanese Games</span></li>
+                            <li><span class="lang-en lang-hidden">Classic Board Games</span></li>
+                            <li><span class="lang-en lang-hidden">Regional Special Games</span></li>
+                            <li><span class="lang-en lang-hidden">Hometown Traveler</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h4 class="lang-ja">連絡先</h4>
+                        <h4 class="lang-en lang-hidden">Contact</h4>
+                        <ul>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:090-2841-3926">090-2841-3926</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:txgame.akita@gmail.com">txgame.akita@gmail.com</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-building"></i>
+                                <span>YOLUBE</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-divider"></div>
+                <div class="footer-copyright">
+                    <p class="lang-ja">&copy; 2024 YOLUBE. テーブルゲーム交流会 Ke. All rights reserved.</p>
+                    <p class="lang-en lang-hidden">&copy; 2024 YOLUBE. Tabletop Game Meetup Ke. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ナビゲーションのスクロール効果
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // モバイルメニューのトグル
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const nav = document.getElementById('nav');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            nav.classList.toggle('nav-open');
+        });
+
+        // 言語切り替え機能
+        const langToggle = document.getElementById('langToggle');
+        const jaElements = document.querySelectorAll('.lang-ja');
+        const enElements = document.querySelectorAll('.lang-en');
+        
+        let currentLang = 'ja';
+        
+        langToggle.addEventListener('click', () => {
+            if (currentLang === 'ja') {
+                // Switch to English
+                jaElements.forEach(el => el.classList.add('lang-hidden'));
+                enElements.forEach(el => el.classList.remove('lang-hidden'));
+                currentLang = 'en';
+                document.documentElement.lang = 'en';
+            } else {
+                // Switch to Japanese
+                enElements.forEach(el => el.classList.add('lang-hidden'));
+                jaElements.forEach(el => el.classList.remove('lang-hidden'));
+                currentLang = 'ja';
+                document.documentElement.lang = 'ja';
+            }
+        });
+        
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // フェードインアニメーション
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('fade-in');
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
