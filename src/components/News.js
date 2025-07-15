@@ -41,8 +41,7 @@ const News = () => {
     <section id="news" className="news">
       <div className="container">
         <div className="news-header">
-          <h2 className="section-title">新着情報</h2>
-          <p className="section-subtitle">YOLUBEの最新ニュースをお届けします</p>
+          <h2 className="section-title">NEWS</h2>
         </div>
         
         <div className="news-content">

@@ -1,0 +1,64 @@
+# YOLUBE ウェブサイト robots.txt
+# https://yolube.jp/robots.txt
+
+User-agent: *
+Allow: /
+
+# XMLサイトマップの場所
+Sitemap: https://yolube.jp/sitemap.xml
+
+# 開発用ページの除外
+Disallow: /dev/
+Disallow: /test/
+
+# プライベートファイルの除外
+Disallow: /private/
+Disallow: /_*
+Disallow: /.env*
+
+# 管理用ディレクトリの除外
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+
+# 検索結果ページの除外
+Disallow: /search?
+Disallow: /*?search=*
+
+# APIエンドポイントの除外
+Disallow: /api/
+
+# 重複コンテンツの除外
+Disallow: /*?utm_*
+Disallow: /*?ref=*
+Disallow: /*?fbclid=*
+
+# 静的ファイルは許可
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /fonts/
+Allow: *.css
+Allow: *.js
+Allow: *.png
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.gif
+Allow: *.svg
+Allow: *.ico
+
+# クロール頻度の調整
+Crawl-delay: 1
+
+# 主要な検索エンジン向け個別設定
+User-agent: Googlebot
+Crawl-delay: 0
+Allow: /
+
+User-agent: Bingbot
+Crawl-delay: 1
+Allow: /
+
+User-agent: YandexBot
+Crawl-delay: 2
+Allow: / 

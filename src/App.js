@@ -12,7 +12,8 @@ import Profile from './components/Profile';
 import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import StyleGuide from './components/StyleGuide';
+
+import KeLP from './pages/ke/KeLP';
 
 // Font Awesomeライブラリにアイコンを追加
 library.add(fas, far, fab);
@@ -22,8 +23,8 @@ function App() {
 
   const renderPage = () => {
     switch(currentPage) {
-      case 'styleguide':
-        return <StyleGuide />;
+      case 'ke':
+        return <KeLP />;
       default:
         return (
           <>
@@ -41,9 +42,9 @@ function App() {
 
   return (
     <div className="App">
-      <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      {currentPage !== 'ke' && <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />}
       {renderPage()}
-      <Footer />
+      {currentPage !== 'ke' && <Footer />}
     </div>
   );
 }

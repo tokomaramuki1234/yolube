@@ -4,8 +4,6 @@
   padding: 80px 0;
 }
 
-/* 統一されたセクションスタイル適用 */
-
 /* 統一されたコンテナ */
 .section-container {
   max-width: 1200px;
@@ -14,21 +12,12 @@
 }
 
 .contact-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  display: flex;
+  justify-content: center;
   margin-top: 60px;
 }
 
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
 /* 統一されたカードデザイン */
-.contact-card,
-.location-card,
 .form-card {
   background: white;
   border-radius: 16px;
@@ -38,10 +27,10 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  max-width: 600px;
+  width: 100%;
 }
 
-.contact-card::before,
-.location-card::before,
 .form-card::before {
   content: '';
   position: absolute;
@@ -54,15 +43,11 @@
   transition: opacity 0.3s ease;
 }
 
-.contact-card:hover,
-.location-card:hover,
 .form-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
-.contact-card:hover::before,
-.location-card:hover::before,
 .form-card:hover::before {
   opacity: 1;
 }
@@ -73,93 +58,6 @@
   color: #2d3748;
   margin-bottom: 30px;
   text-align: center;
-}
-
-/* Contact Items */
-.contact-items {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
-  background: #f8f9fa;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-}
-
-.contact-item:hover {
-  background: rgba(139, 199, 128, 0.1);
-  transform: translateX(5px);
-}
-
-.contact-icon {
-  font-size: 2rem;
-  flex-shrink: 0;
-  color: #8bc780;
-}
-
-.contact-details {
-  flex: 1;
-}
-
-.contact-label {
-  font-size: 0.9rem;
-  color: #4a5568;
-  margin-bottom: 5px;
-}
-
-.contact-value {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #2d3748;
-}
-
-.contact-value a {
-  color: #2d3748;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.contact-value a:hover {
-  color: #8bc780;
-}
-
-/* Location Items */
-.locations {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.location-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-}
-
-.location-item:hover {
-  background: rgba(139, 199, 128, 0.1);
-  transform: translateX(5px);
-}
-
-.location-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-  color: #8bc780;
-}
-
-.location-name {
-  font-weight: 600;
-  color: #2d3748;
 }
 
 /* Contact Form */
@@ -207,7 +105,7 @@
 
 .contact-form-content .btn {
   margin-top: 10px;
-  align-self: flex-start;
+  align-self: center;
   background: linear-gradient(135deg, #8bc780, #6ba768);
   color: white;
   border: none;
@@ -223,16 +121,63 @@
   box-shadow: 0 8px 20px rgba(139, 199, 128, 0.3);
 }
 
+.required {
+  color: #e53e3e;
+}
+
+/* フォームメッセージ */
+.form-message {
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.form-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.form-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* ローディング状態 */
+.btn.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.btn.loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid transparent;
+  border-top: 2px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /* レスポンシブデザイン */
 @media (max-width: 1024px) {
-  .contact-content {
-    gap: 30px;
-  }
-
-  .contact-card,
-  .location-card,
   .form-card {
     padding: 35px;
+    max-width: 550px;
   }
 }
 
@@ -245,40 +190,13 @@
     padding: 0 20px;
   }
 
-  .section-container {
-    padding: 0 20px;
-  }
-
   .contact-content {
-    grid-template-columns: 1fr;
-    gap: 30px;
     margin-top: 40px;
   }
 
-  .contact-card,
-  .location-card,
   .form-card {
     padding: 30px;
-  }
-
-  .contact-item {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-  }
-
-  .contact-item:hover {
-    transform: translateY(-5px);
-  }
-
-  .location-item {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-  }
-
-  .location-item:hover {
-    transform: translateY(-5px);
+    max-width: 100%;
   }
 
   .contact-form-content .btn {
@@ -291,30 +209,12 @@
     padding: 0 15px;
   }
 
-  .contact-card,
-  .location-card,
   .form-card {
     padding: 24px;
   }
 
   .contact-title {
     font-size: 1.3rem;
-  }
-
-  .contact-items {
-    gap: 20px;
-  }
-
-  .contact-item {
-    padding: 15px;
-  }
-
-  .contact-icon {
-    font-size: 1.5rem;
-  }
-
-  .contact-value {
-    font-size: 1rem;
   }
 
   .form-group input,

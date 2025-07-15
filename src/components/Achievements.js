@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers, faBullseye, faCalendarAlt, faDollarSign, faGamepad } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faBullseye, faCalendarAlt, faGamepad } from '@fortawesome/free-solid-svg-icons';
 import './Achievements.css';
 
 const Achievements = () => {
@@ -22,12 +22,6 @@ const Achievements = () => {
       number: '15+',
       label: '臨時イベント開催回数',
       description: '様々なコラボイベントを展開中'
-    },
-    {
-      icon: faDollarSign,
-      number: '300万円',
-      label: '2026年度目標年商',
-      description: '収益計画による見込み'
     }
   ];
 
@@ -57,7 +51,7 @@ const Achievements = () => {
   return (
     <section id="achievements" className="achievements section">
       <div className="section-container">
-        <h2 className="section-title">制作物</h2>
+        <h2 className="section-title">ACHIEVEMENT</h2>
         <p className="section-subtitle">
           これまでの活動実績と開発中のテーブルゲームをご紹介します
         </p>

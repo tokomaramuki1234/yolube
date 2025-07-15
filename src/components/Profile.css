@@ -1,202 +1,461 @@
-/* 統一されたセクションスタイル */
+/* 究極に洗練された代表者プロフィールセクション - メインテーマカラー対応 */
 .profile {
-  background: #f8f9fa;
-  padding: 80px 0;
-}
-
-/* 統一されたセクションスタイル適用 */
-
-/* 統一されたコンテナ */
-.section-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
-.profile-content {
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-}
-
-/* 統一されたプロフィールカード */
-.profile-card {
-  background: white;
-  border-radius: 16px;
-  padding: 50px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #f8fdf7 0%, #e8f5e3 50%, #f0f9ec 100%);
+  padding: 140px 0;
   position: relative;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 50px;
-  align-items: center;
-  max-width: 900px;
-  margin: 0 auto;
 }
 
-.profile-card::before {
+.profile::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(135deg, #8bc780, #6ba768);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(139, 199, 128, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(107, 165, 99, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 40% 60%, rgba(165, 213, 156, 0.12) 0%, transparent 40%);
+  pointer-events: none;
+  animation: float 8s ease-in-out infinite;
 }
 
-.profile-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+.profile::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%238BC780" fill-opacity="0.03"><circle cx="30" cy="30" r="1"/></g></g></svg>') repeat;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(10px) rotate(-1deg); }
+}
+
+/* 統一されたコンテナ */
+.profile .section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* 究極に洗練されたセクションタイトル */
+.profile .section-title {
+  font-size: 4rem;
+  font-weight: 100;
+  text-align: center;
+  margin-bottom: 120px;
+  color: #2d3748;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  position: relative;
+  font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.profile .section-title::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 199, 128, 0.4), transparent);
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+.profile .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(180deg, rgba(139, 199, 128, 0.8), transparent);
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* 革新的なプロフィールレイアウト */
+.profile-card {
+  background: transparent;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  position: relative;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 100px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 1;
+  transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.profile-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: 
+    linear-gradient(45deg, transparent, rgba(139, 199, 128, 0.08), transparent),
+    linear-gradient(-45deg, transparent, rgba(165, 213, 156, 0.06), transparent);
+  transform: translate(-50%, -50%) rotate(0deg);
+  border-radius: 50%;
+  z-index: -1;
+  transition: all 1.2s ease;
 }
 
 .profile-card:hover::before {
-  opacity: 1;
+  transform: translate(-50%, -50%) rotate(360deg) scale(1.1);
+  background: 
+    linear-gradient(45deg, transparent, rgba(139, 199, 128, 0.15), transparent),
+    linear-gradient(-45deg, transparent, rgba(165, 213, 156, 0.12), transparent);
 }
 
 .profile-image {
   position: relative;
-  width: 250px;
-  height: 250px;
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.profile-image::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  right: -40px;
+  bottom: -40px;
+  background: 
+    conic-gradient(from 0deg, 
+      rgba(139, 199, 128, 0.3), 
+      rgba(107, 165, 99, 0.3), 
+      rgba(165, 213, 156, 0.3), 
+      rgba(139, 199, 128, 0.3));
   border-radius: 50%;
-  overflow: hidden;
-  border: 5px solid #8bc780;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  z-index: -1;
+  animation: slowRotate 40s linear infinite;
+  filter: blur(2px);
+}
+
+.profile-image::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: 
+    linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  border-radius: 50%;
+  z-index: -1;
 }
 
 .profile-card:hover .profile-image {
-  transform: scale(1.05);
+  transform: translateY(-20px) rotateX(5deg) rotateY(5deg) scale(1.05);
 }
 
 .profile-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
+  border-radius: 50%;
+  border: 4px solid rgba(139, 199, 128, 0.3);
+  box-shadow: 
+    0 40px 80px rgba(107, 165, 99, 0.25),
+    0 20px 40px rgba(139, 199, 128, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+  transition: all 0.8s ease;
+  filter: 
+    brightness(1.05) 
+    contrast(1.1) 
+    saturate(1.1) 
+    drop-shadow(0 10px 30px rgba(107, 165, 99, 0.2));
+  position: relative;
+  z-index: 1;
+}
+
+.profile-card:hover .profile-image img {
+  filter: 
+    brightness(1.1) 
+    contrast(1.15) 
+    saturate(1.15) 
+    drop-shadow(0 15px 40px rgba(107, 165, 99, 0.3));
+  box-shadow: 
+    0 50px 100px rgba(107, 165, 99, 0.3),
+    0 25px 50px rgba(139, 199, 128, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+  border-color: rgba(139, 199, 128, 0.5);
+}
+
+@keyframes slowRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .profile-info {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 50px;
+  position: relative;
+  padding: 40px 0;
 }
 
 .profile-name {
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: 4rem;
+  font-weight: 100;
   color: #2d3748;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  letter-spacing: 4px;
+  line-height: 1.1;
+  font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.profile-name::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(139, 199, 128, 0.8), transparent);
 }
 
 .profile-title {
   font-size: 1.2rem;
-  color: #8bc780;
-  font-weight: 600;
-  margin-bottom: 30px;
+  color: #4a5568;
+  font-weight: 300;
+  margin-bottom: 60px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .profile-details {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
 }
 
 .detail-item {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+  position: relative;
+  padding: 0;
+  border: none;
+  transition: all 0.6s ease;
+}
+
+.detail-item::before {
+  content: '';
+  position: absolute;
+  left: -40px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(139, 199, 128, 0.4), rgba(107, 165, 99, 0.4));
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+.detail-item:hover::before {
+  opacity: 1;
+  left: -20px;
 }
 
 .detail-label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #8bc780;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgba(139, 199, 128, 0.9);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+  font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+  position: relative;
+}
+
+.detail-label::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 1px;
+  background: rgba(139, 199, 128, 0.4);
 }
 
 .detail-value {
-  color: #4a5568;
-  line-height: 1.6;
-  font-size: 1rem;
+  color: #000000 !important;
+  line-height: 1.8 !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.5px;
+  transition: all 0.6s ease;
+  font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* レスポンシブデザイン */
+.detail-item:hover .detail-value {
+  color: #000000 !important;
+  transform: translateX(10px);
+}
+
+/* 洗練されたレスポンシブデザイン */
 @media (max-width: 1024px) {
+  .profile {
+    padding: 120px 0;
+  }
+
+  .profile .section-title {
+    font-size: 3.5rem;
+    letter-spacing: 6px;
+    margin-bottom: 100px;
+  }
+
   .profile-card {
-    grid-template-columns: 250px 1fr;
-    gap: 40px;
-    padding: 40px;
+    grid-template-columns: 320px 1fr;
+    gap: 80px;
+    max-width: 1000px;
   }
 
   .profile-image {
-    width: 220px;
-    height: 220px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .profile-name {
+    font-size: 3.5rem;
+    letter-spacing: 3px;
   }
 }
 
 @media (max-width: 768px) {
   .profile {
-    padding: 60px 0;
+    padding: 100px 0;
   }
 
-  .section-container {
+  .profile .section-container {
     padding: 0 20px;
   }
 
-  .section-container {
-    padding: 0 20px;
+  .profile .section-title {
+    font-size: 3rem;
+    letter-spacing: 4px;
+    margin-bottom: 80px;
   }
 
   .profile-card {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 30px;
-    padding: 30px;
+    gap: 60px;
   }
 
   .profile-image {
-    width: 200px;
-    height: 200px;
+    width: 280px;
+    height: 280px;
     margin: 0 auto;
   }
 
+  .profile-info {
+    padding: 40px 0;
+    gap: 50px;
+  }
+
   .profile-name {
-    font-size: 1.8rem;
+    font-size: 3rem;
+    letter-spacing: 2px;
   }
 
   .profile-title {
     font-size: 1.1rem;
+    letter-spacing: 1.5px;
+  }
+
+  .detail-item::before {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    top: -20px;
+    bottom: auto;
+  }
+
+  .detail-item:hover::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .detail-item:hover .detail-value {
+    transform: translateY(-5px);
   }
 }
 
 @media (max-width: 480px) {
-  .section-container {
+  .profile {
+    padding: 80px 0;
+  }
+
+  .profile .section-container {
     padding: 0 15px;
   }
 
-  .profile-card {
-    padding: 24px;
+  .profile .section-title {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 60px;
   }
 
   .profile-image {
-    width: 150px;
-    height: 150px;
+    width: 240px;
+    height: 240px;
+  }
+
+  .profile-info {
+    padding: 20px 0;
+    gap: 40px;
   }
 
   .profile-name {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
   }
 
   .profile-title {
     font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 60px;
+  }
+
+  .profile-details {
+    gap: 40px;
+  }
+
+  .detail-label {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
   }
 
   .detail-value {
-    font-size: 0.95rem;
+    font-size: 1rem;
+    line-height: 1.7;
   }
 } 

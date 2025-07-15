@@ -126,16 +126,17 @@ const Header = ({ currentPage, setCurrentPage }) => {
               </li>
               <li>
                 <a 
-                  href="#styleguide" 
+                  href="#ke" 
                   onClick={(e) => {
                     e.preventDefault();
-                    handlePageChange('styleguide');
+                    handlePageChange('ke');
                   }}
-                  className={currentPage === 'styleguide' ? 'active' : ''}
+                  className={currentPage === 'ke' ? 'active' : ''}
                 >
-                  スタイルガイド
+                  Ke.イベント
                 </a>
               </li>
+
             </ul>
           </nav>
 

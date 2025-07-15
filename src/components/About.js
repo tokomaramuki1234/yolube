@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBuilding, faUsers } from '@fortawesome/free-solid-svg-icons';
 import './About.css';
 
 const About = () => {
@@ -171,21 +169,23 @@ const About = () => {
           <div className="purposes-grid">
             <div className="purpose-card">
               <div className="purpose-image">
-                <img src="https://picsum.photos/600/400?random=5" alt="社会を変える" />
+                <img src="/images/svg_human.svg" alt="社会を変える" />
+                <div className="purpose-category-badge">VISION</div>
               </div>
               <div className="purpose-content">
-                <h4>すべてを乗り越える交流文化を創る</h4>
-                <p>年齢、性別、世代、立場を超えたフラットな交流文化を築きます。</p>
+                <h4 className="purpose-title">すべてを乗り越える交流文化を創る</h4>
+                <p className="purpose-description">年齢、性別、世代、立場を超えたフラットな交流文化を築きます。</p>
               </div>
             </div>
             
-            <div className="purpose-card">
+            <div className="purpose-card secondary-card">
               <div className="purpose-image">
-                <img src="https://picsum.photos/600/400?random=6" alt="遊び心の実現" />
+                <img src="/images/svg_engagement.svg" alt="遊び心の実現" />
+                <div className="purpose-category-badge">VISION</div>
               </div>
               <div className="purpose-content">
-                <h4>体験交流型観光資源を創る</h4>
-                <p>テーブルゲームの交流文化自体を新たな観光資源とし、地域経済に貢献します。</p>
+                <h4 className="purpose-title">体験交流型観光資源を創る</h4>
+                <p className="purpose-description">テーブルゲームの交流文化自体を新たな観光資源とし、地域経済に貢献します。</p>
               </div>
             </div>
           </div>
@@ -198,9 +198,6 @@ const About = () => {
           <h2 className="section-title">VALUE</h2>
           <div className="values-grid">
             <div className="value-card">
-              <div className="value-icon">
-                <FontAwesomeIcon icon={faUsers} />
-              </div>
               <div className="value-content">
                 <h4>遊び × 社会課題解決</h4>
                 <p>テーブルゲームを通じて企業のエンゲージメント向上、自殺予防、認知症予防、経済活性化など、様々な社会課題への寄与を目指します。</p>
@@ -208,9 +205,6 @@ const About = () => {
             </div>
             
             <div className="value-card">
-              <div className="value-icon">
-                <FontAwesomeIcon icon={faBuilding} />
-              </div>
               <div className="value-content">
                 <h4>遊び × 地域活性化</h4>
                 <p>テーブルゲームが創り出す様々な形のコミュニケーションで人と人との繋がりを深め、地域活性化へ貢献します。</p>
