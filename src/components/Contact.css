@@ -173,6 +173,68 @@
   100% { transform: rotate(360deg); }
 }
 
+/* 直接連絡先 */
+.form-description {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  text-align: center;
+  background-color: #f8f9fa;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.direct-contact {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #e9ecef;
+}
+
+.direct-contact h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.contact-method:hover {
+  background-color: #e9ecef;
+}
+
+.contact-method strong {
+  color: #333;
+  min-width: 80px;
+}
+
+.contact-method a {
+  color: #8BC780;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.contact-method a:hover {
+  color: #6BA563;
+  text-decoration: underline;
+}
+
 /* レスポンシブデザイン */
 @media (max-width: 1024px) {
   .form-card {

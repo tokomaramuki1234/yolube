@@ -1,57 +1,52 @@
 import React, { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGamepad, faUsers, faCalendarAlt, faMapMarkerAlt, faClock, faHeart, faDice } from '@fortawesome/free-solid-svg-icons';
-import emailjs from '@emailjs/browser';
 import './KeLP.css';
 
-const KeLP = () => {
+const KeLPWeb3 = () => {
   const form = useRef();
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
 
-  const sendEmail = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setMessage('');
 
-    // EmailJS設定値のチェック
-    const serviceId = 'service_yolube';
-    const templateId = 'template_ke_contact';  
-    const publicKey = 'YOUR_PUBLIC_KEY'; // EmailJS公開キー
+    try {
+      // フォームデータを準備
+      const formData = new FormData(form.current);
+      
+      // Web3Formsのアクセスキーを追加
+      formData.append("access_key", "YOUR_WEB3FORMS_ACCESS_KEY");
+      
+      // 追加設定（Ke.ページ用）
+      formData.append("subject", "【YOLUBE】テーブルゲーム交流会：Ke. お問い合わせ");
+      formData.append("from_name", "テーブルゲーム交流会：Ke. お問い合わせフォーム");
+      formData.append("replyto", formData.get('user_email'));
 
-    // EmailJSが正しく設定されているかチェック
-    if (publicKey === 'YOUR_PUBLIC_KEY') {
-      // 開発・テスト用：EmailJS未設定時のシミュレーション
-      console.log('📧 Ke.ページ テストモード: EmailJS未設定のため、送信をシミュレートします');
-      console.log('フォームデータ:', {
-        name: form.current.user_name.value,
-        email: form.current.user_email.value,
-        message: form.current.message.value
+      // Web3Forms APIに送信
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
       });
-      
-      // 2秒後に成功メッセージを表示（実際の送信をシミュレート）
-      setTimeout(() => {
-        setMessage('✅ テスト送信完了！EmailJS設定後に実際のメール送信が有効になります。');
-        form.current.reset();
-        setIsLoading(false);
-      }, 2000);
-      
-      return;
-    }
 
-    // 本番用：EmailJS実際の送信
-    emailjs.sendForm(serviceId, templateId, form.current, publicKey)
-      .then((result) => {
-        console.log('メール送信成功:', result.text);
+      const result = await response.json();
+      
+      if (result.success) {
+        console.log('✅ Ke.ページ メール送信成功:', result);
         setMessage('お問い合わせを送信いたしました。ありがとうございます！');
         form.current.reset();
-      }, (error) => {
-        console.log('メール送信エラー:', error.text);
+      } else {
+        console.error('❌ Web3Forms エラー:', result);
         setMessage('送信中にエラーが発生しました。もう一度お試しください。');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      }
+    } catch (error) {
+      console.error('❌ 送信エラー:', error);
+      setMessage('送信中にエラーが発生しました。もう一度お試しください。');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -307,7 +302,13 @@ const KeLP = () => {
             </div>
             <div className="ke-contact-form">
               <h3>お問い合わせ</h3>
-              <form ref={form} onSubmit={sendEmail} className="ke-form">
+              <p className="form-description">
+                送信されたメッセージは info@yolube.jp に直接送信されます。
+              </p>
+              <form ref={form} onSubmit={handleSubmit} className="ke-form">
+                {/* ハニーポット（スパム対策） */}
+                <input type="checkbox" name="botcheck" className="hidden" style={{display: 'none'}} />
+                
                 <div className="ke-form-group">
                   <label>お名前</label>
                   <input 
@@ -379,4 +380,4 @@ const KeLP = () => {
   );
 };
 
-export default KeLP; 
+export default KeLPWeb3; 

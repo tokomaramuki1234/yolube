@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './Header.css';
 
-const Header = ({ currentPage, setCurrentPage }) => {
+const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,8 +18,8 @@ const Header = ({ currentPage, setCurrentPage }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    if (currentPage !== 'home') {
-      setCurrentPage('home');
+    if (location.pathname !== '/') {
+      navigate('/');
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -32,11 +35,14 @@ const Header = ({ currentPage, setCurrentPage }) => {
     setIsMobileMenuOpen(false);
   };
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
+  const handlePageChange = (path) => {
+    navigate(path);
     setIsMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const isHomePage = location.pathname === '/';
+  const isKePage = location.pathname === '/ke';
 
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
@@ -53,13 +59,13 @@ const Header = ({ currentPage, setCurrentPage }) => {
                   href="#home" 
                   onClick={(e) => {
                     e.preventDefault();
-                    if (currentPage === 'home') {
+                    if (isHomePage) {
                       scrollToSection('home');
                     } else {
-                      handlePageChange('home');
+                      handlePageChange('/');
                     }
                   }}
-                  className={currentPage === 'home' ? 'active' : ''}
+                  className={isHomePage ? 'active' : ''}
                 >
                   ホーム
                 </a>
@@ -71,7 +77,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                     e.preventDefault();
                     scrollToSection('about');
                   }}
-                  className={currentPage === 'home' ? '' : 'disabled'}
+                  className={!isHomePage ? 'disabled' : ''}
                 >
                   ABOUT
                 </a>
@@ -83,7 +89,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                     e.preventDefault();
                     scrollToSection('services');
                   }}
-                  className={currentPage === 'home' ? '' : 'disabled'}
+                  className={!isHomePage ? 'disabled' : ''}
                 >
                   サービス
                 </a>
@@ -95,7 +101,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                     e.preventDefault();
                     scrollToSection('achievements');
                   }}
-                  className={currentPage === 'home' ? '' : 'disabled'}
+                  className={!isHomePage ? 'disabled' : ''}
                 >
                   実績
                 </a>
@@ -107,7 +113,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                     e.preventDefault();
                     scrollToSection('profile');
                   }}
-                  className={currentPage === 'home' ? '' : 'disabled'}
+                  className={!isHomePage ? 'disabled' : ''}
                 >
                   プロフィール
                 </a>
@@ -119,19 +125,19 @@ const Header = ({ currentPage, setCurrentPage }) => {
                     e.preventDefault();
                     scrollToSection('contact');
                   }}
-                  className={currentPage === 'home' ? '' : 'disabled'}
+                  className={!isHomePage ? 'disabled' : ''}
                 >
                   お問い合わせ
                 </a>
               </li>
               <li>
                 <a 
-                  href="#ke" 
+                  href="/ke" 
                   onClick={(e) => {
                     e.preventDefault();
-                    handlePageChange('ke');
+                    handlePageChange('/ke');
                   }}
-                  className={currentPage === 'ke' ? 'active' : ''}
+                  className={isKePage ? 'active' : ''}
                 >
                   Ke.イベント
                 </a>

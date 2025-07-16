@@ -1,57 +1,50 @@
 import React, { useState, useRef } from 'react';
-import emailjs from '@emailjs/browser';
 import './Contact.css';
 
-const Contact = () => {
+const ContactWeb3 = () => {
   const form = useRef();
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
 
-  const sendEmail = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setMessage('');
 
-    // EmailJS設定値のチェック
-    const serviceId = 'service_yolube';
-    const templateId = 'template_contact';  
-    const publicKey = 'YOUR_PUBLIC_KEY'; // EmailJS公開キー
+    try {
+      // フォームデータを準備
+      const formData = new FormData(form.current);
+      
+      // Web3Formsのアクセスキーを追加（後で実際のキーに置き換え）
+      formData.append("access_key", "YOUR_WEB3FORMS_ACCESS_KEY");
+      
+      // 追加設定
+      formData.append("subject", `【YOLUBE】お問い合わせ - ${formData.get('inquiry_type')}`);
+      formData.append("from_name", "YOLUBE お問い合わせフォーム");
+      formData.append("replyto", formData.get('user_email'));
 
-    // EmailJSが正しく設定されているかチェック
-    if (publicKey === 'YOUR_PUBLIC_KEY') {
-      // 開発・テスト用：EmailJS未設定時のシミュレーション
-      console.log('📧 テストモード: EmailJS未設定のため、送信をシミュレートします');
-      console.log('フォームデータ:', {
-        name: form.current.user_name.value,
-        email: form.current.user_email.value,
-        phone: form.current.user_phone.value,
-        inquiryType: form.current.inquiry_type.value,
-        message: form.current.message.value
+      // Web3Forms APIに送信
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
       });
-      
-      // 2秒後に成功メッセージを表示（実際の送信をシミュレート）
-      setTimeout(() => {
-        setMessage('✅ テスト送信完了！EmailJS設定後に実際のメール送信が有効になります。');
-        form.current.reset();
-        setIsLoading(false);
-      }, 2000);
-      
-      return;
-    }
 
-    // 本番用：EmailJS実際の送信
-    emailjs.sendForm(serviceId, templateId, form.current, publicKey)
-      .then((result) => {
-        console.log('メール送信成功:', result.text);
+      const result = await response.json();
+      
+      if (result.success) {
+        console.log('✅ メール送信成功:', result);
         setMessage('お問い合わせを送信いたしました。ありがとうございます！');
         form.current.reset();
-      }, (error) => {
-        console.log('メール送信エラー:', error.text);
+      } else {
+        console.error('❌ Web3Forms エラー:', result);
         setMessage('送信中にエラーが発生しました。もう一度お試しください。');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      }
+    } catch (error) {
+      console.error('❌ 送信エラー:', error);
+      setMessage('送信中にエラーが発生しました。もう一度お試しください。');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -65,8 +58,14 @@ const Contact = () => {
         <div className="contact-content">
           <div className="form-card">
             <h3 className="contact-title">お問い合わせフォーム</h3>
+            <p className="form-description">
+              送信されたメッセージは info@yolube.jp に直接送信されます。
+            </p>
             
-            <form ref={form} onSubmit={sendEmail} className="contact-form-content">
+            <form ref={form} onSubmit={handleSubmit} className="contact-form-content">
+              {/* ハニーポット（スパム対策） */}
+              <input type="checkbox" name="botcheck" className="hidden" style={{display: 'none'}} />
+              
               <div className="form-group">
                 <label htmlFor="name">お名前 <span className="required">*</span></label>
                 <input 
@@ -108,12 +107,12 @@ const Contact = () => {
                   disabled={isLoading}
                 >
                   <option value="">選択してください</option>
-                  <option value="event">テーブルゲーム交流会：Ke.について</option>
-                  <option value="collaboration">協同企画について</option>
-                  <option value="sponsorship">協賛、後援について</option>
-                  <option value="game-development">テーブルゲーム開発について</option>
-                  <option value="training">ゲーム研修について</option>
-                  <option value="other">その他</option>
+                  <option value="テーブルゲーム交流会：Ke.について">テーブルゲーム交流会：Ke.について</option>
+                  <option value="協同企画について">協同企画について</option>
+                  <option value="協賛、後援について">協賛、後援について</option>
+                  <option value="テーブルゲーム開発について">テーブルゲーム開発について</option>
+                  <option value="ゲーム研修について">ゲーム研修について</option>
+                  <option value="その他">その他</option>
                 </select>
               </div>
 
@@ -142,6 +141,21 @@ const Contact = () => {
                 {isLoading ? '送信中...' : '送信する'}
               </button>
             </form>
+
+            {/* 代替連絡手段 */}
+            <div className="direct-contact">
+              <h4>お急ぎの場合は直接ご連絡ください</h4>
+              <div className="contact-methods">
+                <div className="contact-method">
+                  <strong>📧 メール:</strong>
+                  <a href="mailto:info@yolube.jp">info@yolube.jp</a>
+                </div>
+                <div className="contact-method">
+                  <strong>📞 電話:</strong>
+                  <a href="tel:090-2841-3926">090-2841-3926</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -149,4 +163,4 @@ const Contact = () => {
   );
 };
 
-export default Contact; 
+export default ContactWeb3; 

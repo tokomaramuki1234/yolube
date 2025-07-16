@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
@@ -18,34 +19,35 @@ import KeLP from './pages/ke/KeLP';
 // Font Awesomeライブラリにアイコンを追加
 library.add(fas, far, fab);
 
+// ホームページコンポーネント
+const HomePage = () => (
+  <>
+    <Hero />
+    <News />
+    <About />
+    <Services />
+    <Achievements />
+    <Profile />
+    <Contact />
+  </>
+);
+
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-
-  const renderPage = () => {
-    switch(currentPage) {
-      case 'ke':
-        return <KeLP />;
-      default:
-        return (
-          <>
-            <Hero />
-            <News />
-            <About />
-            <Services />
-            <Achievements />
-            <Profile />
-            <Contact />
-          </>
-        );
-    }
-  };
-
   return (
-    <div className="App">
-      {currentPage !== 'ke' && <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />}
-      {renderPage()}
-      {currentPage !== 'ke' && <Footer />}
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Header />
+              <HomePage />
+              <Footer />
+            </>
+          } />
+          <Route path="/ke" element={<KeLP />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
