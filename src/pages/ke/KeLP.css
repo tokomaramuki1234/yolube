@@ -9,6 +9,18 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Fixed header offset for anchor links */
+section[id], .ke-anchor-point {
+  scroll-margin-top: 80px;
+}
+
+/* Invisible anchor point */
+.ke-anchor-point {
+  position: relative;
+  top: -80px;
+  visibility: hidden;
+}
+
 .ke-lp {
   font-family: 'Noto Sans JP', sans-serif;
   line-height: 1.6;

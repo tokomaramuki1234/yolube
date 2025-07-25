@@ -93,7 +93,7 @@ const KeLPWeb3 = () => {
             <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>イベントについて</a>
             <a href="#schedule" onClick={() => setIsMobileMenuOpen(false)}>開催スケジュール</a>
             <a href="#access" onClick={() => setIsMobileMenuOpen(false)}>アクセス</a>
-            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>お申し込み</a>
+            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>お問い合わせ</a>
           </nav>
           <button 
             className="ke-mobile-menu-toggle"
@@ -134,6 +134,7 @@ const KeLPWeb3 = () => {
                 </div>
               </div>
               <div className="ke-hero-stats">
+                <div id="about" className="ke-anchor-point"></div>
                 <div className="ke-description-text">
                   <p>テーブルゲーム交流会：Ke.について</p>
                   <p>テーブルゲーム交流会：Ke.は年齢、世代、立場を問わず遊べる交流会です。</p>
@@ -187,7 +188,7 @@ const KeLPWeb3 = () => {
       </section>
 
       {/* Solution Section */}
-      <section id="about" className="ke-solution">
+      <section className="ke-solution">
         <div className="ke-container">
           <h2 className="ke-section-title">そんなあなた、<br />「け」に来てみませんか？</h2>
           <div className="ke-solution-content">
@@ -582,7 +583,6 @@ const KeLPWeb3 = () => {
           <h2 className="ke-section-title">お申し込み・お問い合わせ</h2>
           <div className="ke-contact-content">
             <div className="ke-contact-form">
-              <h3>お問い合わせ</h3>
               <form ref={form} onSubmit={handleSubmit} className="ke-form">
                 {/* ハニーポット（スパム対策） */}
                 <input type="checkbox" name="botcheck" className="hidden" style={{display: 'none'}} />

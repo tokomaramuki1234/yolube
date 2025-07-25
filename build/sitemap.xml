@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- メインページ -->
+  <url>
+    <loc>https://yolube.jp/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- ホームページ内セクション -->
+  <url>
+    <loc>https://yolube.jp/#about</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://yolube.jp/#services</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://yolube.jp/#achievements</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://yolube.jp/#profile</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://yolube.jp/#contact</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- テーブルゲーム交流会：Ke. ランディングページ -->
+  <url>
+    <loc>https://yolube.jp/ke/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- 事業詳細ページ（今後追加予定） -->
+  <url>
+    <loc>https://yolube.jp/services/table-game-culture/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://yolube.jp/services/regional-revitalization/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://yolube.jp/services/game-development/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://yolube.jp/services/game-training/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://yolube.jp/services/inbound-development/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- その他のページ（今後追加予定） -->
+  <url>
+    <loc>https://yolube.jp/about/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yolube.jp/news/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yolube.jp/privacy-policy/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://yolube.jp/terms-of-service/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset> 
