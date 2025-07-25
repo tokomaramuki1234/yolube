@@ -85,9 +85,12 @@ const KeLP = () => {
                 秋田で楽しむテーブルゲームコミュニティ
               </p>
               <div className="ke-hero-stats">
-                <div className="ke-stat">
-                  <FontAwesomeIcon icon={faUsers} />
-                  <span>累計参加者<strong>1000名+</strong></span>
+                <div className="ke-description-text">
+                  <p>テーブルゲーム交流会：Ke.について</p>
+                  <p>テーブルゲーム交流会：Ke.は年齢、世代、立場を問わず遊べる交流会です。</p>
+                  <p>「ルールが難しそう...」「ついていけるかな？」そんな心配は無用！経験豊富なスタッフが一からやさしく教えるので、未経験者でも安心して楽しめます。新しい友達づくりや、50代以上の方の新しい趣味探しにもぴったり！３才から９０才まで幅広い年齢層からご参加いただいています。</p>
+                  <p>スマホから離れて顔を合わせ、みんなでワイワイ盛り上がってみませんか？普段出会えない世代の方との交流も、ゲームを通して自然と生まれます。頭を使う戦略ゲームから、みんなで笑えるパーティーゲームまで、様々な種類をご用意しています。</p>
+                  <p>まずは見学からでもOK！秋田の新しいコミュニティスペースで、心温まる交流のひとときを一緒に過ごしませんか？</p>
                 </div>
                 <div className="ke-stat">
                   <FontAwesomeIcon icon={faCalendarAlt} />
@@ -100,7 +103,7 @@ const KeLP = () => {
                   次回イベントに参加する
                 </a>
                 <a href="#about" className="ke-btn ke-btn-outline">
-                  イベントについて詳しく
+                  SNSで最新の情報をキャッチ
                 </a>
               </div>
             </div>
