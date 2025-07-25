@@ -14,7 +14,7 @@ import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
-import KeLP from './pages/ke/KeLP';
+import KeLP from './pages/ke/KeLPWeb3';
 
 // Font Awesomeライブラリにアイコンを追加
 library.add(fas, far, fab);

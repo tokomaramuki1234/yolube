@@ -170,21 +170,21 @@ const KeLPWeb3 = () => {
                 <FontAwesomeIcon icon={faCalendarAlt} />
                 <div>
                   <h3>開催頻度</h3>
-                  <p>月2回（第2・第4土曜日）</p>
+                  <p>月２回</p>
                 </div>
               </div>
               <div className="ke-schedule-item">
                 <FontAwesomeIcon icon={faClock} />
                 <div>
                   <h3>開催時間</h3>
-                  <p>13:00 - 17:00（4時間）</p>
+                  <p>10:00 - 20:00（10時間）</p>
                 </div>
               </div>
               <div className="ke-schedule-item">
                 <FontAwesomeIcon icon={faMapMarkerAlt} />
                 <div>
                   <h3>会場</h3>
-                  <p>秋田市内コミュニティセンター</p>
+                  <p>秋田ベイパラダイス</p>
                 </div>
               </div>
             </div>
@@ -192,15 +192,15 @@ const KeLPWeb3 = () => {
               <h3>次回開催予定</h3>
               <div className="ke-event-card">
                 <div className="ke-event-date">
-                  <span className="ke-month">3月</span>
-                  <span className="ke-day">8日</span>
+                  <span className="ke-month">7月</span>
+                  <span className="ke-day">26日</span>
                   <span className="ke-weekday">土</span>
                 </div>
                 <div className="ke-event-details">
-                  <h4>第47回 テーブルゲーム交流会：Ke.</h4>
-                  <p><FontAwesomeIcon icon={faClock} /> 13:00 - 17:00</p>
-                  <p><FontAwesomeIcon icon={faMapMarkerAlt} /> 秋田市民交流プラザALVE</p>
-                  <p><FontAwesomeIcon icon={faUsers} /> 参加費：500円</p>
+                  <h4>第57回 テーブルゲーム交流会：Ke.</h4>
+                  <p><FontAwesomeIcon icon={faClock} /> 10:00 - 20:00</p>
+                  <p><FontAwesomeIcon icon={faMapMarkerAlt} /> 秋田ベイパラダイス</p>
+                  <p><FontAwesomeIcon icon={faUsers} /> 参加費：無料</p>
                 </div>
                 <div className="ke-event-status">
                   <span className="ke-status-badge">募集中</span>
@@ -250,26 +250,34 @@ const KeLPWeb3 = () => {
           <h2 className="ke-section-title">アクセス</h2>
           <div className="ke-access-content">
             <div className="ke-access-info">
-              <h3>秋田市民交流プラザALVE</h3>
+              <h3>秋田ベイパラダイス</h3>
               <div className="ke-access-item">
                 <FontAwesomeIcon icon={faMapMarkerAlt} />
                 <div>
                   <h4>住所</h4>
-                  <p>〒010-0001 秋田県秋田市東通仲町4-1</p>
+                  <p>〒011-0945 秋田県秋田市土崎港西1-10-45</p>
                 </div>
               </div>
               <div className="ke-access-item">
                 <FontAwesomeIcon icon={faCalendarAlt} />
                 <div>
                   <h4>アクセス</h4>
-                  <p>JR秋田駅東口より徒歩2分</p>
-                  <p>駐車場：ALVE駐車場をご利用ください</p>
+                  <p>JR土崎駅より徒歩約10分</p>
+                  <p>駐車場：無料駐車場あり</p>
                 </div>
               </div>
             </div>
-            <div className="ke-map-placeholder">
-              <FontAwesomeIcon icon={faMapMarkerAlt} />
-              <span>マップ</span>
+            <div className="ke-map-container">
+              <iframe
+                src="https://maps.google.com/maps?q=秋田県秋田市土崎港西1-10-45&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="300"
+                style={{border: 0}}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="秋田ベイパラダイスの地図"
+              ></iframe>
             </div>
           </div>
         </div>
@@ -288,7 +296,7 @@ const KeLPWeb3 = () => {
                   <FontAwesomeIcon icon={faUsers} />
                   <div>
                     <h4>参加費</h4>
-                    <p>500円（飲み物・お菓子付き）</p>
+                    <p>無料</p>
                   </div>
                 </div>
                 <div className="ke-contact-item">

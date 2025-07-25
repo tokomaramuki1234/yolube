@@ -77,7 +77,6 @@ const Header = () => {
                     e.preventDefault();
                     scrollToSection('about');
                   }}
-                  className={!isHomePage ? 'disabled' : ''}
                 >
                   ABOUT
                 </a>
@@ -89,7 +88,6 @@ const Header = () => {
                     e.preventDefault();
                     scrollToSection('services');
                   }}
-                  className={!isHomePage ? 'disabled' : ''}
                 >
                   サービス
                 </a>
@@ -101,7 +99,6 @@ const Header = () => {
                     e.preventDefault();
                     scrollToSection('achievements');
                   }}
-                  className={!isHomePage ? 'disabled' : ''}
                 >
                   実績
                 </a>
@@ -113,7 +110,6 @@ const Header = () => {
                     e.preventDefault();
                     scrollToSection('profile');
                   }}
-                  className={!isHomePage ? 'disabled' : ''}
                 >
                   プロフィール
                 </a>
@@ -125,7 +121,6 @@ const Header = () => {
                     e.preventDefault();
                     scrollToSection('contact');
                   }}
-                  className={!isHomePage ? 'disabled' : ''}
                 >
                   お問い合わせ
                 </a>

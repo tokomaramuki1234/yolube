@@ -530,22 +530,20 @@
   line-height: 1.6;
 }
 
-.ke-map-placeholder {
-  background: linear-gradient(135deg, #8BC780, #A5D59C);
+.ke-map-container {
+  background: #f8f9fa;
   border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 500;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   min-height: 300px;
 }
 
-.ke-map-placeholder svg {
-  font-size: 3rem;
-  margin-bottom: 15px;
+.ke-map-container iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  display: block;
+  border-radius: 15px;
 }
 
 /* Contact Section */
