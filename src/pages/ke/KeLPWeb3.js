@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGamepad, faUsers, faCalendarAlt, faMapMarkerAlt, faClock, faHeart, faDice, faBars, faTimes, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faGamepad, faUsers, faCalendarAlt, faMapMarkerAlt, faClock, faHeart, faDice, faBars, faTimes, faChevronUp, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import './KeLP.css';
 
 const KeLPWeb3 = () => {
@@ -9,6 +9,138 @@ const KeLPWeb3 = () => {
   const [message, setMessage] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentLanguage, setCurrentLanguage] = useState('ja');
+
+  // 多言語テキストデータ
+  const translations = {
+    ja: {
+      nav: {
+        about: 'イベントについて',
+        schedule: '開催スケジュール',
+        access: 'アクセス',
+        contact: 'お問い合わせ'
+      },
+      hero: {
+        title1: '世界中のテーブルゲームで',
+        title2: '遊ぼう！',
+        badge1: '参加費無料',
+        badge2: '初参加・未経験者歓迎',
+        badge3: '年齢性別関係なし！',
+        aboutTitle: 'テーブルゲーム交流会：Ke.について',
+        description1: 'テーブルゲーム交流会：Ke.は年齢、世代、立場を問わず遊べる交流会です。',
+        description2: '「ルールが難しそう...」「ついていけるかな？」そんな心配は無用！経験豊富なスタッフが一からやさしく教えるので、未経験者でも安心して楽しめます。新しい友達づくりや、50代以上の方の新しい趣味探しにもぴったり！３才から９０才まで幅広い年齢層からご参加いただいています。',
+        btn1: '次回イベントに参加する',
+        btn2: 'SNSで最新の情報をキャッチ'
+      },
+      sponsors: {
+        cooperation: '協力',
+        support: '後援'
+      },
+      gallery: {
+        title: 'イベントの様子'
+      },
+      backToTop: 'トップへ戻る'
+    },
+    en: {
+      nav: {
+        about: 'About Event',
+        schedule: 'Schedule',
+        access: 'Access',
+        contact: 'Contact'
+      },
+      hero: {
+        title1: 'Play with board games',
+        title2: 'from around the world!',
+        badge1: 'Free participation',
+        badge2: 'Beginners welcome',
+        badge3: 'All ages and genders!',
+        aboutTitle: 'About Tabletop Game Social: Ke.',
+        description1: 'Tabletop Game Social: Ke. is a social event where people can play regardless of age, generation, or position.',
+        description2: '"The rules seem difficult..." "Can I keep up?" No need to worry! Experienced staff will teach you from the basics, so even beginners can enjoy with confidence. Perfect for making new friends or finding new hobbies for people over 50! Participants range from 3 to 90 years old.',
+        btn1: 'Join the next event',
+        btn2: 'Get latest info on SNS'
+      },
+      sponsors: {
+        cooperation: 'Cooperation',
+        support: 'Support'
+      },
+      gallery: {
+        title: 'Event Photos'
+      },
+      backToTop: 'Back to Top'
+    },
+    vi: {
+      nav: {
+        about: 'Về Sự Kiện',
+        schedule: 'Lịch Trình',
+        access: 'Đường Đi',
+        contact: 'Liên Hệ'
+      },
+      hero: {
+        title1: 'Chơi board game',
+        title2: 'từ khắp thế giới!',
+        badge1: 'Tham gia miễn phí',
+        badge2: 'Chào đón người mới',
+        badge3: 'Mọi lứa tuổi và giới tính!',
+        aboutTitle: 'Về Câu Lạc Bộ Board Game Giao Lưu: Ke.',
+        description1: 'Câu Lạc Bộ Board Game Giao Lưu: Ke. là sự kiện giao lưu mà mọi người có thể chơi bất kể tuổi tác, thế hệ hay vị trí.',
+        description2: '"Luật chơi có vẻ khó..." "Liệu mình có theo kịp không?" Đừng lo lắng! Đội ngũ có kinh nghiệm sẽ hướng dẫn từ cơ bản, vì vậy ngay cả người mới bắt đầu cũng có thể tận hưởng một cách tự tin. Hoàn hảo để kết bạn mới hoặc tìm sở thích mới cho những người trên 50 tuổi! Người tham gia từ 3 đến 90 tuổi.',
+        btn1: 'Tham gia sự kiện tiếp theo',
+        btn2: 'Nhận thông tin mới nhất trên SNS'
+      },
+      sponsors: {
+        cooperation: 'Hợp Tác',
+        support: 'Hỗ Trợ'
+      },
+      gallery: {
+        title: 'Hình Ảnh Sự Kiện'
+      },
+      backToTop: 'Về Đầu Trang'
+    }
+  };
+
+  // 現在の言語のテキストを取得
+  const t = translations[currentLanguage];
+
+  // 言語切り替え関数
+  const changeLanguage = (lang) => {
+    setCurrentLanguage(lang);
+  };
+
+  // ギャラリー用の画像データ
+  const galleryImages = [
+    {
+      src: '/images/ke_gallery/image1.png',
+      alt: '６０代のテーブルゲーム初心者たちが遊ぶ風景',
+      caption: 'お子様からご高齢者様まで、年齢関係なく楽しめます！'
+    },
+    {
+      src: '/images/ke_gallery/image2.png', 
+      alt: 'ふれあーるAKITA(あきた文化交流発信センター)でのイベント風景',
+      caption: 'YOLUBEの活動は「け」以外のイベントにもご招待いただいております。'
+    },
+    {
+      src: '/images/ke_gallery/image3.png',
+      alt: 'ボートピア河辺で定期開催しているイベント「わとわいち」でのイベント風景',
+      caption: 'YOLUBEの活動は「け」以外のイベントにもご招待いただいております。'
+    },
+    {
+      src: '/images/ke_gallery/image4.png',
+      alt: '名作「ticket to the ride」',
+      caption: '名作「ticket to the ride」'
+    },
+    {
+      src: '/images/ke_gallery/image5.png',
+      alt: 'レーダー作戦ゲーム',
+      caption: '1960年代に日本へ上陸した「レーダー作戦ゲーム」も遊べます'
+    },
+    {
+      src: '/images/ke_gallery/image6.png',
+      alt: '遊び方は無限大！',
+      caption: 'ゲームによっては自分なりにアレンジして楽しめる。これもテーブルゲームの魅力。'
+    }
+  ];
 
   // スクロール位置を監視
   useEffect(() => {
@@ -27,6 +159,19 @@ const KeLPWeb3 = () => {
       top: 0,
       behavior: 'smooth'
     });
+  };
+
+  // スライダーナビゲーション関数
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
   };
 
   const handleSubmit = async (e) => {
@@ -90,11 +235,33 @@ const KeLPWeb3 = () => {
             </a>
           </div>
           <nav className={`ke-nav ${isMobileMenuOpen ? 'ke-nav-open' : ''}`}>
-            <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>イベントについて</a>
-            <a href="#schedule" onClick={() => setIsMobileMenuOpen(false)}>開催スケジュール</a>
-            <a href="#access" onClick={() => setIsMobileMenuOpen(false)}>アクセス</a>
-            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>お問い合わせ</a>
+            <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.about}</a>
+            <a href="#schedule" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.schedule}</a>
+            <a href="#access" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.access}</a>
+            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.contact}</a>
           </nav>
+          
+          {/* Language Switcher */}
+          <div className="ke-language-switcher">
+            <button 
+              className={`ke-lang-btn ${currentLanguage === 'ja' ? 'active' : ''}`}
+              onClick={() => changeLanguage('ja')}
+            >
+              日本語
+            </button>
+            <button 
+              className={`ke-lang-btn ${currentLanguage === 'en' ? 'active' : ''}`}
+              onClick={() => changeLanguage('en')}
+            >
+              English
+            </button>
+            <button 
+              className={`ke-lang-btn ${currentLanguage === 'vi' ? 'active' : ''}`}
+              onClick={() => changeLanguage('vi')}
+            >
+              Tiếng Việt
+            </button>
+          </div>
           <button 
             className="ke-mobile-menu-toggle"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -113,32 +280,89 @@ const KeLPWeb3 = () => {
         </div>
       </section>
 
+      {/* Sponsors Section */}
+      <section className="ke-sponsors">
+        <div className="ke-container">
+          <div className="ke-sponsors-content">
+            <div className="ke-sponsor-group">
+              <h3 className="ke-sponsor-title">{t.sponsors.cooperation}</h3>
+              <div className="ke-sponsor-list">
+                <a href="https://all-akita-furusato.jp/" target="_blank" rel="noopener noreferrer">
+                  <span>みんなの実家 門脇家</span>
+                </a>
+                <a href="https://rise.webu.jp/" target="_blank" rel="noopener noreferrer">
+                  <span>立志塾RISE</span>
+                </a>
+                <a href="http://baypara.jp/" target="_blank" rel="noopener noreferrer">
+                  <span>秋田ベイパラダイス</span>
+                </a>
+              </div>
+            </div>
+            <div className="ke-sponsor-group">
+              <h3 className="ke-sponsor-title">{t.sponsors.support}</h3>
+              <div className="ke-sponsor-list">
+                <a href="https://www.pref.akita.lg.jp/" target="_blank" rel="noopener noreferrer">
+                  <span>秋田県</span>
+                </a>
+                <a href="https://www.pref.akita.lg.jp/pages/education" target="_blank" rel="noopener noreferrer">
+                  <span>秋田県教育委員会</span>
+                </a>
+                <a href="https://www.city.akita.lg.jp/" target="_blank" rel="noopener noreferrer">
+                  <span>秋田市</span>
+                </a>
+                <a href="https://youthpal-akita.com/" target="_blank" rel="noopener noreferrer">
+                  <span>一般財団法人秋田県青年会館</span>
+                </a>
+                <a href="https://www.akita-abs.co.jp/" target="_blank" rel="noopener noreferrer">
+                  <span>ABS秋田放送</span>
+                </a>
+                <a href="https://www.cna.ne.jp/" target="_blank" rel="noopener noreferrer">
+                  <span>CNA秋田ケーブルテレビ</span>
+                </a>
+                <a href="https://www.sakigake.jp/" target="_blank" rel="noopener noreferrer">
+                  <span>秋田魁新報社</span>
+                </a>
+                <a href="https://mutsumi-l.co.jp/" target="_blank" rel="noopener noreferrer">
+                  <span>むつみ造園土木株式会社</span>
+                </a>
+                <a href="https://kitaho.or.jp/yg88/news/4885.html" target="_blank" rel="noopener noreferrer">
+                  <span>株式会社EGEN</span>
+                </a>
+                <a href="https://x.com/icepick_yokote" target="_blank" rel="noopener noreferrer">
+                  <span>一般社団法人ICEPICK</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section className="ke-hero">
         <div className="ke-hero-bg">
           <div className="ke-hero-content">
             <div className="ke-hero-text">
               <h1 className="ke-title">
-                <span className="ke-title-main">世界中のテーブルゲームで</span>
-                <span className="ke-title-sub">遊ぼう！</span>
+                <span className="ke-title-main">{t.hero.title1}</span>
+                <span className="ke-title-sub">{t.hero.title2}</span>
               </h1>
               <div className="ke-hero-badges">
                 <div className="ke-badge">
-                  <span>参加費無料</span>
+                  <span>{t.hero.badge1}</span>
                 </div>
                 <div className="ke-badge">
-                  <span>初参加・未経験者歓迎</span>
+                  <span>{t.hero.badge2}</span>
                 </div>
                 <div className="ke-badge">
-                  <span>年齢性別関係なし！</span>
+                  <span>{t.hero.badge3}</span>
                 </div>
               </div>
               <div className="ke-hero-stats">
                 <div id="about" className="ke-anchor-point"></div>
                 <div className="ke-description-text">
-                  <p>テーブルゲーム交流会：Ke.について</p>
-                  <p>テーブルゲーム交流会：Ke.は年齢、世代、立場を問わず遊べる交流会です。</p>
-                  <p>「ルールが難しそう...」「ついていけるかな？」そんな心配は無用！経験豊富なスタッフが一からやさしく教えるので、未経験者でも安心して楽しめます。新しい友達づくりや、50代以上の方の新しい趣味探しにもぴったり！３才から９０才まで幅広い年齢層からご参加いただいています。</p>
+                  <p>{t.hero.aboutTitle}</p>
+                  <p>{t.hero.description1}</p>
+                  <p>{t.hero.description2}</p>
                   <p>スマホから離れて顔を合わせ、みんなでワイワイ盛り上がってみませんか？普段出会えない世代の方との交流も、ゲームを通して自然と生まれます。頭を使う戦略ゲームから、みんなで笑えるパーティーゲームまで、様々な種類をご用意しています。</p>
                   <p>まずは見学からでもOK！秋田の新しいコミュニティスペースで、心温まる交流のひとときを一緒に過ごしませんか？</p>
                 </div>
@@ -146,10 +370,10 @@ const KeLPWeb3 = () => {
               <div className="ke-hero-buttons">
                 <a href="#contact" className="ke-btn ke-btn-primary">
                   <FontAwesomeIcon icon={faGamepad} />
-                  次回イベントに参加する
+                  {t.hero.btn1}
                 </a>
                 <a href="#sns" className="ke-btn ke-btn-outline">
-                  SNSで最新の情報をキャッチ
+                  {t.hero.btn2}
                 </a>
               </div>
             </div>
@@ -442,31 +666,55 @@ const KeLPWeb3 = () => {
       {/* Gallery Section */}
       <section className="ke-gallery">
         <div className="ke-container">
-          <h2 className="ke-section-title">イベントの様子</h2>
-          <div className="ke-gallery-grid">
-            <div className="ke-gallery-item">
-              <div className="ke-gallery-placeholder">
-                <FontAwesomeIcon icon={faUsers} />
-                <span>参加者同士の交流</span>
+          <h2 className="ke-section-title">{t.gallery.title}</h2>
+          <div className="ke-gallery-slider">
+            <div className="ke-slider-container">
+              <div 
+                className="ke-slider-wrapper" 
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {galleryImages.map((image, index) => (
+                  <div key={index} className="ke-slide">
+                    <img 
+                      src={image.src} 
+                      alt={image.alt}
+                      onError={(e) => {
+                        // 画像がない場合のプレースホルダー表示
+                        e.target.style.display = 'none';
+                        e.target.nextElementSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="ke-slide-placeholder" style={{ display: 'none' }}>
+                      <FontAwesomeIcon icon={faHeart} />
+                      <span>{image.caption}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
+              
+              {/* Navigation Buttons */}
+              <button className="ke-slider-btn ke-slider-prev" onClick={prevSlide}>
+                <FontAwesomeIcon icon={faChevronLeft} />
+              </button>
+              <button className="ke-slider-btn ke-slider-next" onClick={nextSlide}>
+                <FontAwesomeIcon icon={faChevronRight} />
+              </button>
             </div>
-            <div className="ke-gallery-item">
-              <div className="ke-gallery-placeholder">
-                <FontAwesomeIcon icon={faGamepad} />
-                <span>ゲームプレイ中</span>
-              </div>
+            
+            {/* Indicators */}
+            <div className="ke-slider-indicators">
+              {galleryImages.map((_, index) => (
+                <button
+                  key={index}
+                  className={`ke-indicator ${index === currentSlide ? 'active' : ''}`}
+                  onClick={() => goToSlide(index)}
+                />
+              ))}
             </div>
-            <div className="ke-gallery-item">
-              <div className="ke-gallery-placeholder">
-                <FontAwesomeIcon icon={faHeart} />
-                <span>笑顔あふれる会場</span>
-              </div>
-            </div>
-            <div className="ke-gallery-item">
-              <div className="ke-gallery-placeholder">
-                <FontAwesomeIcon icon={faDice} />
-                <span>豊富なゲーム</span>
-              </div>
+            
+            {/* Caption */}
+            <div className="ke-slider-caption">
+              <p>{galleryImages[currentSlide]?.caption}</p>
             </div>
           </div>
         </div>
