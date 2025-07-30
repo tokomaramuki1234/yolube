@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/training",
+      "destination": "/docs/PDF/trainingv1.1.pdf",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

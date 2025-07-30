@@ -15,6 +15,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 import KeLP from './pages/ke/KeLPWeb3';
+import Training from './components/Training';
 
 // Font Awesomeライブラリにアイコンを追加
 library.add(fas, far, fab);
@@ -45,6 +46,13 @@ function App() {
             </>
           } />
           <Route path="/ke" element={<KeLP />} />
+          <Route path="/training" element={
+            <>
+              <Header />
+              <Training />
+              <Footer />
+            </>
+          } />
         </Routes>
       </div>
     </Router>
