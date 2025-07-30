@@ -1,13 +1,20 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGamepad, faUsers, faCalendarAlt, faMapMarkerAlt, faClock, faHeart, faDice } from '@fortawesome/free-solid-svg-icons';
 import emailjs from '@emailjs/browser';
+import GoogleSheetsService from '../../services/googleSheets';
 import './KeLP.css';
 
 const KeLP = () => {
   const form = useRef();
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
+  const [eventData, setEventData] = useState({
+    eventCount: '第47回',
+    date: { month: '3月', day: '8日', weekday: '土' },
+    venue: '秋田市民交流プラザALVE'
+  });
+  const [eventLoading, setEventLoading] = useState(true);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -53,6 +60,31 @@ const KeLP = () => {
         setIsLoading(false);
       });
   };
+
+  // Google Sheetsからイベントデータを取得
+  useEffect(() => {
+    const fetchEventData = async () => {
+      try {
+        const sheetsService = new GoogleSheetsService();
+        const nextEvent = await sheetsService.getNextEventInfo();
+        
+        if (nextEvent) {
+          setEventData({
+            eventCount: nextEvent.eventCount,
+            date: nextEvent.date,
+            venue: nextEvent.venue
+          });
+        }
+      } catch (error) {
+        console.error('Failed to fetch event data:', error);
+        // エラー時はデフォルト値を使用
+      } finally {
+        setEventLoading(false);
+      }
+    };
+
+    fetchEventData();
+  }, []);
 
   return (
     <div className="ke-lp">
@@ -198,22 +230,28 @@ const KeLP = () => {
             </div>
             <div className="ke-next-event">
               <h3>次回開催予定</h3>
-              <div className="ke-event-card">
-                <div className="ke-event-date">
-                  <span className="ke-month">3月</span>
-                  <span className="ke-day">8日</span>
-                  <span className="ke-weekday">土</span>
+              {eventLoading ? (
+                <div className="ke-event-loading">
+                  <p>次回イベント情報を読み込み中...</p>
                 </div>
-                <div className="ke-event-details">
-                  <h4>第47回 テーブルゲーム交流会：Ke.</h4>
-                  <p><FontAwesomeIcon icon={faClock} /> 13:00 - 17:00</p>
-                  <p><FontAwesomeIcon icon={faMapMarkerAlt} /> 秋田市民交流プラザALVE</p>
-                  <p><FontAwesomeIcon icon={faUsers} /> 参加費：500円</p>
+              ) : (
+                <div className="ke-event-card">
+                  <div className="ke-event-date">
+                    <span className="ke-month">{eventData.date.month}</span>
+                    <span className="ke-day">{eventData.date.day}</span>
+                    <span className="ke-weekday">{eventData.date.weekday}</span>
+                  </div>
+                  <div className="ke-event-details">
+                    <h4>{eventData.eventCount} テーブルゲーム交流会：Ke.</h4>
+                    <p><FontAwesomeIcon icon={faClock} /> 13:00 - 17:00</p>
+                    <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {eventData.venue}</p>
+                    <p><FontAwesomeIcon icon={faUsers} /> 参加費：500円</p>
+                  </div>
+                  <div className="ke-event-status">
+                    <span className="ke-status-badge">募集中</span>
+                  </div>
                 </div>
-                <div className="ke-event-status">
-                  <span className="ke-status-badge">募集中</span>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

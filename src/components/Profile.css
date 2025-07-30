@@ -114,19 +114,21 @@
   width: 120%;
   height: 120%;
   background: 
-    linear-gradient(45deg, transparent, rgba(139, 199, 128, 0.08), transparent),
-    linear-gradient(-45deg, transparent, rgba(165, 213, 156, 0.06), transparent);
-  transform: translate(-50%, -50%) rotate(0deg);
+    linear-gradient(45deg, transparent, rgba(139, 199, 128, 0.12), transparent),
+    linear-gradient(-45deg, transparent, rgba(165, 213, 156, 0.09), transparent);
+  transform: translate(-50%, -50%);
   border-radius: 50%;
   z-index: -1;
-  transition: all 1.2s ease;
+  animation: continuousRotate 160s linear infinite;
 }
 
-.profile-card:hover::before {
-  transform: translate(-50%, -50%) rotate(360deg) scale(1.1);
-  background: 
-    linear-gradient(45deg, transparent, rgba(139, 199, 128, 0.15), transparent),
-    linear-gradient(-45deg, transparent, rgba(165, 213, 156, 0.12), transparent);
+@keyframes continuousRotate {
+  0% { 
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% { 
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .profile-image {

@@ -32,20 +32,19 @@
 
 
 
-/* カルーセル機能のコンテナ */
-.services-carousel {
+/* スライドショー機能のコンテナ */
+.services-slideshow {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 400px;
   margin: 60px auto;
-  perspective: 1000px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* カルーセル矢印ボタン */
-.carousel-arrow {
+/* スライドショー矢印ボタン */
+.slideshow-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -63,183 +62,205 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.carousel-arrow:hover {
+.slideshow-arrow:hover {
   background: rgba(255, 255, 255, 1);
   transform: translateY(-50%) scale(1.1);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
-.carousel-arrow:disabled {
+.slideshow-arrow:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.carousel-arrow:disabled:hover {
+.slideshow-arrow:disabled:hover {
   background: rgba(255, 255, 255, 0.9);
   transform: translateY(-50%) scale(1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.carousel-arrow-left {
+.slideshow-arrow-left {
   left: 50px;
 }
 
-.carousel-arrow-right {
+.slideshow-arrow-right {
   right: 50px;
 }
 
-/* カードグリッドの新しいレイアウト */
-.services-grid {
-  position: relative;
+/* スライドコンテナ */
+.slideshow-container {
   width: 100%;
-  height: 500px;
+  max-width: 1000px;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.slideshow-content {
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease-in-out;
+}
+
+.slideshow-content.sliding-next {
+  animation: slideNext 0.5s ease-in-out;
+}
+
+.slideshow-content.sliding-prev {
+  animation: slidePrev 0.5s ease-in-out;
+}
+
+@keyframes slideNext {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slidePrev {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* スライド用サービスカード */
+.service-slide {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  overflow: visible;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
 }
 
-/* カルーセルアニメーション - 元の要件に戻す */
-.services-grid.animating-next {
-  animation: slideToLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.service-slide-content {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 900px;
+  width: 100%;
 }
 
-.services-grid.animating-prev {
-  animation: slideToRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.service-slide-icon {
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #333;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
 }
 
-@keyframes slideToLeft {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(-50px);
-  }
-  100% {
-    transform: translateX(0);
-  }
+.service-slide-text {
+  flex: 1;
 }
 
-@keyframes slideToRight {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(50px);
-  }
-  100% {
-    transform: translateX(0);
-  }
+.service-slide-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 20px;
+  line-height: 1.3;
 }
 
-/* 個別カードのスライドアニメーション - 元の要件に戻す */
-.service-card.slide-next {
-  animation: cardSlideLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.service-slide-description {
+  font-size: 1.2rem;
+  color: #4a5568;
+  line-height: 1.7;
+  margin-bottom: 30px;
 }
 
-.service-card.slide-prev {
-  animation: cardSlideRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.service-slide-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-@keyframes cardSlideLeft {
-  0% {
-    opacity: 1;
-  }
-  25% {
-    transform: translateX(-60px) rotateY(-10deg);
-    opacity: 0.8;
-  }
-  50% {
-    transform: translateX(-100px) rotateY(-15deg);
-    opacity: 0.6;
-  }
-  75% {
-    transform: translateX(60px) rotateY(10deg);
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 1;
-  }
+.service-slide-tag {
+  padding: 8px 16px;
+  background: rgba(139, 199, 128, 0.1);
+  color: #6ba563;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(139, 199, 128, 0.3);
 }
 
-@keyframes cardSlideRight {
-  0% {
-    opacity: 1;
-  }
-  25% {
-    transform: translateX(60px) rotateY(10deg);
-    opacity: 0.8;
-  }
-  50% {
-    transform: translateX(100px) rotateY(15deg);
-    opacity: 0.6;
-  }
-  75% {
-    transform: translateX(-60px) rotateY(-10deg);
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 1;
-  }
+/* サービスID別の色設定 */
+.service-slide[data-service-id="1"] {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.95), rgba(255, 107, 107, 0.8));
 }
 
-/* 中央カード専用のアニメーション - 元の要件に戻す */
-.service-card.center.slide-next {
-  animation: centerCardSlideLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.service-slide[data-service-id="2"] {
+  background: linear-gradient(135deg, rgba(78, 205, 196, 0.95), rgba(78, 205, 196, 0.8));
 }
 
-.service-card.center.slide-prev {
-  animation: centerCardSlideRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.service-slide[data-service-id="3"] {
+  background: linear-gradient(135deg, rgba(69, 183, 209, 0.95), rgba(69, 183, 209, 0.8));
 }
 
-@keyframes centerCardSlideLeft {
-  0% {
-    transform: translateY(50px) scale(1);
-    opacity: 1;
-  }
-  25% {
-    transform: translateX(-60px) translateY(50px) scale(0.95) rotateY(-10deg);
-    opacity: 0.9;
-  }
-  50% {
-    transform: translateX(-100px) translateY(50px) scale(0.9) rotateY(-15deg);
-    opacity: 0.8;
-  }
-  75% {
-    transform: translateX(60px) translateY(50px) scale(0.95) rotateY(10deg);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translateY(50px) scale(1);
-    opacity: 1;
-  }
+.service-slide[data-service-id="4"] {
+  background: linear-gradient(135deg, rgba(150, 206, 180, 0.95), rgba(150, 206, 180, 0.8));
 }
 
-@keyframes centerCardSlideRight {
-  0% {
-    transform: translateY(50px) scale(1);
-    opacity: 1;
-  }
-  25% {
-    transform: translateX(60px) translateY(50px) scale(0.95) rotateY(10deg);
-    opacity: 0.9;
-  }
-  50% {
-    transform: translateX(100px) translateY(50px) scale(0.9) rotateY(15deg);
-    opacity: 0.8;
-  }
-  75% {
-    transform: translateX(-60px) translateY(50px) scale(0.95) rotateY(-10deg);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translateY(50px) scale(1);
-    opacity: 1;
-  }
+.service-slide[data-service-id="5"] {
+  background: linear-gradient(135deg, rgba(255, 234, 167, 0.95), rgba(255, 234, 167, 0.8));
 }
 
-/* カルーセル用サービスカード */
+/* インジケーター */
+.slideshow-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(139, 199, 128, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: #8BC780;
+  transform: scale(1.3);
+}
+
+.indicator:hover:not(.active) {
+  background: rgba(139, 199, 128, 0.6);
+  transform: scale(1.1);
+}
+
+/* 旧カルーセル用サービスカード（削除予定） */
 .service-card {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
@@ -248,13 +269,12 @@
     0 20px 40px rgba(0, 0, 0, 0.15),
     0 8px 16px rgba(0, 0, 0, 0.1);
   border: 2px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+  transition: all 0.6s ease-in-out;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  transform-style: preserve-3d;
 }
 
 /* 中央のカード（大きく） */
@@ -268,7 +288,7 @@
     0 25px 50px rgba(0, 0, 0, 0.2),
     0 12px 24px rgba(0, 0, 0, 0.15);
   opacity: 1;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 
 /* 左右のカード（小さく） */
@@ -279,7 +299,7 @@
   transform: translateX(-180px) translateY(0px) scale(0.8);
   z-index: 3;
   opacity: 0.8;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 
 .service-card.right-1 {
@@ -289,7 +309,7 @@
   transform: translateX(180px) translateY(0px) scale(0.8);
   z-index: 3;
   opacity: 0.8;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 
 .service-card.left-2 {
@@ -299,7 +319,7 @@
   transform: translateX(-320px) translateY(-20px) scale(0.6);
   z-index: 1;
   opacity: 0.6;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 
 .service-card.right-2 {
@@ -309,7 +329,7 @@
   transform: translateX(320px) translateY(-20px) scale(0.6);
   z-index: 1;
   opacity: 0.6;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 
 /* 各カードのユニークなカラーテーマ - サービスIDに基づく色設定 */
@@ -623,50 +643,45 @@
 
 /* レスポンシブデザイン */
 @media (max-width: 1024px) {
-  .services-carousel {
-    height: 550px;
+  .services-slideshow {
+    height: 350px;
   }
 
-  .services-grid {
-    height: 500px;
-    gap: 30px;
+  .service-slide {
+    padding: 30px;
   }
 
-  .service-card.center {
-    width: 320px;
-    height: 400px;
-    padding: 35px;
+  .service-slide-content {
+    gap: 40px;
   }
 
-  .service-card.left-1,
-  .service-card.right-1 {
-    width: 200px;
-    height: 260px;
-    padding: 18px;
+  .service-slide-icon {
+    width: 100px;
+    height: 100px;
+    font-size: 2.5rem;
   }
 
-  .service-card.left-2,
-  .service-card.right-2 {
-    width: 160px;
-    height: 200px;
-    padding: 12px;
+  .service-slide-title {
+    font-size: 1.8rem;
   }
 
-  .carousel-arrow {
+  .service-slide-description {
+    font-size: 1.1rem;
+  }
+
+  .slideshow-arrow {
     width: 50px;
     height: 50px;
     font-size: 1.3rem;
   }
 
-  .carousel-arrow-left {
+  .slideshow-arrow-left {
     left: 30px;
   }
 
-  .carousel-arrow-right {
+  .slideshow-arrow-right {
     right: 30px;
   }
-
-
 }
 
 @media (max-width: 768px) {
@@ -678,48 +693,45 @@
     padding: 0 20px;
   }
 
-
-
-  .services-carousel {
-    height: 480px;
+  .services-slideshow {
+    height: 300px;
   }
 
-  .services-grid {
-    height: 500px;
-    gap: 20px;
+  .service-slide {
+    padding: 20px;
   }
 
-  .service-card.center {
-    width: 280px;
-    height: 350px;
-    padding: 30px;
+  .service-slide-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
   }
 
-  .service-card.left-1,
-  .service-card.right-1 {
-    width: 180px;
-    height: 230px;
-    padding: 15px;
+  .service-slide-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
   }
 
-  .service-card.left-2,
-  .service-card.right-2 {
-    width: 140px;
-    height: 180px;
-    padding: 10px;
+  .service-slide-title {
+    font-size: 1.5rem;
   }
 
-  .carousel-arrow {
+  .service-slide-description {
+    font-size: 1rem;
+  }
+
+  .slideshow-arrow {
     width: 45px;
     height: 45px;
     font-size: 1.2rem;
   }
 
-  .carousel-arrow-left {
+  .slideshow-arrow-left {
     left: 20px;
   }
 
-  .carousel-arrow-right {
+  .slideshow-arrow-right {
     right: 20px;
   }
 }
@@ -733,48 +745,67 @@
     padding: 0 15px;
   }
 
-
-
-  .services-carousel {
-    height: 420px;
+  .services-slideshow {
+    height: 250px;
+    margin: 40px auto;
   }
 
-  .services-grid {
-    height: 500px;
-    gap: 15px;
+  .service-slide {
+    padding: 15px;
   }
 
-  /* モバイルでは中央カードのみ表示 */
-  .service-card.center {
-    width: 260px;
-    height: 320px;
-    padding: 25px;
+  .service-slide-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
   }
 
-  .service-card.left-1,
-  .service-card.right-1 {
-    width: 120px;
-    height: 160px;
-    padding: 10px;
-    opacity: 0.4;
+  .service-slide-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
   }
 
-  .service-card.left-2,
-  .service-card.right-2 {
-    display: none;
+  .service-slide-title {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
   }
 
-  .carousel-arrow {
+  .service-slide-description {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .service-slide-features {
+    gap: 8px;
+  }
+
+  .service-slide-tag {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+  }
+
+  .slideshow-arrow {
     width: 40px;
     height: 40px;
     font-size: 1rem;
   }
 
-  .carousel-arrow-left {
+  .slideshow-arrow-left {
     left: 10px;
   }
 
-  .carousel-arrow-right {
+  .slideshow-arrow-right {
     right: 10px;
+  }
+
+  .slideshow-indicators {
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
   }
 } 

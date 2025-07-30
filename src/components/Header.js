@@ -48,7 +48,7 @@ const Header = () => {
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container">
         <div className="header-content">
-          <div className="logo">
+          <div className="logo" onClick={() => handlePageChange('/')} style={{ cursor: 'pointer' }}>
             <img src="/images/YOLUBE_logo.png" alt="YOLUBE" className="logo-img" />
           </div>
           
@@ -134,7 +134,7 @@ const Header = () => {
                   }}
                   className={isKePage ? 'active' : ''}
                 >
-                  Ke.イベント
+                  『け』
                 </a>
               </li>
 

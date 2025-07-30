@@ -26,10 +26,14 @@
   opacity: 0;
   transition: opacity 1s ease-in-out;
   will-change: opacity;
+  pointer-events: none !important;
+  z-index: 1;
 }
 
 .slide.active {
   opacity: 1;
+  pointer-events: auto !important;
+  z-index: 10;
 }
 
 .slide.transitioning {
@@ -71,7 +75,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 3;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.slide-content .slide-text {
+  pointer-events: auto;
 }
 
 .slide-text {
@@ -91,6 +100,10 @@
   color: white;
   text-align: center;
   animation: fadeInUp 1s ease-out 0.3s both;
+  min-height: 9.6rem; /* 2行分の固定高さを確保 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .slide.active .slide-subtitle {
@@ -119,6 +132,10 @@
   text-align: center;
   opacity: 0;
   transform: translateX(-50px);
+  min-height: 9.6rem; /* 2行分の固定高さを確保 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .slide-subtitle {
@@ -148,7 +165,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0 30px;
-  z-index: 4;
+  z-index: 20;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -294,4 +311,6 @@
   .slider-controls {
     display: none; /* スマホ版では矢印を非表示 */
   }
-} 
+}
+
+ 

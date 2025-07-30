@@ -44,7 +44,7 @@ const Achievements = () => {
         '敗北即ち、ナマハゲ・レイジ激震！',
         '他のボドゲマーヘッズを出し抜くワザマエ試される重篤極まりないゲーム'
       ],
-      status: 'completed'
+      status: 'in-progress'
     }
   ];
 

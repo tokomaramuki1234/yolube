@@ -112,7 +112,7 @@ const Contact = () => {
                   <option value="collaboration">協同企画について</option>
                   <option value="sponsorship">協賛、後援について</option>
                   <option value="game-development">テーブルゲーム開発について</option>
-                  <option value="training">ゲーム研修について</option>
+                  <option value="training">コミュニケーション研修について</option>
                   <option value="other">その他</option>
                 </select>
               </div>

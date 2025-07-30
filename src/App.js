@@ -13,6 +13,7 @@ import Profile from './components/Profile';
 import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
 
 import KeLP from './pages/ke/KeLPWeb3';
 import Training from './components/Training';
@@ -43,6 +44,7 @@ function App() {
               <Header />
               <HomePage />
               <Footer />
+              <BackToTop />
             </>
           } />
           <Route path="/ke" element={<KeLP />} />

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGamepad, faUsers, faCalendarAlt, faMapMarkerAlt, faClock, faHeart, faDice, faBars, faTimes, faChevronUp, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import GoogleSheetsService from '../../services/googleSheets';
 import './KeLP.css';
 
 const KeLPWeb3 = () => {
@@ -11,6 +12,12 @@ const KeLPWeb3 = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentLanguage, setCurrentLanguage] = useState('ja');
+  const [eventData, setEventData] = useState({
+    eventCount: '第57回',
+    date: { month: '7月', day: '26日', weekday: '土' },
+    venue: '秋田ベイパラダイス'
+  });
+  const [eventLoading, setEventLoading] = useState(true);
 
   // 多言語テキストデータ
   const translations = {
@@ -141,6 +148,35 @@ const KeLPWeb3 = () => {
       caption: 'ゲームによっては自分なりにアレンジして楽しめる。これもテーブルゲームの魅力。'
     }
   ];
+
+  // Google Sheetsからイベントデータを取得
+  useEffect(() => {
+    const fetchEventData = async () => {
+      try {
+        console.log('🔄 Starting event data fetch...');
+        const sheetsService = new GoogleSheetsService();
+        const nextEvent = await sheetsService.getNextEventInfo();
+        
+        if (nextEvent) {
+          console.log('✅ Event data received:', nextEvent);
+          setEventData({
+            eventCount: nextEvent.eventCount,
+            date: nextEvent.date,
+            venue: nextEvent.venue
+          });
+        } else {
+          console.log('⚠️ No event data found, using defaults');
+        }
+      } catch (error) {
+        console.error('❌ Failed to fetch event data:', error);
+        // エラー時はデフォルト値を使用
+      } finally {
+        setEventLoading(false);
+      }
+    };
+
+    fetchEventData();
+  }, []);
 
   // スクロール位置を監視
   useEffect(() => {
@@ -540,50 +576,42 @@ const KeLPWeb3 = () => {
       {/* Schedule Section */}
       <section id="schedule" className="ke-schedule">
         <div className="ke-container">
-          <h2 className="ke-section-title">開催スケジュール</h2>
-          <div className="ke-schedule-content">
-            <div className="ke-schedule-info">
-              <div className="ke-schedule-item">
-                <FontAwesomeIcon icon={faCalendarAlt} />
-                <div>
-                  <h3>開催頻度</h3>
-                  <p>月２回</p>
-                </div>
+          <h2 className="ke-section-title">次回開催予定</h2>
+          <div className="ke-schedule-wrapper">
+            {eventLoading ? (
+              <div className="ke-event-loading">
+                <div className="ke-loading-spinner"></div>
+                <p>次回イベント情報を読み込み中...</p>
               </div>
-              <div className="ke-schedule-item">
-                <FontAwesomeIcon icon={faClock} />
-                <div>
-                  <h3>開催時間</h3>
-                  <p>10:00 - 20:00（10時間）</p>
-                </div>
-              </div>
-              <div className="ke-schedule-item">
-                <FontAwesomeIcon icon={faMapMarkerAlt} />
-                <div>
-                  <h3>会場</h3>
-                  <p>秋田ベイパラダイス</p>
-                </div>
-              </div>
-            </div>
-            <div className="ke-next-event">
-              <h3>次回開催予定</h3>
+            ) : (
               <div className="ke-event-card">
                 <div className="ke-event-date">
-                  <span className="ke-month">7月</span>
-                  <span className="ke-day">26日</span>
-                  <span className="ke-weekday">土</span>
+                  <span className="ke-date-text">{eventData.date.month}{eventData.date.day}（{eventData.date.weekday}）</span>
                 </div>
-                <div className="ke-event-details">
-                  <h4>第57回 テーブルゲーム交流会：Ke.</h4>
-                  <p><FontAwesomeIcon icon={faClock} /> 10:00 - 20:00</p>
-                  <p><FontAwesomeIcon icon={faMapMarkerAlt} /> 秋田ベイパラダイス</p>
-                  <p><FontAwesomeIcon icon={faUsers} /> 参加費：無料</p>
-                </div>
-                <div className="ke-event-status">
-                  <span className="ke-status-badge">募集中</span>
+                
+                <div className="ke-event-content">
+                  <h3 className="ke-event-title">{eventData.eventCount} テーブルゲーム交流会：Ke.</h3>
+                  
+                  <div className="ke-event-details">
+                    <div className="ke-detail-item">
+                      <FontAwesomeIcon icon={faClock} />
+                      <span>10:00 - 20:00</span>
+                    </div>
+                    
+                    <div className="ke-detail-item">
+                      <FontAwesomeIcon icon={faMapMarkerAlt} />
+                      <span>{eventData.venue}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="ke-event-cta">
+                    <a href="#contact" className="ke-cta-button">
+                      このイベントに参加する
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
@@ -724,6 +752,44 @@ const KeLPWeb3 = () => {
       <section id="access" className="ke-access">
         <div className="ke-container">
           <h2 className="ke-section-title">アクセス</h2>
+          
+          {/* みんなの実家門脇家 */}
+          <div className="ke-access-content">
+            <div className="ke-access-info">
+              <h3>みんなの実家　門脇家</h3>
+              <div className="ke-access-item">
+                <FontAwesomeIcon icon={faMapMarkerAlt} />
+                <div>
+                  <h4>住所</h4>
+                  <p>〒010-0136 秋田県秋田市上新城中片野３６−３５</p>
+                </div>
+              </div>
+              <div className="ke-access-item">
+                <FontAwesomeIcon icon={faCalendarAlt} />
+                <div>
+                  <h4>アクセス</h4>
+                  <p>JR秋田駅より車で約20分</p>
+                  <p>秋田北ICから5分</p>
+                  <p>バス停[秋田厚生医療センター前]から徒歩33分</p>
+                  <p>駐車場：無料駐車場あり</p>
+                </div>
+              </div>
+            </div>
+            <div className="ke-map-container">
+              <iframe
+                src="https://maps.google.com/maps?q=秋田県秋田市上新城中片野３６−３５&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="300"
+                style={{border: 0}}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="みんなの実家　門脇家の地図"
+              ></iframe>
+            </div>
+          </div>
+
+          {/* 秋田ベイパラダイス */}
           <div className="ke-access-content">
             <div className="ke-access-info">
               <h3>秋田ベイパラダイス</h3>
@@ -753,6 +819,40 @@ const KeLPWeb3 = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="秋田ベイパラダイスの地図"
+              ></iframe>
+            </div>
+          </div>
+
+          {/* 秋田市文化創造館 */}
+          <div className="ke-access-content">
+            <div className="ke-access-info">
+              <h3>秋田市文化創造館</h3>
+              <div className="ke-access-item">
+                <FontAwesomeIcon icon={faMapMarkerAlt} />
+                <div>
+                  <h4>住所</h4>
+                  <p>〒010-0875 秋田県秋田市千秋明徳町3-16</p>
+                </div>
+              </div>
+              <div className="ke-access-item">
+                <FontAwesomeIcon icon={faCalendarAlt} />
+                <div>
+                  <h4>アクセス</h4>
+                  <p>JR秋田駅より徒歩約10分</p>
+                  <p>駐車場：近隣の有料駐車場をご利用ください</p>
+                </div>
+              </div>
+            </div>
+            <div className="ke-map-container">
+              <iframe
+                src="https://maps.google.com/maps?q=秋田県秋田市千秋明徳町3-16&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="300"
+                style={{border: 0}}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="秋田市文化創造館の地図"
               ></iframe>
             </div>
           </div>

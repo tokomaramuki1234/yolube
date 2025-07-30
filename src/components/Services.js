@@ -80,14 +80,13 @@ const Services = () => {
     setIsAnimating(true);
     setAnimationDirection('next');
     
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
-    }, 100);
+    // カード移動のアニメーション中はインデックスを即座に変更
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
     
     setTimeout(() => {
       setIsAnimating(false);
       setAnimationDirection('');
-    }, 800);
+    }, 500);
   }, [services.length, isAnimating]);
 
   const prevSlide = useCallback(() => {
@@ -95,14 +94,13 @@ const Services = () => {
     setIsAnimating(true);
     setAnimationDirection('prev');
     
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + services.length) % services.length);
-    }, 100);
+    // カード移動のアニメーション中はインデックスを即座に変更
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + services.length) % services.length);
     
     setTimeout(() => {
       setIsAnimating(false);
       setAnimationDirection('');
-    }, 800);
+    }, 500);
   }, [services.length, isAnimating]);
 
     // 3秒ごとの自動スライド
@@ -127,38 +125,9 @@ const Services = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [nextSlide, prevSlide]);
 
-  // 表示するカードを決定
-  const getVisibleCards = () => {
-    const cards = [];
-    const totalCards = services.length;
-    
-    // 左側の2つのカード
-    cards.push({
-      ...services[(currentIndex - 2 + totalCards) % totalCards],
-      position: 'left-2'
-    });
-    cards.push({
-      ...services[(currentIndex - 1 + totalCards) % totalCards],
-      position: 'left-1'
-    });
-    
-    // 中央のカード
-    cards.push({
-      ...services[currentIndex],
-      position: 'center'
-    });
-    
-    // 右側の2つのカード
-    cards.push({
-      ...services[(currentIndex + 1) % totalCards],
-      position: 'right-1'
-    });
-    cards.push({
-      ...services[(currentIndex + 2) % totalCards],
-      position: 'right-2'
-    });
-    
-    return cards;
+  // 現在のカードを取得
+  const getCurrentCard = () => {
+    return services[currentIndex];
   };
 
   return (
@@ -172,13 +141,13 @@ const Services = () => {
 
 
         <div 
-          className="services-carousel"
+          className="services-slideshow"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
           {/* 左の矢印 */}
           <button 
-            className="carousel-arrow carousel-arrow-left"
+            className="slideshow-arrow slideshow-arrow-left"
             onClick={prevSlide}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -187,31 +156,31 @@ const Services = () => {
             <FontAwesomeIcon icon={faChevronLeft} />
           </button>
 
-          {/* カード表示エリア */}
-          <div className={`services-grid ${isAnimating ? `animating-${animationDirection}` : ''}`}>
-            {getVisibleCards().map((service, index) => (
-              <div 
-                key={`${service.id}-${currentIndex}-${index}`}
-                className={`service-card ${service.position} ${isAnimating ? `slide-${animationDirection}` : ''}`}
-                data-service-id={service.id}
-              >
-                <div className="service-icon">
-                  <FontAwesomeIcon icon={service.icon} />
-                </div>
-                <h3 className="service-title">{service.title}</h3>
-                <p className="service-description">{service.description}</p>
-                <div className="service-features">
-                  {service.features.map((feature, featureIndex) => (
-                    <span key={featureIndex} className="service-tag">{feature}</span>
-                  ))}
+          {/* スライドコンテナ */}
+          <div className="slideshow-container">
+            <div className={`slideshow-content ${isAnimating ? `sliding-${animationDirection}` : ''}`}>
+              <div className="service-slide" data-service-id={getCurrentCard().id}>
+                <div className="service-slide-content">
+                  <div className="service-slide-icon">
+                    <FontAwesomeIcon icon={getCurrentCard().icon} />
+                  </div>
+                  <div className="service-slide-text">
+                    <h3 className="service-slide-title">{getCurrentCard().title}</h3>
+                    <p className="service-slide-description">{getCurrentCard().description}</p>
+                    <div className="service-slide-features">
+                      {getCurrentCard().features.map((feature, featureIndex) => (
+                        <span key={featureIndex} className="service-slide-tag">{feature}</span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
 
           {/* 右の矢印 */}
           <button 
-            className="carousel-arrow carousel-arrow-right"
+            className="slideshow-arrow slideshow-arrow-right"
             onClick={nextSlide}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -219,6 +188,27 @@ const Services = () => {
           >
             <FontAwesomeIcon icon={faChevronRight} />
           </button>
+        </div>
+
+        {/* インジケーター */}
+        <div className="slideshow-indicators">
+          {services.map((_, index) => (
+            <button
+              key={index}
+              className={`indicator ${index === currentIndex ? 'active' : ''}`}
+              onClick={() => {
+                if (!isAnimating && index !== currentIndex) {
+                  setIsAnimating(true);
+                  setAnimationDirection(index > currentIndex ? 'next' : 'prev');
+                  setCurrentIndex(index);
+                  setTimeout(() => {
+                    setIsAnimating(false);
+                    setAnimationDirection('');
+                  }, 1000);
+                }
+              }}
+            />
+          ))}
         </div>
       </div>
     </section>

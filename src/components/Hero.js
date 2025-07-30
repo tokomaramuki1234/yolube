@@ -165,7 +165,21 @@ const Hero = () => {
                     <div className="slide-buttons">
                       <button 
                         className="btn btn-primary"
-                        onClick={() => scrollToSection(slide.id === 1 ? 'about' : slide.id === 2 ? 'achievements' : slide.id === 3 ? 'achievements' : 'services')}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          
+                          // 条件分岐
+                          if (slide.cta === 'YOLUBEについて') {
+                            scrollToSection('about');
+                          } else if (slide.cta === '『け』について') {
+                            window.location.href = 'https://yolube.jp/ke';
+                          } else if (slide.cta === 'ゲームについて') {
+                            scrollToSection('achievements');
+                          } else if (slide.cta === '企業研修について') {
+                            window.location.href = '/training';
+                          }
+                        }}
                       >
                         {slide.cta}
                       </button>
