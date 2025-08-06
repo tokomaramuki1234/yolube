@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGamepad, faUsers, faCalendarAlt, faMapMarkerAlt, faClock, faHeart, faDice, faBars, faTimes, faChevronUp, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faGamepad, faUsers, faCalendarAlt, faMapMarkerAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import GoogleSheetsService from '../../services/googleSheets';
 import './KeLP.css';
 
@@ -153,22 +153,17 @@ const KeLPWeb3 = () => {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        console.log('🔄 Starting event data fetch...');
         const sheetsService = new GoogleSheetsService();
         const nextEvent = await sheetsService.getNextEventInfo();
         
         if (nextEvent) {
-          console.log('✅ Event data received:', nextEvent);
           setEventData({
             eventCount: nextEvent.eventCount,
             date: nextEvent.date,
             venue: nextEvent.venue
           });
-        } else {
-          console.log('⚠️ No event data found, using defaults');
         }
       } catch (error) {
-        console.error('❌ Failed to fetch event data:', error);
         // エラー時はデフォルト値を使用
       } finally {
         setEventLoading(false);
@@ -224,7 +219,6 @@ const KeLPWeb3 = () => {
       
       // アクセスキーが設定されていない場合のチェック
       if (accessKey === "YOUR_WEB3FORMS_ACCESS_KEY") {
-        console.error('Web3Forms アクセスキーが設定されていません');
         setMessage('フォームの設定に問題があります。管理者にお問い合わせください。');
         return;
       }
@@ -245,15 +239,12 @@ const KeLPWeb3 = () => {
       const result = await response.json();
       
       if (result.success) {
-        console.log('✅ Ke.ページ メール送信成功:', result);
         setMessage('お問い合わせを送信いたしました。ありがとうございます！');
         form.current.reset();
       } else {
-        console.error('❌ Web3Forms エラー:', result);
         setMessage('送信中にエラーが発生しました。もう一度お試しください。');
       }
     } catch (error) {
-      console.error('❌ 送信エラー:', error);
       setMessage('送信中にエラーが発生しました。もう一度お試しください。');
     } finally {
       setIsLoading(false);
@@ -267,7 +258,7 @@ const KeLPWeb3 = () => {
         <div className="ke-header-container">
           <div className="ke-logo">
             <a href="https://yolube.jp" target="_blank" rel="noopener noreferrer">
-              <img src="/images/YOLUBE_logo.png" alt="YOLUBE" />
+              <img src="/images/YOLUBE_logo.png" alt="YOLUBE" loading="eager" />
             </a>
           </div>
           <nav className={`ke-nav ${isMobileMenuOpen ? 'ke-nav-open' : ''}`}>
@@ -311,7 +302,7 @@ const KeLPWeb3 = () => {
       <section className="ke-top-logo">
         <div className="ke-container">
           <div className="ke-logo-container">
-            <img src="/images/ke_mainImage.svg" alt="Ke. ロゴ" className="ke-main-logo" />
+            <img src="/images/ke_mainImage.svg" alt="Ke. ロゴ" className="ke-main-logo" loading="eager" fetchPriority="high" />
           </div>
         </div>
       </section>
@@ -907,8 +898,9 @@ const KeLPWeb3 = () => {
                 <input type="checkbox" name="botcheck" className="hidden" style={{display: 'none'}} />
                 
                 <div className="ke-form-group">
-                  <label>お名前</label>
+                  <label htmlFor="user_name">お名前</label>
                   <input 
+                    id="user_name"
                     type="text" 
                     name="user_name" 
                     placeholder="寄辺 寄蔵" 
@@ -917,8 +909,9 @@ const KeLPWeb3 = () => {
                   />
                 </div>
                 <div className="ke-form-group">
-                  <label>メールアドレス</label>
+                  <label htmlFor="user_email">メールアドレス</label>
                   <input 
+                    id="user_email"
                     type="email" 
                     name="user_email" 
                     placeholder="example@email.com" 
@@ -927,8 +920,9 @@ const KeLPWeb3 = () => {
                   />
                 </div>
                 <div className="ke-form-group">
-                  <label>お問い合わせ内容</label>
+                  <label htmlFor="message">お問い合わせ内容</label>
                   <textarea 
+                    id="message"
                     rows="4" 
                     name="message" 
                     placeholder="ご質問やご相談をお気軽にお聞かせください"
@@ -1026,7 +1020,7 @@ const KeLPWeb3 = () => {
           <div className="ke-footer-content">
             <div className="ke-footer-logo">
               <a href="https://yolube.jp" target="_blank" rel="noopener noreferrer">
-                <img src="/images/YOLUBE_logo.png" alt="YOLUBE" />
+                <img src="/images/YOLUBE_logo.png" alt="YOLUBE" loading="lazy" />
               </a>
             </div>
             <div className="ke-footer-text">

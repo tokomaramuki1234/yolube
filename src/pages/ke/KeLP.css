@@ -250,7 +250,7 @@ section[id], .ke-anchor-point {
   font-size: 4.5rem;
   font-weight: 900;
   color: white;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
   line-height: 1.1;
   transform: rotate(-2deg);
   display: inline-block;
@@ -297,7 +297,7 @@ section[id], .ke-anchor-point {
   justify-content: center;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
   color: #333;
-  padding: 30px 25px;
+  padding: 18px 25px;
   border-radius: 8px;
   font-weight: 700;
   font-size: 1.3rem;
@@ -620,63 +620,6 @@ section[id], .ke-anchor-point {
   gap: 40px;
 }
 
-/* Benefits Section */
-.ke-benefits {
-  padding: 100px 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-}
-
-.ke-benefits .ke-section-title {
-  color: white;
-}
-
-.ke-benefits .ke-section-title::after {
-  background: linear-gradient(135deg, #FFD93D, #FFA726);
-}
-
-.ke-benefits-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-}
-
-.ke-benefit-item {
-  display: flex;
-  gap: 30px;
-  align-items: flex-start;
-  padding: 40px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.ke-benefit-number {
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: #FFD93D;
-  min-width: 80px;
-}
-
-.ke-benefit-content h3 {
-  font-size: 1.1rem;
-  color: #FFD93D;
-  margin-bottom: 10px;
-  font-weight: 500;
-}
-
-.ke-benefit-content h4 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: white;
-}
-
-.ke-benefit-content p {
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
-}
 
 /* Event Flow Section */
 .ke-flow {
@@ -1735,6 +1678,7 @@ section[id], .ke-anchor-point {
   .ke-title {
     font-size: 2.5rem;
     transform: rotate(-1deg);
+    margin-bottom: 40px;
   }
 
   .ke-title-main {
@@ -1747,13 +1691,15 @@ section[id], .ke-anchor-point {
 
   .ke-hero-badges {
     flex-direction: column;
-    gap: 25px;
+    gap: 18px;
   }
 
   .ke-badge {
     max-width: 320px;
     margin: 0 auto;
     min-width: 280px;
+    padding: 15px 20px;
+    font-size: 1.1rem;
   }
 
   .ke-badge:hover {
@@ -1798,15 +1744,6 @@ section[id], .ke-anchor-point {
     gap: 30px;
   }
 
-  .ke-benefits-grid {
-    gap: 30px;
-  }
-
-  .ke-benefit-item {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px;
-  }
 
   .ke-flow-step {
     flex-direction: column !important;
@@ -2019,5 +1956,6 @@ section[id], .ke-anchor-point {
 
   .ke-section-title {
     font-size: 2rem;
+    margin-bottom: 40px;
   }
 } 
