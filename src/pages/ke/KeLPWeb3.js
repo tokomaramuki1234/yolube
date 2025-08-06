@@ -492,35 +492,6 @@ const KeLPWeb3 = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="ke-benefits">
-        <div className="ke-container">
-          <h2 className="ke-section-title">テーブルゲーム交流会で得られる3つの魅力</h2>
-          <div className="ke-benefits-grid">
-            <div className="ke-benefit-item">
-              <div className="ke-benefit-number">01</div>
-              <div className="ke-benefit-content">
-                <h4>五感を使った豊かな体験</h4>
-                <p>駒を手で動かす触感、みんなの笑い声、普段は考えもしない行動の連続。その場の雰囲気を全身で楽しめます。</p>
-              </div>
-            </div>
-            <div className="ke-benefit-item">
-              <div className="ke-benefit-number">02</div>
-              <div className="ke-benefit-content">
-                <h4>自然な出会いと友達作り</h4>
-                <p>ゲームを通じて自然に会話が生まれ、世代や職業を超えた新しい交流が生れます。日常の喧騒から離れ、自然体で遊んでみましょう。</p>
-              </div>
-            </div>
-            <div className="ke-benefit-item">
-              <div className="ke-benefit-number">03</div>
-              <div className="ke-benefit-content">
-                <h4>初心者も安心サポート</h4>
-                <p>ゲーム選びは非常に重要！スタッフが参加者の経験や好みからベストなゲームをご提案します。初参加・未経験者が６割以上のイベントです！</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Event Flow Section */}
       <section className="ke-flow">
