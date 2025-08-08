@@ -551,13 +551,13 @@ section[id], .ke-anchor-point {
   border-radius: 2px;
 }
 
-/* Problem Section */
-.ke-problem {
+/* Problems Section */
+.ke-problems {
   padding: 100px 0;
   background: white;
 }
 
-.ke-problem-grid {
+.ke-problems-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
@@ -594,10 +594,114 @@ section[id], .ke-anchor-point {
   line-height: 1.6;
 }
 
+/* Impact Section */
+.ke-impact {
+  padding: 100px 0;
+  background: #f8f9fa;
+}
+
+.ke-impact-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.ke-impact-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.ke-impact-item {
+  text-align: center;
+  padding: 40px 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.ke-impact-item:hover {
+  transform: translateY(-10px);
+}
+
+.ke-impact-item svg {
+  font-size: 3rem;
+  color: #FF6B6B;
+  margin-bottom: 20px;
+}
+
+.ke-impact-item h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.ke-impact-item h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+}
+
 /* Solution Section */
 .ke-solution {
   padding: 100px 0;
+  background: white;
+}
+
+.ke-solution-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ke-solution-text h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+.ke-solution-text p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.ke-solution-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.ke-solution-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
   background: #f8f9fa;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.ke-solution-feature:hover {
+  transform: translateY(-10px);
+}
+
+.ke-solution-feature svg {
+  font-size: 2.5rem;
+  color: #8BC780;
+  margin-bottom: 15px;
+}
+
+.ke-solution-feature span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
 }
 
 .ke-solution-lead {
@@ -1773,9 +1877,19 @@ section[id], .ke-anchor-point {
     gap: 30px;
   }
 
-  .ke-problem-grid {
+  .ke-problems-grid {
     grid-template-columns: 1fr;
     gap: 30px;
+  }
+
+  .ke-impact-items {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .ke-solution-features {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
   }
 
   .ke-benefits-grid {
@@ -1902,9 +2016,165 @@ section[id], .ke-anchor-point {
 
 }
 
+/* Monitor Section */
+.ke-monitor {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #8BC780 0%, #A5D59C 50%, #6BA563 100%);
+  color: white;
+  text-align: center;
+}
+
+.ke-monitor-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ke-monitor-content .ke-section-title {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.ke-monitor-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.ke-monitor-info p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ke-brand-tagline {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #FFD93D;
+  letter-spacing: 2px;
+}
+
+.ke-btn-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 40px;
+  background: #FFD93D;
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.ke-btn-large:hover {
+  background: #ffed70;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 217, 61, 0.4);
+}
+
+/* Tagline styling */
+.ke-tagline {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ke-tagline h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #FFD93D;
+  margin: 0;
+}
+
+/* Contact Direct */
+.ke-contact-direct {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.ke-contact-direct .ke-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.ke-contact-direct .ke-contact-item svg {
+  font-size: 1.8rem;
+  color: #8BC780;
+}
+
+.ke-contact-direct .ke-contact-item h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.ke-contact-direct .ke-contact-item p {
+  font-size: 1.1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Footer Contact */
+.ke-footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ke-footer-contact p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.ke-footer-contact strong {
+  color: #8BC780;
+}
+
 @media (max-width: 480px) {
   .ke-container {
     padding: 0 15px;
+  }
+
+  .ke-solution-features {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ke-impact-items {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .ke-monitor-content .ke-section-title {
+    font-size: 2rem;
+  }
+
+  .ke-brand-tagline {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  .ke-btn-large {
+    padding: 18px 35px;
+    font-size: 1.2rem;
   }
 
   .ke-top-logo {
@@ -1982,5 +2252,13 @@ section[id], .ke-anchor-point {
 
   .ke-section-title {
     font-size: 2rem;
+  }
+
+  .ke-solution-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .ke-tagline h2 {
+    font-size: 1.4rem;
   }
 } 

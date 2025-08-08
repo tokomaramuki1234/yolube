@@ -1,1 +1,1 @@
-export { default } from './KeLP'; 
+export { default } from './KeLPWeb3'; 

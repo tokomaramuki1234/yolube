@@ -205,50 +205,48 @@ const KeLPWeb3 = () => {
     setCurrentSlide(index);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
     setMessage('');
 
-    try {
-      // フォームデータを準備
-      const formData = new FormData(form.current);
-      
-      // Web3Formsのアクセスキーを追加
-      const accessKey = process.env.REACT_APP_WEB3FORMS_ACCESS_KEY || "YOUR_WEB3FORMS_ACCESS_KEY";
-      
-      // アクセスキーが設定されていない場合のチェック
-      if (accessKey === "YOUR_WEB3FORMS_ACCESS_KEY") {
-        setMessage('フォームの設定に問題があります。管理者にお問い合わせください。');
-        return;
-      }
-      
-      formData.append("access_key", accessKey);
-      
-      // 追加設定（Ke.ページ用）
-      formData.append("subject", "【YOLUBE】テーブルゲーム交流会：Ke. お問い合わせ");
-      formData.append("from_name", "テーブルゲーム交流会：Ke. お問い合わせフォーム");
-      formData.append("replyto", formData.get('user_email'));
+    // GAS WebアプリのURL
+    const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwGhOV6W4DoMTK9Zagbdjqq0KVx0KVThPqFtIzbFG__fine1Kez4_EmO7G9TwMiYrIGbg/exec';
 
-      // Web3Forms APIに送信
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData
-      });
+    // HTMLフォーム送信でCORS回避
+    const hiddenForm = document.createElement('form');
+    hiddenForm.method = 'POST';
+    hiddenForm.action = GAS_WEB_APP_URL;
+    hiddenForm.target = '_blank'; // 新しいタブで結果ページを開く
 
-      const result = await response.json();
-      
-      if (result.success) {
-        setMessage('お問い合わせを送信いたしました。ありがとうございます！');
-        form.current.reset();
-      } else {
-        setMessage('送信中にエラーが発生しました。もう一度お試しください。');
-      }
-    } catch (error) {
-      setMessage('送信中にエラーが発生しました。もう一度お試しください。');
-    } finally {
-      setIsLoading(false);
-    }
+    // フォームデータを追加
+    const formData = {
+      formType: 'ke',
+      user_name: form.current.user_name.value,
+      user_email: form.current.user_email.value,
+      user_phone: form.current.user_phone?.value || '',
+      participation_date: form.current.participation_date?.value || '',
+      participation_count: form.current.participation_count?.value || '',
+      message: form.current.message.value
+    };
+
+    Object.keys(formData).forEach(key => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = formData[key] || '';
+      hiddenForm.appendChild(input);
+    });
+
+    // フォームを送信
+    document.body.appendChild(hiddenForm);
+    hiddenForm.submit();
+    document.body.removeChild(hiddenForm);
+
+    // ユーザーフィードバック
+    setMessage('Ke.イベント参加お申し込みを送信いたしました。確認画面が新しいタブで開きます。自動返信メールをご確認ください。');
+    form.current.reset();
+    setIsLoading(false);
   };
 
   return (

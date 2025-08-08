@@ -1,26 +1,9 @@
-// src フォルダ内の画像を動的に読み込むユーティリティ
+// 画像を動的に読み込むユーティリティ
 
-// 各スライダーフォルダから画像を動的に取得する関数
+// 各スライダーフォルダから画像を動的に取得する関数（フォールバック対応）
 export const getImagesFromSliderFolder = (folderName) => {
-  try {
-    // webpack の require.context を使用してスライダーフォルダ内の画像を動的取得
-    const context = require.context('../assets/images/', true, /\.(png|jpe?g|gif|webp)$/i);
-    
-    // 指定フォルダ内の画像ファイルを取得
-    const folderImages = context.keys()
-      .filter(key => {
-        const folderPath = key.replace('./', '');
-        return folderPath.startsWith(`${folderName}/`) && 
-               /\.(png|jpe?g|gif|webp)$/i.test(folderPath);
-      })
-      .map(key => context(key));
-    
-    console.log(`Found ${folderImages.length} images in ${folderName}:`, folderImages);
-    return folderImages;
-  } catch (error) {
-    console.warn(`Could not load images from ${folderName}:`, error);
-    return [];
-  }
+  console.log(`Fallback: Using placeholder images for ${folderName}`);
+  return [];
 };
 
 // ランダム画像選択関数（srcフォルダ対応）

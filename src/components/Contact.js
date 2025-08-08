@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = () => {
@@ -10,48 +9,43 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setMessage('');
 
-    // EmailJS設定値のチェック
-    const serviceId = 'service_yolube';
-    const templateId = 'template_contact';  
-    const publicKey = 'YOUR_PUBLIC_KEY'; // EmailJS公開キー
+    // GAS WebアプリのURL
+    const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwGhOV6W4DoMTK9Zagbdjqq0KVx0KVThPqFtIzbFG__fine1Kez4_EmO7G9TwMiYrIGbg/exec';
 
-    // EmailJSが正しく設定されているかチェック
-    if (publicKey === 'YOUR_PUBLIC_KEY') {
-      // 開発・テスト用：EmailJS未設定時のシミュレーション
-      console.log('📧 テストモード: EmailJS未設定のため、送信をシミュレートします');
-      console.log('フォームデータ:', {
-        name: form.current.user_name.value,
-        email: form.current.user_email.value,
-        phone: form.current.user_phone.value,
-        inquiryType: form.current.inquiry_type.value,
-        message: form.current.message.value
-      });
-      
-      // 2秒後に成功メッセージを表示（実際の送信をシミュレート）
-      setTimeout(() => {
-        setMessage('✅ テスト送信完了！EmailJS設定後に実際のメール送信が有効になります。');
-        form.current.reset();
-        setIsLoading(false);
-      }, 2000);
-      
-      return;
-    }
+    // HTMLフォーム送信でCORS回避
+    const hiddenForm = document.createElement('form');
+    hiddenForm.method = 'POST';
+    hiddenForm.action = GAS_WEB_APP_URL;
+    hiddenForm.target = '_blank'; // 新しいタブで結果ページを開く
 
-    // 本番用：EmailJS実際の送信
-    emailjs.sendForm(serviceId, templateId, form.current, publicKey)
-      .then((result) => {
-        console.log('メール送信成功:', result.text);
-        setMessage('お問い合わせを送信いたしました。ありがとうございます！');
-        form.current.reset();
-      }, (error) => {
-        console.log('メール送信エラー:', error.text);
-        setMessage('送信中にエラーが発生しました。もう一度お試しください。');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    // フォームデータを追加
+    const formData = {
+      formType: 'home',
+      user_name: form.current.user_name.value,
+      user_email: form.current.user_email.value,
+      user_phone: form.current.user_phone.value,
+      inquiry_type: form.current.inquiry_type.value,
+      message: form.current.message.value
+    };
+
+    Object.keys(formData).forEach(key => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = formData[key] || '';
+      hiddenForm.appendChild(input);
+    });
+
+    // フォームを送信
+    document.body.appendChild(hiddenForm);
+    hiddenForm.submit();
+    document.body.removeChild(hiddenForm);
+
+    // ユーザーフィードバック
+    setMessage('お問い合わせを送信いたしました。確認画面が新しいタブで開きます。自動返信メールをご確認ください。');
+    form.current.reset();
+    setIsLoading(false);
   };
 
   return (
