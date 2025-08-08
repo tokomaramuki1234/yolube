@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { selectRandomImagesForSliders, generateFallbackImage } from '../utils/imageLoader';
 import './Hero.css';
 
 const Hero = () => {
@@ -11,13 +10,11 @@ const Hero = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  // 初期状態でランダム画像を設定（ちらつき防止）
-  const [randomImages] = useState(() => selectRandomImagesForSliders());
 
   const slides = [
     {
       id: 1,
-      image: randomImages[0] || generateFallbackImage(0), // フォールバック画像
+      image: '/images/slider1/image1.png',
       alt: '秋田県とYOMOPULU',
       title: '遊び心で社会を変える',
       subtitle: 'テーブルゲームの力で地域社会の課題解決に取り組みます',
@@ -26,7 +23,7 @@ const Hero = () => {
     },
     {
       id: 2,
-      image: randomImages[1] || generateFallbackImage(1), // フォールバック画像
+      image: '/images/slider2/image1.png',
       alt: 'テーブルゲーム交流会：Ke.のシンボル',
       title: 'ノーボーダーなテーブルゲーム交流会',
       subtitle: '世代・性別・国籍を超えた交流文化を秋田に築きます',
@@ -35,7 +32,7 @@ const Hero = () => {
     },
     {
       id: 3,
-      image: randomImages[2] || generateFallbackImage(2), // フォールバック画像
+      image: '/images/slider3/image1.png',
       alt: 'YOLUBEが自主制作しているテーブルゲームのサンプル画像',
       title: '「秋田」で遊びを創り出す',
       subtitle: '地元の魅力を伝えるテーブルゲームを開発します',
@@ -44,7 +41,7 @@ const Hero = () => {
     },
     {
       id: 4,
-      image: randomImages[3] || generateFallbackImage(3), // フォールバック画像
+      image: '/images/slider4/image1.png',
       alt: 'テーブルゲームを活用した企業研修の様子',
       title: '遊び心いっぱいの研修、試してみませんか？',
       subtitle: '主体的に学び、多角的に考える研修を目指します',

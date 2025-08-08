@@ -1,29 +1,20 @@
 // 画像を動的に読み込むユーティリティ
 
-// 各スライダーフォルダから画像を動的に取得する関数（フォールバック対応）
+// 各スライダーフォルダから画像を動的に取得する関数
 export const getImagesFromSliderFolder = (folderName) => {
-  console.log(`Fallback: Using placeholder images for ${folderName}`);
-  return [];
-};
-
-// ランダム画像選択関数（srcフォルダ対応）
-export const selectRandomImagesForSliders = () => {
-  const sliderFolders = ['slider1', 'slider2', 'slider3', 'slider4'];
+  // 固定画像パスを返す
+  const imageMap = {
+    slider1: ['/images/slider1/image1.png'],
+    slider2: ['/images/slider2/image1.png', '/images/slider2/image2.png', '/images/slider2/image3.png'],
+    slider3: ['/images/slider3/image1.png'],
+    slider4: ['/images/slider4/image1.png', '/images/slider4/image2.png', '/images/slider4/image3.png']
+  };
   
-  return sliderFolders.map((folder, index) => {
-    const availableImages = getImagesFromSliderFolder(folder);
-    
-    if (availableImages.length > 0) {
-      const randomIndex = Math.floor(Math.random() * availableImages.length);
-      return availableImages[randomIndex];
-    } else {
-      // フォルダに画像がない場合は異なるプレースホルダー画像
-      return `https://picsum.photos/1920/1080?random=${101 + index}`;
-    }
-  });
+  return imageMap[folderName] || [];
 };
 
-// フォールバック画像のURL生成
-export const generateFallbackImage = (slideIndex) => {
-  return `https://picsum.photos/1920/1080?random=${101 + slideIndex}`;
-}; 
+// 最初の画像を取得する関数
+export const getFirstImageFromSlider = (folderName) => {
+  const images = getImagesFromSliderFolder(folderName);
+  return images[0] || '/images/YOLUBE_logo.png';
+};
