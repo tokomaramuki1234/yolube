@@ -111,12 +111,12 @@ https://docs.google.com/spreadsheets/d/1Ejs0annRLCGiV0dSTVGwm-1oDWbPHv65s1xLeWyR
 ### 利用可能なURL
 - `/` - メインページ
 - `/ke` - テーブルゲーム交流会：Ke.
-- `/training` - 企業研修ページ（本番環境ではPDFに自動リダイレクト）
+- `/training` - 企業研修ページ（ランディングページ）
 
 ### リダイレクト設定（vercel.json）
-本番環境では以下のリダイレクト設定が有効：
-- `/training` → `/docs/PDF/trainingv1.1.pdf`（研修資料PDF）
-- 開発環境（localhost）では通常のTrainingコンポーネントが表示される
+本番環境でのリダイレクト設定は削除済み：
+- `/training` → Trainingコンポーネントが表示される（PDFリダイレクトは無効化）
+- 開発環境・本番環境ともに通常のTrainingコンポーネントが表示される
 
 ## ビルド・デプロイ
 
