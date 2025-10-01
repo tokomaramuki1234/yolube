@@ -1,14 +1,35 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGamepad, faUsers, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faClock, faHeart, faBuilding, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faGamepad, faUsers, faCalendarAlt, faMapMarkerAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faChevronLeft, faChevronRight, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faBuilding, faPhone, faEnvelope, faArrowRight, faCheckCircle, faStar, faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 import './Training.css';
 
 const Training = () => {
   const form = useRef();
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
-  const sendEmail = (e) => {
+  // スクロール位置を監視
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setShowBackToTop(scrollTop > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // トップへ戻る関数
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
     setMessage('');
@@ -20,7 +41,7 @@ const Training = () => {
     const hiddenForm = document.createElement('form');
     hiddenForm.method = 'POST';
     hiddenForm.action = GAS_WEB_APP_URL;
-    hiddenForm.target = '_blank'; // 新しいタブで結果ページを開く
+    hiddenForm.target = '_blank';
 
     // フォームデータを追加
     const formData = {
@@ -51,126 +72,97 @@ const Training = () => {
   };
 
   return (
-    <div className="ke-lp">
+    <div className="training-lp">
       {/* Header */}
       <header className="ke-header">
         <div className="ke-header-container">
           <div className="ke-logo">
-            <img src="/images/YOLUBE_logo.png" alt="YOLUBE" />
+            <a href="https://yolube.jp" target="_blank" rel="noopener noreferrer">
+              <img src="/images/YOLUBE_logo.png" alt="YOLUBE" loading="eager" />
+            </a>
           </div>
-          <nav className="ke-nav">
-            <a href="#about">研修について</a>
-            <a href="#schedule">お悩み・解決策</a>
-            <a href="#access">研修プログラム</a>
-            <a href="#contact">お申し込み</a>
+          <nav className={`ke-nav ${isMobileMenuOpen ? 'ke-nav-open' : ''}`}>
+            <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>研修について</a>
+            <a href="#features" onClick={() => setIsMobileMenuOpen(false)}>特徴</a>
+            <a href="#program" onClick={() => setIsMobileMenuOpen(false)}>プログラム</a>
+            <a href="#pricing" onClick={() => setIsMobileMenuOpen(false)}>料金</a>
+            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>お問い合わせ</a>
           </nav>
+          
+          <button 
+            className="ke-mobile-menu-toggle"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} />
+          </button>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="ke-hero">
-        <div className="ke-hero-bg">
-          <div className="ke-hero-content">
-            <div className="ke-hero-text">
-              <div className="hero-badge">ただいまモニター様を募集中！</div>
-              <h1 className="ke-title">
-                <span className="ke-title-main">社内コミュニケーション、</span>
-                <span className="ke-title-sub">遊びながら強化しませんか？</span>
+      <section className="training-hero">
+        <div className="training-container">
+          <div className="training-hero-content-center">
+            <div className="training-hero-text">
+              <h1 className="training-title">
+                体験するから、定着する。<br />
+                <span className="training-title-sub">ボードゲームで変わる企業研修</span>
               </h1>
-              <p className="ke-subtitle">
-                対話が生まれる。組織が変わる。<br />
-                <strong>TABLE GAME</strong> × <strong>コミュニケーション研修</strong>
+              <p className="training-subtitle">
+                コミュニケーション・課題解決・チームビルディングを<br />
+                <strong>"遊び"の力で変革</strong>
               </p>
-              <div className="ke-hero-stats">
-                <div className="ke-tagline">
-                  <h2>そのお悩み、テーブルゲームで支援いたします！</h2>
-                </div>
-                <div className="ke-description-text">
-                  <p>テーブルゲームが様々な形のコミュニケーション機会をご提供。楽しみながら共通体験を得るため、参加者同士のなかで自然な結束が生まれます。</p>
-                  <p>また、組織の中で「話しかけやすい雰囲気」を創り、経営陣が求めている現場の声を拾いやすくします。ゲームを通じて社員の意外な一面を垣間見ることも出来、エンゲージメント向上やリスキリング機会提供のきっかけ作りにも最適です。</p>
-                </div>
-              </div>
-              <div className="ke-hero-buttons">
-                <a href="#contact" className="ke-btn ke-btn-primary">
+              <p className="training-description">
+                学びを楽しく、深く、忘れない研修プログラムを提供します。<br />
+                対話が生まれる。組織が変わる。
+              </p>
+              <div className="training-hero-buttons">
+                <a href="#contact" className="training-btn training-btn-primary">
                   <FontAwesomeIcon icon={faComments} />
-                  お問い合わせ
+                  無料相談を申し込む
                 </a>
-                <a href="/docs/PDF/trainingv1.1.pdf" target="_blank" rel="noopener noreferrer" className="ke-btn ke-btn-outline">
-                  研修資料をダウンロード
-                </a>
-              </div>
-            </div>
-            <div className="ke-hero-image">
-              <div className="ke-game-cards">
-                <div className="ke-card ke-card-1">
-                  <FontAwesomeIcon icon={faGamepad} />
-                </div>
-                <div className="ke-card ke-card-2">
-                  <FontAwesomeIcon icon={faUsers} />
-                </div>
-                <div className="ke-card ke-card-3">
-                  <FontAwesomeIcon icon={faHandshake} />
-                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Problems Section */}
-      <section id="about" className="ke-problems">
-        <div className="ke-container">
-          <div className="ke-problems-grid">
-            <div className="ke-problem-item">
-              <div className="ke-problem-icon">
-                <FontAwesomeIcon icon={faUsers} />
-              </div>
-              <h3>話しかける人が固定化している</h3>
-              <p>組織内で一部の人だけがコミュニケーションをするため、重要な情報が全体に共有されない</p>
-            </div>
-            <div className="ke-problem-item">
-              <div className="ke-problem-icon">
-                <FontAwesomeIcon icon={faBuilding} />
-              </div>
-              <h3>部署間の情報共有が欠けている</h3>
-              <p>関連部署とのコミュニケーション不足で予期せぬトラブルが発生</p>
-            </div>
-            <div className="ke-problem-item">
-              <div className="ke-problem-icon">
-                <FontAwesomeIcon icon={faExclamationTriangle} />
-              </div>
-              <h3>新入社員が不安を感じる</h3>
-              <p>コミュニケーション不足により上司/同僚/組織の全体像が見えない</p>
-            </div>
+      {/* Problem Section */}
+      <section id="about" className="training-problem">
+        <div className="training-container">
+          <div className="training-section-header">
+            <h2 className="training-section-title">
+              こんなお悩みありませんか？
+            </h2>
           </div>
-        </div>
-      </section>
-
-      {/* Impact Section */}
-      <section id="schedule" className="ke-impact">
-        <div className="ke-container">
-          <div className="ke-impact-content">
-            <div className="ke-impact-items">
-              <div className="ke-impact-item">
-                <FontAwesomeIcon icon={faClock} />
-                <div>
-                  <h3>社内の情報が遅回りすることによる</h3>
-                  <h2>スピード低下</h2>
-                </div>
+          
+          <div className="training-problems-grid">
+            <div className="training-problem-item">
+              <div className="training-problem-image">
+                <img src="/images/training_01_01.jpeg" alt="話しかける人が固定化している様子" />
               </div>
-              <div className="ke-impact-item">
-                <FontAwesomeIcon icon={faHeart} />
-                <div>
-                  <h3>人間関係の悪化による</h3>
-                  <h2>離職率の上昇</h2>
-                </div>
+              <div className="training-problem-content">
+                <h4>話しかける人が固定化している</h4>
+                <p>組織内で一部の人だけがコミュニケーションを取るため、重要な情報が全体に共有されない</p>
               </div>
-              <div className="ke-impact-item">
-                <FontAwesomeIcon icon={faExclamationTriangle} />
-                <div>
-                  <h3>受動的・他責的な</h3>
-                  <h2>組織体質に...</h2>
-                </div>
+            </div>
+            
+            <div className="training-problem-item">
+              <div className="training-problem-image">
+                <img src="/images/training_01_02.png" alt="部署間の情報共有が欠けている様子" />
+              </div>
+              <div className="training-problem-content">
+                <h4>部署間の情報共有が欠けている</h4>
+                <p>関連部署とのコミュニケーション不足で予期せぬトラブルが発生</p>
+              </div>
+            </div>
+            
+            <div className="training-problem-item">
+              <div className="training-problem-image">
+                <img src="/images/training_01_03.jpeg" alt="新入社員が不安を感じている様子" />
+              </div>
+              <div className="training-problem-content">
+                <h4>新入社員が不安を感じている</h4>
+                <p>コミュニケーション不足により上司/同僚/組織の全体像が見えない</p>
               </div>
             </div>
           </div>
@@ -178,82 +170,251 @@ const Training = () => {
       </section>
 
       {/* Solution Section */}
-      <section className="ke-solution">
-        <div className="ke-container">
-          <div className="ke-solution-content">
-            <div className="ke-solution-text">
-              <h2>テーブルゲームが様々な形のコミュニケーション機会をご提供。</h2>
-              <p>楽しみながら共通体験を得るため、参加者同士のなかで自然な結束が生まれます。また、組織の中で「話しかけやすい雰囲気」を創り、経営陣が求めている現場の声を拾いやすくします。</p>
-              <p>ゲームを通じて社員の意外な一面を垣間見ることも出来、エンゲージメント向上やリスキリング機会提供のきっかけ作りにも最適です。</p>
+      <section className="training-solution">
+        <div className="training-container">
+          <div className="training-solution-content">
+            <div className="training-solution-text">
+              <h2 className="training-section-title">"遊び"が社員を動かす。</h2>
+              <h3 className="training-subsection-title">遊び心で組織変革を実現する新しい研修スタイル</h3>
+              
+              <p>YOLUBEの研修ではコミュニケーション機会を創ることにこだわります。</p>
+              <p>20万種類ともいわれるテーブルゲームの中から様々な形のコミュニケーション機会を提供。</p>
+              <p>楽しみながら共通体験を得るため、参加者同士で自然な結束が生まれます。</p>
+              <p>ただ"楽しい"だけでなく、行動変容に直結する設計を行っています。</p>
+              <p>また、毎回の研修後に参加者へアンケートを実施することで研修そのものをPDCAサイクルに載せていきます。</p>
             </div>
-            <div className="ke-solution-features">
-              <div className="ke-solution-feature">
-                <FontAwesomeIcon icon={faHandshake} />
-                <span>自然な結束の形成</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="training-features">
+        <div className="training-container">
+          <h2 className="training-section-title">2つの目的を同時に実現</h2>
+              <p>コミュニケーション研修を通じて下記の2点へ寄与してまいります。</p>
+          <div className="training-features-grid">
+            <div className="training-feature-item">
+              <div className="training-feature-image">
+                <img src="/images/training_02_01.png" alt="社内交流の活性化" />
               </div>
-              <div className="ke-solution-feature">
-                <FontAwesomeIcon icon={faComments} />
-                <span>話しかけやすい雰囲気</span>
+              <h3>社内交流の活性化</h3>
+              <ul>
+                <li>組織内に横断的な交流機会を創出</li>
+                <li>お互いの「職場以外の一面」を知る機会で相互理解が進む</li>
+                <li>職位の関係で交流機会を持たない同僚との会話で自社への解像度を高める</li>
+              </ul>
+            </div>
+            
+            <div className="training-feature-item">
+              <div className="training-feature-image">
+                <img src="/images/training_02_02.jpeg" alt="エンゲージメント向上" />
               </div>
-              <div className="ke-solution-feature">
-                <FontAwesomeIcon icon={faLightbulb} />
-                <span>意外な一面の発見</span>
+              <h3>エンゲージメント向上</h3>
+              <ul>
+                <li>ゲームを通じてコミュニケーションへの感度を高め、社員の定着率を向上</li>
+                <li>組織の中で「話しかけやすい雰囲気」を創出</li>
+                <li>経営陣が求めている現場の声を拾いやすくする</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Program Section */}
+      <section id="program" className="training-program">
+        <div className="training-container">
+          <h2 className="training-section-title">提供内容</h2>
+              <p>それぞれのフェーズに目的を持たせながら年６回に分けて研修を実施します。</p>
+          <div className="training-program-phases">
+            <div className="training-phase">
+              <div className="training-phase-header">
+                <h3>【第1～4回】アイスブレイク＆情報収集フェーズ</h3>
+                <p className="training-phase-purpose"><strong>目的：</strong> 社内コミュニケーション円滑化・エンゲージメント向上</p>
               </div>
-              <div className="ke-solution-feature">
-                <FontAwesomeIcon icon={faChartLine} />
-                <span>エンゲージメント向上</span>
+              
+              <div className="training-effects">
+                <h4>期待できる効果</h4>
+                
+                <div className="training-effect-item">
+                  <h5>1. 相互理解が進む</h5>
+                  <p>テーブルゲームでは参加者がフラットな状態（＝職場でのペルソナが役に立たない状態）で臨むため、良くも悪くも人間性が表面化しやすくなります。この"職場では見えなかった一面"について相互理解が深まるほど、個々の強み・弱みを補完できる組織づくりを目指しやすくなります。</p>
+                  
+                </div>
+                
+                <div className="training-effect-item">
+                  <h5>2. 成功体験を共有する</h5>
+                  <p>研修の参加者同士が共有する成功体験は、その後の何気ない日常の中でも思い返されることとなります。研修を重ねることでチームメンバーとの成功体験も増え、自然とポジティブな話題が増えていきます。</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="training-phase">
+              <div className="training-phase-header">
+                <h3>【第5～6回】実践活用フェーズ</h3>
+                <p className="training-phase-purpose"><strong>目的：</strong> 全員参加型での経営分析・戦略立案</p>
+              </div>
+              
+              <div className="training-phase-details">
+                <div className="training-phase-item">
+                  <strong>第5回：</strong> ブレインストーミング研修 → 1～4回で構築した「意見を出しやすい土壌」を活かし、効果的なボトムアップを狙います。
+                </div>
+                <div className="training-phase-item">
+                  <strong>第6回：</strong> 経営分析研修 → SWOT分析等の経営分析手法を活用し、<strong>全員参加型での経営分析を実現</strong>。社員一人一人が自社に対する解像度を高く持つことを狙います。
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Monitor Section */}
-      <section id="access" className="ke-monitor">
-        <div className="ke-container">
-          <div className="ke-monitor-content">
-            <h2 className="ke-section-title">ただいまモニター様を募集中！</h2>
-            <div className="ke-monitor-cta">
-              <div className="ke-monitor-info">
-                <p>テーブルゲームの力で地域社会の課題に取り組みます。</p>
-                <div className="ke-brand-tagline">遊び心で社会を変える</div>
+      {/* Competitive Advantage Section */}
+      <section className="training-advantage">
+        <div className="training-container">
+          <h2 className="training-section-title">なぜテーブルゲーム研修なのか？</h2>
+          <h3 className="training-subsection-title">従来研修の限界を突破する革新的アプローチ</h3>
+          
+          <div className="training-comparison">
+            <div className="training-traditional">
+              <h4>一般的な研修の課題</h4>
+              <ul>
+                <li><strong>単発型：</strong> 効果が定着しにくい。また、根深い課題に対しアプローチしにくい</li>
+                <li><strong>座学型：</strong> 受動的な学習で定着率が低く、実践的なコミュニケーション機会がない</li>
+                <li><strong>オンライン研修：</strong> 画面越しでは本質的な人間関係構築が困難</li>
+                <li><strong>既存のチームビルディング：</strong> 一時的な効果に留まり、継続性に欠ける</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h4 className="training-unique-title">テーブルゲーム研修だけの独自価値</h4>
+          
+          <div className="training-unique-values">
+            <div className="training-unique-item">
+              <h5>1. 「職場のペルソナ」を無効化する稀有な研修</h5>
+              <p>従来研修では職場での立場や先入観が邪魔をしますが、テーブルゲームでは参加者全員がフラットな状態になります。ゲーム中は職位や部署に関係なく、純粋な人間性が表面化するため、<strong>"職場では見えなかった一面"</strong> での相互理解が深まります。</p>
+            </div>
+            
+            <div className="training-unique-item">
+              <h5>2. 段階的PDCAサイクルで確実な成果創出</h5>
+              <ul>
+                <li><strong>第1～4回：</strong> アイスブレイク＆情報収集で土壌づくり</li>
+                <li><strong>毎回のアンケート分析</strong> で次回研修を最適化</li>
+                <li><strong>第5～6回：</strong> 構築された信頼関係を活用した本格的経営分析</li>
+                <li><strong>年間を通じた継続的改善</strong> で一時的でない組織変革を実現</li>
+              </ul>
+            </div>
+            
+            <div className="training-unique-item">
+              <h5>3. 共有される成功体験が組織文化を変える</h5>
+              <p>研修で生まれた成功体験は日常業務でも思い返され、自然とポジティブな話題が増加。忘年会や日常会話でも話題となり、<strong>組織全体の雰囲気を根本から改善</strong>します。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+
+      {/* Target & Pricing Section */}
+      <section id="pricing" className="training-pricing">
+        <div className="training-container">
+          <h2 className="training-section-title">こんな企業様におすすめ</h2>
+          
+          <div className="training-target-companies">
+            <ul>
+              <li>地方の中小企業（マンパワー不足、エンゲージメント課題）</li>
+              <li>初めて本格的な研修導入を検討している企業</li>
+              <li>従業員数の少ない新規企業</li>
+              <li>福利厚生・人材育成への投資意欲がある中堅〜大企業</li>
+              <li>社外交流・インバウンド戦略に関心のある企業</li>
+            </ul>
+          </div>
+          
+          <h3 className="training-subsection-title">料金プラン</h3>
+          
+          <div className="training-pricing-grid">
+            <div className="training-pricing-plan">
+              <div className="training-plan-header">
+                <h4>エントリープラン</h4>
+                <p className="training-plan-subtitle">単発研修</p>
               </div>
-              <div className="ke-monitor-action">
-                <a href="#contact" className="ke-btn ke-btn-large">
-                  お問い合わせ →
-                </a>
+              <div className="training-plan-price">
+                <span className="training-price-amount">10万円</span>
+                <span className="training-price-unit">／回</span>
+              </div>
+              <div className="training-plan-features">
+                <p>まずは試してみたい企業様向け</p>
+                <p>研修参加者10名まで</p>
               </div>
             </div>
+            
+            <div className="training-pricing-plan training-recommended">
+              <div className="training-plan-badge">おすすめ</div>
+              <div className="training-plan-header">
+                <h4>スタンダードプラン</h4>
+                <p className="training-plan-subtitle">年間契約</p>
+              </div>
+              <div className="training-plan-price">
+                <span className="training-price-amount">50万円</span>
+                <span className="training-price-unit">（6回セット・2ヶ月に1回実施）</span>
+              </div>
+              <div className="training-plan-features">
+                <p>継続的な効果を実感したい企業様向け</p>
+                <p>研修参加者10名まで</p>
+              </div>
+            </div>
+            
+            <div className="training-pricing-plan">
+              <div className="training-plan-header">
+                <h4>プレミアムプラン</h4>
+                <p className="training-plan-subtitle">年間契約</p>
+              </div>
+              <div className="training-plan-price">
+                <span className="training-price-amount">80万円</span>
+                <span className="training-price-unit">（12回セット・毎月実施）</span>
+              </div>
+              <div className="training-plan-features">
+                <p>本格的な組織変革を目指す企業様向け</p>
+                <p>研修参加者10名まで</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="training-pricing-notes">
+            <p><strong>追加参加者料金：</strong> 5名まで7,500円</p>
+            <p><strong>例）26名参加の場合：</strong> 追加16名 → 7,500円×4 = 30,000円</p>
+            <p><strong>交通費：</strong> 秋田市内無料、秋田県内一律5,000円、県外応相談</p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="training-cta">
+        <div className="training-container">
+          <div className="training-cta-content">
+            <h2 className="training-section-title">まずは無料相談から</h2>
+            <p className="training-section-subtitle">
+              貴社の課題に合わせたオリジナル研修のご提案も可能です。
+            </p>
+            <p className="training-cta-message">
+              遊び心で組織を変える新しい研修体験を、ぜひ体験いただけますと幸いです。
+            </p>
+            <a href="#contact" className="training-btn training-btn-large">
+              無料相談・お問い合わせはこちら
+              <FontAwesomeIcon icon={faArrowRight} />
+            </a>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="ke-contact">
-        <div className="ke-container">
-          <div className="ke-contact-content">
-            <div className="ke-contact-info">
-              <div className="ke-contact-direct">
-                <div className="ke-contact-item">
-                  <FontAwesomeIcon icon={faPhone} />
-                  <div>
-                    <h4>Tel</h4>
-                    <p>090-2841-3926</p>
-                  </div>
-                </div>
-                <div className="ke-contact-item">
-                  <FontAwesomeIcon icon={faEnvelope} />
-                  <div>
-                    <h4>Mail</h4>
-                    <p>INFO@YOLUBE.JP</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="ke-contact-form">
+      <section id="contact" className="training-contact">
+        <div className="training-container">
+          <div className="training-contact-content">
+            
+            <div className="training-contact-form">
               <h3>お問い合わせフォーム</h3>
-              <form ref={form} onSubmit={sendEmail} className="ke-form">
-                <div className="ke-form-group">
+              <form ref={form} onSubmit={handleSubmit} className="training-form">
+                <div className="training-form-group">
                   <label>会社名・団体名</label>
                   <input 
                     type="text" 
@@ -263,7 +424,7 @@ const Training = () => {
                     disabled={isLoading}
                   />
                 </div>
-                <div className="ke-form-group">
+                <div className="training-form-group">
                   <label>ご担当者名</label>
                   <input 
                     type="text" 
@@ -273,7 +434,7 @@ const Training = () => {
                     disabled={isLoading}
                   />
                 </div>
-                <div className="ke-form-group">
+                <div className="training-form-group">
                   <label>メールアドレス</label>
                   <input 
                     type="email" 
@@ -283,7 +444,7 @@ const Training = () => {
                     disabled={isLoading}
                   />
                 </div>
-                <div className="ke-form-group">
+                <div className="training-form-group">
                   <label>お問い合わせ内容</label>
                   <textarea 
                     rows="4" 
@@ -295,41 +456,49 @@ const Training = () => {
                 </div>
                 
                 {message && (
-                  <div className={`ke-form-message ${message.includes('エラー') ? 'error' : 'success'}`}>
+                  <div className={`training-form-message ${message.includes('エラー') ? 'error' : 'success'}`}>
                     {message}
                   </div>
                 )}
 
                 <button 
                   type="submit" 
-                  className={`ke-btn ke-btn-primary ${isLoading ? 'loading' : ''}`}
+                  className={`training-btn training-btn-primary ${isLoading ? 'loading' : ''}`}
                   disabled={isLoading}
                 >
-                  {isLoading ? '送信中...' : '送信する'}
+                  {isLoading ? '送信中...' : '無料相談を申し込む'}
                 </button>
               </form>
+              
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="ke-footer">
-        <div className="ke-container">
-          <div className="ke-footer-content">
-            <div className="ke-footer-logo">
+      <footer className="training-footer">
+        <div className="training-container">
+          <div className="training-footer-content">
+            <div className="training-footer-logo">
               <img src="/images/YOLUBE_logo.png" alt="YOLUBE" />
             </div>
-            <div className="ke-footer-contact">
-              <p><strong>Tel：</strong>090-2841-3926</p>
-              <p><strong>Mail：</strong>INFO@YOLUBE.JP</p>
-            </div>
           </div>
-          <div className="ke-footer-bottom">
+          <div className="training-footer-bottom">
             <p>&copy; 2025 YOLUBE. All rights reserved.</p>
           </div>
         </div>
       </footer>
+
+      {/* Back to Top Button */}
+      {showBackToTop && (
+        <button 
+          className="training-back-to-top" 
+          onClick={scrollToTop}
+          aria-label="トップへ戻る"
+        >
+          <FontAwesomeIcon icon={faChevronUp} />
+        </button>
+      )}
     </div>
   );
 };
