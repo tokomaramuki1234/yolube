@@ -76,33 +76,43 @@ class GoogleSheetsService {
 
   // 今日より未来の日付の中で最も近い日付を検索
   findNextEvent(data) {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0); // 時間をリセット
-    
-    console.log('Today:', today);
+    const now = new Date();
+    const currentHour = now.getHours();
+
+    // 22時未満の場合は今日のイベントを含める、22時以降は明日以降のイベントのみ
+    const cutoffDate = new Date();
+    if (currentHour >= 22) {
+      // 22時以降は明日の0:00:00を基準にする
+      cutoffDate.setDate(cutoffDate.getDate() + 1);
+    }
+    cutoffDate.setHours(0, 0, 0, 0);
+
+    console.log('Current time:', now);
+    console.log('Current hour:', currentHour);
+    console.log('Cutoff date:', cutoffDate);
     console.log('Valid venues:', VALID_VENUES);
-    
+
     let candidates = [];
-    
+
     // データをフィルタリング（ヘッダー行を除く）
     for (let i = 3; i < data.length; i++) { // ヘッダーが3行目まであるので4行目から
       const row = data[i];
       if (!row || row.length < 5) continue;
-      
+
       const dateStr = row[0]; // A列
-      const venue = row[2];   // C列  
+      const venue = row[2];   // C列
       const eventCount = row[4]; // E列
-      
+
       console.log(`Row ${i}:`, { dateStr, venue, eventCount });
-      
+
       const eventDate = this.parseDate(dateStr);
       if (!eventDate) {
         console.log('Failed to parse date:', dateStr);
         continue;
       }
-      
-      if (eventDate <= today) {
-        console.log('Date is in the past:', dateStr, eventDate);
+
+      if (eventDate < cutoffDate) {
+        console.log('Date is before cutoff:', dateStr, eventDate);
         continue;
       }
       
