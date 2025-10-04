@@ -285,91 +285,61 @@ section[id], .ke-anchor-point {
 /* Hero Badges */
 .ke-hero-badges {
   display: flex;
-  gap: 40px;
+  gap: 60px;
   margin-bottom: 60px;
   justify-content: center;
   flex-wrap: wrap;
-}
-
-.ke-badge {
-  display: flex;
   align-items: center;
-  justify-content: center;
-  background: #FFFFFF;
-  color: #000;
-  padding: 20px 30px;
-  font-weight: 900;
-  font-size: 1.3rem;
-  min-width: 200px;
-  position: relative;
-  border: 4px solid #000;
-  border-radius: 20px;
-  box-shadow:
-    0 0 0 6px #FFF,
-    0 0 0 10px #000,
-    8px 8px 0 10px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  filter: url(#comic-filter);
 }
 
-/* 漫画風ギザギザエフェクト - 疑似要素で実装 */
-.ke-badge::before {
-  content: '';
+/* ギザギザ吹き出し */
+.ke-badge {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  background: #8BC780;
+  transform: rotate(22.5deg);
+  transition: all 0.3s ease;
+}
+
+.ke-badge::before,
+.ke-badge::after {
+  content: "";
+  width: 140px;
+  height: 140px;
+  background: #8BC780;
   position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 15px solid #000;
-  z-index: -1;
+  top: 0;
+  left: 0;
+  transform: rotate(22.5deg);
 }
 
 .ke-badge::after {
-  content: '';
+  transform: rotate(45deg);
+}
+
+.ke-badge span {
   position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-bottom: 12px solid #FFF;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 140px;
+  transform: rotate(-22.5deg);
+  text-align: center;
+  z-index: 999;
+  line-height: 140px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .ke-badge:hover {
-  transform: scale(1.05) rotate(-2deg);
-  box-shadow:
-    0 0 0 6px #FFF,
-    0 0 0 10px #000,
-    12px 12px 0 10px rgba(0, 0, 0, 0.4);
-}
-
-.ke-badge:nth-child(2):hover {
-  transform: scale(1.05) rotate(2deg);
-}
-
-.ke-badge:nth-child(3):hover {
-  transform: scale(1.05) rotate(-2deg);
-}
-
-/* 漫画風テキストエフェクト */
-.ke-badge span {
-  position: relative;
-  z-index: 1;
-  text-shadow:
-    2px 2px 0 rgba(139, 199, 128, 0.3),
-    -1px -1px 0 rgba(255, 255, 255, 0.5);
-  letter-spacing: 0.5px;
-}
-
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  transform: rotate(22.5deg) scale(1.1);
 }
 
 .ke-hero-stats {
@@ -1739,46 +1709,30 @@ section[id], .ke-anchor-point {
 
   .ke-hero-badges {
     flex-direction: column;
-    gap: 18px;
+    gap: 30px;
   }
 
   .ke-badge {
-    max-width: 320px;
-    margin: 0 auto;
-    min-width: 280px;
-    padding: 15px 20px;
-    font-size: 1.1rem;
-    box-shadow:
-      0 0 0 4px #FFF,
-      0 0 0 7px #000,
-      6px 6px 0 7px rgba(0, 0, 0, 0.3);
+    width: 120px;
+    height: 120px;
   }
 
-  .ke-badge::before {
-    border-left-width: 12px;
-    border-right-width: 12px;
-    border-bottom-width: 12px;
-  }
-
+  .ke-badge::before,
   .ke-badge::after {
-    border-left-width: 10px;
-    border-right-width: 10px;
-    border-bottom-width: 10px;
-  }
-
-  .ke-badge:hover {
-    transform: scale(1.03) rotate(-2deg) !important;
-    box-shadow:
-      0 0 0 4px #FFF,
-      0 0 0 7px #000,
-      8px 8px 0 7px rgba(0, 0, 0, 0.4) !important;
+    width: 120px;
+    height: 120px;
   }
 
   .ke-badge span {
-    font-size: 0.95rem;
-    text-shadow:
-      1px 1px 0 rgba(139, 199, 128, 0.3),
-      -1px -1px 0 rgba(255, 255, 255, 0.5);
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    font-size: 0.85rem;
+    padding: 15px;
+  }
+
+  .ke-badge:hover {
+    transform: rotate(22.5deg) scale(1.05);
   }
 
   .ke-hero-stats {
