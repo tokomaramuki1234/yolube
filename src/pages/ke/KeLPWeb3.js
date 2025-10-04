@@ -253,6 +253,16 @@ const KeLPWeb3 = () => {
 
   return (
     <div className="ke-lp">
+      {/* SVG Filter for Comic Effect */}
+      <svg style={{ position: 'absolute', width: 0, height: 0 }}>
+        <defs>
+          <filter id="comic-filter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
+
       {/* Header */}
       <header className="ke-header">
         <div className="ke-header-container">
