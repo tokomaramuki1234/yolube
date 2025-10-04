@@ -15,7 +15,8 @@ const KeLPWeb3 = () => {
   const [eventData, setEventData] = useState({
     eventCount: '第57回',
     date: { month: '7月', day: '26日', weekday: '土' },
-    venue: '秋田ベイパラダイス'
+    venue: '秋田ベイパラダイス',
+    venueAddress: '秋田県秋田市土崎港西1-10-45'
   });
   const [eventLoading, setEventLoading] = useState(true);
 
@@ -160,7 +161,8 @@ const KeLPWeb3 = () => {
           setEventData({
             eventCount: nextEvent.eventCount,
             date: nextEvent.date,
-            venue: nextEvent.venue
+            venue: nextEvent.venue,
+            venueAddress: nextEvent.venueAddress
           });
         }
       } catch (error) {
@@ -551,19 +553,34 @@ const KeLPWeb3 = () => {
                 
                 <div className="ke-event-content">
                   <h3 className="ke-event-title">{eventData.eventCount} テーブルゲーム交流会：Ke.</h3>
-                  
+
                   <div className="ke-event-details">
                     <div className="ke-detail-item">
                       <FontAwesomeIcon icon={faClock} />
                       <span>10:00 - 20:00</span>
                     </div>
-                    
+
                     <div className="ke-detail-item">
                       <FontAwesomeIcon icon={faMapMarkerAlt} />
                       <span>{eventData.venue}</span>
                     </div>
                   </div>
-                  
+
+                  {eventData.venueAddress && (
+                    <div className="ke-event-map">
+                      <iframe
+                        src={`https://maps.google.com/maps?q=${encodeURIComponent(eventData.venueAddress)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+                        width="100%"
+                        height="300"
+                        style={{border: 0}}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title={`${eventData.venue}の地図`}
+                      ></iframe>
+                    </div>
+                  )}
+
                   <div className="ke-event-cta">
                     <a href="#contact" className="ke-cta-button">
                       このイベントに参加する

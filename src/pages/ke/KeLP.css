@@ -795,6 +795,10 @@ section[id], .ke-anchor-point {
 .ke-event-content {
   padding: 30px;
   background: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ke-event-title {
@@ -807,6 +811,10 @@ section[id], .ke-anchor-point {
 
 .ke-event-details {
   margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .ke-detail-item {
@@ -817,6 +825,7 @@ section[id], .ke-anchor-point {
   font-size: 1rem;
   color: #000000;
   font-weight: 500;
+  justify-content: center;
 }
 
 .ke-detail-item svg {
@@ -827,6 +836,21 @@ section[id], .ke-anchor-point {
 
 .ke-detail-item:last-child {
   margin-bottom: 0;
+}
+
+/* Event Map */
+.ke-event-map {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ke-event-map iframe {
+  display: block;
 }
 
 /* CTA Button - Flat */
@@ -1839,6 +1863,15 @@ section[id], .ke-anchor-point {
 
   .ke-event-title {
     font-size: 1.3rem;
+  }
+
+  .ke-event-map {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .ke-event-map iframe {
+    height: 250px;
   }
 
   .ke-gallery-slider {

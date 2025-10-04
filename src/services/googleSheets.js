@@ -5,6 +5,13 @@ const VALID_VENUES = [
   '秋田市文化創造館'
 ];
 
+// 会場の住所マッピング
+const VENUE_ADDRESSES = {
+  '秋田ベイパラダイス': '秋田県秋田市土崎港西1-10-45',
+  'みんなの実家　門脇家': '秋田県秋田市上新城中片野３６−３５',
+  '秋田市文化創造館': '秋田県秋田市千秋明徳町3-16'
+};
+
 class GoogleSheetsService {
   constructor() {
     this.spreadsheetId = '14roOdnMm4kdnL64OWkXdgMJ_qSampUuzr-tvEGeGhb4';
@@ -175,11 +182,15 @@ class GoogleSheetsService {
         const number = eventCount.replace('Vol-', '');
         eventCount = `第${parseInt(number)}回`;
       }
-      
+
+      // 会場の住所を取得
+      const venueAddress = VENUE_ADDRESSES[nextEvent.venue] || '';
+
       return {
         eventCount: eventCount,
         date: formattedDate,
         venue: nextEvent.venue,
+        venueAddress: venueAddress,
         rawDate: nextEvent.date,
         dateString: nextEvent.dateString
       };
