@@ -1,0 +1,304 @@
+/* ダッシュボード */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* 統計カードグリッド */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* 統計カード */
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.stat-card-primary::before {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.stat-card-success::before {
+  background: linear-gradient(135deg, #8bc780, #6ba768);
+}
+
+.stat-card-warning::before {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+}
+
+.stat-card-info::before {
+  background: linear-gradient(135deg, #ffd93d, #f4c542);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0 0 4px 0;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #718096;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ダッシュボードセクション */
+.dashboard-section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0 0 20px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* イベント別統計グリッド */
+.event-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.event-stat-card {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid #e9ecef;
+}
+
+.event-stat-header {
+  margin-bottom: 12px;
+}
+
+.event-id {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+}
+
+.event-stat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.event-stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.event-stat-label {
+  font-size: 0.9rem;
+  color: #718096;
+}
+
+.event-stat-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+/* 最新予約リスト */
+.recent-reservations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recent-reservation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  transition: all 0.2s ease;
+}
+
+.recent-reservation-item:hover {
+  background: #e9ecef;
+  transform: translateX(4px);
+}
+
+.recent-reservation-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.recent-reservation-id {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.recent-reservation-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.recent-reservation-event {
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.recent-reservation-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.recent-reservation-date {
+  font-size: 0.85rem;
+  color: #a0aec0;
+}
+
+.recent-reservation-status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-confirmed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* 空メッセージ */
+.empty-message {
+  text-align: center;
+  color: #a0aec0;
+  font-size: 0.95rem;
+  padding: 40px 20px;
+  margin: 0;
+}
+
+.dashboard-empty {
+  text-align: center;
+  color: #a0aec0;
+  font-size: 1rem;
+  padding: 60px 20px;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .stat-card {
+    padding: 20px;
+  }
+
+  .stat-icon {
+    font-size: 2rem;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+  }
+
+  .dashboard-section {
+    padding: 20px;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .event-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recent-reservation-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .recent-reservation-meta {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .dashboard-section {
+    padding: 16px;
+  }
+
+  .recent-reservation-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}

@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGamepad, faUsers, faCalendarAlt, faMapMarkerAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import GoogleSheetsService from '../../services/googleSheets';
+import ReservationForm from '../../components/ReservationForm';
+import ReservationStatus from '../../components/ReservationStatus';
 import './KeLP.css';
 
 const KeLPWeb3 = () => {
@@ -252,9 +255,31 @@ const KeLPWeb3 = () => {
   };
 
   return (
-    <div className="ke-lp">
-      {/* Header */}
-      <header className="ke-header">
+    <>
+      <Helmet>
+        <title>Ke. テーブルゲーム交流会 - YOLUBE</title>
+        <meta name="description" content="毎月開催！テーブルゲーム交流会「Ke.」年齢不問！参加費無料！予約不要！初心者大歓迎！" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://yolube.jp/ke" />
+        <meta property="og:title" content="Ke. テーブルゲーム交流会 - YOLUBE" />
+        <meta property="og:description" content="毎月開催！テーブルゲーム交流会「Ke.」年齢不問！参加費無料！予約不要！初心者大歓迎！" />
+        <meta property="og:image" content="https://yolube.jp/images/OGP_ke_FB.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://yolube.jp/ke" />
+        <meta name="twitter:title" content="Ke. テーブルゲーム交流会 - YOLUBE" />
+        <meta name="twitter:description" content="毎月開催！テーブルゲーム交流会「Ke.」年齢不問！参加費無料！予約不要！初心者大歓迎！" />
+        <meta name="twitter:image" content="https://yolube.jp/images/OGP_ke_X.jpg" />
+      </Helmet>
+
+      <div className="ke-lp">
+        {/* Header */}
+        <header className="ke-header">
         <div className="ke-header-container">
           <div className="ke-logo">
             <a href="https://yolube.jp" target="_blank" rel="noopener noreferrer">
@@ -264,7 +289,6 @@ const KeLPWeb3 = () => {
           <nav className={`ke-nav ${isMobileMenuOpen ? 'ke-nav-open' : ''}`}>
             <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.about}</a>
             <a href="#schedule" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.schedule}</a>
-            <a href="#access" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.access}</a>
             <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.contact}</a>
           </nav>
           
@@ -395,7 +419,7 @@ const KeLPWeb3 = () => {
                 </div>
               </div>
               <div className="ke-hero-buttons">
-                <a href="#contact" className="ke-btn ke-btn-primary">
+                <a href="#reservation" className="ke-btn ke-btn-primary">
                   <FontAwesomeIcon icon={faGamepad} />
                   {t.hero.btn1}
                 </a>
@@ -415,21 +439,21 @@ const KeLPWeb3 = () => {
           <div className="ke-problem-grid">
             <div className="ke-problem-item">
               <div className="ke-problem-icon">
-                <FontAwesomeIcon icon={faUsers} />
+                <img src="/images/101.jpeg" alt="新しい友達が欲しい" />
               </div>
               <h3>新しい友達が欲しい</h3>
               <p>秋田で新しい友達を作りたいけど、なかなか出会いの場がない...</p>
             </div>
             <div className="ke-problem-item">
               <div className="ke-problem-icon">
-                <FontAwesomeIcon icon={faGamepad} />
+                <img src="/images/102.jpeg" alt="テーブルゲームに興味がある" />
               </div>
               <h3>テーブルゲームに興味がある</h3>
               <p>テーブルゲームをやってみたいけど、ルールがわからない、一緒にやる人がいない...</p>
             </div>
             <div className="ke-problem-item">
               <div className="ke-problem-icon">
-                <FontAwesomeIcon icon={faClock} />
+                <img src="/images/103.jpeg" alt="週末の過ごし方がマンネリ" />
               </div>
               <h3>週末の過ごし方がマンネリ</h3>
               <p>いつも同じことの繰り返しで、新しい趣味や楽しみを見つけたい...</p>
@@ -452,7 +476,7 @@ const KeLPWeb3 = () => {
               <div className="ke-features">
                 <div className="ke-feature">
                   <div className="ke-feature-icon">
-                    <FontAwesomeIcon icon={faUsers} />
+                    <img src="/images/201.jpeg" alt="五感を使った豊かな体験" />
                   </div>
                   <div className="ke-feature-content">
                     <h3>五感を使った豊かな体験</h3>
@@ -461,7 +485,7 @@ const KeLPWeb3 = () => {
                 </div>
                 <div className="ke-feature">
                   <div className="ke-feature-icon">
-                    <FontAwesomeIcon icon={faHeart} />
+                    <img src="/images/202.jpeg" alt="自然な出会いと友達作り" />
                   </div>
                   <div className="ke-feature-content">
                     <h3>自然な出会いと友達作り</h3>
@@ -470,7 +494,7 @@ const KeLPWeb3 = () => {
                 </div>
                 <div className="ke-feature">
                   <div className="ke-feature-icon">
-                    <FontAwesomeIcon icon={faGamepad} />
+                    <img src="/images/203.jpeg" alt="初心者も安心サポート" />
                   </div>
                   <div className="ke-feature-content">
                     <h3>初心者も安心サポート</h3>
@@ -479,6 +503,17 @@ const KeLPWeb3 = () => {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="ke-hero-buttons">
+            <a href="#reservation" className="ke-btn ke-btn-primary">
+              <FontAwesomeIcon icon={faGamepad} />
+              次回イベントに参加する
+            </a>
+            <a href="#sns" className="ke-btn ke-btn-outline">
+              SNSで最新の情報をキャッチ
+            </a>
           </div>
         </div>
       </section>
@@ -495,18 +530,12 @@ const KeLPWeb3 = () => {
                 <h3>受付・会場到着</h3>
                 <p>まずは受付にて参加登録！その後、ゲーム中で呼び合うための「ニックネームを書いた名札」を作成！</p>
               </div>
-              <div className="ke-flow-icon">
-                <FontAwesomeIcon icon={faMapMarkerAlt} />
-              </div>
             </div>
             <div className="ke-flow-step">
               <div className="ke-flow-number">STEP 2</div>
               <div className="ke-flow-content">
                 <h3>ゲーム選定</h3>
                 <p>150種類以上のゲーム＋参加者の持ち込みゲームがいっぱい！初めてのお方はスタッフにお声かけください！年齢やご経験をもとにお勧めのゲームを提案いたします！また、ゲームを遊ぶ上での人数調整もサポート致します！</p>
-              </div>
-              <div className="ke-flow-icon">
-                <FontAwesomeIcon icon={faUsers} />
               </div>
             </div>
             <div className="ke-flow-step">
@@ -515,9 +544,6 @@ const KeLPWeb3 = () => {
                 <h3>ルール学習＆ゲームプレイ</h3>
                 <p>説明書を読むか、外箱の右下にあるQRからルール説明動画を視聴してルールを学習！もしも不安であればスタッフへお声かけください！初心者にはスタッフがルール説明致します。あとはどんどん遊んでみましょう！気付けば数時間経っていることも・・ 笑</p>
               </div>
-              <div className="ke-flow-icon">
-                <FontAwesomeIcon icon={faGamepad} />
-              </div>
             </div>
             <div className="ke-flow-step">
               <div className="ke-flow-number">STEP 4</div>
@@ -525,70 +551,8 @@ const KeLPWeb3 = () => {
                 <h3>片づけ＆退出</h3>
                 <p>遊び終わったゲームは片づけましょう！もしも片づけ方が分からない場合はお近くのスタッフにお声かけください！（たくさんの参加者に遊んでいただくためにも、ゲームは１作品ずつ遊ぶようご協力願います！）</p>
                 <p>入退出は自由です。お帰りの際は名札を受付にお返しください。</p>
-
-              </div>
-              <div className="ke-flow-icon">
-                <FontAwesomeIcon icon={faHeart} />
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Schedule Section */}
-      <section id="schedule" className="ke-schedule">
-        <div className="ke-container">
-          <h2 className="ke-section-title">次回開催予定</h2>
-          <div className="ke-schedule-wrapper">
-            {eventLoading ? (
-              <div className="ke-event-loading">
-                <div className="ke-loading-spinner"></div>
-                <p>次回イベント情報を読み込み中...</p>
-              </div>
-            ) : (
-              <div className="ke-event-card">
-                <div className="ke-event-date">
-                  <span className="ke-date-text">{eventData.date.month}{eventData.date.day}（{eventData.date.weekday}）</span>
-                </div>
-                
-                <div className="ke-event-content">
-                  <h3 className="ke-event-title">{eventData.eventCount} テーブルゲーム交流会：Ke.</h3>
-
-                  <div className="ke-event-details">
-                    <div className="ke-detail-item">
-                      <FontAwesomeIcon icon={faClock} />
-                      <span>10:00 - 20:00</span>
-                    </div>
-
-                    <div className="ke-detail-item">
-                      <FontAwesomeIcon icon={faMapMarkerAlt} />
-                      <span>{eventData.venue}</span>
-                    </div>
-                  </div>
-
-                  {eventData.venueAddress && (
-                    <div className="ke-event-map">
-                      <iframe
-                        src={`https://maps.google.com/maps?q=${encodeURIComponent(eventData.venueAddress)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
-                        width="100%"
-                        height="300"
-                        style={{border: 0}}
-                        allowFullScreen=""
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title={`${eventData.venue}の地図`}
-                      ></iframe>
-                    </div>
-                  )}
-
-                  <div className="ke-event-cta">
-                    <a href="#contact" className="ke-cta-button">
-                      このイベントに参加する
-                    </a>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </section>
@@ -722,116 +686,16 @@ const KeLPWeb3 = () => {
               <p>{galleryImages[currentSlide]?.caption}</p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Access Section */}
-      <section id="access" className="ke-access">
-        <div className="ke-container">
-          <h2 className="ke-section-title">アクセス</h2>
-          
-          {/* みんなの実家門脇家 */}
-          <div className="ke-access-content">
-            <div className="ke-access-info">
-              <h3>みんなの実家　門脇家</h3>
-              <div className="ke-access-item">
-                <FontAwesomeIcon icon={faMapMarkerAlt} />
-                <div>
-                  <h4>住所</h4>
-                  <p>〒010-0136 秋田県秋田市上新城中片野３６−３５</p>
-                </div>
-              </div>
-              <div className="ke-access-item">
-                <FontAwesomeIcon icon={faCalendarAlt} />
-                <div>
-                  <h4>アクセス</h4>
-                  <p>JR秋田駅より車で約20分</p>
-                  <p>秋田北ICから5分</p>
-                  <p>バス停[秋田厚生医療センター前]から徒歩33分</p>
-                  <p>駐車場：無料駐車場あり</p>
-                </div>
-              </div>
-            </div>
-            <div className="ke-map-container">
-              <iframe
-                src="https://maps.google.com/maps?q=秋田県秋田市上新城中片野３６−３５&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="300"
-                style={{border: 0}}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="みんなの実家　門脇家の地図"
-              ></iframe>
-            </div>
-          </div>
-
-          {/* 秋田ベイパラダイス */}
-          <div className="ke-access-content">
-            <div className="ke-access-info">
-              <h3>秋田ベイパラダイス</h3>
-              <div className="ke-access-item">
-                <FontAwesomeIcon icon={faMapMarkerAlt} />
-                <div>
-                  <h4>住所</h4>
-                  <p>〒011-0945 秋田県秋田市土崎港西1-10-45</p>
-                </div>
-              </div>
-              <div className="ke-access-item">
-                <FontAwesomeIcon icon={faCalendarAlt} />
-                <div>
-                  <h4>アクセス</h4>
-                  <p>JR土崎駅より徒歩約10分</p>
-                  <p>駐車場：無料駐車場あり</p>
-                </div>
-              </div>
-            </div>
-            <div className="ke-map-container">
-              <iframe
-                src="https://maps.google.com/maps?q=秋田県秋田市土崎港西1-10-45&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="300"
-                style={{border: 0}}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="秋田ベイパラダイスの地図"
-              ></iframe>
-            </div>
-          </div>
-
-          {/* 秋田市文化創造館 */}
-          <div className="ke-access-content">
-            <div className="ke-access-info">
-              <h3>秋田市文化創造館</h3>
-              <div className="ke-access-item">
-                <FontAwesomeIcon icon={faMapMarkerAlt} />
-                <div>
-                  <h4>住所</h4>
-                  <p>〒010-0875 秋田県秋田市千秋明徳町3-16</p>
-                </div>
-              </div>
-              <div className="ke-access-item">
-                <FontAwesomeIcon icon={faCalendarAlt} />
-                <div>
-                  <h4>アクセス</h4>
-                  <p>JR秋田駅より徒歩約10分</p>
-                  <p>駐車場：近隣の有料駐車場をご利用ください</p>
-                </div>
-              </div>
-            </div>
-            <div className="ke-map-container">
-              <iframe
-                src="https://maps.google.com/maps?q=秋田県秋田市千秋明徳町3-16&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="300"
-                style={{border: 0}}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="秋田市文化創造館の地図"
-              ></iframe>
-            </div>
+          {/* CTA Buttons */}
+          <div className="ke-hero-buttons">
+            <a href="#reservation" className="ke-btn ke-btn-primary">
+              <FontAwesomeIcon icon={faGamepad} />
+              次回イベントに参加する
+            </a>
+            <a href="#sns" className="ke-btn ke-btn-outline">
+              SNSで最新の情報をキャッチ
+            </a>
           </div>
         </div>
       </section>
@@ -902,10 +766,89 @@ const KeLPWeb3 = () => {
         </div>
       </section>
 
+      {/* Schedule Section */}
+      <section id="schedule" className="ke-schedule">
+        <div className="ke-container">
+          <h2 className="ke-section-title">次回開催予定</h2>
+          <div className="ke-schedule-wrapper">
+            {eventLoading ? (
+              <div className="ke-event-loading">
+                <div className="ke-loading-spinner"></div>
+                <p>次回イベント情報を読み込み中...</p>
+              </div>
+            ) : (
+              <div className="ke-event-card">
+                <div className="ke-event-date">
+                  <span className="ke-date-text">{eventData.date.month}{eventData.date.day}（{eventData.date.weekday}）</span>
+                </div>
+
+                <div className="ke-event-content">
+                  <h3 className="ke-event-title">{eventData.eventCount} テーブルゲーム交流会：Ke.</h3>
+
+                  <div className="ke-event-details">
+                    <div className="ke-detail-item">
+                      <FontAwesomeIcon icon={faClock} />
+                      <span>10:00 - 20:00</span>
+                    </div>
+
+                    <div className="ke-detail-item">
+                      <FontAwesomeIcon icon={faMapMarkerAlt} />
+                      <span>{eventData.venue}</span>
+                    </div>
+                  </div>
+
+                  {eventData.venueAddress && (
+                    <div className="ke-event-map">
+                      <iframe
+                        src={`https://maps.google.com/maps?q=${encodeURIComponent(eventData.venueAddress)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+                        width="100%"
+                        height="300"
+                        style={{border: 0}}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title={`${eventData.venue}の地図`}
+                      ></iframe>
+                    </div>
+                  )}
+
+                  <div className="ke-event-cta">
+                    <a href="#reservation" className="ke-cta-button">
+                      このイベントに参加する
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Link to full schedule */}
+          <div className="ke-schedule-link">
+            <p>
+              その他の予定については
+              <a
+                href="https://docs.google.com/spreadsheets/d/14roOdnMm4kdnL64OWkXdgMJ_qSampUuzr-tvEGeGhb4/edit?gid=0#gid=0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                こちら
+              </a>
+              をご確認ください。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Reservation Form Section */}
+      <ReservationForm />
+
+      {/* Reservation Status Section */}
+      <ReservationStatus />
+
       {/* Contact Section */}
       <section id="contact" className="ke-contact">
         <div className="ke-container">
-          <h2 className="ke-section-title">お申し込み・お問い合わせ</h2>
+          <h2 className="ke-section-title">お問い合わせ</h2>
           <div className="ke-contact-content">
             <div className="ke-contact-form">
               <form ref={form} onSubmit={handleSubmit} className="ke-form">
@@ -918,7 +861,7 @@ const KeLPWeb3 = () => {
                     id="user_name"
                     type="text" 
                     name="user_name" 
-                    placeholder="寄辺 寄蔵" 
+                    placeholder="やまだ たろう" 
                     required
                     disabled={isLoading}
                   />
@@ -957,7 +900,7 @@ const KeLPWeb3 = () => {
                   className={`ke-btn ke-btn-primary ${isLoading ? 'loading' : ''}`}
                   disabled={isLoading}
                 >
-                  {isLoading ? '送信中...' : '送信する'}
+                  {isLoading ? '送信中...' : '送信'}
                 </button>
               </form>
             </div>
@@ -1046,7 +989,8 @@ const KeLPWeb3 = () => {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 };
 

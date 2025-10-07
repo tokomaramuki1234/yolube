@@ -1,0 +1,300 @@
+/* 予約詳細セクション */
+.reservation-detail {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ヘッダー */
+.detail-header {
+  margin-bottom: 40px;
+}
+
+.back-btn {
+  padding: 10px 20px;
+  background: white;
+  color: #667eea;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.back-btn:hover {
+  background: #667eea;
+  color: white;
+  transform: translateX(-5px);
+}
+
+.detail-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* イベント概要 */
+.event-summary {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 24px;
+}
+
+.event-summary-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.event-summary-item .label {
+  font-weight: 600;
+  color: #718096;
+  min-width: 70px;
+}
+
+.event-summary-item .value {
+  color: #2d3748;
+  font-weight: 500;
+}
+
+/* テーブルコンテナ */
+.table-container {
+  overflow-x: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin: 30px 0;
+}
+
+/* テーブル */
+.reservation-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.reservation-detail-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.reservation-detail-table th {
+  padding: 16px 12px;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.reservation-detail-table th.center {
+  text-align: center;
+}
+
+.reservation-detail-table tbody tr {
+  border-bottom: 1px solid #e9ecef;
+  transition: background 0.2s ease;
+}
+
+.reservation-detail-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.reservation-detail-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.reservation-detail-table td {
+  padding: 16px 12px;
+  font-size: 0.95rem;
+  color: #4a5568;
+}
+
+/* セル別スタイル */
+.name-cell {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.companion-cell {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.game-cell {
+  color: #4a5568;
+}
+
+.center {
+  text-align: center;
+}
+
+/* メッセージ表示 */
+.loading-message,
+.error-message,
+.no-reservations-message {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.spinner {
+  border: 4px solid #e9ecef;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-message p,
+.error-message p,
+.no-reservations-message p {
+  font-size: 1rem;
+  color: #4a5568;
+  margin: 0;
+}
+
+.error-message .back-btn {
+  margin-top: 20px;
+}
+
+/* レスポンシブデザイン - タブレット */
+@media (max-width: 1024px) {
+  .detail-container {
+    padding: 0 30px;
+  }
+
+  .detail-title {
+    font-size: 2.2rem;
+  }
+
+  .event-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .reservation-detail {
+    padding: 60px 0;
+  }
+
+  .detail-container {
+    padding: 0 20px;
+  }
+
+  .detail-title {
+    font-size: 2rem;
+  }
+
+  .reservation-detail-table {
+    min-width: 500px;
+  }
+
+  .reservation-detail-table th,
+  .reservation-detail-table td {
+    padding: 12px 8px;
+    font-size: 0.9rem;
+  }
+}
+
+/* レスポンシブデザイン - スマホ */
+@media (max-width: 600px) {
+  .reservation-detail {
+    padding: 40px 0;
+  }
+
+  .detail-container {
+    padding: 0 15px;
+  }
+
+  .detail-title {
+    font-size: 1.8rem;
+  }
+
+  /* テーブルをカード形式に変換 */
+  .table-container {
+    overflow-x: visible;
+  }
+
+  .reservation-detail-table {
+    min-width: 100%;
+  }
+
+  .reservation-detail-table thead {
+    display: none;
+  }
+
+  .reservation-detail-table,
+  .reservation-detail-table tbody,
+  .reservation-detail-table tr,
+  .reservation-detail-table td {
+    display: block;
+  }
+
+  .reservation-detail-table tr {
+    margin-bottom: 20px;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 16px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .reservation-detail-table td {
+    border: none;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+  }
+
+  .reservation-detail-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #2d3748;
+    text-align: left;
+    min-width: 120px;
+  }
+
+  .reservation-detail-table td.center {
+    text-align: right;
+  }
+
+  .event-summary {
+    padding: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  .event-summary-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .event-summary-item .label {
+    min-width: auto;
+  }
+}

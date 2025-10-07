@@ -1,0 +1,449 @@
+/* 予約状況セクション */
+.reservation-status {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 600px;
+}
+
+.reservation-status .section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.reservation-status .section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 15px;
+}
+
+.reservation-status .section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #718096;
+  margin-bottom: 40px;
+}
+
+.reservation-status-content {
+  margin-top: 40px;
+}
+
+/* テーブルコンテナ */
+.table-container {
+  overflow-x: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin: 30px 0;
+}
+
+/* テーブル */
+.reservation-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.reservation-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.reservation-table th {
+  padding: 16px 12px;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.reservation-table th.center {
+  text-align: center;
+}
+
+.reservation-table tbody tr {
+  border-bottom: 1px solid #e9ecef;
+  transition: background 0.2s ease;
+}
+
+.reservation-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.reservation-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.reservation-table td {
+  padding: 16px 12px;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+/* セル別スタイル */
+.date-cell {
+  font-weight: 600;
+  color: #2d3748;
+  white-space: nowrap;
+}
+
+.venue-cell {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.number-cell {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.center {
+  text-align: center;
+}
+
+/* 予約率バー */
+.rate-cell {
+  min-width: 150px;
+}
+
+.rate-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.rate-bar {
+  flex: 1;
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+  max-width: 80px;
+}
+
+.rate-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.rate-fill.rate-green {
+  background: linear-gradient(90deg, #48bb78, #38a169);
+}
+
+.rate-fill.rate-yellow {
+  background: linear-gradient(90deg, #f6ad55, #ed8936);
+}
+
+.rate-fill.rate-red {
+  background: linear-gradient(90deg, #fc8181, #f56565);
+}
+
+.rate-text {
+  font-weight: 700;
+  color: #2d3748;
+  min-width: 45px;
+}
+
+/* 詳細ボタン */
+.detail-cell {
+  min-width: 100px;
+}
+
+.detail-btn {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  white-space: nowrap;
+}
+
+.detail-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.detail-btn:disabled {
+  background: #e9ecef;
+  color: #a0aec0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ステータスバッジ */
+.status-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-badge.status-green {
+  background: #c6f6d5;
+  color: #22543d;
+}
+
+.status-badge.status-yellow {
+  background: #feebc8;
+  color: #7c2d12;
+}
+
+.status-badge.status-red {
+  background: #fed7d7;
+  color: #742a2a;
+}
+
+/* 最終更新 */
+.last-updated {
+  text-align: right;
+  padding: 12px 20px;
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+/* ローディング・エラー表示 */
+.loading-message,
+.error-message,
+.no-events-message {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.spinner {
+  border: 4px solid #e9ecef;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-message p {
+  font-size: 1rem;
+  color: #4a5568;
+  margin: 0;
+}
+
+.error-message p,
+.no-events-message p {
+  font-size: 1rem;
+  color: #4a5568;
+  margin-bottom: 20px;
+}
+
+.retry-btn {
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.retry-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* レスポンシブデザイン - タブレット */
+@media (max-width: 1024px) {
+  .reservation-status .section-container {
+    padding: 0 30px;
+  }
+
+  .reservation-status .section-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .reservation-status {
+    padding: 60px 0;
+  }
+
+  .reservation-status .section-container {
+    padding: 0 20px;
+  }
+
+  .reservation-status .section-title {
+    font-size: 2rem;
+  }
+
+  .reservation-status .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .reservation-table {
+    min-width: 500px;
+  }
+
+  .reservation-table th,
+  .reservation-table td {
+    padding: 12px 8px;
+    font-size: 0.85rem;
+  }
+
+  .rate-bar-container {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .rate-bar {
+    max-width: 100%;
+  }
+}
+
+/* レスポンシブデザイン - スマホ */
+@media (max-width: 600px) {
+  .reservation-status {
+    padding: 40px 0;
+  }
+
+  .reservation-status .section-container {
+    padding: 0 15px;
+  }
+
+  .reservation-status .section-title {
+    font-size: 1.8rem;
+  }
+
+  /* テーブルをカード形式に変換 */
+  .table-container {
+    overflow-x: visible;
+  }
+
+  .reservation-table {
+    min-width: 100%;
+  }
+
+  .reservation-table thead {
+    display: none;
+  }
+
+  .reservation-table,
+  .reservation-table tbody,
+  .reservation-table tr,
+  .reservation-table td {
+    display: block;
+  }
+
+  .reservation-table tr {
+    margin-bottom: 20px;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 16px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .reservation-table td {
+    border: none;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+  }
+
+  .reservation-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #2d3748;
+    text-align: left;
+    min-width: 80px;
+  }
+
+  .reservation-table td.center {
+    text-align: right;
+  }
+
+  .date-cell,
+  .venue-cell {
+    font-size: 0.95rem;
+  }
+
+  .rate-cell {
+    min-width: 100%;
+  }
+
+  .rate-bar-container {
+    flex-direction: row;
+    gap: 10px;
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .rate-bar {
+    max-width: 80px;
+    flex: 0 0 80px;
+  }
+
+  .rate-text {
+    min-width: 40px;
+  }
+
+  .detail-cell {
+    min-width: 100%;
+  }
+
+  .detail-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .last-updated {
+    text-align: center;
+    padding: 12px 10px;
+  }
+}
+
+/* 極小画面対応 */
+@media (max-width: 400px) {
+  .reservation-table tr {
+    padding: 12px;
+  }
+
+  .reservation-table td {
+    padding: 8px 0;
+    font-size: 0.85rem;
+  }
+
+  .reservation-table td::before {
+    font-size: 0.85rem;
+    min-width: 70px;
+  }
+
+  .status-badge {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+  }
+
+  .rate-bar {
+    max-width: 60px;
+    flex: 0 0 60px;
+  }
+}

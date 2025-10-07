@@ -1,0 +1,321 @@
+/* 予約一覧 */
+.reservation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* フィルターバー */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 250px;
+  padding: 10px 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #8bc780;
+  box-shadow: 0 0 0 3px rgba(139, 199, 128, 0.1);
+}
+
+.status-filter {
+  padding: 10px 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.status-filter:focus {
+  outline: none;
+  border-color: #8bc780;
+}
+
+.export-btn {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.export-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* 予約件数 */
+.reservation-count {
+  font-size: 0.95rem;
+  color: #718096;
+  font-weight: 600;
+}
+
+/* テーブルコンテナ */
+.table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+/* 予約テーブル */
+.reservation-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.reservation-table thead {
+  background: #f8f9fa;
+}
+
+.reservation-table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #2d3748;
+  border-bottom: 2px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.reservation-table td {
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  color: #4a5568;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.reservation-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.reservation-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+/* セル別スタイル */
+.id-cell {
+  font-weight: 700;
+  color: #667eea;
+}
+
+.event-cell {
+  font-weight: 600;
+  color: #2d3748;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.name-cell {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.email-cell {
+  color: #718096;
+  font-size: 0.85rem;
+}
+
+.companion-cell {
+  text-align: center;
+  font-weight: 600;
+}
+
+.time-cell {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.date-cell {
+  color: #718096;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.status-cell {
+  text-align: center;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status-confirmed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* 空のテーブル */
+.empty-table {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.empty-table p {
+  font-size: 1rem;
+  color: #a0aec0;
+  margin: 0;
+}
+
+/* ページネーション */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+}
+
+.pagination-btn {
+  padding: 8px 16px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: #8bc780;
+  color: white;
+  border-color: #8bc780;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  font-size: 0.9rem;
+  color: #718096;
+  font-weight: 600;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 1024px) {
+  .reservation-table th,
+  .reservation-table td {
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+
+  .event-cell {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+  }
+
+  .search-input {
+    min-width: 100%;
+  }
+
+  .status-filter,
+  .export-btn {
+    width: 100%;
+  }
+
+  .table-container {
+    font-size: 0.8rem;
+  }
+
+  .reservation-table th,
+  .reservation-table td {
+    padding: 10px 8px;
+  }
+
+  /* スマホではテーブルをカード表示に変更 */
+  .reservation-table thead {
+    display: none;
+  }
+
+  .reservation-table,
+  .reservation-table tbody,
+  .reservation-table tr,
+  .reservation-table td {
+    display: block;
+  }
+
+  .reservation-table tr {
+    margin-bottom: 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+    background: white;
+  }
+
+  .reservation-table td {
+    border: none;
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .reservation-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #2d3748;
+  }
+
+  .event-cell,
+  .email-cell {
+    max-width: none;
+    overflow: visible;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .reservation-list {
+    gap: 15px;
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pagination-btn {
+    width: 100%;
+  }
+}
