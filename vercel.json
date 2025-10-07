@@ -1,8 +1,12 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/ke",
+      "dest": "/ke/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ],
   "buildCommand": "npm run build",
