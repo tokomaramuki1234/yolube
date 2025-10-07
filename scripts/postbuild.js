@@ -60,6 +60,11 @@ const keHtml = mainHtml
   .replace(
     /<meta name="twitter:image" content=".*?"\/>/,
     '<meta name="twitter:image" content="https://yolube.jp/images/OGP_ke_X.jpg"/>'
+  )
+  // Add Twitter URL if not exists
+  .replace(
+    /<meta name="twitter:image" content="https:\/\/yolube.jp\/images\/OGP_ke_X.jpg"\/>/,
+    '<meta name="twitter:image" content="https://yolube.jp/images/OGP_ke_X.jpg"/><meta name="twitter:url" content="https://yolube.jp/ke"/>'
   );
 
 // Write ke/index.html
