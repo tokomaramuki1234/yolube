@@ -284,6 +284,19 @@
   100% { transform: rotate(360deg); }
 }
 
+/* 送信ボタン無効化状態（二重送信防止） */
+.reservation-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #9ca3af;
+  transform: none;
+}
+
+.reservation-btn:disabled:hover {
+  background-color: #9ca3af;
+  transform: none;
+}
+
 /* レスポンシブデザイン */
 @media (max-width: 1024px) {
   .reservation-card {

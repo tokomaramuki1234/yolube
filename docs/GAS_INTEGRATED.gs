@@ -3,7 +3,7 @@
  * YOLUBE統合システム - Google Apps Script
  * ============================================
  *
- * 統合バージョン: v3.25
+ * 統合バージョン: v3.31
  * 統合日: 2025-10-07
  *
  * 【統合内容】
@@ -20,6 +20,12 @@
  *    - JSON形式レスポンス
  *
  * 【更新履歴】
+ * v3.31 (2025-10-07): Logger.log()強化（ログ機能改善）。主要関数にトラブルシューティング用ログ追加
+ * v3.30 (2025-10-07): LockService導入（予約ID生成時の競合対策）。同時アクセス時のID重複を防止
+ * v3.29 (2025-10-07): CONFIG オブジェクト導入（設定値の一元管理）。会社情報、URL、制限値、メール設定、SNS設定を統合
+ * v3.28 (2025-10-07): setSandboxMode(IFRAME)追加、viewport詳細設定、html/bodyにwidth/min-width明示（モバイル表示完全対応）
+ * v3.27 (2025-10-07): HtmlService.setXFrameOptionsMode(ALLOWALL)追加、Facebookシェアをm.facebook.comに変更（モバイル対応）
+ * v3.26 (2025-10-07): 予約完了/エラーページにviewportタグ追加、モバイル最適化CSS適用（iPhone Chrome対応）
  * v3.25 (2025-10-07): 予約完了画面にSNSシェアボタン追加（X, Facebook）
  * v3.24 (2025-10-07): getReservations/getReservationで来場予定時刻をHH:mm形式で返すように修正
  * v3.23 (2025-10-07): getEventInfoFromSchedule日付フォーマット変更（yyyy/MM/dd形式、日本時間対応）
@@ -51,40 +57,97 @@
  */
 
 // ==========================================
-// 定数定義
+// 設定管理
 // ==========================================
 
-// お問い合わせフォームシステム用
-const CONTACT_SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1Ejs0annRLCGiV0dSTVGwm-1oDWbPHv65s1xLeWyRen8/edit?usp=sharing';
-const COMPANY_EMAIL = 'info@yolube.jp';
-const COMPANY_NAME = 'YOLUBE';
+/**
+ * 設定管理オブジェクト
+ * すべての設定値を一元管理
+ */
+const CONFIG = {
+  // 会社情報
+  COMPANY: {
+    NAME: 'YOLUBE',
+    EMAIL: 'info@yolube.jp',
+    PHONE: '090-2841-3926'
+  },
 
-// 予約システム用
-const RESERVATION_SPREADSHEET_ID = '1Ejs0annRLCGiV0dSTVGwm-1oDWbPHv65s1xLeWyRen8'; // お問い合わせと統合（非公開）
-const RESERVATIONS_SHEET_NAME = 'reservation'; // gid=799375987
+  // URL
+  URLS: {
+    HOME: 'https://yolube.jp',
+    KE_PAGE: 'https://yolube.jp/ke',
+    FACEBOOK_SHARE: 'https://m.facebook.com/sharer.php',
+    TWITTER_SHARE: 'https://twitter.com/intent/tweet'
+  },
 
-// イベントスケジュール用（公開スプレッドシート）
-const SCHEDULE_SPREADSHEET_ID = '14roOdnMm4kdnL64OWkXdgMJ_qSampUuzr-tvEGeGhb4'; // 公開用
-const SCHEDULE_SHEET_NAME = 'YOLUBE Event Schedule';
+  // 制限値
+  LIMITS: {
+    MAX_COMPANIONS: 10,              // 同行者最大人数
+    DEFAULT_CAPACITY: 50,            // デフォルト定員
+    RECENT_RESERVATIONS_LIMIT: 6,   // 最近の予約表示件数
+    MAX_NAME_LENGTH: 50,             // 名前最大文字数
+    MAX_MESSAGE_LENGTH: 500          // メッセージ最大文字数
+  },
 
-// 列インデックス（予約システム用）
-const COLUMNS = {
-  RESERVATION_DATE: 0,  // A列: 送信日時
-  EVENT_DATE: 1,         // B列: 開催日
-  EVENT_TIME: 2,         // C列: 時間
-  EVENT_NAME: 3,         // D列: 備考欄
-  EVENT_AREA: 4,         // E列: 開催場所
-  EVENT_VOL: 5,          // F列: 開催回数
-  EVENT_CAPACITY: 6,     // G列: 定員
-  NAME: 7,               // H列: お名前
-  EMAIL: 8,              // I列: メールアドレス
-  COMPANION_COUNT: 9,    // J列: 同行者数
-  ARRIVAL_TIME: 10,      // K列: 来場予定時刻
-  DESIRED_GAME: 11,      // L列: 遊びたいゲーム
-  NOTES: 12,             // M列: 特記事項
-  STATUS: 13,            // N列: ステータス（内部管理用）
-  ID: 14                 // O列: ID（内部管理用）
+  // スプレッドシート
+  SPREADSHEET: {
+    // お問い合わせ・予約データ（非公開）
+    RESERVATIONS_ID: '1Ejs0annRLCGiV0dSTVGwm-1oDWbPHv65s1xLeWyRen8',
+    RESERVATIONS_URL: 'https://docs.google.com/spreadsheets/d/1Ejs0annRLCGiV0dSTVGwm-1oDWbPHv65s1xLeWyRen8/edit?usp=sharing',
+
+    // イベントスケジュール（公開）
+    SCHEDULE_ID: '14roOdnMm4kdnL64OWkXdgMJ_qSampUuzr-tvEGeGhb4',
+
+    // シート名
+    SHEET_NAMES: {
+      CONTACT: 'contact',
+      RESERVATION: 'reservation',          // gid=799375987
+      SCHEDULE: 'YOLUBE Event Schedule'
+    }
+  },
+
+  // 列インデックス（予約シート）
+  COLUMNS: {
+    RESERVATION_DATE: 0,  // A列: 送信日時
+    EVENT_DATE: 1,         // B列: 開催日
+    EVENT_TIME: 2,         // C列: 時間
+    EVENT_NAME: 3,         // D列: 備考欄
+    EVENT_AREA: 4,         // E列: 開催場所
+    EVENT_VOL: 5,          // F列: 開催回数
+    EVENT_CAPACITY: 6,     // G列: 定員
+    NAME: 7,               // H列: お名前
+    EMAIL: 8,              // I列: メールアドレス
+    COMPANION_COUNT: 9,    // J列: 同行者数
+    ARRIVAL_TIME: 10,      // K列: 来場予定時刻
+    DESIRED_GAME: 11,      // L列: 遊びたいゲーム
+    NOTES: 12,             // M列: 特記事項
+    STATUS: 13,            // N列: ステータス（内部管理用）
+    ID: 14                 // O列: ID（内部管理用）
+  },
+
+  // メール設定
+  EMAIL: {
+    FROM_NAME: 'YOLUBE イベント予約システム',
+    SUBJECT_PREFIX: '[YOLUBE]',
+    CONTACT_SUBJECT: 'お問い合わせを受け付けました',
+    RESERVATION_SUBJECT: 'イベント予約完了のお知らせ'
+  },
+
+  // SNS設定
+  SNS: {
+    HASHTAGS: '#YOLUBE #Ke #ボードゲーム #テーブルゲーム'
+  }
 };
+
+// 後方互換性のための旧定数（非推奨: 新しいコードではCONFIGを使用）
+const CONTACT_SPREADSHEET_URL = CONFIG.SPREADSHEET.RESERVATIONS_URL;
+const COMPANY_EMAIL = CONFIG.COMPANY.EMAIL;
+const COMPANY_NAME = CONFIG.COMPANY.NAME;
+const RESERVATION_SPREADSHEET_ID = CONFIG.SPREADSHEET.RESERVATIONS_ID;
+const RESERVATIONS_SHEET_NAME = CONFIG.SPREADSHEET.SHEET_NAMES.RESERVATION;
+const SCHEDULE_SPREADSHEET_ID = CONFIG.SPREADSHEET.SCHEDULE_ID;
+const SCHEDULE_SHEET_NAME = CONFIG.SPREADSHEET.SHEET_NAMES.SCHEDULE;
+const COLUMNS = CONFIG.COLUMNS;
 
 // ==========================================
 // メインハンドラー
@@ -429,7 +492,7 @@ Mission   - Change society through playfulness!
 ------------------------------------------------------------------------
 Name         : 木村 允 < Kimura Makoto >
 Role            : YOLUBE's Director
-TEL              : 090-2841-3926
+TEL              : ${CONFIG.COMPANY.PHONE}
 Email          : mk＠yolube.jp
 ------------------------------------------------------------------------
 X                   : https://x.com/_YOLUBE_
@@ -567,7 +630,9 @@ function handleCreateReservation(e) {
     return createReservationSuccessHtml(reservation);
 
   } catch (error) {
-    Logger.log('Error in handleCreateReservation: ' + error.toString());
+    Logger.log('ERROR in handleCreateReservation: ' + error.toString());
+    Logger.log('Stack trace: ' + error.stack);
+    Logger.log('=== handleCreateReservation FAILED ===');
     return createReservationErrorHtml(error.toString());
   }
 }
@@ -965,82 +1030,116 @@ function getReservationsSheet() {
 }
 
 /**
- * 次の予約IDを取得
+ * 次の予約IDを生成（競合対策版）
+ * LockServiceを使用して同時アクセス時のID重複を防止
  */
 function getNextReservationId() {
-  const sheet = getReservationsSheet();
-  const lastRow = sheet.getLastRow();
+  const lock = LockService.getScriptLock();
 
-  if (lastRow <= 1) {
-    return 1; // 初回予約
+  try {
+    // ロック取得を試行（最大30秒待機）
+    const hasLock = lock.tryLock(30000);
+
+    if (!hasLock) {
+      throw new Error('予約が集中しています。しばらくしてから再度お試しください。');
+    }
+
+    const sheet = getReservationsSheet();
+    const lastRow = sheet.getLastRow();
+
+    if (lastRow <= 1) {
+      return 1; // 初回予約
+    }
+
+    // O列（ID列）の全ての値を取得
+    const idColumn = sheet.getRange(2, COLUMNS.ID + 1, lastRow - 1, 1).getValues();
+
+    // 有効なID（数値）のみを抽出して最大値を取得
+    const validIds = idColumn
+      .map(row => parseInt(row[0]))
+      .filter(id => !isNaN(id) && id > 0);
+
+    if (validIds.length === 0) {
+      return 1; // 有効なIDがない場合は1から開始
+    }
+
+    const maxId = Math.max(...validIds);
+    const nextId = maxId + 1;
+
+    Logger.log(`Generated reservation ID: ${nextId} (lock acquired)`);
+    return nextId;
+
+  } catch (error) {
+    Logger.log('Error in getNextReservationId: ' + error.toString());
+    throw error;
+  } finally {
+    // 必ずロックを解放
+    lock.releaseLock();
   }
-
-  // O列（ID列）の全ての値を取得
-  const idColumn = sheet.getRange(2, COLUMNS.ID + 1, lastRow - 1, 1).getValues();
-
-  // 有効なID（数値）のみを抽出して最大値を取得
-  const validIds = idColumn
-    .map(row => parseInt(row[0]))
-    .filter(id => !isNaN(id) && id > 0);
-
-  if (validIds.length === 0) {
-    return 1; // 有効なIDがない場合は1から開始
-  }
-
-  const maxId = Math.max(...validIds);
-  return maxId + 1;
 }
 
 /**
  * 予約を作成
  */
 function createReservation(data) {
-  const sheet = getReservationsSheet();
-  const id = getNextReservationId();
-  const now = new Date();
+  Logger.log('=== createReservation START ===');
+  Logger.log('Input data - EventID: ' + data.eventvol + ', Name: ' + data.name + ', Email: ' + data.email);
 
-  const reservation = {
-    id: id,
-    eventdate: data.eventdate || '',
-    eventtime: data.eventtime || '',
-    eventname: data.eventname || '',
-    eventarea: data.eventarea || '',
-    eventvol: data.eventvol || '',
-    eventcapacity: data.eventcapacity || '',
-    name: data.name,
-    email: data.email,
-    companionCount: data.companionCount || 0,
-    arrivalTime: data.arrivalTime || '',
-    desiredGame: data.desiredGame || '',
-    notes: data.notes || '',
-    reservationDate: Utilities.formatDate(now, 'Asia/Tokyo', 'yyyy-MM-dd HH:mm:ss'),
-    status: 'confirmed'
-  };
+  try {
+    const sheet = getReservationsSheet();
+    const id = getNextReservationId();
+    const now = new Date();
 
-  // シートに追加（新しい列順）
-  const rowData = [
-    "'" + reservation.reservationDate,  // A列: 送信日時
-    reservation.eventdate,               // B列: 開催日
-    reservation.eventtime,               // C列: 時間
-    reservation.eventname,               // D列: 備考欄
-    reservation.eventarea,               // E列: 開催場所
-    reservation.eventvol,                // F列: 開催回数
-    reservation.eventcapacity,           // G列: 定員
-    reservation.name,                    // H列: お名前
-    reservation.email,                   // I列: メールアドレス
-    reservation.companionCount,          // J列: 同行者数
-    reservation.arrivalTime,             // K列: 来場予定時刻
-    reservation.desiredGame,             // L列: 遊びたいゲーム
-    reservation.notes,                   // M列: 特記事項
-    reservation.status,                  // N列: ステータス
-    reservation.id                       // O列: ID
-  ];
+    const reservation = {
+      id: id,
+      eventdate: data.eventdate || '',
+      eventtime: data.eventtime || '',
+      eventname: data.eventname || '',
+      eventarea: data.eventarea || '',
+      eventvol: data.eventvol || '',
+      eventcapacity: data.eventcapacity || '',
+      name: data.name,
+      email: data.email,
+      companionCount: data.companionCount || 0,
+      arrivalTime: data.arrivalTime || '',
+      desiredGame: data.desiredGame || '',
+      notes: data.notes || '',
+      reservationDate: Utilities.formatDate(now, 'Asia/Tokyo', 'yyyy-MM-dd HH:mm:ss'),
+      status: 'confirmed'
+    };
 
-  sheet.appendRow(rowData);
+    // シートに追加（新しい列順）
+    const rowData = [
+      "'" + reservation.reservationDate,  // A列: 送信日時
+      reservation.eventdate,               // B列: 開催日
+      reservation.eventtime,               // C列: 時間
+      reservation.eventname,               // D列: 備考欄
+      reservation.eventarea,               // E列: 開催場所
+      reservation.eventvol,                // F列: 開催回数
+      reservation.eventcapacity,           // G列: 定員
+      reservation.name,                    // H列: お名前
+      reservation.email,                   // I列: メールアドレス
+      reservation.companionCount,          // J列: 同行者数
+      reservation.arrivalTime,             // K列: 来場予定時刻
+      reservation.desiredGame,             // L列: 遊びたいゲーム
+      reservation.notes,                   // M列: 特記事項
+      reservation.status,                  // N列: ステータス
+      reservation.id                       // O列: ID
+    ];
 
-  Logger.log('Reservation created: ' + JSON.stringify(reservation));
+    sheet.appendRow(rowData);
 
-  return reservation;
+    Logger.log('SUCCESS: Reservation created - ID=' + reservation.id + ', EventVol=' + reservation.eventvol);
+    Logger.log('=== createReservation END ===');
+
+    return reservation;
+
+  } catch (error) {
+    Logger.log('ERROR in createReservation: ' + error.toString());
+    Logger.log('Stack trace: ' + error.stack);
+    Logger.log('=== createReservation FAILED ===');
+    throw error;
+  }
 }
 
 /**
@@ -1433,8 +1532,12 @@ function validateReservationData(data) {
  * 予約確認メール送信（ユーザー宛）
  */
 function sendReservationConfirmationEmail(reservation) {
+  Logger.log('=== sendReservationConfirmationEmail START ===');
+  Logger.log('Sending to: ' + reservation.email + ', ReservationID: ' + reservation.id);
+
   try {
     const eventInfo = getEventInfoFromSchedule(reservation.eventId);
+    Logger.log('Event info retrieved for EventID: ' + reservation.eventId);
 
     const subject = '【YOLUBE】Ke.イベント予約完了のお知らせ';
     const body = `
@@ -1459,10 +1562,10 @@ ${reservation.name} 様
 ご質問がございましたら、お気軽にお問い合わせください。
 
 ――――――――――――――――
-YOLUBE
-Email: info@yolube.jp
-Tel: 090-2841-3926
-Web: https://yolube.jp
+${CONFIG.COMPANY.NAME}
+Email: ${CONFIG.COMPANY.EMAIL}
+Tel: ${CONFIG.COMPANY.PHONE}
+Web: ${CONFIG.URLS.HOME}
 ――――――――――――――――
 `;
 
@@ -1471,10 +1574,14 @@ Web: https://yolube.jp
       name: 'YOLUBE'
     });
 
-    Logger.log('Confirmation email sent to: ' + reservation.email);
+    Logger.log('SUCCESS: Confirmation email sent to ' + reservation.email);
+    Logger.log('=== sendReservationConfirmationEmail END ===');
 
   } catch (error) {
-    Logger.log('Error sending confirmation email: ' + error.toString());
+    Logger.log('ERROR in sendReservationConfirmationEmail: ' + error.toString());
+    Logger.log('Stack trace: ' + error.stack);
+    Logger.log('=== sendReservationConfirmationEmail FAILED ===');
+    throw error;
   }
 }
 
@@ -1542,10 +1649,10 @@ ${reservation.name} 様
 またのご参加をお待ちしております。
 
 ――――――――――――――――
-YOLUBE
-Email: info@yolube.jp
-Tel: 090-2841-3926
-Web: https://yolube.jp
+${CONFIG.COMPANY.NAME}
+Email: ${CONFIG.COMPANY.EMAIL}
+Tel: ${CONFIG.COMPANY.PHONE}
+Web: ${CONFIG.URLS.HOME}
 ――――――――――――――――
 `;
 
@@ -1714,9 +1821,9 @@ function createSuccessPage(formData, emailSent) {
         </div>
 
         <div class="footer">
-          <a href="https://yolube.jp" class="button">TOPに戻る</a>
+          <a href="${CONFIG.URLS.HOME}" class="button">TOPに戻る</a>
           <p style="margin-top: 20px; font-size: 0.9em;">
-            © 2025 YOLUBE. All rights reserved.
+            © 2025 ${CONFIG.COMPANY.NAME}. All rights reserved.
           </p>
         </div>
       </div>
@@ -1724,7 +1831,9 @@ function createSuccessPage(formData, emailSent) {
     </html>
   `;
 
-  return HtmlService.createHtmlOutput(html);
+  return HtmlService.createHtmlOutput(html)
+    .setSandboxMode(HtmlService.SandboxMode.IFRAME)
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
 /**
@@ -1736,20 +1845,24 @@ function createErrorPage(errorMessage) {
     <html>
     <head>
       <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>送信エラー - YOLUBE</title>
       <style>
+        * {
+          box-sizing: border-box;
+        }
         body {
           font-family: 'Hiragino Sans', 'ヒラギノ角ゴシック', 'Yu Gothic', '游ゴシック', 'Meiryo', 'メイリオ', sans-serif;
           max-width: 700px;
-          margin: 50px auto;
-          padding: 30px;
+          margin: 0 auto;
+          padding: 20px;
           line-height: 1.6;
           color: #333;
           background-color: #f9f9f9;
         }
         .container {
           background: white;
-          padding: 40px;
+          padding: 30px 20px;
           border-radius: 10px;
           box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
@@ -1761,7 +1874,7 @@ function createErrorPage(errorMessage) {
           margin-bottom: 30px;
         }
         .error h1 {
-          font-size: 2em;
+          font-size: 1.8em;
           margin-bottom: 10px;
         }
         .info {
@@ -1770,10 +1883,19 @@ function createErrorPage(errorMessage) {
           margin: 20px 0;
           border-radius: 8px;
           border-left: 4px solid #f44336;
+          word-break: break-word;
+        }
+        .info h3 {
+          margin-top: 0;
+          font-size: 1.1em;
+        }
+        .info p {
+          margin: 10px 0;
+          font-size: 0.95em;
         }
         .button {
           display: inline-block;
-          padding: 12px 30px;
+          padding: 12px 24px;
           background: linear-gradient(135deg, #f44336, #d32f2f);
           color: white;
           text-decoration: none;
@@ -1781,6 +1903,7 @@ function createErrorPage(errorMessage) {
           margin: 10px 5px;
           transition: all 0.3s;
           font-weight: bold;
+          font-size: 0.95em;
         }
         .button:hover {
           transform: translateY(-2px);
@@ -1810,14 +1933,14 @@ function createErrorPage(errorMessage) {
 
         <div class="info">
           <h3>📞 直接お問い合わせ</h3>
-          <p><strong>電話:</strong> 090-2841-3926<br>
-          <strong>メール:</strong> info@yolube.jp</p>
+          <p><strong>電話:</strong> ${CONFIG.COMPANY.PHONE}<br>
+          <strong>メール:</strong> ${CONFIG.COMPANY.EMAIL}</p>
         </div>
 
         <div class="footer">
-          <a href="https://yolube.jp" class="button">TOPに戻る</a>
+          <a href="${CONFIG.URLS.HOME}" class="button">TOPに戻る</a>
           <p style="margin-top: 20px; font-size: 0.9em;">
-            © 2025 YOLUBE. All rights reserved.
+            © 2025 ${CONFIG.COMPANY.NAME}. All rights reserved.
           </p>
         </div>
       </div>
@@ -1825,7 +1948,9 @@ function createErrorPage(errorMessage) {
     </html>
   `;
 
-  return HtmlService.createHtmlOutput(html);
+  return HtmlService.createHtmlOutput(html)
+    .setSandboxMode(HtmlService.SandboxMode.IFRAME)
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
 /**
@@ -1847,19 +1972,21 @@ function getTwitterShareUrl(reservation) {
     text += `🕐 来場予定: ${arrivalTime}\n`;
   }
   text += `\n一緒に遊ぼう！！\n`;
-  text += `#YOLUBE #Ke #ボードゲーム #テーブルゲーム`;
+  text += CONFIG.SNS.HASHTAGS;
 
-  const url = 'https://yolube.jp/ke';
+  const url = CONFIG.URLS.KE_PAGE;
 
-  return 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url);
+  return CONFIG.URLS.TWITTER_SHARE + '?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url);
 }
 
 /**
  * FacebookシェアURL生成
+ * モバイル対応: Facebook Appまたはモバイルウェブシェアダイアログ
  */
 function getFacebookShareUrl() {
-  const url = 'https://yolube.jp/ke';
-  return 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
+  const url = CONFIG.URLS.KE_PAGE;
+  // モバイルブラウザではm.facebook.comのダイアログを使用
+  return CONFIG.URLS.FACEBOOK_SHARE + '?u=' + encodeURIComponent(url);
 }
 
 /**
@@ -1871,20 +1998,32 @@ function createReservationSuccessHtml(reservation) {
     <html>
     <head>
       <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>予約完了 - YOLUBE Ke.イベント</title>
       <style>
+        * {
+          box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+        }
+        html {
+          width: 100%;
+          height: 100%;
+        }
         body {
           font-family: 'Hiragino Sans', 'ヒラギノ角ゴシック', 'Yu Gothic', '游ゴシック', 'Meiryo', 'メイリオ', sans-serif;
+          width: 100%;
+          min-width: 320px;
           max-width: 700px;
-          margin: 50px auto;
-          padding: 30px;
+          margin: 0 auto;
+          padding: 20px;
           line-height: 1.6;
           color: #333;
           background-color: #f9f9f9;
         }
         .container {
           background: white;
-          padding: 40px;
+          padding: 30px 20px;
           border-radius: 10px;
           box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
@@ -1896,7 +2035,7 @@ function createReservationSuccessHtml(reservation) {
           margin-bottom: 30px;
         }
         .success h1 {
-          font-size: 2em;
+          font-size: 1.8em;
           margin-bottom: 10px;
         }
         .reservation-id {
@@ -1905,9 +2044,10 @@ function createReservationSuccessHtml(reservation) {
           padding: 15px;
           border-radius: 8px;
           text-align: center;
-          font-size: 1.2em;
+          font-size: 1.1em;
           margin: 20px 0;
           font-weight: bold;
+          word-break: break-all;
         }
         .info {
           background: #f0f8f0;
@@ -1932,15 +2072,18 @@ function createReservationSuccessHtml(reservation) {
         .reservation-table th {
           background: #3a3a3a;
           color: #ffffff;
-          padding: 12px;
+          padding: 10px;
           text-align: left;
           font-weight: bold;
-          width: 30%;
+          width: 35%;
+          font-size: 0.9em;
         }
         .reservation-table td {
-          padding: 12px;
+          padding: 10px;
           border-bottom: 1px solid #ddd;
           background: white;
+          word-break: break-word;
+          font-size: 0.9em;
         }
         .reservation-table tr:last-child td {
           border-bottom: none;
@@ -1984,21 +2127,21 @@ function createReservationSuccessHtml(reservation) {
         .sns-buttons {
           display: flex;
           justify-content: center;
-          gap: 15px;
+          gap: 10px;
           margin-top: 15px;
           flex-wrap: wrap;
         }
         .sns-btn {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          padding: 10px 20px;
+          gap: 6px;
+          padding: 10px 16px;
           border-radius: 25px;
           text-decoration: none;
           color: white;
           font-weight: bold;
           transition: all 0.3s;
-          font-size: 0.95em;
+          font-size: 0.9em;
         }
         .sns-btn:hover {
           transform: translateY(-2px);
@@ -2091,9 +2234,9 @@ function createReservationSuccessHtml(reservation) {
         </div>
 
         <div class="footer">
-          <a href="https://yolube.jp" class="button">TOPに戻る</a>
+          <a href="${CONFIG.URLS.HOME}" class="button">TOPに戻る</a>
           <p style="margin-top: 20px; font-size: 0.9em;">
-            © 2025 YOLUBE. All rights reserved.
+            © 2025 ${CONFIG.COMPANY.NAME}. All rights reserved.
           </p>
         </div>
       </div>
@@ -2101,7 +2244,9 @@ function createReservationSuccessHtml(reservation) {
     </html>
   `;
 
-  return HtmlService.createHtmlOutput(html);
+  return HtmlService.createHtmlOutput(html)
+    .setSandboxMode(HtmlService.SandboxMode.IFRAME)
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
 /**
@@ -2113,13 +2258,25 @@ function createReservationErrorHtml(errorMessage) {
     <html>
     <head>
       <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>予約エラー - YOLUBE Ke.イベント</title>
       <style>
+        * {
+          box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+        }
+        html {
+          width: 100%;
+          height: 100%;
+        }
         body {
           font-family: 'Hiragino Sans', 'ヒラギノ角ゴシック', 'Yu Gothic', '游ゴシック', 'Meiryo', 'メイリオ', sans-serif;
+          width: 100%;
+          min-width: 320px;
           max-width: 700px;
-          margin: 50px auto;
-          padding: 30px;
+          margin: 0 auto;
+          padding: 20px;
           line-height: 1.6;
           color: #333;
           background-color: #f9f9f9;
@@ -2189,9 +2346,9 @@ function createReservationErrorHtml(errorMessage) {
 
         <div class="footer">
           <a href="javascript:history.back()" class="button">戻る</a>
-          <a href="https://yolube.jp" class="button">TOPに戻る</a>
+          <a href="${CONFIG.URLS.HOME}" class="button">TOPに戻る</a>
           <p style="margin-top: 20px; font-size: 0.9em;">
-            © 2025 YOLUBE. All rights reserved.
+            © 2025 ${CONFIG.COMPANY.NAME}. All rights reserved.
           </p>
         </div>
       </div>
@@ -2199,7 +2356,9 @@ function createReservationErrorHtml(errorMessage) {
     </html>
   `;
 
-  return HtmlService.createHtmlOutput(html);
+  return HtmlService.createHtmlOutput(html)
+    .setSandboxMode(HtmlService.SandboxMode.IFRAME)
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
 // ==========================================

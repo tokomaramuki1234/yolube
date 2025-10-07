@@ -9,6 +9,8 @@ const ReservationForm = () => {
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [hasCompanions, setHasCompanions] = useState(false);
   const [charCount, setCharCount] = useState({ games: 0, notes: 0 });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitCooldown, setSubmitCooldown] = useState(false);
 
   // イベント一覧を取得
   useEffect(() => {
@@ -140,6 +142,13 @@ const ReservationForm = () => {
   // フォーム送信
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // 二重送信防止チェック
+    if (isSubmitting || submitCooldown) {
+      return;
+    }
+
+    setIsSubmitting(true);
     setIsLoading(true);
     setMessage('');
 
@@ -150,6 +159,7 @@ const ReservationForm = () => {
     if (!selectedEvent) {
       setMessage('イベントを選択してください。');
       setIsLoading(false);
+      setIsSubmitting(false);
       return;
     }
 
@@ -177,12 +187,14 @@ const ReservationForm = () => {
     if (formData.name.length > 50) {
       setMessage('お名前は50文字以内で入力してください。');
       setIsLoading(false);
+      setIsSubmitting(false);
       return;
     }
 
     if (formData.desiredGame.length > 2000) {
       setMessage('遊びたいゲームは2000文字以内で入力してください。');
       setIsLoading(false);
+      setIsSubmitting(false);
       return;
     }
 
@@ -220,6 +232,13 @@ const ReservationForm = () => {
     setHasCompanions(false);
     setCharCount({ games: 0, notes: 0 });
     setIsLoading(false);
+
+    // 送信成功後、5秒間のクールダウンを設定
+    setSubmitCooldown(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitCooldown(false);
+    }, 5000);
   };
 
   return (
@@ -393,9 +412,9 @@ const ReservationForm = () => {
               <button
                 type="submit"
                 className={`btn reservation-btn ${isLoading ? 'loading' : ''}`}
-                disabled={isLoading || upcomingEvents.length === 0}
+                disabled={isLoading || isSubmitting || submitCooldown || upcomingEvents.length === 0}
               >
-                {isLoading ? '送信中...' : '予約する'}
+                {isLoading ? '送信中...' : submitCooldown ? '送信完了（5秒待機中）' : '予約する'}
               </button>
             </form>
           </div>
