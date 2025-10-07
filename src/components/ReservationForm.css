@@ -88,6 +88,9 @@
   font-size: 0.95rem;
   font-weight: 600;
   color: #2d3748;
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  display: block;
+  margin-bottom: 4px;
 }
 
 .form-group input,
@@ -379,7 +382,8 @@
   .reservation .section-title,
   .reservation-title,
   .form-group label {
-    color: #e2e8f0;
+    color: #e2e8f0 !important;
+    font-weight: 600 !important;
   }
 
   .reservation .section-subtitle,
@@ -407,5 +411,13 @@
   .form-note {
     background-color: #1a202c;
     color: #cbd5e0;
+  }
+
+  .radio-label {
+    color: #cbd5e0 !important;
+  }
+
+  .required {
+    color: #fc8181 !important;
   }
 }
