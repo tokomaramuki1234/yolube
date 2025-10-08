@@ -141,7 +141,8 @@ const About = () => {
           <div className="hero-text">
             <h2 className="section-title">MISSION</h2>
             <div className="hero-vision">
-              <div className="vision-main">遊び心で社会を変える</div>
+              <div className="vision-main">遊び心で
+社会を変える</div>
               <div className="vision-subtitle">テーブルゲームの魅力を最大限に活かして、地域社会の課題解決に取り組みます</div>
             </div>
           </div>

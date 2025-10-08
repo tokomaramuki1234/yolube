@@ -192,6 +192,7 @@
   background-clip: text !important;
   text-align: center !important;
   width: 100% !important;
+  white-space: pre-line !important;
 }
 
 .about-hero .vision-subtitle {
@@ -1018,8 +1019,10 @@
 
   /* Hero section title maintains its unique styling */
 
-  .vision-main {
-    font-size: 3rem;
+  .about-hero .vision-main {
+    font-size: 2.2rem !important;
+    line-height: 1.2 !important;
+    white-space: pre-line !important;
   }
 
   .vision-subtitle {
@@ -1135,8 +1138,10 @@
 @media (max-width: 480px) {
   /* Hero section title maintains its unique styling */
 
-  .vision-main {
-    font-size: 2.5rem;
+  .about-hero .vision-main {
+    font-size: 1.8rem !important;
+    line-height: 1.2 !important;
+    white-space: pre-line !important;
   }
 
   .intro-content h3 {
