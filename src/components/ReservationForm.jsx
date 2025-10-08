@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import GoogleSheetsService from '../services/googleSheets';
 import './ReservationForm.css';
 
-const ReservationForm = () => {
+const ReservationForm = ({ currentLanguage = 'ja' }) => {
   const form = useRef();
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -11,6 +11,222 @@ const ReservationForm = () => {
   const [charCount, setCharCount] = useState({ games: 0, notes: 0 });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitCooldown, setSubmitCooldown] = useState(false);
+
+  // 翻訳データ
+  const translations = {
+    ja: {
+      title: 'イベント予約',
+      subtitle: 'Ke.イベントへの参加予約はこちらから',
+      formTitle: '参加予約フォーム',
+      eventLabel: '予約するイベント',
+      selectEvent: '選択してください',
+      loading: 'イベント情報を読み込み中...',
+      nameLabel: 'お名前',
+      namePlaceholder: '山田 太郎',
+      nameHint: '50文字以内',
+      emailLabel: 'メールアドレス',
+      emailPlaceholder: 'example@email.com',
+      emailHint: '予約確認メールが送信されます',
+      companionsLabel: '同行者の有無',
+      companionsNo: 'なし（1人で参加）',
+      companionsYes: 'あり',
+      companionsCount: '同行者数',
+      arrivalLabel: '来場予定時刻',
+      arrivalUndecided: '未定',
+      arrivalHint: 'おおよその到着時刻をお選びください',
+      gamesLabel: '遊びたいゲーム',
+      gamesPlaceholder: '例：カタン、モノポリー、人狼ゲームなど',
+      gamesHint: '文字',
+      notesLabel: '特記事項',
+      notesPlaceholder: 'アレルギー、車椅子利用、その他ご要望など',
+      submitBtn: '予約する',
+      submitting: '送信中...',
+      cooldown: '送信完了（5秒待機中）',
+      required: '*'
+    },
+    en: {
+      title: 'Event Reservation',
+      subtitle: 'Reserve your participation in Ke. events here',
+      formTitle: 'Participation Reservation Form',
+      eventLabel: 'Event to Reserve',
+      selectEvent: 'Please select',
+      loading: 'Loading event information...',
+      nameLabel: 'Name',
+      namePlaceholder: 'Taro Yamada',
+      nameHint: 'Within 50 characters',
+      emailLabel: 'Email',
+      emailPlaceholder: 'example@email.com',
+      emailHint: 'Confirmation email will be sent',
+      companionsLabel: 'Companions',
+      companionsNo: 'None (Solo participation)',
+      companionsYes: 'Yes',
+      companionsCount: 'Number of Companions',
+      arrivalLabel: 'Expected Arrival Time',
+      arrivalUndecided: 'Undecided',
+      arrivalHint: 'Please select approximate arrival time',
+      gamesLabel: 'Games You Want to Play',
+      gamesPlaceholder: 'e.g., Catan, Monopoly, Werewolf, etc.',
+      gamesHint: 'characters',
+      notesLabel: 'Special Notes',
+      notesPlaceholder: 'Allergies, wheelchair use, other requests, etc.',
+      submitBtn: 'Reserve',
+      submitting: 'Submitting...',
+      cooldown: 'Submitted (5 sec wait)',
+      required: '*'
+    },
+    vi: {
+      title: 'Đặt Chỗ Sự Kiện',
+      subtitle: 'Đặt chỗ tham gia sự kiện Ke. tại đây',
+      formTitle: 'Mẫu Đặt Chỗ Tham Gia',
+      eventLabel: 'Sự Kiện Đặt Chỗ',
+      selectEvent: 'Vui lòng chọn',
+      loading: 'Đang tải thông tin sự kiện...',
+      nameLabel: 'Tên',
+      namePlaceholder: 'Taro Yamada',
+      nameHint: 'Trong vòng 50 ký tự',
+      emailLabel: 'Email',
+      emailPlaceholder: 'example@email.com',
+      emailHint: 'Email xác nhận sẽ được gửi',
+      companionsLabel: 'Người Đi Cùng',
+      companionsNo: 'Không (Tham gia một mình)',
+      companionsYes: 'Có',
+      companionsCount: 'Số Người Đi Cùng',
+      arrivalLabel: 'Thời Gian Đến Dự Kiến',
+      arrivalUndecided: 'Chưa quyết định',
+      arrivalHint: 'Vui lòng chọn thời gian đến gần đúng',
+      gamesLabel: 'Trò Chơi Bạn Muốn Chơi',
+      gamesPlaceholder: 'VD: Catan, Monopoly, Ma Sói, v.v.',
+      gamesHint: 'ký tự',
+      notesLabel: 'Ghi Chú Đặc Biệt',
+      notesPlaceholder: 'Dị ứng, sử dụng xe lăn, yêu cầu khác, v.v.',
+      submitBtn: 'Đặt Chỗ',
+      submitting: 'Đang gửi...',
+      cooldown: 'Đã gửi (Chờ 5 giây)',
+      required: '*'
+    },
+    de: {
+      title: 'Veranstaltungsreservierung',
+      subtitle: 'Reservieren Sie hier Ihre Teilnahme an Ke. Veranstaltungen',
+      formTitle: 'Teilnahme-Reservierungsformular',
+      eventLabel: 'Zu reservierende Veranstaltung',
+      selectEvent: 'Bitte auswählen',
+      loading: 'Veranstaltungsinformationen werden geladen...',
+      nameLabel: 'Name',
+      namePlaceholder: 'Max Mustermann',
+      nameHint: 'Maximal 50 Zeichen',
+      emailLabel: 'E-Mail',
+      emailPlaceholder: 'beispiel@email.com',
+      emailHint: 'Bestätigungs-E-Mail wird gesendet',
+      companionsLabel: 'Begleitpersonen',
+      companionsNo: 'Keine (Alleinige Teilnahme)',
+      companionsYes: 'Ja',
+      companionsCount: 'Anzahl der Begleitpersonen',
+      arrivalLabel: 'Voraussichtliche Ankunftszeit',
+      arrivalUndecided: 'Unentschieden',
+      arrivalHint: 'Bitte ungefähre Ankunftszeit auswählen',
+      gamesLabel: 'Spiele, die Sie spielen möchten',
+      gamesPlaceholder: 'z.B. Catan, Monopoly, Werwolf usw.',
+      gamesHint: 'Zeichen',
+      notesLabel: 'Besondere Hinweise',
+      notesPlaceholder: 'Allergien, Rollstuhlnutzung, andere Wünsche usw.',
+      submitBtn: 'Reservieren',
+      submitting: 'Wird gesendet...',
+      cooldown: 'Gesendet (5 Sek. warten)',
+      required: '*'
+    },
+    ko: {
+      title: '이벤트 예약',
+      subtitle: 'Ke. 이벤트 참여 예약은 여기에서',
+      formTitle: '참여 예약 양식',
+      eventLabel: '예약할 이벤트',
+      selectEvent: '선택해주세요',
+      loading: '이벤트 정보를 로딩 중...',
+      nameLabel: '이름',
+      namePlaceholder: '홍길동',
+      nameHint: '50자 이내',
+      emailLabel: '이메일',
+      emailPlaceholder: 'example@email.com',
+      emailHint: '확인 이메일이 전송됩니다',
+      companionsLabel: '동반자',
+      companionsNo: '없음 (단독 참여)',
+      companionsYes: '있음',
+      companionsCount: '동반자 수',
+      arrivalLabel: '예상 도착 시간',
+      arrivalUndecided: '미정',
+      arrivalHint: '대략적인 도착 시간을 선택해주세요',
+      gamesLabel: '플레이하고 싶은 게임',
+      gamesPlaceholder: '예: 카탄, 모노폴리, 마피아 등',
+      gamesHint: '자',
+      notesLabel: '특별 사항',
+      notesPlaceholder: '알레르기, 휠체어 이용, 기타 요청사항 등',
+      submitBtn: '예약하기',
+      submitting: '전송 중...',
+      cooldown: '전송 완료 (5초 대기)',
+      required: '*'
+    },
+    zh: {
+      title: '活动预约',
+      subtitle: '在此预约参加 Ke. 活动',
+      formTitle: '参与预约表格',
+      eventLabel: '预约活动',
+      selectEvent: '请选择',
+      loading: '正在加载活动信息...',
+      nameLabel: '姓名',
+      namePlaceholder: '张三',
+      nameHint: '50个字符以内',
+      emailLabel: '电子邮箱',
+      emailPlaceholder: 'example@email.com',
+      emailHint: '将发送确认邮件',
+      companionsLabel: '同伴',
+      companionsNo: '无 (单独参加)',
+      companionsYes: '有',
+      companionsCount: '同伴人数',
+      arrivalLabel: '预计到达时间',
+      arrivalUndecided: '未定',
+      arrivalHint: '请选择大致到达时间',
+      gamesLabel: '想玩的游戏',
+      gamesPlaceholder: '例如：卡坦岛、大富翁、狼人杀等',
+      gamesHint: '字符',
+      notesLabel: '特别说明',
+      notesPlaceholder: '过敏、轮椅使用、其他需求等',
+      submitBtn: '预约',
+      submitting: '提交中...',
+      cooldown: '已提交 (等待5秒)',
+      required: '*'
+    },
+    fr: {
+      title: 'Réservation d\'Événement',
+      subtitle: 'Réservez votre participation aux événements Ke. ici',
+      formTitle: 'Formulaire de Réservation de Participation',
+      eventLabel: 'Événement à Réserver',
+      selectEvent: 'Veuillez sélectionner',
+      loading: 'Chargement des informations de l\'événement...',
+      nameLabel: 'Nom',
+      namePlaceholder: 'Jean Dupont',
+      nameHint: 'Maximum 50 caractères',
+      emailLabel: 'E-mail',
+      emailPlaceholder: 'exemple@email.com',
+      emailHint: 'Un e-mail de confirmation sera envoyé',
+      companionsLabel: 'Accompagnants',
+      companionsNo: 'Aucun (Participation seule)',
+      companionsYes: 'Oui',
+      companionsCount: 'Nombre d\'Accompagnants',
+      arrivalLabel: 'Heure d\'Arrivée Prévue',
+      arrivalUndecided: 'Indécis',
+      arrivalHint: 'Veuillez sélectionner l\'heure d\'arrivée approximative',
+      gamesLabel: 'Jeux Que Vous Souhaitez Jouer',
+      gamesPlaceholder: 'par ex. Catan, Monopoly, Loup-Garou, etc.',
+      gamesHint: 'caractères',
+      notesLabel: 'Notes Spéciales',
+      notesPlaceholder: 'Allergies, utilisation de fauteuil roulant, autres demandes, etc.',
+      submitBtn: 'Réserver',
+      submitting: 'Envoi en cours...',
+      cooldown: 'Envoyé (Attendre 5 sec)',
+      required: '*'
+    }
+  };
+
+  const t = translations[currentLanguage];
 
   // イベント一覧を取得
   useEffect(() => {
@@ -244,26 +460,26 @@ const ReservationForm = () => {
   return (
     <section id="reservation" className="reservation section">
       <div className="section-container">
-        <h2 className="section-title">イベント予約</h2>
+        <h2 className="section-title">{t.title}</h2>
         <p className="section-subtitle">
-          Ke.イベントへの参加予約はこちらから
+          {t.subtitle}
         </p>
 
         <div className="reservation-content">
           <div className="form-card reservation-card">
-            <h3 className="reservation-title">参加予約フォーム</h3>
+            <h3 className="reservation-title">{t.formTitle}</h3>
 
             <form ref={form} onSubmit={handleSubmit} className="reservation-form-content">
               {/* イベント選択 */}
               <div className="form-group">
-                <label htmlFor="event_id">予約するイベント <span className="required">*</span></label>
+                <label htmlFor="event_id">{t.eventLabel} <span className="required">{t.required}</span></label>
                 <select
                   id="event_id"
                   name="event_id"
                   required
                   disabled={isLoading || upcomingEvents.length === 0}
                 >
-                  <option value="">選択してください</option>
+                  <option value="">{t.selectEvent}</option>
                   {upcomingEvents.map((event) => (
                     <option key={event.eventId} value={event.eventId}>
                       {event.displayName}
@@ -271,13 +487,13 @@ const ReservationForm = () => {
                   ))}
                 </select>
                 {upcomingEvents.length === 0 && (
-                  <small className="form-hint">イベント情報を読み込み中...</small>
+                  <small className="form-hint">{t.loading}</small>
                 )}
               </div>
 
               {/* 氏名 */}
               <div className="form-group">
-                <label htmlFor="user_name">お名前 <span className="required">*</span></label>
+                <label htmlFor="user_name">{t.nameLabel} <span className="required">{t.required}</span></label>
                 <input
                   type="text"
                   id="user_name"
@@ -285,28 +501,28 @@ const ReservationForm = () => {
                   maxLength="50"
                   required
                   disabled={isLoading}
-                  placeholder="山田 太郎"
+                  placeholder={t.namePlaceholder}
                 />
-                <small className="form-hint">50文字以内</small>
+                <small className="form-hint">{t.nameHint}</small>
               </div>
 
               {/* メールアドレス */}
               <div className="form-group">
-                <label htmlFor="user_email">メールアドレス <span className="required">*</span></label>
+                <label htmlFor="user_email">{t.emailLabel} <span className="required">{t.required}</span></label>
                 <input
                   type="email"
                   id="user_email"
                   name="user_email"
                   required
                   disabled={isLoading}
-                  placeholder="example@email.com"
+                  placeholder={t.emailPlaceholder}
                 />
-                <small className="form-hint">予約確認メールが送信されます</small>
+                <small className="form-hint">{t.emailHint}</small>
               </div>
 
               {/* 同行者の有無 */}
               <div className="form-group">
-                <label>同行者の有無 <span className="required">*</span></label>
+                <label>{t.companionsLabel} <span className="required">{t.required}</span></label>
                 <div className="radio-group">
                   <label className="radio-label">
                     <input
@@ -317,7 +533,7 @@ const ReservationForm = () => {
                       onChange={() => setHasCompanions(false)}
                       disabled={isLoading}
                     />
-                    <span>なし（1人で参加）</span>
+                    <span>{t.companionsNo}</span>
                   </label>
                   <label className="radio-label">
                     <input
@@ -328,7 +544,7 @@ const ReservationForm = () => {
                       onChange={() => setHasCompanions(true)}
                       disabled={isLoading}
                     />
-                    <span>あり</span>
+                    <span>{t.companionsYes}</span>
                   </label>
                 </div>
               </div>
@@ -336,7 +552,7 @@ const ReservationForm = () => {
               {/* 同行者数（条件付き表示） */}
               {hasCompanions && (
                 <div className="form-group companion-count-group">
-                  <label htmlFor="companions_count">同行者数 <span className="required">*</span></label>
+                  <label htmlFor="companions_count">{t.companionsCount} <span className="required">{t.required}</span></label>
                   <select
                     id="companions_count"
                     name="companions_count"
@@ -345,7 +561,14 @@ const ReservationForm = () => {
                   >
                     {companionCounts.slice(1).map((count) => (
                       <option key={count} value={count}>
-                        {count}人
+                        {count}
+                        {currentLanguage === 'ja' ? '人' :
+                         currentLanguage === 'vi' ? ' người' :
+                         currentLanguage === 'ko' ? '명' :
+                         currentLanguage === 'zh' ? '人' :
+                         currentLanguage === 'de' ? (count === 1 ? ' Person' : ' Personen') :
+                         currentLanguage === 'fr' ? (count === 1 ? ' personne' : ' personnes') :
+                         ' people'}
                       </option>
                     ))}
                   </select>
@@ -354,48 +577,48 @@ const ReservationForm = () => {
 
               {/* 来場予定時刻 */}
               <div className="form-group">
-                <label htmlFor="arrival_time">来場予定時刻</label>
+                <label htmlFor="arrival_time">{t.arrivalLabel}</label>
                 <select
                   id="arrival_time"
                   name="arrival_time"
                   disabled={isLoading}
                 >
-                  <option value="">未定</option>
+                  <option value="">{t.arrivalUndecided}</option>
                   {timeSlots.map((time) => (
                     <option key={time} value={time}>
                       {time}
                     </option>
                   ))}
                 </select>
-                <small className="form-hint">おおよその到着時刻をお選びください</small>
+                <small className="form-hint">{t.arrivalHint}</small>
               </div>
 
               {/* 遊びたいゲーム */}
               <div className="form-group">
-                <label htmlFor="games_request">遊びたいゲーム</label>
+                <label htmlFor="games_request">{t.gamesLabel}</label>
                 <textarea
                   id="games_request"
                   name="games_request"
                   rows="4"
                   maxLength="2000"
                   disabled={isLoading}
-                  placeholder="例：カタン、モノポリー、人狼ゲームなど"
+                  placeholder={t.gamesPlaceholder}
                   onChange={(e) => handleTextChange(e, 'games')}
                 ></textarea>
                 <small className="form-hint char-count">
-                  {charCount.games} / 2000文字
+                  {charCount.games} / 2000{t.gamesHint}
                 </small>
               </div>
 
               {/* 特記事項 */}
               <div className="form-group">
-                <label htmlFor="special_notes">特記事項</label>
+                <label htmlFor="special_notes">{t.notesLabel}</label>
                 <textarea
                   id="special_notes"
                   name="special_notes"
                   rows="3"
                   disabled={isLoading}
-                  placeholder="アレルギー、車椅子利用、その他ご要望など"
+                  placeholder={t.notesPlaceholder}
                   onChange={(e) => handleTextChange(e, 'notes')}
                 ></textarea>
               </div>
@@ -413,7 +636,7 @@ const ReservationForm = () => {
                 className={`btn reservation-btn ${isLoading ? 'loading' : ''}`}
                 disabled={isLoading || isSubmitting || submitCooldown || upcomingEvents.length === 0}
               >
-                {isLoading ? '送信中...' : submitCooldown ? '送信完了（5秒待機中）' : '予約する'}
+                {isLoading ? t.submitting : submitCooldown ? t.cooldown : t.submitBtn}
               </button>
             </form>
           </div>

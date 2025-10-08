@@ -42,8 +42,11 @@ section[id], .ke-anchor-point {
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
   z-index: 1000;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  overflow: visible;
+  height: 70px;
 }
 
 /* Top Logo Section */
@@ -174,32 +177,94 @@ section[id], .ke-anchor-point {
 
 /* Language Switcher */
 .ke-language-switcher {
+  position: relative;
   display: flex;
-  gap: 8px;
   align-items: center;
 }
 
-.ke-lang-btn {
-  padding: 6px 12px;
-  border: 1px solid #ddd;
-  background: white;
-  color: #666;
-  border-radius: 20px;
-  font-size: 0.85rem;
+/* Globe button */
+.ke-lang-globe-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid #97CD8D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  white-space: nowrap;
+  color: #97CD8D;
 }
 
-.ke-lang-btn:hover {
-  border-color: #8BC780;
-  color: #8BC780;
+.ke-lang-globe-btn:hover {
+  background: rgba(151, 205, 141, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(151, 205, 141, 0.2);
 }
 
-.ke-lang-btn.active {
-  background: #8BC780;
+.ke-lang-globe-btn:active {
+  transform: translateY(0);
+}
+
+/* Dropdown menu */
+.ke-lang-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border: 2px solid #97CD8D;
+  overflow: hidden;
+  min-width: 160px;
+  z-index: 1001;
+  animation: dropdownFadeIn 0.25s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ke-lang-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  background: white;
+  color: #2d3748;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.ke-lang-dropdown button:not(:last-child) {
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.ke-lang-dropdown button:hover {
+  background: #97CD8D;
   color: white;
-  border-color: #8BC780;
+}
+
+.ke-lang-dropdown button:active {
+  background: #82b878;
+}
+
+/* Mobile Language Switcher - Hidden on Desktop */
+.ke-mobile-lang-switcher {
+  display: none;
 }
 
 /* Mobile Menu Toggle */
@@ -262,13 +327,20 @@ section[id], .ke-anchor-point {
 
 .ke-title-sub {
   color: #2a2a2a;
-  font-size: 20rem;
   text-shadow: 3px 3px 6px rgba(255, 255, 255, 0.8);
   display: block;
   font-weight: 900;
   transform: scale(1.1);
   margin-top: 10px;
   animation: pulse 2s ease-in-out infinite alternate;
+}
+
+.ke-title-sub-small {
+  font-size: 12rem;
+}
+
+.ke-title-sub-large {
+  font-size: 20rem;
 }
 
 @keyframes pulse {
@@ -1225,8 +1297,8 @@ section[id], .ke-anchor-point {
 }
 
 .ke-sns-facebook {
-  width: 100px;
-  height: 100px;
+  width: 99px;
+  height: 99px;
 }
 
 .ke-sns-facebook img {
@@ -1671,21 +1743,42 @@ section[id], .ke-anchor-point {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .ke-header {
+    padding: 12px 0;
+    height: 60px;
+    overflow: visible;
+  }
+
   .ke-header-container {
     padding: 0 15px;
+    gap: 10px;
+    height: auto;
+  }
+
+  .ke-logo img {
+    height: 32px;
   }
 
   .ke-mobile-menu-toggle {
     display: block;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1001;
   }
 
-  .ke-language-switcher {
-    gap: 5px;
+  .ke-lang-globe-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
   }
 
-  .ke-lang-btn {
-    padding: 4px 8px;
-    font-size: 0.75rem;
+  .ke-lang-dropdown {
+    min-width: 140px;
+  }
+
+  .ke-lang-dropdown button {
+    padding: 12px 16px;
+    font-size: 0.9rem;
   }
 
   .ke-nav {
@@ -1696,12 +1789,14 @@ section[id], .ke-anchor-point {
     width: 280px;
     background: white;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
+    padding-top: 80px;
     transition: right 0.3s ease;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 999;
+    overflow-y: auto;
   }
 
   .ke-nav.ke-nav-open {
@@ -1718,6 +1813,45 @@ section[id], .ke-anchor-point {
   .ke-nav a:hover {
     background: #f8f9fa;
     color: #8BC780;
+  }
+
+  /* Mobile Language Switcher */
+  .ke-mobile-lang-switcher {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 20px 20px 0;
+    border-top: 2px solid #e9ecef;
+    margin-top: 20px;
+  }
+
+  .ke-mobile-lang-switcher button {
+    padding: 12px 20px;
+    background: white;
+    border: 2px solid #97CD8D;
+    border-radius: 8px;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .ke-mobile-lang-switcher button:hover {
+    background: #97CD8D;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(151, 205, 141, 0.3);
+  }
+
+  .ke-mobile-lang-switcher button:active {
+    transform: translateY(0);
+  }
+
+  /* Hide desktop language switcher on mobile */
+  .ke-language-switcher {
+    display: none;
   }
 
   .ke-top-logo {
@@ -1748,7 +1882,11 @@ section[id], .ke-anchor-point {
     font-size: 2.2rem;
   }
 
-  .ke-title-sub {
+  .ke-title-sub-small {
+    font-size: 3rem;
+  }
+
+  .ke-title-sub-large {
     font-size: 5rem;
   }
 
@@ -1821,8 +1959,9 @@ section[id], .ke-anchor-point {
   }
 
   .ke-testimonials .ke-testimonial .ke-testimonial-content {
-    max-width: none !important;
-    min-width: 320px !important;
+    width: 100% !important;
+    max-width: calc(100vw - 40px) !important;
+    min-width: auto !important;
     padding: 20px !important;
     padding-top: 100px !important;
     flex-direction: column !important;
@@ -1892,8 +2031,8 @@ section[id], .ke-anchor-point {
   }
 
   .ke-sns-facebook {
-    width: 80px;
-    height: 80px;
+    width: 79px;
+    height: 79px;
   }
 
   .ke-sns-facebook img {
@@ -2020,7 +2159,11 @@ section[id], .ke-anchor-point {
     font-size: 1.8rem;
   }
 
-  .ke-title-sub {
+  .ke-title-sub-small {
+    font-size: 2.8rem;
+  }
+
+  .ke-title-sub-large {
     font-size: 4.5rem;
   }
 
