@@ -339,6 +339,10 @@ section[id], .ke-anchor-point {
   font-size: 12rem;
 }
 
+.ke-title-sub-medium {
+  font-size: 10rem;
+}
+
 .ke-title-sub-large {
   font-size: 20rem;
 }
@@ -1886,6 +1890,10 @@ section[id], .ke-anchor-point {
     font-size: 3rem;
   }
 
+  .ke-title-sub-medium {
+    font-size: 2.5rem;
+  }
+
   .ke-title-sub-large {
     font-size: 5rem;
   }
@@ -2161,6 +2169,10 @@ section[id], .ke-anchor-point {
 
   .ke-title-sub-small {
     font-size: 2.8rem;
+  }
+
+  .ke-title-sub-medium {
+    font-size: 2.3rem;
   }
 
   .ke-title-sub-large {

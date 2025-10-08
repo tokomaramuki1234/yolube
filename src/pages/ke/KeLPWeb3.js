@@ -1134,7 +1134,13 @@ const KeLPWeb3 = () => {
             <div className="ke-hero-text">
               <h1 className="ke-title">
                 <span className="ke-title-main">{t.hero.title1}</span>
-                <span className={`ke-title-sub ${['en', 'vi', 'zh'].includes(currentLanguage) ? 'ke-title-sub-small' : 'ke-title-sub-large'}`}>
+                <span className={`ke-title-sub ${
+                  ['en', 'vi', 'zh'].includes(currentLanguage)
+                    ? 'ke-title-sub-small'
+                    : ['de', 'ko', 'fr'].includes(currentLanguage)
+                      ? 'ke-title-sub-medium'
+                      : 'ke-title-sub-large'
+                }`}>
                   {t.hero.title2}
                 </span>
               </h1>
