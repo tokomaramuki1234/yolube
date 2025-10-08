@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -25,8 +25,23 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Login from './pages/admin/Login';
 import Admin from './pages/admin/Admin';
 
+// GTMユーティリティ
+import { trackPageView } from './utils/gtm';
+
 // Font Awesomeライブラリにアイコンを追加
 library.add(fas, far, fab);
+
+// ページビュートラッカー
+const PageViewTracker = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const pageTitle = document.title;
+    trackPageView(location.pathname + location.search, pageTitle);
+  }, [location]);
+
+  return null;
+};
 
 // 認証保護ルート
 const ProtectedRoute = ({ children }) => {
@@ -57,6 +72,7 @@ function App() {
     <HelmetProvider>
       <AuthProvider>
         <Router>
+          <PageViewTracker />
           <div className="App">
             <Routes>
             <Route path="/" element={

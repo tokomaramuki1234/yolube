@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import './Contact.css';
+import { trackContactFormSubmit } from '../utils/gtm';
 
 const Contact = () => {
   const form = useRef();
@@ -41,6 +42,13 @@ const Contact = () => {
     document.body.appendChild(hiddenForm);
     hiddenForm.submit();
     document.body.removeChild(hiddenForm);
+
+    // GTMイベント送信 - お問い合わせ完了
+    trackContactFormSubmit({
+      name: formData.user_name,
+      email: formData.user_email,
+      inquiry_type: formData.inquiry_type
+    });
 
     // ユーザーフィードバック
     setMessage('お問い合わせを送信いたしました。確認画面が新しいタブで開きます。自動返信メールをご確認ください。');

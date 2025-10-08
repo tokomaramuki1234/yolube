@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import GoogleSheetsService from '../services/googleSheets';
 import './ReservationForm.css';
+import { trackReservationComplete } from '../utils/gtm';
 
 const ReservationForm = ({ currentLanguage = 'ja' }) => {
   const form = useRef();
@@ -441,6 +442,13 @@ const ReservationForm = ({ currentLanguage = 'ja' }) => {
     document.body.appendChild(hiddenForm);
     hiddenForm.submit();
     document.body.removeChild(hiddenForm);
+
+    // GTMイベント送信 - 予約完了
+    trackReservationComplete({
+      eventName: selectedEvent.eventname || 'テーブルゲーム交流会：Ke.',
+      eventDate: selectedEvent.eventdate,
+      participantCount: hasCompanions ? (parseInt(formData.companionCount) + 1) : 1
+    });
 
     // ユーザーフィードバック
     setMessage('予約を送信しました。確認画面が新しいタブで開きます。自動返信メールをご確認ください。');
