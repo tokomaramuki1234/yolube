@@ -66,6 +66,10 @@ git push origin master  # デプロイ（Vercel自動デプロイ）
 - **Vercel**: 本番環境デプロイ
 - **GitHub**: バージョン管理・CI/CD
 
+### アナリティクス
+- **Google Tag Manager**: GTM-KVZ2B2MX（イベント追跡）
+- **Google Analytics 4**: （GTM連携予定）
+
 ### 開発ツール
 - **Create React App**: 開発環境
 - **React Scripts**: 5.0.1（ビルドツール）
@@ -97,6 +101,12 @@ git push origin master  # デプロイ（Vercel自動デプロイ）
    - デスクトップ・タブレット・モバイル対応
    - タッチ操作最適化
 
+5. **アクセス解析**
+   - Google Tag Manager (GTM) 実装
+   - ページビュー追跡（全ページ自動）
+   - コンバージョン追跡（お問い合わせ・予約完了）
+   - イベントパラメータ送信
+
 ### 🔐 セキュリティ機能
 - **データ分離設計**: イベント情報（公開）と予約情報（非公開）を別シートで管理
 - **認証システム**: 管理画面へのアクセス制御
@@ -111,17 +121,20 @@ yolube/
 ├── src/
 │   ├── components/           # Reactコンポーネント
 │   │   ├── admin/           # 管理画面コンポーネント
-│   │   ├── ReservationForm.jsx  # 予約フォーム
+│   │   ├── ReservationForm.jsx  # 予約フォーム（GTM統合）
 │   │   ├── ReservationStatus.jsx # 予約状況表示
+│   │   ├── Contact.js       # お問い合わせフォーム（GTM統合）
 │   │   └── [各種コンポーネント]
 │   ├── pages/
 │   │   ├── ke/              # Ke.イベントページ
 │   │   └── admin/           # 管理画面ページ
 │   ├── contexts/            # React Context（認証等）
 │   ├── services/            # API連携
-│   ├── utils/               # ユーティリティ関数
-│   └── App.js              # メインアプリ
+│   ├── utils/
+│   │   └── gtm.js           # Google Tag Manager ユーティリティ
+│   └── App.js              # メインアプリ（ページビュー追跡）
 ├── public/
+│   ├── index.html           # GTM コンテナコード
 │   ├── images/              # 画像ファイル・OGP
 │   └── docs/PDF/           # PDF資料
 ├── docs/                    # システムドキュメント
@@ -223,16 +236,70 @@ Copyright (c) 2025 YOLUBE
 ## 🚀 最新デプロイ情報
 
 ### ✅ デプロイ状況
-- **最新デプロイ**: 2025年10月8日 19:25 JST
-- **デプロイコミット**: eb94373 (本番環境デプロイ: ビルド最適化とドキュメント整理)
+- **最新デプロイ**: 2025年10月8日 21:30 JST
+- **デプロイコミット**: 5b21bab (Google Tag Manager実装)
 - **Vercel自動デプロイ**: ✅ 実行中
 - **本番URL**: https://yolube.jp
-- **ローカル開発**: https://3000-i7iaj11o846iozjgx24ms-2e1b9533.sandbox.novita.ai
+- **GTMコンテナ**: GTM-KVZ2B2MX
+
+### 📊 アナリティクス実装内容
+
+#### ✅ 完了した実装
+1. **GTMコンテナの統合**
+   - GTM-KVZ2B2MX をpublic/index.htmlに追加
+   - dataLayerの初期化
+
+2. **ページビュー追跡**
+   - App.jsにPageViewTrackerを実装
+   - React Routerと連携して全ページ自動追跡
+   - パラメータ: page_path, page_title, page_location
+
+3. **お問い合わせフォームの変換追跡**
+   - イベント名: `contact_form_submit`
+   - パラメータ: name, email, inquiry_type
+
+4. **イベント予約完了の変換追跡**
+   - イベント名: `reservation_complete`
+   - パラメータ: eventName, eventDate, participantCount
+
+#### 📝 次のステップ（手動設定が必要）
+
+1. **Google Analytics 4 (GA4) のセットアップ**
+   ```
+   1. GA4プロパティを作成
+   2. 測定IDを取得（G-XXXXXXXXXX）
+   3. GTM管理画面でGA4設定タグを作成
+   4. GTMコンテナを公開
+   ```
+
+2. **GTM管理画面でのタグ設定**
+   ```
+   タグ:
+   - GA4 Configuration Tag（基本設定）
+   - Page View Tag（自動トリガー: すべてのページビュー）
+   - Contact Form Submit Tag（カスタムイベント: contact_form_submit）
+   - Reservation Complete Tag（カスタムイベント: reservation_complete）
+   ```
+
+3. **GA4での変換設定**
+   ```
+   変換イベント:
+   - contact_form_submit（お問い合わせ完了）
+   - reservation_complete（予約完了）
+   ```
+
+4. **GTMのプレビュー・テスト**
+   ```
+   1. GTM管理画面でプレビューモード起動
+   2. https://yolube.jp で動作確認
+   3. dataLayerイベントが正しく送信されることを確認
+   4. テスト完了後、コンテナを本番公開
+   ```
 
 ### 📦 ビルド結果
-- **JavaScript**: 686.56 kB (gzip圧縮済み)
-- **CSS**: 21.88 kB (gzip圧縮済み)
-- **警告**: ESLint未使用変数警告のみ（動作に影響なし）
+- **JavaScript**: 約690 kB (gzip圧縮済み)
+- **CSS**: 約22 kB (gzip圧縮済み)
+- **新規追加**: src/utils/gtm.js (2.5 kB)
 
 ---
 
