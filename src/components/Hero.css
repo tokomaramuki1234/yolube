@@ -104,8 +104,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  word-break: keep-all;
-  overflow-wrap: break-word;
+  white-space: pre-line; /* 改行文字を有効にする */
 }
 
 .slide.active .slide-subtitle {
@@ -138,8 +137,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  word-break: keep-all;
-  overflow-wrap: break-word;
+  white-space: pre-line; /* 改行文字を有効にする */
 }
 
 .slide-subtitle {
@@ -278,12 +276,18 @@
     line-height: 1.3;
     text-align: center;
     min-height: 4.7rem; /* 2行分の高さを調整 */
+    white-space: pre-line; /* 改行文字を有効にする */
+    word-break: normal; /* 改行を優先 */
+    overflow-wrap: normal; /* 改行を優先 */
   }
 
   .slide.active .slide-title {
     font-size: 1.8rem;
     line-height: 1.3;
     min-height: 4.7rem; /* 2行分の高さを調整 */
+    white-space: pre-line; /* 改行文字を有効にする */
+    word-break: normal; /* 改行を優先 */
+    overflow-wrap: normal; /* 改行を優先 */
   }
 
   .slide-subtitle {
@@ -312,6 +316,9 @@
     text-align: center;
     min-height: 3.6rem; /* 2行分の高さを調整 */
     margin-bottom: 20px;
+    white-space: pre-line; /* 改行文字を有効にする */
+    word-break: normal; /* 改行を優先 */
+    overflow-wrap: normal; /* 改行を優先 */
   }
 
   .slide.active .slide-title {
@@ -319,6 +326,9 @@
     line-height: 1.3;
     min-height: 3.6rem; /* 2行分の高さを調整 */
     margin-bottom: 20px;
+    white-space: pre-line; /* 改行文字を有効にする */
+    word-break: normal; /* 改行を優先 */
+    overflow-wrap: normal; /* 改行を優先 */
   }
 
   .slide-subtitle {
@@ -345,6 +355,9 @@
     line-height: 1.25;
     min-height: 3rem;
     margin-bottom: 15px;
+    white-space: pre-line; /* 改行文字を有効にする */
+    word-break: normal; /* 改行を優先 */
+    overflow-wrap: normal; /* 改行を優先 */
   }
 
   .slide.active .slide-title {
@@ -352,6 +365,9 @@
     line-height: 1.25;
     min-height: 3rem;
     margin-bottom: 15px;
+    white-space: pre-line; /* 改行文字を有効にする */
+    word-break: normal; /* 改行を優先 */
+    overflow-wrap: normal; /* 改行を優先 */
   }
 
   .slide-subtitle {
