@@ -398,7 +398,6 @@ const ReservationForm = () => {
                   placeholder="アレルギー、車椅子利用、その他ご要望など"
                   onChange={(e) => handleTextChange(e, 'notes')}
                 ></textarea>
-                <small className="form-hint">任意</small>
               </div>
 
               {/* メッセージ表示 */}

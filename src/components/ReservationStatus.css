@@ -408,6 +408,11 @@
 
   .detail-cell {
     min-width: 100%;
+    justify-content: center;
+  }
+
+  .detail-cell::before {
+    display: none;
   }
 
   .detail-btn {

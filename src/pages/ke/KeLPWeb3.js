@@ -38,7 +38,7 @@ const KeLPWeb3 = () => {
         badge1: '参加費無料',
         badge2: '初参加・未経験者歓迎',
         badge3: '年齢性別関係なし！',
-        aboutTitle: 'テーブルゲーム交流会：Ke.について',
+        aboutTitle: 'テーブルゲーム交流会：Ke.<span class="mobile-br"><br></span>について',
         description1: 'テーブルゲーム交流会：Ke.は年齢、世代、立場を問わず遊べる交流会です。',
         description2: '「ルールが難しそう...」「ついていけるかな？」そんな心配は無用！経験豊富なスタッフが一からやさしく教えるので、未経験者でも安心して楽しめます。新しい友達づくりや、50代以上の方の新しい趣味探しにもぴったり！３才から９０才まで幅広い年齢層からご参加いただいています。',
         btn1: '次回イベントに参加する',
@@ -411,7 +411,7 @@ const KeLPWeb3 = () => {
               <div className="ke-hero-stats">
                 <div id="about" className="ke-anchor-point"></div>
                 <div className="ke-description-text">
-                  <p>{t.hero.aboutTitle}</p>
+                  <p dangerouslySetInnerHTML={{ __html: t.hero.aboutTitle }}></p>
                   <p>{t.hero.description1}</p>
                   <p>{t.hero.description2}</p>
                   <p>スマホから離れて顔を合わせ、みんなでワイワイ盛り上がってみませんか？普段出会えない世代の方との交流も、ゲームを通して自然と生まれます。頭を使う戦略ゲームから、みんなで笑えるパーティーゲームまで、様々な種類をご用意しています。</p>
@@ -420,7 +420,6 @@ const KeLPWeb3 = () => {
               </div>
               <div className="ke-hero-buttons">
                 <a href="#reservation" className="ke-btn ke-btn-primary">
-                  <FontAwesomeIcon icon={faGamepad} />
                   {t.hero.btn1}
                 </a>
                 <a href="#sns" className="ke-btn ke-btn-outline">
@@ -435,7 +434,7 @@ const KeLPWeb3 = () => {
       {/* Problem Section */}
       <section className="ke-problem">
         <div className="ke-container">
-          <h2 className="ke-section-title">こんなお悩みありませんか？</h2>
+          <h2 className="ke-section-title">こんなお悩み<span className="mobile-br"><br /></span>ありませんか？</h2>
           <div className="ke-problem-grid">
             <div className="ke-problem-item">
               <div className="ke-problem-icon">
@@ -465,11 +464,11 @@ const KeLPWeb3 = () => {
       {/* Solution Section */}
       <section className="ke-solution">
         <div className="ke-container">
-          <h2 className="ke-section-title">そんなあなた、<br />「け」に来てみませんか？</h2>
+          <h2 className="ke-section-title">そんなあなたに<span className="mobile-br"><br /></span>おススメです！</h2>
           <div className="ke-solution-content">
             <div className="ke-solution-text">
               <p className="ke-solution-lead">
-                テーブルゲームはコミュニケーションを楽しむゲーム。<strong>画面越しではなく「リアルな人とのつながり」</strong>を楽しめます。<br />
+                テーブルゲームはコミュニケーションを楽しむゲーム。画面越しではなく<strong>「リアルな人とのつながり」</strong>を楽しめます。<br />
                 相手の表情や声のトーン、その場の空気感や予想外の出来事など、様々な人の意外な一面をうかがえる場です。<br />
                 赤の他人同士が数分後には打ち解けていたりする、不思議な魅力をもつ遊び。それがテーブルゲームです。
               </p>
@@ -489,7 +488,7 @@ const KeLPWeb3 = () => {
                   </div>
                   <div className="ke-feature-content">
                     <h3>自然な出会いと友達作り</h3>
-                    <p>ゲームを通じて自然に会話が生まれ、世代や職業を超えた新しい交流が生れます。日常の喧騒から離れ、自然体で遊んでみましょう。</p>
+                    <p>ゲームを通じて自然に会話が生まれ、立場を超えた新しい交流が生れます。日常の喧騒から離れ、自然体で遊んでみましょう。</p>
                   </div>
                 </div>
                 <div className="ke-feature">
@@ -498,7 +497,7 @@ const KeLPWeb3 = () => {
                   </div>
                   <div className="ke-feature-content">
                     <h3>初心者も安心サポート</h3>
-                    <p>ゲーム選びは非常に重要！スタッフが参加者の経験や好みからベストなゲームをご提案します。初参加・未経験者が６割以上のイベントです！</p>
+                    <p>ゲーム選びは非常に重要！スタッフが参加者の経験や好みからベストなゲームをご提案します！</p>
                   </div>
                 </div>
               </div>
@@ -508,7 +507,6 @@ const KeLPWeb3 = () => {
           {/* CTA Buttons */}
           <div className="ke-hero-buttons">
             <a href="#reservation" className="ke-btn ke-btn-primary">
-              <FontAwesomeIcon icon={faGamepad} />
               次回イベントに参加する
             </a>
             <a href="#sns" className="ke-btn ke-btn-outline">
@@ -549,7 +547,8 @@ const KeLPWeb3 = () => {
               <div className="ke-flow-number">STEP 4</div>
               <div className="ke-flow-content">
                 <h3>片づけ＆退出</h3>
-                <p>遊び終わったゲームは片づけましょう！もしも片づけ方が分からない場合はお近くのスタッフにお声かけください！（たくさんの参加者に遊んでいただくためにも、ゲームは１作品ずつ遊ぶようご協力願います！）</p>
+                <p>遊び終わったゲームは片づけましょう！もしも片づけ方が分からない場合はお近くのスタッフにお声かけください！</p>
+                <p>たくさんの参加者に遊んでいただくためにも、ゲームは１作品ずつ遊ぶようご協力願います！</p>
                 <p>入退出は自由です。お帰りの際は名札を受付にお返しください。</p>
               </div>
             </div>
@@ -690,7 +689,6 @@ const KeLPWeb3 = () => {
           {/* CTA Buttons */}
           <div className="ke-hero-buttons">
             <a href="#reservation" className="ke-btn ke-btn-primary">
-              <FontAwesomeIcon icon={faGamepad} />
               次回イベントに参加する
             </a>
             <a href="#sns" className="ke-btn ke-btn-outline">
@@ -708,16 +706,14 @@ const KeLPWeb3 = () => {
             <div className="ke-faq-item">
               <div className="ke-faq-question">
                 <h3>本当に参加費は無料ですか？</h3>
-                <span className="ke-faq-toggle">+</span>
               </div>
               <div className="ke-faq-answer">
-                <p>はい、完全に無料です。手ぶらでお越しいただけます。未経験者にテーブルゲームの魅力を伝えたいという目的の元、会場設営費用等はすべて主催者側で負担しています。募金・協賛等は大歓迎です！笑</p>
+                <p>はい、完全に無料です。手ぶらでお越しいただけます。未経験者にテーブルゲームの魅力を伝えたいという目的の元、会場設営費用等はすべて主催者側で負担しています。募金・協賛等は大歓迎です！</p>
               </div>
             </div>
             <div className="ke-faq-item">
               <div className="ke-faq-question">
                 <h3>そもそもゲーム自体が未経験者です。それでも参加できますか？</h3>
-                <span className="ke-faq-toggle">+</span>
               </div>
               <div className="ke-faq-answer">
                 <p>もちろんです！初心者・未経験者大歓迎です。スタッフが丁寧にルールを説明しますので、安心してご参加ください。</p>
@@ -726,40 +722,34 @@ const KeLPWeb3 = () => {
             <div className="ke-faq-item">
               <div className="ke-faq-question">
                 <h3>事前申し込みは必要ですか？</h3>
-                <span className="ke-faq-toggle">+</span>
               </div>
               <div className="ke-faq-answer">
-                <p>事前申し込みは不要です。当日会場に直接お越しいただければ参加できます。
-                ただし、混雑状況によりお待ちいただく場合があります。
-                予め遊びたいゲームが決まっている場合は申し込みフォームから申請してください。</p>
+                <p>事前申し込みは必須ではありませんが、あらかじめ予約しておくとご案内をスムーズに行えます。ぜひ<a href="#reservation"> こちらの参加予約フォーム </a>よりお申し込みください！</p>
               </div>
             </div>
             <div className="ke-faq-item">
               <div className="ke-faq-question">
                 <h3>年齢制限はありますか？</h3>
-                <span className="ke-faq-toggle">+</span>
               </div>
               <div className="ke-faq-answer">
-                <p>年齢制限はありません。3歳から90歳代まで幅広い年代の方が参加されています。どなたでも歓迎いたします。
-                ただし小学生２年生以下のお子様とご参加の場合は必ず保護者と一緒に参加願います。お子様はご両親と一緒に遊びたいはずです。スタッフに育児を丸投げするような行為は固くお断りしております。</p>
+                <p>年齢制限はありません。幅広い年代の方が参加されています。どなたでも歓迎いたします。
+                ただし小学生２年生以下のお子様とご参加の場合は必ず保護者と一緒に参加願います。スタッフに育児を丸投げするような行為は固くお断りしております。</p>
               </div>
             </div>
             <div className="ke-faq-item">
               <div className="ke-faq-question">
                 <h3>途中参加・途中退場は可能ですか？</h3>
-                <span className="ke-faq-toggle">+</span>
               </div>
               <div className="ke-faq-answer">
-                <p>はい、可能です。10:00-20:00の開催時間内であれば、いつでも参加・退場いただけます。お気軽にお越しください。</p>
+                <p>はい、可能です。開催時間内であれば、いつでも参加・退場いただけます。お気軽にお越しください。</p>
               </div>
             </div>
             <div className="ke-faq-item">
               <div className="ke-faq-question">
                 <h3>駐車場はありますか？</h3>
-                <span className="ke-faq-toggle">+</span>
               </div>
               <div className="ke-faq-answer">
-                <p>みんなの実家 門脇家、秋田ベイパラダイスのどちらにも無料駐車場がございます。お車でのご来場も安心です。</p>
+                <p>みんなの実家 門脇家、秋田ベイパラダイスには無料駐車場がございます。秋田市文化創造館、横手市交流センター/Y2ぷらざでは近隣の有料駐車場をご利用願います。その他の会場も基本的には近隣の有料駐車場をご利用願います。</p>
               </div>
             </div>
           </div>
@@ -783,7 +773,12 @@ const KeLPWeb3 = () => {
                 </div>
 
                 <div className="ke-event-content">
-                  <h3 className="ke-event-title">{eventData.eventCount} テーブルゲーム交流会：Ke.</h3>
+                  <h3 className="ke-event-title">
+                    <span className="ke-event-count">{eventData.eventCount}</span>
+                    <span className={`ke-event-name ${('テーブルゲーム交流会：Ke.'.length >= 15) ? 'ke-event-name-long' : ''}`}>
+                      テーブルゲーム交流会：Ke.
+                    </span>
+                  </h3>
 
                   <div className="ke-event-details">
                     <div className="ke-detail-item">
@@ -912,49 +907,34 @@ const KeLPWeb3 = () => {
       <section id="sns" className="ke-sns">
         <div className="ke-container">
           <div className="ke-sns-content">
-            <h2 className="ke-sns-title">最新情報をSNSでチェック！</h2>
+            <h2 className="ke-sns-title">最新情報を<span className="mobile-br"><br /></span>SNSでチェック！</h2>
             <p className="ke-sns-subtitle">
-              イベントの最新情報や参加者の様子をお届けしています
+              イベントの最新情報や参加者の様子を<span className="mobile-br"><br /></span>お届けしています
             </p>
             <div className="ke-sns-links">
-              <a 
-                href="https://x.com/_YOLUBE_" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://x.com/_YOLUBE_"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="ke-sns-link ke-sns-x"
               >
-                <div className="ke-sns-icon">
-                  <img src="/images/SVG/sns_x.svg" alt="X (Twitter)" />
-                </div>
-                <div className="ke-sns-text">
-                  <h3>X (Twitter)</h3>
-                </div>
+                <img src="/images/SVG/sns_x.svg" alt="X (Twitter)" />
               </a>
-              <a 
-                href="https://www.facebook.com/YOLUBE.AKITA" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://www.facebook.com/YOLUBE.AKITA"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="ke-sns-link ke-sns-facebook"
               >
-                <div className="ke-sns-icon">
-                  <img src="/images/SVG/sns_fb.svg" alt="Facebook" />
-                </div>
-                <div className="ke-sns-text">
-                  <h3>Facebook</h3>
-                </div>
+                <img src="/images/SVG/sns_fb.svg" alt="Facebook" />
               </a>
-              <a 
-                href="https://www.instagram.com/_yolube_/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://www.instagram.com/_yolube_/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="ke-sns-link ke-sns-instagram"
               >
-                <div className="ke-sns-icon">
-                  <img src="/images/SVG/sns_insta.svg" alt="Instagram" />
-                </div>
-                <div className="ke-sns-text">
-                  <h3>Instagram</h3>
-                </div>
+                <img src="/images/SVG/sns_insta.svg" alt="Instagram" />
               </a>
             </div>
           </div>
