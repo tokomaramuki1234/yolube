@@ -104,6 +104,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .slide.active .slide-subtitle {
@@ -136,6 +138,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .slide-subtitle {
@@ -270,12 +274,21 @@
 @media (max-width: 768px) {
   .slide-title {
     font-family: 'Kiwi Maru', 'Noto Sans JP', sans-serif;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
+    line-height: 1.3;
     text-align: center;
+    min-height: 4.7rem; /* 2行分の高さを調整 */
+  }
+
+  .slide.active .slide-title {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    min-height: 4.7rem; /* 2行分の高さを調整 */
   }
 
   .slide-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
     text-align: center;
   }
 
@@ -294,13 +307,25 @@
 @media (max-width: 480px) {
   .slide-title {
     font-family: 'Kiwi Maru', 'Noto Sans JP', sans-serif;
-    font-size: 2rem;
+    font-size: 1.4rem;
+    line-height: 1.3;
     text-align: center;
+    min-height: 3.6rem; /* 2行分の高さを調整 */
+    margin-bottom: 20px;
+  }
+
+  .slide.active .slide-title {
+    font-size: 1.4rem;
+    line-height: 1.3;
+    min-height: 3.6rem; /* 2行分の高さを調整 */
+    margin-bottom: 20px;
   }
 
   .slide-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    line-height: 1.5;
     text-align: center;
+    margin-bottom: 30px;
   }
 
   .slide-text {
@@ -310,6 +335,33 @@
 
   .slider-controls {
     display: none; /* スマホ版では矢印を非表示 */
+  }
+}
+
+/* 超小型デバイス対応（iPhone SE など） */
+@media (max-width: 375px) {
+  .slide-title {
+    font-size: 1.2rem;
+    line-height: 1.25;
+    min-height: 3rem;
+    margin-bottom: 15px;
+  }
+
+  .slide.active .slide-title {
+    font-size: 1.2rem;
+    line-height: 1.25;
+    min-height: 3rem;
+    margin-bottom: 15px;
+  }
+
+  .slide-subtitle {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 25px;
+  }
+
+  .slide-text {
+    padding: 0 15px;
   }
 }
 
