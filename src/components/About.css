@@ -193,6 +193,7 @@
   text-align: center !important;
   width: 100% !important;
   white-space: pre-line !important;
+  display: block !important;
 }
 
 .about-hero .vision-subtitle {
@@ -1023,6 +1024,7 @@
     font-size: 2.2rem !important;
     line-height: 1.2 !important;
     white-space: pre-line !important;
+    display: block !important;
   }
 
   .vision-subtitle {
@@ -1142,6 +1144,7 @@
     font-size: 1.8rem !important;
     line-height: 1.2 !important;
     white-space: pre-line !important;
+    display: block !important;
   }
 
   .intro-content h3 {
