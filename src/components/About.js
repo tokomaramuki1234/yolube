@@ -163,57 +163,6 @@ const About = () => {
         ))}
       </div>
 
-      {/* VISIONセクション */}
-      <div className="about-purposes">
-        <div className="section-container">
-          <h2 className="section-title">VISION</h2>
-          <div className="purposes-grid">
-            <div className="purpose-card">
-              <div className="purpose-image">
-                <img src="/images/svg_human.svg" alt="社会を変える" />
-                <div className="purpose-category-badge">VISION</div>
-              </div>
-              <div className="purpose-content">
-                <h4 className="purpose-title">すべてを乗り越える交流文化を創る</h4>
-                <p className="purpose-description">年齢、性別、世代、立場を超えたフラットな交流文化を築きます。</p>
-              </div>
-            </div>
-            
-            <div className="purpose-card secondary-card">
-              <div className="purpose-image">
-                <img src="/images/svg_engagement.svg" alt="遊び心の実現" />
-                <div className="purpose-category-badge">VISION</div>
-              </div>
-              <div className="purpose-content">
-                <h4 className="purpose-title">体験交流型観光資源を創る</h4>
-                <p className="purpose-description">テーブルゲームの交流文化自体を新たな観光資源とし、地域経済に貢献します。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* VALUEセクション */}
-      <div className="about-values">
-        <div className="section-container">
-          <h2 className="section-title">VALUE</h2>
-          <div className="values-grid">
-            <div className="value-card">
-              <div className="value-content">
-                <h4>遊び × 社会課題解決</h4>
-                <p>テーブルゲームを通じて企業のエンゲージメント向上、自殺予防、認知症予防、経済活性化など、様々な社会課題への寄与を目指します。</p>
-              </div>
-            </div>
-            
-            <div className="value-card">
-              <div className="value-content">
-                <h4>遊び × 地域活性化</h4>
-                <p>テーブルゲームが創り出す様々な形のコミュニケーションで人と人との繋がりを深め、地域活性化へ貢献します。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
   );
 };

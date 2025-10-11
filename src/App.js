@@ -10,8 +10,6 @@ import Hero from './components/Hero';
 import News from './components/News';
 import About from './components/About';
 import Services from './components/Services';
-import Profile from './components/Profile';
-import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
@@ -19,6 +17,17 @@ import BackToTop from './components/BackToTop';
 import KeLP from './pages/ke/KeLPWeb3';
 import Training from './components/Training';
 import ReservationDetail from './components/ReservationDetail';
+import NewsPage from './pages/NewsPage';
+import YolubePage from './pages/YolubePage';
+import AboutPage from './pages/AboutPage';
+import AchievementPage from './pages/AchievementPage';
+import FosterPage from './pages/FosterPage';
+import RRPPage from './pages/RRPPage';
+import DEVPage from './pages/DEVPage';
+import CSTPage from './pages/CSTPage';
+import IIDPage from './pages/IIDPage';
+import NotFoundPage from './pages/NotFoundPage';
+import MaintenancePage from './pages/MaintenancePage';
 
 // 管理画面
 import { AuthProvider, useAuth } from './contexts/AuthContext';
@@ -61,8 +70,6 @@ const HomePage = () => (
     <News />
     <About />
     <Services />
-    <Achievements />
-    <Profile />
     <Contact />
   </>
 );
@@ -83,6 +90,21 @@ function App() {
                 <BackToTop />
               </>
             } />
+            <Route path="/NEWS" element={<NewsPage />} />
+            <Route path="/YOLUBE" element={<YolubePage />} />
+            <Route path="/ABOUT" element={<AboutPage />} />
+            <Route path="/ACHIEVEMENT" element={<AchievementPage />} />
+            <Route path="/FOSTER" element={<FosterPage />} />
+            <Route path="/RRP" element={<RRPPage />} />
+            <Route path="/DEV" element={<DEVPage />} />
+            <Route path="/CST" element={<CSTPage />} />
+            <Route path="/IID" element={<IIDPage />} />
+
+            {/* 制作中ページ */}
+            <Route path="/HT" element={<MaintenancePage />} />
+            <Route path="/NNBNB" element={<MaintenancePage />} />
+            <Route path="/KanTo" element={<MaintenancePage />} />
+
             <Route path="/ke" element={<KeLP />} />
             <Route path="/ke/reservations/:eventId" element={<ReservationDetail />} />
             <Route path="/training" element={<Training />} />
@@ -97,6 +119,9 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
+            {/* 404ページ */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
           </div>
         </Router>

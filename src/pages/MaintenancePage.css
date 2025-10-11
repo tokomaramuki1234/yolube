@@ -1,0 +1,28 @@
+/* Maintenance Page Specific Styles */
+.maintenance-content {
+  position: relative;
+}
+
+.maintenance-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 900px;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.maintenance-content-text {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .maintenance-background {
+    width: 100%;
+    max-width: 600px;
+  }
+}

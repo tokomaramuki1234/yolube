@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Footer.css';
 
 /**
@@ -8,6 +8,8 @@ import './Footer.css';
  * @returns {JSX.Element} Footer全体（SNS + フッター）
  */
 const Footer = () => {
+  const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+
   return (
     <>
       {/* SNSセクション */}
@@ -57,31 +59,53 @@ const Footer = () => {
       <footer className="footer">
         <div className="container">
           <div className="footer-content">
-            <div className="footer-main">
-              <div className="footer-logo">
-                <img src="/images/YOLUBE_logo.png" alt="YOLUBE" />
-              </div>
+            <div className="footer-logo">
+              <img src="/images/YOLUBE_logo.png" alt="YOLUBE" />
             </div>
 
             <div className="footer-links">
               <div className="footer-section">
-                <h4>事業内容</h4>
+                <h4>サイト情報</h4>
                 <ul>
-                  <li><a href="#services">テーブルゲーム文化醸成事業</a></li>
-                  <li><a href="#services">地域活性化事業</a></li>
-                  <li><a href="#services">テーブルゲーム開発事業</a></li>
-                  <li><a href="#services">ゲーム研修事業</a></li>
-                  <li><a href="#services">インバウンド基盤開発事業</a></li>
+                  <li><a href="/">ホーム</a></li>
+                  <li><a href="/NEWS">新着情報</a></li>
+                  <li><a href="#contact">お問い合わせ</a></li>
                 </ul>
               </div>
 
               <div className="footer-section">
-                <h4>情報</h4>
+                <h4>組織概要</h4>
                 <ul>
-                  <li><a href="#about">ABOUT</a></li>
-                  <li><a href="#achievements">実績</a></li>
-                  <li><a href="#profile">プロフィール</a></li>
-                  <li><a href="#contact">お問い合わせ</a></li>
+                  <li><a href="/YOLUBE">YOLUBEについて</a></li>
+                  <li><a href="/ABOUT">代表プロフィール</a></li>
+                  <li><a href="/ACHIEVEMENT">活動実績</a></li>
+                </ul>
+              </div>
+
+              <div className="footer-section">
+                <h4>事業案内</h4>
+                <ul>
+                  <li><a href="/FOSTER">テーブルゲーム文化醸成事業</a></li>
+                  <li><a href="/RRP">地域活性化事業</a></li>
+                  <li><a href="/DEV">テーブルゲーム開発事業</a></li>
+                  <li><a href="/CST">コミュニケーション研修事業</a></li>
+                  <li><a href="/IID">インバウンド基盤開発事業</a></li>
+                </ul>
+              </div>
+
+              <div className="footer-section footer-section-accordion">
+                <h4
+                  className="footer-accordion-header"
+                  onClick={() => setIsProjectsOpen(!isProjectsOpen)}
+                >
+                  プロジェクト
+                  <span className={`footer-accordion-icon ${isProjectsOpen ? 'open' : ''}`}>▼</span>
+                </h4>
+                <ul className={`footer-accordion-content ${isProjectsOpen ? 'open' : ''}`}>
+                  <li><a href="/ke">『け』</a></li>
+                  <li><a href="/HT">ホームタウントラベラー</a></li>
+                  <li><a href="/NNBNB">ねねばねべ</a></li>
+                  <li><a href="/KanTo">KanTo</a></li>
                 </ul>
               </div>
             </div>
