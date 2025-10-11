@@ -25,6 +25,30 @@ git push origin master  # デプロイ（Vercel自動デプロイ）
 4. [プロジェクト構造](#プロジェクト構造)
 5. [開発・デプロイ手順](#開発・デプロイ手順)
 6. [トラブルシューティング](#トラブルシューティング)
+7. [コーディングガイドライン](#コーディングガイドライン) 📘
+
+---
+
+## 📘 コーディングガイドライン
+
+**新規開発・コード修正を行う前に必ずお読みください**
+
+本プロジェクトでは、コードの品質と保守性を保つため、統一されたコーディングガイドラインを定めています。
+
+📖 **[CODING_GUIDELINES.md](docs/CODING_GUIDELINES.md)** - プロジェクト専用コーディング規約
+
+**含まれる内容:**
+- ✅ 命名規則（ファイル、変数、関数、CSSクラス）
+- ✅ CSS設計方針（CSS変数、レスポンシブブレークポイント）
+- ✅ React / JavaScript 規約（Functional Component + Hooks）
+- ✅ 多言語対応の実装方針
+- ✅ Gitコミットメッセージ規約
+- ✅ 推奨/非推奨とする記法
+
+**ベースガイドライン:**
+- [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
+- [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
+- [CSS Guidelines by Harry Roberts](https://cssguidelin.es/)
 
 ---
 

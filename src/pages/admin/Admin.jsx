@@ -24,40 +24,32 @@ const Admin = () => {
   const fetchAdminData = async () => {
     setIsLoading(true);
     try {
-      console.log('=== Admin Data Fetch Debug ===');
 
       // 統計データ取得
       const statsUrl = `${GAS_WEB_APP_URL}?action=getAdminStats`;
-      console.log('Fetching admin stats from:', statsUrl);
 
       const statsResponse = await fetch(statsUrl);
       const statsResult = await statsResponse.json();
 
-      console.log('Admin Stats Response:', statsResult);
 
       if (statsResult.success) {
         // GAS v3.7 以降は data プロパティに統計情報がネストされている
-        console.log('Admin Stats Data:', statsResult.data);
         setAdminStats(statsResult.data);
       }
 
       // 全予約データ取得
       const reservationsUrl = `${GAS_WEB_APP_URL}?action=getAllReservations`;
-      console.log('Fetching all reservations from:', reservationsUrl);
 
       const reservationsResponse = await fetch(reservationsUrl);
       const reservationsResult = await reservationsResponse.json();
 
-      console.log('All Reservations Response:', reservationsResult);
 
       if (reservationsResult.success) {
         // こちらも同様に data プロパティが存在するか確認
-        console.log('Reservations Data:', reservationsResult.data || reservationsResult);
         setReservations(reservationsResult.data || []);
       }
 
     } catch (error) {
-      console.error('Failed to fetch admin data:', error);
     } finally {
       setIsLoading(false);
     }

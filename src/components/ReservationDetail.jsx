@@ -166,13 +166,9 @@ const ReservationDetail = () => {
       try {
         setError('');
 
-        console.log('=== Reservation Detail Debug ===');
-        console.log('EventID from URL:', eventId);
-        console.log('EventID type:', typeof eventId);
 
         // 予約者一覧を取得
         const reservationsUrl = `${GAS_WEB_APP_URL}?action=getReservations&eventId=${eventId}`;
-        console.log('Fetching reservations from:', reservationsUrl);
 
         const reservationsResponse = await fetch(reservationsUrl);
 
@@ -181,11 +177,8 @@ const ReservationDetail = () => {
         }
 
         const reservationsResult = await reservationsResponse.json();
-        console.log('Reservations API Response:', reservationsResult);
 
         if (reservationsResult.success) {
-          console.log('Reservations data:', reservationsResult.data);
-          console.log('Reservations count:', reservationsResult.data?.length || 0);
           setReservations(reservationsResult.data || []);
         } else {
           console.error('Reservations API error:', reservationsResult.error);
@@ -194,7 +187,6 @@ const ReservationDetail = () => {
 
         // イベント情報を取得
         const eventInfoUrl = `${GAS_WEB_APP_URL}?action=getEventInfo&eventId=${eventId}`;
-        console.log('Fetching event info from:', eventInfoUrl);
 
         const eventInfoResponse = await fetch(eventInfoUrl);
 
@@ -203,16 +195,13 @@ const ReservationDetail = () => {
         }
 
         const eventInfoResult = await eventInfoResponse.json();
-        console.log('Event Info API Response:', eventInfoResult);
 
         if (eventInfoResult.success) {
-          console.log('Event info data:', eventInfoResult.data);
           setEventInfo(eventInfoResult.data);
         }
 
         setIsLoading(false);
       } catch (err) {
-        console.error('Failed to fetch reservation details:', err);
         setError(t.errorMessage);
         setIsLoading(false);
       }

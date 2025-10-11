@@ -140,10 +140,8 @@ const ReservationStatus = ({ currentLanguage = 'ja' }) => {
   const fetchReservationStats = async () => {
     try {
       setError('');
-      console.log('=== ReservationStatus Debug ===');
       // キャッシュバスティングのためタイムスタンプを追加
       const url = `${GAS_WEB_APP_URL}?action=getReservationStats&_t=${Date.now()}`;
-      console.log('Fetching from:', url);
 
       const response = await fetch(url);
 
@@ -152,27 +150,21 @@ const ReservationStatus = ({ currentLanguage = 'ja' }) => {
       }
 
       const result = await response.json();
-      console.log('ReservationStats API Response:', result);
 
       if (result.success) {
         // GAS v3.10以降は data プロパティに統計情報がネストされている可能性を確認
         const reservations = result.data?.reservations || result.reservations || [];
         const lastUpdated = result.data?.last_updated || result.last_updated || '';
 
-        console.log('Reservations data:', reservations);
-        console.log('Reservations count:', reservations.length);
-        console.log('Last updated:', lastUpdated);
 
         setReservationStats(reservations);
         setLastUpdated(lastUpdated);
       } else {
-        console.error('API error:', result.error || result.message);
         throw new Error(result.message || 'データの取得に失敗しました');
       }
 
       setIsLoading(false);
     } catch (err) {
-      console.error('Failed to fetch reservation stats:', err);
       setError('予約状況の取得に失敗しました。しばらくしてから再度お試しください。');
       setIsLoading(false);
     }

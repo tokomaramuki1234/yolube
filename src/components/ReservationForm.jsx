@@ -240,7 +240,6 @@ const ReservationForm = ({ currentLanguage = 'ja' }) => {
         const events = getUpcomingEventsList(sheetsService, data, 6);
         setUpcomingEvents(events);
       } catch (error) {
-        console.error('Failed to fetch events:', error);
         // デフォルトのイベントリストを設定
         setUpcomingEvents([
           {
@@ -395,10 +394,6 @@ const ReservationForm = ({ currentLanguage = 'ja' }) => {
       desiredGame: form.current.games_request.value,
       notes: form.current.special_notes.value
     };
-
-    console.log('=== Reservation Form Submit Debug ===');
-    console.log('Selected Event:', selectedEvent);
-    console.log('Form Data:', formData);
 
     // 文字数チェック
     if (formData.name.length > 50) {

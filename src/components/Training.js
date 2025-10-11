@@ -34,8 +34,8 @@ const Training = () => {
     setIsLoading(true);
     setMessage('');
 
-    // GAS WebアプリのURL
-    const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwGhOV6W4DoMTK9Zagbdjqq0KVx0KVThPqFtIzbFG__fine1Kez4_EmO7G9TwMiYrIGbg/exec';
+    // GAS WebアプリのURL（環境変数から取得）
+    const GAS_WEB_APP_URL = process.env.REACT_APP_GAS_WEB_APP_URL || 'https://script.google.com/macros/s/AKfycbwGhOV6W4DoMTK9Zagbdjqq0KVx0KVThPqFtIzbFG__fine1Kez4_EmO7G9TwMiYrIGbg/exec';
 
     // HTMLフォーム送信でCORS回避
     const hiddenForm = document.createElement('form');

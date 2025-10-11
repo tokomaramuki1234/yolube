@@ -2,8 +2,8 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const AuthContext = createContext(null);
 
-// 管理者パスワード（本番環境では環境変数化推奨）
-const ADMIN_PASSWORD = 'yolube2025';
+// 管理者パスワード（環境変数から取得）
+const ADMIN_PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD || 'default_password';
 
 // セッション有効期限（24時間）
 const SESSION_DURATION = 24 * 60 * 60 * 1000;

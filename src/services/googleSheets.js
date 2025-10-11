@@ -1,3 +1,5 @@
+import logger from '../utils/logger';
+
 // 有効な会場リスト
 const VALID_VENUES = [
   '秋田ベイパラダイス',
@@ -14,17 +16,17 @@ const VENUE_ADDRESSES = {
 
 class GoogleSheetsService {
   constructor() {
-    this.spreadsheetId = '14roOdnMm4kdnL64OWkXdgMJ_qSampUuzr-tvEGeGhb4';
+    this.spreadsheetId = process.env.REACT_APP_SPREADSHEET_ID || '14roOdnMm4kdnL64OWkXdgMJ_qSampUuzr-tvEGeGhb4';
     this.apiKey = process.env.REACT_APP_GOOGLE_SHEETS_API_KEY;
   }
 
   // Google Sheets APIクライアントを初期化（ブラウザ用）
   async initialize() {
     try {
-      console.log('Initializing Google Sheets service...');
+      logger.log('Initializing Google Sheets service...');
       return true;
     } catch (error) {
-      console.error('Google Sheets API initialization failed:', error);
+      logger.error('Google Sheets API initialization failed:', error);
       return false;
     }
   }
@@ -32,31 +34,31 @@ class GoogleSheetsService {
   // スプレッドシートからデータを取得（公開スプレッドシート用）
   async getSheetData() {
     try {
-      console.log('Fetching spreadsheet data...');
-      
+      logger.log('Fetching spreadsheet data...');
+
       // 公開スプレッドシートからCSV形式でデータを取得
       const csvUrl = `https://docs.google.com/spreadsheets/d/${this.spreadsheetId}/export?format=csv&gid=0`;
-      
+
       const response = await fetch(csvUrl);
-      
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
+
       const csvText = await response.text();
-      console.log('CSV data received:', csvText);
-      
+      logger.log('CSV data received:', csvText);
+
       // CSVをパース
       const rows = csvText.split('\n').map(row => {
         // 簡単なCSVパース（カンマ区切り）
         return row.split(',').map(cell => cell.replace(/"/g, '').trim());
       });
-      
-      console.log('Parsed rows:', rows);
-      
+
+      logger.log('Parsed rows:', rows);
+
       return rows.filter(row => row.length > 0 && row[0]); // 空行を除外
     } catch (error) {
-      console.error('Failed to fetch spreadsheet data:', error);
+      logger.error('Failed to fetch spreadsheet data:', error);
       throw error;
     }
   }
@@ -64,18 +66,18 @@ class GoogleSheetsService {
   // 日付文字列をDateオブジェクトに変換
   parseDate(dateString) {
     if (!dateString) return null;
-    
-    console.log('Parsing date:', dateString);
-    
+
+    logger.log('Parsing date:', dateString);
+
     // 日本語形式の日付をパース: "2025年8月9日(土)" → "2025/8/9"
     const match = dateString.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/);
     if (match) {
       const [, year, month, day] = match;
       const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-      console.log('Parsed date:', date);
+      logger.log('Parsed date:', date);
       return date;
     }
-    
+
     // フォールバック: 一般的な日付形式
     const date = new Date(dateString);
     return isNaN(date.getTime()) ? null : date;
@@ -94,10 +96,10 @@ class GoogleSheetsService {
     }
     cutoffDate.setHours(0, 0, 0, 0);
 
-    console.log('Current time:', now);
-    console.log('Current hour:', currentHour);
-    console.log('Cutoff date:', cutoffDate);
-    console.log('Valid venues:', VALID_VENUES);
+    logger.log('Current time:', now);
+    logger.log('Current hour:', currentHour);
+    logger.log('Cutoff date:', cutoffDate);
+    logger.log('Valid venues:', VALID_VENUES);
 
     let candidates = [];
 
@@ -110,19 +112,19 @@ class GoogleSheetsService {
       const venue = row[2];   // C列
       const eventCount = row[4]; // E列
 
-      console.log(`Row ${i}:`, { dateStr, venue, eventCount });
+      logger.log(`Row ${i}:`, { dateStr, venue, eventCount });
 
       const eventDate = this.parseDate(dateStr);
       if (!eventDate) {
-        console.log('Failed to parse date:', dateStr);
+        logger.log('Failed to parse date:', dateStr);
         continue;
       }
 
       if (eventDate < cutoffDate) {
-        console.log('Date is before cutoff:', dateStr, eventDate);
+        logger.log('Date is before cutoff:', dateStr, eventDate);
         continue;
       }
-      
+
       candidates.push({
         date: eventDate,
         dateString: dateStr,
@@ -131,23 +133,23 @@ class GoogleSheetsService {
         rowIndex: i
       });
     }
-    
-    console.log('Future candidates:', candidates);
-    
+
+    logger.log('Future candidates:', candidates);
+
     // 日付順にソート
     candidates.sort((a, b) => a.date - b.date);
-    
+
     // 有効な会場を持つ最初のイベントを検索
     for (const candidate of candidates) {
-      console.log('Checking venue:', candidate.venue, 'Valid?', VALID_VENUES.includes(candidate.venue));
+      logger.log('Checking venue:', candidate.venue, 'Valid?', VALID_VENUES.includes(candidate.venue));
       if (VALID_VENUES.includes(candidate.venue)) {
-        console.log('Found valid event:', candidate);
+        logger.log('Found valid event:', candidate);
         return candidate;
       }
     }
-    
+
     // 有効な会場が見つからない場合は最も近い日付のイベントを返す
-    console.log('No valid venue found, returning first candidate:', candidates[0]);
+    logger.log('No valid venue found, returning first candidate:', candidates[0]);
     return candidates.length > 0 ? candidates[0] : null;
   }
 
@@ -195,7 +197,7 @@ class GoogleSheetsService {
         dateString: nextEvent.dateString
       };
     } catch (error) {
-      console.error('Failed to get next event info:', error);
+      logger.error('Failed to get next event info:', error);
       throw error;
     }
   }
