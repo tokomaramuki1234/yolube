@@ -28,6 +28,10 @@
   align-items: center;
 }
 
+.logo.clickable {
+  cursor: pointer;
+}
+
 .logo-img {
   height: 40px;
   width: auto;

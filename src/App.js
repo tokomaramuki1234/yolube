@@ -48,7 +48,7 @@ const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
 
   if (isLoading) {
-    return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>読み込み中...</div>;
+    return <div className="loading-container">読み込み中...</div>;
   }
 
   return isAuthenticated ? children : <Navigate to="/admin/login" />;

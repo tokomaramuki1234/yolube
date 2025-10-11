@@ -48,7 +48,7 @@ const Header = () => {
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container">
         <div className="header-content">
-          <div className="logo" onClick={() => handlePageChange('/')} style={{ cursor: 'pointer' }}>
+          <div className="logo clickable" onClick={() => handlePageChange('/')}>
             <img src="/images/YOLUBE_logo.png" alt="YOLUBE" className="logo-img" />
           </div>
           

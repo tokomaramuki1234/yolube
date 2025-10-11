@@ -122,88 +122,88 @@
 
 /* 強制的な中央揃え - 最優先 */
 #about .about-hero .hero-content {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  text-align: center !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 #about .about-hero .hero-text {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 }
 
 #about .about-hero .hero-text * {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #about .about-hero .hero-vision {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 }
 
 #about .about-hero .vision-main,
 #about .about-hero .vision-subtitle,
 #about .about-hero .section-title {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100% !important;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 .about-hero .hero-text .section-title {
-  font-size: 3.5rem !important;
-  font-weight: 300 !important;
-  margin-bottom: 30px !important;
-  letter-spacing: 0.05em !important;
-  color: var(--text-primary) !important;
-  text-align: center !important;
-  width: 100% !important;
+  font-size: 3.5rem;
+  font-weight: 300;
+  margin-bottom: 30px;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  text-align: center;
+  width: 100%;
 }
 
 .about-hero .hero-vision {
-  margin-top: 40px !important;
-  text-align: center !important;
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
+  margin-top: 40px;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .about-hero .vision-main {
-  font-size: 4.5rem !important;
-  font-weight: 900 !important;
-  line-height: 1.1 !important;
-  margin-bottom: 20px !important;
-  background: linear-gradient(135deg, #8BC780 0%, #6BA768 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  text-align: center !important;
-  width: 100% !important;
-  white-space: pre-line !important;
-  display: block !important;
+  font-size: 4.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #8BC780 0%, #6BA768 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  width: 100%;
+  white-space: pre-line;
+  display: block;
 }
 
 .about-hero .vision-subtitle {
-  font-size: 1.4rem !important;
-  font-weight: 300 !important;
-  color: var(--text-secondary) !important;
-  opacity: 0.9 !important;
-  line-height: 1.6 !important;
-  text-align: center !important;
-  width: 100% !important;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  opacity: 0.9;
+  line-height: 1.6;
+  text-align: center;
+  width: 100%;
 }
 
 /* イントロセクション */
@@ -1021,10 +1021,10 @@
   /* Hero section title maintains its unique styling */
 
   .about-hero .vision-main {
-    font-size: 2.2rem !important;
-    line-height: 1.2 !important;
-    white-space: pre-line !important;
-    display: block !important;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    white-space: pre-line;
+    display: block;
   }
 
   .vision-subtitle {
@@ -1141,10 +1141,10 @@
   /* Hero section title maintains its unique styling */
 
   .about-hero .vision-main {
-    font-size: 1.8rem !important;
-    line-height: 1.2 !important;
-    white-space: pre-line !important;
-    display: block !important;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    white-space: pre-line;
+    display: block;
   }
 
   .intro-content h3 {
@@ -1305,49 +1305,49 @@
 
 /* 強制的な中央揃え - 最優先 */
 #about .about-hero .hero-content {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  text-align: center !important;
-  width: 100% !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  padding: 0 40px !important;
-  position: relative !important;
-  z-index: 1 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
 }
 
 #about .about-hero .hero-text {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 }
 
 #about .about-hero .hero-text * {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #about .about-hero .hero-vision {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  width: 100% !important;
-  margin-top: 40px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-top: 40px;
 }
 
 #about .about-hero .vision-main,
 #about .about-hero .vision-subtitle,
 #about .about-hero .section-title {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100% !important;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }

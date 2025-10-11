@@ -395,8 +395,8 @@
   .reservation .section-title,
   .reservation-title,
   .form-group label {
-    color: #e2e8f0 !important;
-    font-weight: 600 !important;
+    color: #e2e8f0;
+    font-weight: 600;
   }
 
   .reservation .section-subtitle,
@@ -427,10 +427,10 @@
   }
 
   .radio-label {
-    color: #cbd5e0 !important;
+    color: #cbd5e0;
   }
 
   .required {
-    color: #fc8181 !important;
+    color: #fc8181;
   }
 }
