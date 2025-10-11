@@ -5,6 +5,7 @@ import { faGamepad, faUsers, faCalendarAlt, faMapMarkerAlt, faClock, faHeart, fa
 import GoogleSheetsService from '../../services/googleSheets';
 import ReservationForm from '../../components/ReservationForm';
 import ReservationStatus from '../../components/ReservationStatus';
+import Footer from '../../components/Footer';
 import './KeLP.css';
 
 const KeLPWeb3 = () => {
@@ -1528,46 +1529,10 @@ const KeLPWeb3 = () => {
         </div>
       </section>
 
-      {/* SNS Links Section */}
-      <section id="sns" className="ke-sns">
-        <div className="ke-container">
-          <div className="ke-sns-content">
-            <h2 className="ke-sns-title" dangerouslySetInnerHTML={{ __html: t.sns.title }}></h2>
-            <p className="ke-sns-subtitle" dangerouslySetInnerHTML={{ __html: t.sns.subtitle }}></p>
-            <div className="ke-sns-links">
-              <a
-                href="https://x.com/_YOLUBE_"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ke-sns-link ke-sns-x"
-              >
-                <img src="/images/SVG/sns_x.svg" alt="X (Twitter)" />
-              </a>
-              <a
-                href="https://www.facebook.com/YOLUBE.AKITA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ke-sns-link ke-sns-facebook"
-              >
-                <img src="/images/SVG/sns_fb.svg" alt="Facebook" />
-              </a>
-              <a
-                href="https://www.instagram.com/_yolube_/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ke-sns-link ke-sns-instagram"
-              >
-                <img src="/images/SVG/sns_insta.svg" alt="Instagram" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Back to Top Button */}
       {showBackToTop && (
-        <button 
-          className="ke-back-to-top" 
+        <button
+          className="ke-back-to-top"
           onClick={scrollToTop}
           aria-label="トップへ戻る"
         >
@@ -1575,23 +1540,8 @@ const KeLPWeb3 = () => {
         </button>
       )}
 
-      {/* Footer */}
-      <footer className="ke-footer">
-        <div className="ke-container">
-          <div className="ke-footer-content">
-            <div className="ke-footer-logo">
-              <a href="https://yolube.jp" target="_blank" rel="noopener noreferrer">
-                <img src="/images/YOLUBE_logo.png" alt="YOLUBE" loading="lazy" />
-              </a>
-            </div>
-            <div className="ke-footer-text">
-            </div>
-          </div>
-          <div className="ke-footer-bottom">
-            <p>&copy; 2025 YOLUBE. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      {/* Footer (共通コンポーネント) */}
+      <Footer />
       </div>
     </>
   );

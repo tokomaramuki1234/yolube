@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGamepad, faUsers, faCalendarAlt, faMapMarkerAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faChevronLeft, faChevronRight, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faBuilding, faPhone, faEnvelope, faArrowRight, faCheckCircle, faStar, faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
+import Footer from './Footer';
 import './Training.css';
 
 const Training = () => {
@@ -475,30 +476,19 @@ const Training = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="training-footer">
-        <div className="training-container">
-          <div className="training-footer-content">
-            <div className="training-footer-logo">
-              <img src="/images/YOLUBE_logo.png" alt="YOLUBE" />
-            </div>
-          </div>
-          <div className="training-footer-bottom">
-            <p>&copy; 2025 YOLUBE. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
-
       {/* Back to Top Button */}
       {showBackToTop && (
-        <button 
-          className="training-back-to-top" 
+        <button
+          className="training-back-to-top"
           onClick={scrollToTop}
           aria-label="トップへ戻る"
         >
           <FontAwesomeIcon icon={faChevronUp} />
         </button>
       )}
+
+      {/* Footer (共通コンポーネント) */}
+      <Footer />
     </div>
   );
 };

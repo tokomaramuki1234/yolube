@@ -85,13 +85,7 @@ function App() {
             } />
             <Route path="/ke" element={<KeLP />} />
             <Route path="/ke/reservations/:eventId" element={<ReservationDetail />} />
-            <Route path="/training" element={
-              <>
-                <Header />
-                <Training />
-                <Footer />
-              </>
-            } />
+            <Route path="/training" element={<Training />} />
 
             {/* 管理画面ルート */}
             <Route path="/admin/login" element={<Login />} />

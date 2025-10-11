@@ -1,3 +1,92 @@
+/* SNSセクション */
+.sns {
+  padding: 40px 0;
+  background: linear-gradient(135deg, #8BC780 0%, #A5D59C 50%, #6BA563 100%);
+  text-align: center;
+}
+
+.sns-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sns-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.sns-subtitle {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.sns-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sns-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sns-link:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.sns-link img {
+  width: 60px;
+  height: 60px;
+  display: block;
+  object-fit: contain;
+}
+
+.sns-facebook {
+  width: 99px;
+  height: 99px;
+}
+
+.sns-facebook img {
+  width: 100px;
+  height: 100px;
+}
+
+.sns-instagram {
+  background: transparent;
+  box-shadow: none;
+}
+
+.sns-instagram:hover {
+  box-shadow: none;
+}
+
+.sns-instagram img {
+  width: 100px;
+  height: 100px;
+}
+
+/* モバイル改行用のspan */
+.mobile-br {
+  display: none;
+}
+
+/* フッターセクション */
 .footer {
   background: linear-gradient(135deg, var(--text-primary) 0%, #2c3e50 100%);
   color: white;
@@ -72,6 +161,49 @@
 
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
+  /* SNS レスポンシブ */
+  .sns-links {
+    gap: 25px;
+  }
+
+  .sns-link {
+    width: 80px;
+    height: 80px;
+  }
+
+  .sns-link img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .sns-facebook {
+    width: 79px;
+    height: 79px;
+  }
+
+  .sns-facebook img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .sns-instagram img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .sns-title {
+    font-size: 2rem;
+  }
+
+  .sns-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .mobile-br {
+    display: inline;
+  }
+
+  /* Footer レスポンシブ */
   .footer {
     padding: 40px 0 20px;
   }
