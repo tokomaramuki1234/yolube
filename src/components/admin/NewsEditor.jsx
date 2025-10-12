@@ -104,13 +104,15 @@ const NewsEditor = ({ newsApiUrl }) => {
     const payload = { ...formData };
 
     try {
-      // GAS向けにURLパラメータでactionを送信
+      // GAS向けにURLパラメータ形式で送信（プリフライト回避）
+      const params = new URLSearchParams();
+      Object.keys(payload).forEach(key => {
+        params.append(key, payload[key]);
+      });
+      
       const response = await fetch(`${newsApiUrl}?action=${action}`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
+        body: params
       });
 
       const result = await response.json();
@@ -145,13 +147,13 @@ const NewsEditor = ({ newsApiUrl }) => {
     }
 
     try {
-      // GAS向けにURLパラメータでactionを送信
+      // GAS向けにURLパラメータ形式で送信（プリフライト回避）
+      const params = new URLSearchParams();
+      params.append('id', id);
+      
       const response = await fetch(`${newsApiUrl}?action=deleteNews`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ id })
+        body: params
       });
 
       const result = await response.json();
