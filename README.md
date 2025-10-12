@@ -61,7 +61,8 @@ git push origin master  # デプロイ（Vercel自動デプロイ）
 | `/` | メインページ | ヒーロー、About、Services、実績、プロフィール、お問い合わせ |
 | `/ke` | Ke.イベントページ | イベント紹介、予約状況、予約フォーム、ギャラリー |
 | `/training` | 企業研修ページ | コミュニケーション研修のランディングページ |
-| `/admin` | 管理画面 | 予約一覧、統計ダッシュボード（認証あり） |
+| `/NEWS` | 新着情報ページ | NEWS記事一覧、カテゴリフィルター |
+| `/admin` | 管理画面 | 予約一覧、NEWS管理、統計ダッシュボード（認証あり） |
 
 ### ページ階層と設計方針
 
@@ -231,31 +232,36 @@ import './PageName.css';          // ページ固有スタイル（オプショ�
    - 自動返信メール機能
    - SNSシェア機能（X/Facebook）
 
-2. **管理画面**
+2. **NEWS管理システム（NEW！）**
+   - 管理画面でのNEWS記事作成・編集・削除
+   - カテゴリ管理（イベント、お知らせ、メディア）
+   - ステータス管理（下書き、公開、予約公開）
+   - リアルタイムプレビュー
+   - フィルター・検索・CSV出力
+   - Google Sheets バックエンド連携
+
+3. **管理画面**
    - 予約一覧・詳細表示
+   - NEWS記事管理
    - 統計ダッシュボード
    - CSV出力機能
    - ベーシック認証
 
-3. **多言語対応**
+4. **多言語対応**
    - 7言語の自動切り替え
    - ブラウザ言語検出
    - モバイル対応メニュー
 
-4. **レスポンシブデザイン**
+5. **レスポンシブデザイン**
    - デスクトップ・タブレット・モバイル対応
    - タッチ操作最適化
 
-5. **アクセス解析・コンバージョントラッキング**
+6. **アクセス解析・コンバージョントラッキング**
    - ページビュー自動トラッキング（全ページ）
    - お問い合わせフォーム送信トラッキング
    - 予約完了トラッキング
    - GA4リアルタイムレポート
-
-5. **アクセス解析**
    - Google Tag Manager (GTM) 実装
-   - ページビュー追跡（全ページ自動）
-   - コンバージョン追跡（お問い合わせ・予約完了）
    - イベントパラメータ送信
 
 ### 🔐 セキュリティ機能
@@ -272,13 +278,19 @@ yolube/
 ├── src/
 │   ├── components/           # Reactコンポーネント
 │   │   ├── admin/           # 管理画面コンポーネント
+│   │   │   ├── Dashboard.jsx    # ダッシュボード
+│   │   │   ├── ReservationList.jsx # 予約一覧
+│   │   │   ├── NewsList.jsx     # NEWS一覧（NEW）
+│   │   │   └── NewsEditor.jsx   # NEWS編集フォーム（NEW）
 │   │   ├── ReservationForm.jsx  # 予約フォーム（GTM統合）
 │   │   ├── ReservationStatus.jsx # 予約状況表示
 │   │   ├── Contact.js       # お問い合わせフォーム（GTM統合）
 │   │   └── [各種コンポーネント]
 │   ├── pages/
 │   │   ├── ke/              # Ke.イベントページ
-│   │   └── admin/           # 管理画面ページ
+│   │   ├── admin/           # 管理画面ページ
+│   │   ├── NewsPage.js      # NEWSページ（API連携）
+│   │   └── [各種ページ]
 │   ├── contexts/            # React Context（認証等）
 │   ├── services/            # API連携
 │   ├── utils/
@@ -289,7 +301,11 @@ yolube/
 │   ├── images/              # 画像ファイル・OGP
 │   └── docs/PDF/           # PDF資料
 ├── docs/                    # システムドキュメント
-│   ├── GAS_INTEGRATED.gs   # Google Apps Script（最新版）
+│   ├── GAS_INTEGRATED.gs   # Google Apps Script（予約システム）
+│   ├── GAS_NEWS_API.gs     # Google Apps Script（NEWSシステム）NEW
+│   ├── GAS_SETUP_GUIDE.md  # GAS セットアップ手順 NEW
+│   ├── NEWS_SYSTEM_DESIGN.md # NEWSシステム設計書 NEW
+│   ├── NEWS_IMPLEMENTATION_SUMMARY.md # 実装完了レポート NEW
 │   └── [技術ドキュメント]
 ├── scripts/                 # ビルドスクリプト
 ├── package.json
@@ -719,6 +735,160 @@ Copyright (c) 2025 YOLUBE
 
 ## 🆕 最新更新情報（2025年10月12日）
 
+### 🎉 NEWS管理システム実装完了
+
+**実装日**: 2025年10月12日
+**ステータス**: ✅ コーディング完了（GAS APIセットアップ待ち）
+**バージョン**: v4.0
+
+#### 📋 実装内容
+
+YOLUBE ウェブサイトに **NEWS投稿管理システム** を実装しました。
+
+##### 主な機能
+- ✅ 管理画面（/admin）でのNEWS記事管理
+  - NEWS記事の作成・編集・削除
+  - カテゴリ分類（イベント、お知らせ、メディア）
+  - ステータス管理（下書き、公開、予約公開）
+  - NEWバッジ表示制御
+  - フィルター・ソート・検索機能
+  - CSV出力機能
+  - リアルタイムプレビュー機能
+
+- ✅ 公開ページ（/NEWS）のAPI連携化
+  - Google SheetsからリアルタイムにNEWS記事を取得
+  - カテゴリフィルター機能
+  - ローディング・エラー表示
+  - レスポンシブデザイン対応
+
+- ✅ Google Apps Script バックエンドAPI
+  - 完全なCRUD操作API
+  - 公開NEWS取得API（フィルター対応）
+  - 統計情報取得API
+  - 初期化関数（NEWSシート自動作成）
+
+#### 📁 作成されたファイル
+
+**フロントエンド（7ファイル）**:
+- `src/components/admin/NewsList.jsx` + `.css` - NEWS一覧管理画面
+- `src/components/admin/NewsEditor.jsx` + `.css` - NEWS作成・編集フォーム
+- `src/pages/admin/Admin.jsx` - 管理画面メイン（NEWSタブ追加）
+- `src/pages/NewsPage.js` - 公開NEWSページ（API連携化）
+- `src/pages/NewsPage.css` - ローディング・エラー表示CSS追加
+
+**バックエンド・ドキュメント（4ファイル）**:
+- `docs/NEWS_SYSTEM_DESIGN.md` - システム設計書（データ構造、API仕様、UI設計）
+- `docs/GAS_NEWS_API.gs` - Google Apps Script APIコード（コピペ用）
+- `docs/GAS_SETUP_GUIDE.md` - GAS セットアップ手順書
+- `docs/NEWS_IMPLEMENTATION_SUMMARY.md` - 実装完了レポート
+
+#### 🔧 次の作業（要対応）
+
+**⚠️ 重要: Google Apps Scriptのセットアップが必要です**
+
+##### ステップ1: Google Apps Scriptをセットアップ
+
+1. **Google Sheetsを開く**
+   - 既存の予約管理用スプレッドシートを開く
+
+2. **Apps Scriptを開く**
+   - 「拡張機能」→「Apps Script」
+
+3. **コードを追加**
+   - `docs/GAS_NEWS_API.gs` の内容を全てコピー
+   - 既存コードの下に貼り付け
+
+4. **SPREADSHEET_IDを設定**
+   ```javascript
+   const SPREADSHEET_ID = 'あなたのスプレッドシートID';
+   ```
+
+5. **NEWSシートを初期化**
+   - 関数選択で `initializeNewsSheet` を選択
+   - 「▶実行」ボタンをクリック
+   - 権限承認が必要な場合は承認する
+
+6. **ウェブアプリとしてデプロイ**
+   - 「デプロイ」→「新しいデプロイ」
+   - 種類: ウェブアプリ
+   - 実行ユーザー: 自分
+   - アクセスできるユーザー: **全員**
+   - 「デプロイ」をクリック
+   - **ウェブアプリURL**をコピー
+
+##### ステップ2: ReactアプリにURL設定
+
+**2箇所** でURLを設定してください:
+
+1. **src/pages/admin/Admin.jsx の 24行目**
+   ```javascript
+   const NEWS_API_URL = 'ここに貼り付け';
+   ```
+
+2. **src/pages/NewsPage.js の 16行目**
+   ```javascript
+   const NEWS_API_URL = 'ここに貼り付け';
+   ```
+
+##### ステップ3: テストとデプロイ
+
+```bash
+# ローカルテスト
+# 1. http://localhost:3000/admin/login にアクセス
+# 2. 「NEWS管理」タブをクリック
+# 3. 新規作成・編集・削除をテスト
+# 4. http://localhost:3000/NEWS で公開ページを確認
+
+# 本番デプロイ
+git add .
+git commit -m "feat: NEWS管理システム実装"
+git push origin master
+```
+
+#### 📖 詳細ドキュメント
+
+| ドキュメント | 内容 |
+|------------|------|
+| `docs/GAS_SETUP_GUIDE.md` | GASセットアップの詳細手順 |
+| `docs/NEWS_IMPLEMENTATION_SUMMARY.md` | 実装の完全レポート |
+| `docs/NEWS_SYSTEM_DESIGN.md` | システム設計の詳細 |
+| `docs/GAS_NEWS_API.gs` | GASコード（コピペ用） |
+
+#### 💡 使い方（管理者として）
+
+**NEWS記事を作成**:
+1. `/admin` → 「NEWS管理」タブ
+2. 「➕ 新規作成」ボタン
+3. フォーム入力（タイトル、カテゴリ、公開日、概要、本文など）
+4. 「作成する」ボタン
+
+**ステータスの使い分け**:
+- **下書き**: 非公開（作業中）
+- **公開**: 即座に公開ページに表示
+- **予約公開**: 指定日以降に自動表示
+
+#### 🗄️ データベース構造（NEWSシート）
+
+| カラム | データ型 | 必須 | 説明 |
+|--------|---------|------|------|
+| id | 数値 | ○ | 記事ID（自動採番） |
+| createdAt | 日時 | ○ | 作成日時 |
+| updatedAt | 日時 | ○ | 更新日時 |
+| publishDate | 日付 | ○ | 公開日 |
+| category | テキスト | ○ | カテゴリ（イベント/お知らせ/メディア） |
+| title | テキスト | ○ | タイトル |
+| description | テキスト | ○ | 概要（最大200文字） |
+| content | テキスト | ○ | 本文 |
+| link | テキスト |  | 関連リンク |
+| imageUrl | テキスト |  | 画像URL |
+| tags | テキスト |  | タグ（カンマ区切り） |
+| status | テキスト | ○ | draft/published/scheduled |
+| isNew | 真偽値 | ○ | NEWバッジ表示 |
+| author | テキスト |  | 作成者 |
+| displayOrder | 数値 |  | 表示順序 |
+
+---
+
 ### ✅ UI/UX改善・バグ修正
 
 #### 1. **代表プロフィールページ（/ABOUT）モバイル表示最適化**
@@ -801,4 +971,4 @@ Copyright (c) 2025 YOLUBE
 ---
 
 *最終更新: 2025年10月12日*
-*システムバージョン: v3.35 (モバイルUI最適化・ドロップダウン修正・HTML構造改善)*
+*システムバージョン: v4.0 (NEWS管理システム実装完了)*

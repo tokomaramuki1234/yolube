@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -8,8 +8,44 @@ import './NewsPage.css';
 
 const NewsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [newsItems, setNewsItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const newsItems = [
+  // ★ NEWS API URL（Admin.jsxと同じURL）
+  const NEWS_API_URL = 'https://script.google.com/macros/s/AKfycbxZRZSDGyg_Z1rGcuD9xymlMXB4vV3Cz8EVTOWS2GvP-bLKeYcq7q122ixPQKV71Xg6iQ/exec';
+
+  // NEWS データ取得
+  useEffect(() => {
+    const fetchNews = async () => {
+      setIsLoading(true);
+      setError(null);
+
+      try {
+        const newsUrl = `${NEWS_API_URL}?action=getPublishedNews`;
+        const response = await fetch(newsUrl);
+        const result = await response.json();
+
+        if (result.success) {
+          setNewsItems(result.data || []);
+        } else {
+          setError('ニュースの取得に失敗しました');
+        }
+      } catch (err) {
+        console.error('NEWS取得エラー:', err);
+        setError('ニュースの取得に失敗しました');
+        // フォールバック: エラー時は空配列を表示
+        setNewsItems([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, []);
+
+  // 以下はフォールバック用のハードコードデータ（API未設定時のみ使用）
+  const fallbackNewsItems = [
     {
       id: 1,
       date: '2025.07.14',
@@ -134,39 +170,62 @@ const NewsPage = () => {
         {/* ニュース一覧 */}
         <section className="news-list-section">
           <div className="container">
-            <div className="news-grid">
-              {filteredNews.map(item => (
-                <article key={item.id} className="news-card">
-                  <div className="news-card-header">
-                    <time className="news-card-date">{item.date}</time>
-                    <div className="news-card-labels">
-                      <span className={`news-card-category category-${item.category}`}>
-                        {item.category}
-                      </span>
-                      {item.isNew && <span className="news-card-badge">NEW</span>}
-                    </div>
-                  </div>
-
-                  <h2 className="news-card-title">{item.title}</h2>
-                  <p className="news-card-description">{item.description}</p>
-                  <p className="news-card-content">{item.content}</p>
-
-                  {item.link && (
-                    <a href={item.link} className="news-card-link">
-                      詳しく見る
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                        <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </a>
-                  )}
-                </article>
-              ))}
-            </div>
-
-            {filteredNews.length === 0 && (
-              <div className="news-empty">
-                <p>該当する新着情報はありません</p>
+            {/* ローディング表示 */}
+            {isLoading && (
+              <div className="news-loading">
+                <div className="news-spinner"></div>
+                <p>ニュースを読み込み中...</p>
               </div>
+            )}
+
+            {/* エラー表示 */}
+            {error && !isLoading && (
+              <div className="news-error">
+                <p>{error}</p>
+                <button onClick={() => window.location.reload()} className="news-reload-btn">
+                  再読み込み
+                </button>
+              </div>
+            )}
+
+            {/* ニュース一覧 */}
+            {!isLoading && !error && (
+              <>
+                <div className="news-grid">
+                  {filteredNews.map(item => (
+                    <article key={item.id} className="news-card">
+                      <div className="news-card-header">
+                        <time className="news-card-date">{item.date}</time>
+                        <div className="news-card-labels">
+                          <span className={`news-card-category category-${item.category}`}>
+                            {item.category}
+                          </span>
+                          {item.isNew && <span className="news-card-badge">NEW</span>}
+                        </div>
+                      </div>
+
+                      <h2 className="news-card-title">{item.title}</h2>
+                      <p className="news-card-description">{item.description}</p>
+                      <p className="news-card-content">{item.content}</p>
+
+                      {item.link && (
+                        <a href={item.link} className="news-card-link">
+                          詳しく見る
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </a>
+                      )}
+                    </article>
+                  ))}
+                </div>
+
+                {filteredNews.length === 0 && (
+                  <div className="news-empty">
+                    <p>該当する新着情報はありません</p>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </section>

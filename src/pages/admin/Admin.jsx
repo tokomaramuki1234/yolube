@@ -3,17 +3,25 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import Dashboard from '../../components/admin/Dashboard';
 import ReservationList from '../../components/admin/ReservationList';
+import NewsList from '../../components/admin/NewsList';
+import NewsEditor from '../../components/admin/NewsEditor';
 import './Admin.css';
 
 const Admin = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [adminStats, setAdminStats] = useState(null);
   const [reservations, setReservations] = useState([]);
+  const [news, setNews] = useState([]);
+  const [editingNews, setEditingNews] = useState(null);
+  const [showNewsEditor, setShowNewsEditor] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { logout } = useAuth();
   const navigate = useNavigate();
 
   const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxZRZSDGyg_Z1rGcuD9xymlMXB4vV3Cz8EVTOWS2GvP-bLKeYcq7q122ixPQKV71Xg6iQ/exec';
+
+  // ★ NEWS用のGAS API URL（セットアップ後に更新してください）
+  const NEWS_API_URL = GAS_WEB_APP_URL; // 同じスプレッドシートを使用する場合
 
   // 初回ロード時にデータ取得
   useEffect(() => {
@@ -49,10 +57,97 @@ const Admin = () => {
         setReservations(reservationsResult.data || []);
       }
 
+      // NEWS データ取得
+      await fetchNewsData();
+
     } catch (error) {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  // NEWS データ取得
+  const fetchNewsData = async () => {
+    try {
+      const newsUrl = `${NEWS_API_URL}?action=getAllNews`;
+      const newsResponse = await fetch(newsUrl);
+      const newsResult = await newsResponse.json();
+
+      if (newsResult.success) {
+        setNews(newsResult.data || []);
+      }
+    } catch (error) {
+      console.error('NEWS取得エラー:', error);
+    }
+  };
+
+  // NEWS 作成・更新
+  const handleSaveNews = async (newsData) => {
+    try {
+      const action = newsData.id ? 'updateNews' : 'createNews';
+      const url = `${NEWS_API_URL}?action=${action}`;
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newsData)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert(result.message || '保存しました');
+        await fetchNewsData();
+        setShowNewsEditor(false);
+        setEditingNews(null);
+      } else {
+        alert(result.message || '保存に失敗しました');
+      }
+    } catch (error) {
+      console.error('NEWS保存エラー:', error);
+      alert('保存に失敗しました');
+    }
+  };
+
+  // NEWS 削除
+  const handleDeleteNews = async (newsId) => {
+    try {
+      const url = `${NEWS_API_URL}?action=deleteNews`;
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id: newsId })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert(result.message || '削除しました');
+        await fetchNewsData();
+      } else {
+        alert(result.message || '削除に失敗しました');
+      }
+    } catch (error) {
+      console.error('NEWS削除エラー:', error);
+      alert('削除に失敗しました');
+    }
+  };
+
+  // NEWS 編集開始
+  const handleEditNews = (newsItem) => {
+    setEditingNews(newsItem);
+    setShowNewsEditor(true);
+  };
+
+  // NEWS エディタキャンセル
+  const handleCancelEdit = () => {
+    setShowNewsEditor(false);
+    setEditingNews(null);
   };
 
   // ログアウト処理
@@ -91,6 +186,17 @@ const Admin = () => {
             <span className="nav-icon">📋</span>
             予約一覧
           </button>
+
+          <button
+            className={`nav-item ${activeTab === 'news' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('news');
+              setShowNewsEditor(false);
+            }}
+          >
+            <span className="nav-icon">📰</span>
+            NEWS管理
+          </button>
         </nav>
 
         <div className="sidebar-footer">
@@ -105,15 +211,19 @@ const Admin = () => {
       <main className="admin-main">
         <header className="admin-header">
           <h1 className="admin-page-title">
-            {activeTab === 'dashboard' ? 'ダッシュボード' : '予約一覧'}
+            {activeTab === 'dashboard' && 'ダッシュボード'}
+            {activeTab === 'reservations' && '予約一覧'}
+            {activeTab === 'news' && (showNewsEditor ? (editingNews ? 'NEWS記事を編集' : 'NEWS記事を作成') : 'NEWS管理')}
           </h1>
-          <button className="refresh-btn" onClick={handleRefresh} disabled={isLoading}>
-            🔄 {isLoading ? '更新中...' : '更新'}
-          </button>
+          {!showNewsEditor && (
+            <button className="refresh-btn" onClick={handleRefresh} disabled={isLoading}>
+              🔄 {isLoading ? '更新中...' : '更新'}
+            </button>
+          )}
         </header>
 
         <div className="admin-content">
-          {isLoading && !adminStats ? (
+          {isLoading && !adminStats && activeTab !== 'news' ? (
             <div className="loading-container">
               <div className="spinner"></div>
               <p>データを読み込み中...</p>
@@ -126,6 +236,23 @@ const Admin = () => {
 
               {activeTab === 'reservations' && (
                 <ReservationList reservations={reservations} onRefresh={fetchAdminData} />
+              )}
+
+              {activeTab === 'news' && !showNewsEditor && (
+                <NewsList
+                  news={news}
+                  onRefresh={fetchNewsData}
+                  onEdit={handleEditNews}
+                  onDelete={handleDeleteNews}
+                />
+              )}
+
+              {activeTab === 'news' && showNewsEditor && (
+                <NewsEditor
+                  newsItem={editingNews}
+                  onSave={handleSaveNews}
+                  onCancel={handleCancelEdit}
+                />
               )}
             </>
           )}

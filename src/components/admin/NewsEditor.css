@@ -1,0 +1,458 @@
+/* NEWS編集画面 */
+.news-editor {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* ヘッダー */
+.news-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.news-editor-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.news-editor-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.news-editor-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+/* フォーム */
+.news-editor-form {
+  padding: 30px;
+}
+
+/* レイアウト */
+.news-editor-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+/* 左カラム（入力フォーム） */
+.news-editor-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 右カラム（プレビュー） */
+.news-editor-right {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+/* フォームグループ */
+.news-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.news-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* ラベル */
+.news-form-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.news-required {
+  color: #dc3545;
+  font-weight: 700;
+}
+
+.news-char-count {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #999;
+}
+
+/* 入力フィールド */
+.news-form-input,
+.news-form-select,
+.news-form-textarea {
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.news-form-input:focus,
+.news-form-select:focus,
+.news-form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(139, 199, 128, 0.1);
+}
+
+.news-form-input.error,
+.news-form-select.error,
+.news-form-textarea.error {
+  border-color: #dc3545;
+}
+
+.news-form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.news-form-select {
+  cursor: pointer;
+  background: white;
+}
+
+/* エラーメッセージ */
+.news-form-error {
+  font-size: 0.85rem;
+  color: #dc3545;
+  margin-top: -4px;
+}
+
+/* チェックボックス */
+.news-form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.news-form-checkbox:hover {
+  background: #e9ecef;
+}
+
+.news-form-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.news-form-checkbox span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* プレビューセクション */
+.news-preview-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.news-preview-title-section {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.news-preview-fullscreen-btn {
+  padding: 8px 16px;
+  background: #6c757d;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.news-preview-fullscreen-btn:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* プレビューカード */
+.news-preview-card {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.news-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.news-preview-date {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.news-preview-labels {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.news-preview-category {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.news-preview-category.category-イベント {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.news-preview-category.category-お知らせ {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.news-preview-category.category-メディア {
+  background: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.news-preview-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.news-preview-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+.news-preview-description {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0 0 15px 0;
+  line-height: 1.6;
+}
+
+.news-preview-content {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+}
+
+.news-preview-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.news-preview-link:hover {
+  color: var(--primary-dark);
+  gap: 8px;
+}
+
+/* アクションボタン */
+.news-editor-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  padding-top: 20px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.news-editor-cancel-btn,
+.news-editor-save-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.news-editor-cancel-btn {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.news-editor-cancel-btn:hover:not(:disabled) {
+  background: #d5d5d5;
+}
+
+.news-editor-save-btn {
+  background: var(--primary-color);
+  color: white;
+}
+
+.news-editor-save-btn:hover:not(:disabled) {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 199, 128, 0.3);
+}
+
+.news-editor-cancel-btn:disabled,
+.news-editor-save-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* フルスクリーンプレビューモーダル */
+.news-preview-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  animation: fadeIn 0.2s ease;
+}
+
+.news-preview-modal-content {
+  background: white;
+  border-radius: 16px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+.news-preview-modal-close {
+  position: sticky;
+  top: 15px;
+  left: 100%;
+  margin-right: 15px;
+  background: white;
+  border: 2px solid #e0e0e0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.news-preview-modal-close:hover {
+  background: #f0f0f0;
+  transform: rotate(90deg);
+}
+
+.news-preview-modal .news-preview-card {
+  border: none;
+  box-shadow: none;
+  padding: 40px;
+}
+
+/* レスポンシブ */
+@media (max-width: 1200px) {
+  .news-editor-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .news-editor-right {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .news-editor-header {
+    padding: 20px;
+  }
+
+  .news-editor-title {
+    font-size: 1.2rem;
+  }
+
+  .news-editor-form {
+    padding: 20px;
+  }
+
+  .news-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .news-editor-actions {
+    flex-direction: column;
+  }
+
+  .news-editor-cancel-btn,
+  .news-editor-save-btn {
+    width: 100%;
+  }
+
+  .news-preview-modal-content {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .news-preview-modal .news-preview-card {
+    padding: 25px;
+  }
+}
