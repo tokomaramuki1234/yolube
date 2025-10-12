@@ -48,14 +48,11 @@ function doPost(e) {
 }
 
 // CORS プリフライトリクエスト対応
+// 注: GASは「全員」アクセスでデプロイすると自動的にCORSヘッダーを付与します
 function doOptions(e) {
   return ContentService
     .createTextOutput('')
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeader('Access-Control-Allow-Origin', '*')
-    .setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-    .setHeader('Access-Control-Allow-Headers', 'Content-Type')
-    .setHeader('Access-Control-Max-Age', '86400');
+    .setMimeType(ContentService.MimeType.JSON);
 }
 
 /**
@@ -115,25 +112,19 @@ function handleRequest(e) {
         };
     }
 
-    // CORSヘッダーを追加
+    // レスポンス返却（GASが自動的にCORSヘッダーを付与）
     return ContentService
       .createTextOutput(JSON.stringify(result))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeader('Access-Control-Allow-Origin', '*')
-      .setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-      .setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      .setMimeType(ContentService.MimeType.JSON);
 
   } catch (error) {
-    // CORSヘッダー付きエラーレスポンス
+    // エラーレスポンス返却（GASが自動的にCORSヘッダーを付与）
     return ContentService
       .createTextOutput(JSON.stringify({
         success: false,
         message: 'Server error: ' + error.toString()
       }))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeader('Access-Control-Allow-Origin', '*')
-      .setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-      .setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      .setMimeType(ContentService.MimeType.JSON);
   }
 }
 
