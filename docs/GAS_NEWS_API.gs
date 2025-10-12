@@ -37,7 +37,7 @@ const TWITTER_API_CONFIG = {
 };
 
 /**
- * メインエントリーポイント（GET/POSTリクエスト処理）
+ * メインエントリーポイント（GET/POST/OPTIONSリクエスト処理）
  */
 function doGet(e) {
   return handleRequest(e);
@@ -45,6 +45,17 @@ function doGet(e) {
 
 function doPost(e) {
   return handleRequest(e);
+}
+
+// CORS プリフライトリクエスト対応
+function doOptions(e) {
+  return ContentService
+    .createTextOutput('')
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader('Access-Control-Allow-Origin', '*')
+    .setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+    .setHeader('Access-Control-Allow-Headers', 'Content-Type')
+    .setHeader('Access-Control-Max-Age', '86400');
 }
 
 /**
@@ -110,6 +121,10 @@ function handleRequest(e) {
     }
 
     output.setContent(JSON.stringify(result));
+    // CORSヘッダーを追加
+    output.setHeader('Access-Control-Allow-Origin', '*');
+    output.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    output.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     return output;
 
   } catch (error) {
@@ -119,6 +134,10 @@ function handleRequest(e) {
       success: false,
       message: 'Server error: ' + error.toString()
     }));
+    // CORSヘッダーを追加
+    errorOutput.setHeader('Access-Control-Allow-Origin', '*');
+    errorOutput.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    errorOutput.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     return errorOutput;
   }
 }
