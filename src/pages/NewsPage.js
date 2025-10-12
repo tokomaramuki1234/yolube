@@ -6,6 +6,79 @@ import BackToTop from '../components/BackToTop';
 import '../styles/BasePage.css';
 import './NewsPage.css';
 
+// 画像スライドショーコンポーネント
+const ImageSlider = ({ imageUrls, title }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % imageUrls.length);
+  };
+  
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + imageUrls.length) % imageUrls.length);
+  };
+  
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+  
+  return (
+    <div className="news-card-images">
+      <div className="news-images-slider">
+        <div 
+          className="news-images-track" 
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        >
+          {imageUrls.map((url, index) => (
+            <div key={index} className="news-image-slide">
+              <img src={url} alt={`${title} - ${index + 1}`} />
+            </div>
+          ))}
+        </div>
+        
+        {/* 画像カウンター */}
+        <div className="news-images-counter">
+          {currentSlide + 1} / {imageUrls.length}
+        </div>
+        
+        {/* 前へボタン */}
+        <button 
+          className="news-images-arrow news-images-arrow-prev"
+          onClick={prevSlide}
+          aria-label="前の画像"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+        
+        {/* 次へボタン */}
+        <button 
+          className="news-images-arrow news-images-arrow-next"
+          onClick={nextSlide}
+          aria-label="次の画像"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+        
+        {/* ドットナビゲーション */}
+        <div className="news-images-nav">
+          {imageUrls.map((_, index) => (
+            <button
+              key={index}
+              className={`news-images-dot ${currentSlide === index ? 'active' : ''}`}
+              onClick={() => goToSlide(index)}
+              aria-label={`画像 ${index + 1}へ移動`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const NewsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [newsItems, setNewsItems] = useState([]);
@@ -193,7 +266,7 @@ const NewsPage = () => {
               <>
                 <div className="news-grid">
                   {filteredNews.map(item => (
-                    <article key={item.id} className="news-card">
+                    <article key={item.id} className={`news-card ${item.imageUrl ? 'news-card-with-image' : 'news-card-text-only'}`}>
                       <div className="news-card-header">
                         <div className="news-card-labels">
                           <span className={`news-card-category category-${item.category}`}>
@@ -204,11 +277,23 @@ const NewsPage = () => {
                         <time className="news-card-date">{item.date}</time>
                       </div>
 
-                      {item.imageUrl && (
-                        <div className="news-card-image">
-                          <img src={item.imageUrl} alt={item.title} />
-                        </div>
-                      )}
+                      {item.imageUrl && (() => {
+                        // カンマ区切りで複数画像をサポート
+                        const imageUrls = item.imageUrl.split(',').map(url => url.trim()).filter(url => url);
+                        
+                        if (imageUrls.length === 1) {
+                          // 単一画像
+                          return (
+                            <div className="news-card-image">
+                              <img src={imageUrls[0]} alt={item.title} />
+                            </div>
+                          );
+                        } else if (imageUrls.length > 1) {
+                          // 複数画像スライドショー
+                          return <ImageSlider imageUrls={imageUrls} title={item.title} />;
+                        }
+                        return null;
+                      })()}
 
                       <h2 className="news-card-title">{item.title}</h2>
                       <p className="news-card-description">{item.description}</p>

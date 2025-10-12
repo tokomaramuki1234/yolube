@@ -250,6 +250,183 @@
   color: #999;
 }
 
+/* 画像アップロード関連 */
+.image-dropzone {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+  margin-bottom: 20px;
+}
+
+.image-dropzone:hover {
+  border-color: #8BC780;
+  background-color: #f0f8ef;
+}
+
+.image-dropzone.dragging {
+  border-color: #8BC780;
+  background-color: #e8f5e6;
+  border-width: 3px;
+}
+
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.upload-icon {
+  font-size: 48px;
+}
+
+.dropzone-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.dropzone-subtext {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.dropzone-hint {
+  font-size: 12px;
+  color: #999;
+  margin: 5px 0 0 0;
+}
+
+.upload-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.spinner {
+  font-size: 32px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.upload-status p {
+  font-size: 16px;
+  font-weight: 600;
+  color: #8BC780;
+  margin: 0;
+}
+
+/* アップロード済み画像プレビュー */
+.uploaded-images-preview {
+  margin-bottom: 20px;
+}
+
+.preview-label {
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.image-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.thumbnail-item {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #ddd;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.thumbnail-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btn-remove-image {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(244, 67, 54, 0.9);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.btn-remove-image:hover {
+  background-color: rgba(244, 67, 54, 1);
+  transform: scale(1.1);
+}
+
+.thumbnail-index {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* 手動URL入力 */
+.manual-url-input {
+  margin-top: 15px;
+}
+
+.sub-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
+}
+
+.manual-url-input input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.manual-url-input input:focus {
+  outline: none;
+  border-color: #8BC780;
+}
+
 /* レスポンシブ */
 @media (max-width: 768px) {
   .news-table {
@@ -274,5 +451,26 @@
   .form-checkboxes {
     flex-direction: column;
     gap: 15px;
+  }
+
+  .image-dropzone {
+    padding: 30px 20px;
+  }
+
+  .upload-icon {
+    font-size: 36px;
+  }
+
+  .dropzone-text {
+    font-size: 14px;
+  }
+
+  .image-thumbnails {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+  }
+
+  .thumbnail-item {
+    height: 100px;
   }
 }
