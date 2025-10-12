@@ -25,8 +25,6 @@ git push origin master  # デプロイ（Vercel自動デプロイ）
 4. [プロジェクト構造](#プロジェクト構造)
 5. [開発・デプロイ手順](#開発・デプロイ手順)
 6. [トラブルシューティング](#トラブルシューティング)
-<<<<<<< HEAD
-=======
 7. [コーディングガイドライン](#コーディングガイドライン) 📘
 
 ---
@@ -51,7 +49,6 @@ git push origin master  # デプロイ（Vercel自動デプロイ）
 - [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 - [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
 - [CSS Guidelines by Harry Roberts](https://cssguidelin.es/)
->>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
 
 ---
 
@@ -67,19 +64,9 @@ git push origin master  # デプロイ（Vercel自動デプロイ）
 | `/NEWS` | 新着情報ページ | NEWS記事一覧、カテゴリフィルター |
 | `/admin` | 管理画面 | 予約一覧、NEWS管理、統計ダッシュボード（認証あり） |
 
-<<<<<<< HEAD
-### アーキテクチャ概要
-
-- **フロントエンド**: React SPA（Single Page Application）
-- **バックエンド**: Google Apps Script（GAS）による API
-- **データベース**: Google Sheets（セキュリティ設計による2シート分離）
-- **デプロイ**: Vercel（GitHub連携自動デプロイ）
-- **多言語対応**: 7言語（日本語、英語、中国語、韓国語、ドイツ語、フランス語、スペイン語）
-=======
 ### ページ階層と設計方針
 
 yolube.jpは**3層のページ構造**で設計されています。
->>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
 
 #### 📄 第1層: メインサイトと基本ページ
 - **対象ページ**: `/`（トップページ）および グローバルナビの「プロジェクト」以外のページ
@@ -88,10 +75,6 @@ yolube.jpは**3層のページ構造**で設計されています。
 - **Footer**: 共通（Footer.js）
 - **役割**: YOLUBEの組織情報・事業紹介を統一デザインで提供
 
-<<<<<<< HEAD
-## 技術スタック
-
-=======
 #### 🎯 第2層: プロジェクトページ（LP）
 - **対象ページ**: グローバルナビ「プロジェクト」配下のページ
   - 例: `/ke`、`/training`、`/HT`、`/NNBNB`、`/KanTo`
@@ -209,7 +192,6 @@ import './PageName.css';          // ページ固有スタイル（オプショ�
 
 ## 技術スタック
 
->>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
 ### フロントエンド
 - **React**: 18.2.0（最新安定版）
 - **React Router DOM**: 7.6.3（SPA ルーティング）
@@ -225,8 +207,6 @@ import './PageName.css';          // ページ固有スタイル（オプショ�
 - **Vercel**: 本番環境デプロイ
 - **GitHub**: バージョン管理・CI/CD
 
-<<<<<<< HEAD
-=======
 ### アクセス解析
 - **Google Tag Manager**: GTM-KVZ2B2MX（タグ管理）
 - **Google Analytics 4**: G-SV2DXKDBGD（アクセス解析）
@@ -236,7 +216,6 @@ import './PageName.css';          // ページ固有スタイル（オプショ�
 - **Google Tag Manager**: GTM-KVZ2B2MX（イベント追跡）
 - **Google Analytics 4**: （GTM連携予定）
 
->>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
 ### 開発ツール
 - **Create React App**: 開発環境
 - **React Scripts**: 5.0.1（ビルドツール）
@@ -253,10 +232,6 @@ import './PageName.css';          // ページ固有スタイル（オプショ�
    - 自動返信メール機能
    - SNSシェア機能（X/Facebook）
 
-<<<<<<< HEAD
-2. **管理画面**
-   - 予約一覧・詳細表示
-=======
 2. **NEWS管理システム（NEW！）**
    - 管理画面でのNEWS記事作成・編集・削除
    - カテゴリ管理（イベント、お知らせ、メディア）
@@ -268,26 +243,15 @@ import './PageName.css';          // ページ固有スタイル（オプショ�
 3. **管理画面**
    - 予約一覧・詳細表示
    - NEWS記事管理
->>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
    - 統計ダッシュボード
    - CSV出力機能
    - ベーシック認証
 
-<<<<<<< HEAD
-3. **多言語対応**
-=======
 4. **多言語対応**
->>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
    - 7言語の自動切り替え
    - ブラウザ言語検出
    - モバイル対応メニュー
 
-<<<<<<< HEAD
-4. **レスポンシブデザイン**
-   - デスクトップ・タブレット・モバイル対応
-   - タッチ操作最適化
-
-=======
 5. **レスポンシブデザイン**
    - デスクトップ・タブレット・モバイル対応
    - タッチ操作最適化
@@ -300,7 +264,6 @@ import './PageName.css';          // ページ固有スタイル（オプショ�
    - Google Tag Manager (GTM) 実装
    - イベントパラメータ送信
 
->>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
 ### 🔐 セキュリティ機能
 - **データ分離設計**: イベント情報（公開）と予約情報（非公開）を別シートで管理
 - **認証システム**: 管理画面へのアクセス制御
@@ -315,23 +278,6 @@ yolube/
 ├── src/
 │   ├── components/           # Reactコンポーネント
 │   │   ├── admin/           # 管理画面コンポーネント
-<<<<<<< HEAD
-│   │   ├── ReservationForm.jsx  # 予約フォーム
-│   │   ├── ReservationStatus.jsx # 予約状況表示
-│   │   └── [各種コンポーネント]
-│   ├── pages/
-│   │   ├── ke/              # Ke.イベントページ
-│   │   └── admin/           # 管理画面ページ
-│   ├── contexts/            # React Context（認証等）
-│   ├── services/            # API連携
-│   ├── utils/               # ユーティリティ関数
-│   └── App.js              # メインアプリ
-├── public/
-│   ├── images/              # 画像ファイル・OGP
-│   └── docs/PDF/           # PDF資料
-├── docs/                    # システムドキュメント
-│   ├── GAS_INTEGRATED.gs   # Google Apps Script（最新版）
-=======
 │   │   │   ├── Dashboard.jsx    # ダッシュボード
 │   │   │   ├── ReservationList.jsx # 予約一覧
 │   │   │   ├── NewsList.jsx     # NEWS一覧（NEW）
@@ -360,7 +306,6 @@ yolube/
 │   ├── GAS_SETUP_GUIDE.md  # GAS セットアップ手順 NEW
 │   ├── NEWS_SYSTEM_DESIGN.md # NEWSシステム設計書 NEW
 │   ├── NEWS_IMPLEMENTATION_SUMMARY.md # 実装完了レポート NEW
->>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
 │   └── [技術ドキュメント]
 ├── scripts/                 # ビルドスクリプト
 ├── package.json
@@ -433,8 +378,6 @@ npm start
 - Gmail APIの権限を確認してください
 - 送信エイリアス設定を確認してください
 
-<<<<<<< HEAD
-=======
 #### 5. GTM/GA4データが表示されない
 - ブラウザのスーパーリロード（Ctrl + Shift + R）を実行
 - Vercelのビルドキャッシュが原因の場合、空コミットで強制再デプロイ:
@@ -444,7 +387,6 @@ npm start
   ```
 - GA4でイベントが表示されるまで数時間かかる場合があります
 
->>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
 ### 📞 サポート情報
 
 #### 開発・技術サポート
@@ -459,8 +401,6 @@ npm start
 
 ---
 
-<<<<<<< HEAD
-=======
 ## 📊 Google Tag Manager (GTM) とアクセス解析
 
 ### 実装概要
@@ -591,7 +531,6 @@ window.dataLayer.forEach((item, index) => console.log(index + ':', item))
 
 ---
 
->>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
 ## ライセンス
 
 MIT License
@@ -600,10 +539,6 @@ Copyright (c) 2025 YOLUBE
 
 ---
 
-<<<<<<< HEAD
-*最終更新: 2025年10月8日*
-*システムバージョン: v3.31*
-=======
 ## 🚀 最新デプロイ情報
 
 ### ✅ デプロイ状況
@@ -1024,4 +959,3 @@ git push origin master
 
 *最終更新: 2025年10月12日*
 *システムバージョン: v4.0 (NEWS管理システム実装完了)*
->>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
