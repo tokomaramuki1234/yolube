@@ -64,11 +64,6 @@ function doOptions(e) {
 function handleRequest(e) {
   try {
     const action = e.parameter.action;
-
-    // CORS対応
-    const output = ContentService.createTextOutput();
-    output.setMimeType(ContentService.MimeType.JSON);
-
     let result;
 
     switch(action) {
@@ -120,25 +115,25 @@ function handleRequest(e) {
         };
     }
 
-    output.setContent(JSON.stringify(result));
     // CORSヘッダーを追加
-    output.setHeader('Access-Control-Allow-Origin', '*');
-    output.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    output.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    return output;
+    return ContentService
+      .createTextOutput(JSON.stringify(result))
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeader('Access-Control-Allow-Origin', '*')
+      .setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+      .setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   } catch (error) {
-    const errorOutput = ContentService.createTextOutput();
-    errorOutput.setMimeType(ContentService.MimeType.JSON);
-    errorOutput.setContent(JSON.stringify({
-      success: false,
-      message: 'Server error: ' + error.toString()
-    }));
-    // CORSヘッダーを追加
-    errorOutput.setHeader('Access-Control-Allow-Origin', '*');
-    errorOutput.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    errorOutput.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    return errorOutput;
+    // CORSヘッダー付きエラーレスポンス
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        success: false,
+        message: 'Server error: ' + error.toString()
+      }))
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeader('Access-Control-Allow-Origin', '*')
+      .setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+      .setHeader('Access-Control-Allow-Headers', 'Content-Type');
   }
 }
 
