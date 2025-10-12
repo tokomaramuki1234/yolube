@@ -20,8 +20,8 @@ const Admin = () => {
 
   const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxZRZSDGyg_Z1rGcuD9xymlMXB4vV3Cz8EVTOWS2GvP-bLKeYcq7q122ixPQKV71Xg6iQ/exec';
 
-  // ★ NEWS用のGAS API URL（セットアップ後に更新してください）
-  const NEWS_API_URL = GAS_WEB_APP_URL; // 同じスプレッドシートを使用する場合
+  // NEWS用のGAS API URL（セットアップ完了）
+  const NEWS_API_URL = 'https://script.google.com/macros/s/AKfycbymI6FuKRcoFu6BP558Dwj7RQFYf1sCDm5dWhHdmHJt6ibEdlseflU-0krlqL2mAG7_/exec';
 
   // 初回ロード時にデータ取得
   useEffect(() => {

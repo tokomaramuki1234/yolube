@@ -12,8 +12,8 @@ const NewsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // ★ NEWS API URL（Admin.jsxと同じURL）
-  const NEWS_API_URL = 'https://script.google.com/macros/s/AKfycbxZRZSDGyg_Z1rGcuD9xymlMXB4vV3Cz8EVTOWS2GvP-bLKeYcq7q122ixPQKV71Xg6iQ/exec';
+  // NEWS API URL（GAS デプロイURL）
+  const NEWS_API_URL = 'https://script.google.com/macros/s/AKfycbymI6FuKRcoFu6BP558Dwj7RQFYf1sCDm5dWhHdmHJt6ibEdlseflU-0krlqL2mAG7_/exec';
 
   // NEWS データ取得
   useEffect(() => {

@@ -738,8 +738,8 @@ Copyright (c) 2025 YOLUBE
 ### 🎉 NEWS管理システム実装完了
 
 **実装日**: 2025年10月12日
-**ステータス**: ✅ コーディング完了（GAS APIセットアップ待ち）
-**バージョン**: v4.0
+**ステータス**: ✅ GAS APIセットアップ完了・接続テスト成功
+**バージョン**: v4.1
 
 #### 📋 実装内容
 
@@ -782,56 +782,43 @@ YOLUBE ウェブサイトに **NEWS投稿管理システム** を実装しまし
 - `docs/GAS_SETUP_GUIDE.md` - GAS セットアップ手順書
 - `docs/NEWS_IMPLEMENTATION_SUMMARY.md` - 実装完了レポート
 
-#### 🔧 次の作業（要対応）
+#### ✅ Google Apps Script セットアップ完了
 
-**⚠️ 重要: Google Apps Scriptのセットアップが必要です**
+**セットアップ日**: 2025年10月12日
 
-##### ステップ1: Google Apps Scriptをセットアップ
+##### セットアップ済み内容
 
-1. **Google Sheetsを開く**
-   - 既存の予約管理用スプレッドシートを開く
+1. **Google Sheets設定**
+   - スプレッドシートID: `1Ejs0annRLCGiV0dSTVGwm-1oDWbPHv65s1xLeWyRen8`
+   - NEWSシート作成完了（15カラム構成）
 
-2. **Apps Scriptを開く**
-   - 「拡張機能」→「Apps Script」
+2. **Apps Script デプロイ**
+   - ファイル: `NEWS_API.gs`
+   - ウェブアプリURL: `https://script.google.com/macros/s/AKfycbymI6FuKRcoFu6BP558Dwj7RQFYf1sCDm5dWhHdmHJt6ibEdlseflU-0krlqL2mAG7_/exec`
+   - アクセス権限: 全員
 
-3. **コードを追加**
-   - `docs/GAS_NEWS_API.gs` の内容を全てコピー
-   - 既存コードの下に貼り付け
+3. **React アプリ設定**
+   - `src/pages/admin/Admin.jsx`: NEWS_API_URL 設定済み
+   - `src/pages/NewsPage.js`: 今後更新予定
 
-4. **SPREADSHEET_IDを設定**
-   ```javascript
-   const SPREADSHEET_ID = 'あなたのスプレッドシートID';
-   ```
+4. **API接続テスト**
+   - ✅ `getPublishedNews`: 成功
+   - ✅ `getNewsStats`: 成功
 
-5. **NEWSシートを初期化**
-   - 関数選択で `initializeNewsSheet` を選択
-   - 「▶実行」ボタンをクリック
-   - 権限承認が必要な場合は承認する
+##### 次のステップ
 
-6. **ウェブアプリとしてデプロイ**
-   - 「デプロイ」→「新しいデプロイ」
-   - 種類: ウェブアプリ
-   - 実行ユーザー: 自分
-   - アクセスできるユーザー: **全員**
-   - 「デプロイ」をクリック
-   - **ウェブアプリURL**をコピー
+**1. SNS自動投稿機能の実装（保留中）**
+- Facebook、Instagram、X（Twitter）への自動投稿
+- 自動投稿オン/オフ機能
+- テスト投稿モード
 
-##### ステップ2: ReactアプリにURL設定
+**2. NewsPage.jsのAPI URL更新**
+```javascript
+// src/pages/NewsPage.js の 16行目付近
+const NEWS_API_URL = 'https://script.google.com/macros/s/AKfycbymI6FuKRcoFu6BP558Dwj7RQFYf1sCDm5dWhHdmHJt6ibEdlseflU-0krlqL2mAG7_/exec';
+```
 
-**2箇所** でURLを設定してください:
-
-1. **src/pages/admin/Admin.jsx の 24行目**
-   ```javascript
-   const NEWS_API_URL = 'ここに貼り付け';
-   ```
-
-2. **src/pages/NewsPage.js の 16行目**
-   ```javascript
-   const NEWS_API_URL = 'ここに貼り付け';
-   ```
-
-##### ステップ3: テストとデプロイ
-
+**3. 動作テスト**
 ```bash
 # ローカルテスト
 # 1. http://localhost:3000/admin/login にアクセス
@@ -841,7 +828,7 @@ YOLUBE ウェブサイトに **NEWS投稿管理システム** を実装しまし
 
 # 本番デプロイ
 git add .
-git commit -m "feat: NEWS管理システム実装"
+git commit -m "feat: NEWS管理システムGAS API接続完了"
 git push origin master
 ```
 
