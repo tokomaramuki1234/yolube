@@ -104,15 +104,13 @@ const NewsEditor = ({ newsApiUrl }) => {
     const payload = { ...formData };
 
     try {
-      const response = await fetch(newsApiUrl, {
+      // GAS向けにURLパラメータでactionを送信
+      const response = await fetch(`${newsApiUrl}?action=${action}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          action,
-          ...payload
-        })
+        body: JSON.stringify(payload)
       });
 
       const result = await response.json();
@@ -147,15 +145,13 @@ const NewsEditor = ({ newsApiUrl }) => {
     }
 
     try {
-      const response = await fetch(newsApiUrl, {
+      // GAS向けにURLパラメータでactionを送信
+      const response = await fetch(`${newsApiUrl}?action=deleteNews`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          action: 'deleteNews',
-          id
-        })
+        body: JSON.stringify({ id })
       });
 
       const result = await response.json();
