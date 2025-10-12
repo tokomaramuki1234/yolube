@@ -19,9 +19,7 @@ const NewsEditor = ({ newsApiUrl }) => {
     publishDate: new Date().toISOString().split('T')[0],
     postToX: false
   });
-  const [uploadedImages, setUploadedImages] = useState([]);
-  const [isUploading, setIsUploading] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
+
 
   // NEWS一覧取得
   useEffect(() => {
@@ -56,116 +54,7 @@ const NewsEditor = ({ newsApiUrl }) => {
     }));
   };
 
-  // 画像アップロード処理（Imgur API使用）
-  const uploadImageToImgur = async (file) => {
-    const formData = new FormData();
-    formData.append('image', file);
 
-    try {
-      const response = await fetch('https://api.imgur.com/3/image', {
-        method: 'POST',
-        headers: {
-          Authorization: 'Client-ID 8d44df5f5e36f2b' // 公開用クライアントID
-        },
-        body: formData
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        return result.data.link;
-      } else {
-        throw new Error(result.data.error || 'アップロードに失敗しました');
-      }
-    } catch (error) {
-      console.error('Image upload error:', error);
-      throw error;
-    }
-  };
-
-  // ドラッグ&ドロップハンドラー
-  const handleDragOver = (e) => {
-    e.preventDefault();
-    setIsDragging(true);
-  };
-
-  const handleDragLeave = (e) => {
-    e.preventDefault();
-    setIsDragging(false);
-  };
-
-  const handleDrop = async (e) => {
-    e.preventDefault();
-    setIsDragging(false);
-
-    const files = Array.from(e.dataTransfer.files).filter(file => 
-      file.type.startsWith('image/')
-    );
-
-    if (files.length === 0) {
-      alert('画像ファイルを選択してください');
-      return;
-    }
-
-    await handleImageUpload(files);
-  };
-
-  // ファイル選択ハンドラー
-  const handleFileSelect = async (e) => {
-    const files = Array.from(e.target.files).filter(file => 
-      file.type.startsWith('image/')
-    );
-
-    if (files.length === 0) {
-      alert('画像ファイルを選択してください');
-      return;
-    }
-
-    await handleImageUpload(files);
-  };
-
-  // 画像アップロード実行
-  const handleImageUpload = async (files) => {
-    setIsUploading(true);
-    const newUrls = [];
-
-    try {
-      for (const file of files) {
-        const url = await uploadImageToImgur(file);
-        newUrls.push(url);
-      }
-
-      // アップロード済み画像リストに追加
-      setUploadedImages(prev => [...prev, ...newUrls]);
-
-      // imageUrlフィールドに追加（カンマ区切り）
-      setFormData(prev => {
-        const existingUrls = prev.imageUrl ? prev.imageUrl.split(',').map(u => u.trim()).filter(u => u) : [];
-        const allUrls = [...existingUrls, ...newUrls];
-        return {
-          ...prev,
-          imageUrl: allUrls.join(', ')
-        };
-      });
-
-      alert(`${files.length}個の画像をアップロードしました`);
-    } catch (error) {
-      alert('画像のアップロードに失敗しました: ' + error.message);
-    } finally {
-      setIsUploading(false);
-    }
-  };
-
-  // アップロード済み画像を削除
-  const handleRemoveUploadedImage = (urlToRemove) => {
-    setUploadedImages(prev => prev.filter(url => url !== urlToRemove));
-    setFormData(prev => {
-      const urls = prev.imageUrl.split(',').map(u => u.trim()).filter(u => u && u !== urlToRemove);
-      return {
-        ...prev,
-        imageUrl: urls.join(', ')
-      };
-    });
-  };
 
   // 新規作成開始
   const handleCreateNew = () => {
@@ -183,14 +72,12 @@ const NewsEditor = ({ newsApiUrl }) => {
       publishDate: new Date().toISOString().split('T')[0],
       postToX: false
     });
-    setUploadedImages([]);
     setIsEditing(true);
   };
 
   // 編集開始
   const handleEdit = (news) => {
     setEditingNews(news);
-    const imageUrls = news.imageUrl ? news.imageUrl.split(',').map(u => u.trim()).filter(u => u) : [];
     setFormData({
       id: news.id,
       title: news.title,
@@ -205,7 +92,6 @@ const NewsEditor = ({ newsApiUrl }) => {
       publishDate: news.publishDate ? news.publishDate.replace(/\./g, '-') : new Date().toISOString().split('T')[0],
       postToX: false
     });
-    setUploadedImages(imageUrls);
     setIsEditing(true);
   };
 
@@ -291,7 +177,6 @@ const NewsEditor = ({ newsApiUrl }) => {
   const handleCancel = () => {
     setIsEditing(false);
     setEditingNews(null);
-    setUploadedImages([]);
   };
 
   // ステータスバッジ
@@ -453,73 +338,18 @@ const NewsEditor = ({ newsApiUrl }) => {
             </div>
 
             <div className="form-group">
-              <label>画像</label>
-              
-              {/* ドラッグ&ドロップゾーン */}
-              <div 
-                className={`image-dropzone ${isDragging ? 'dragging' : ''}`}
-                onDragOver={handleDragOver}
-                onDragLeave={handleDragLeave}
-                onDrop={handleDrop}
-                onClick={() => document.getElementById('fileInput').click()}
-              >
-                <input
-                  id="fileInput"
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  style={{ display: 'none' }}
-                  onChange={handleFileSelect}
-                />
-                {isUploading ? (
-                  <div className="upload-status">
-                    <span className="spinner">⏳</span>
-                    <p>アップロード中...</p>
-                  </div>
-                ) : (
-                  <div className="dropzone-content">
-                    <span className="upload-icon">📤</span>
-                    <p className="dropzone-text">画像をドラッグ&ドロップ</p>
-                    <p className="dropzone-subtext">または クリックして選択</p>
-                    <p className="dropzone-hint">複数画像対応（PNG, JPG, GIF）</p>
-                  </div>
-                )}
-              </div>
-
-              {/* アップロード済み画像プレビュー */}
-              {uploadedImages.length > 0 && (
-                <div className="uploaded-images-preview">
-                  <p className="preview-label">アップロード済み画像 ({uploadedImages.length}個)</p>
-                  <div className="image-thumbnails">
-                    {uploadedImages.map((url, index) => (
-                      <div key={index} className="thumbnail-item">
-                        <img src={url} alt={`アップロード画像 ${index + 1}`} />
-                        <button 
-                          type="button"
-                          className="btn-remove-image"
-                          onClick={() => handleRemoveUploadedImage(url)}
-                          title="削除"
-                        >
-                          ✕
-                        </button>
-                        <span className="thumbnail-index">{index + 1}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* 手動URL入力（従来の方法も残す） */}
-              <div className="manual-url-input">
-                <label className="sub-label">または 画像URLを直接入力（カンマ区切りで複数可）</label>
-                <input
-                  type="text"
-                  name="imageUrl"
-                  value={formData.imageUrl}
-                  onChange={handleInputChange}
-                  placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg"
-                />
-              </div>
+              <label>画像URL（カンマ区切りで複数可）</label>
+              <input
+                type="text"
+                name="imageUrl"
+                value={formData.imageUrl}
+                onChange={handleInputChange}
+                placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg"
+              />
+              <p style={{ fontSize: '12px', color: '#666', marginTop: '8px', lineHeight: '1.6' }}>
+                💡 <strong>ヒント:</strong> <a href="https://imgbb.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#8BC780', textDecoration: 'underline' }}>ImgBB</a> や <a href="https://imgur.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#8BC780', textDecoration: 'underline' }}>Imgur</a> などの無料画像ホスティングサービスで画像をアップロードし、URLを取得してください。<br/>
+                複数画像を表示したい場合はカンマで区切って入力してください（例: URL1, URL2, URL3）
+              </p>
             </div>
 
             <div className="form-group">
