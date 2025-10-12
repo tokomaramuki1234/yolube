@@ -195,13 +195,13 @@ const NewsPage = () => {
                   {filteredNews.map(item => (
                     <article key={item.id} className="news-card">
                       <div className="news-card-header">
-                        <time className="news-card-date">{item.date}</time>
                         <div className="news-card-labels">
                           <span className={`news-card-category category-${item.category}`}>
                             {item.category}
                           </span>
                           {item.isNew && <span className="news-card-badge">NEW</span>}
                         </div>
+                        <time className="news-card-date">{item.date}</time>
                       </div>
 
                       <h2 className="news-card-title">{item.title}</h2>

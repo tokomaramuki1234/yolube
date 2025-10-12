@@ -68,11 +68,11 @@
 
 .news-card-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 20px;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
 }
 
 .news-card-date {
