@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import Dashboard from '../../components/admin/Dashboard';
 import ReservationList from '../../components/admin/ReservationList';
+import NewsEditor from '../../components/admin/NewsEditor';
 import './Admin.css';
 
 const Admin = () => {
@@ -14,6 +15,7 @@ const Admin = () => {
   const navigate = useNavigate();
 
   const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxZRZSDGyg_Z1rGcuD9xymlMXB4vV3Cz8EVTOWS2GvP-bLKeYcq7q122ixPQKV71Xg6iQ/exec';
+  const NEWS_API_URL = 'https://script.google.com/macros/s/AKfycbymI6FuKRcoFu6BP558Dwj7RQFYf1sCDm5dWhHdmHJt6ibEdlseflU-0krlqL2mAG7_/exec';
 
   // 初回ロード時にデータ取得
   useEffect(() => {
@@ -99,6 +101,14 @@ const Admin = () => {
             <span className="nav-icon">📋</span>
             予約一覧
           </button>
+
+          <button
+            className={`nav-item ${activeTab === 'news' ? 'active' : ''}`}
+            onClick={() => setActiveTab('news')}
+          >
+            <span className="nav-icon">📰</span>
+            お知らせ管理
+          </button>
         </nav>
 
         <div className="sidebar-footer">
@@ -113,7 +123,9 @@ const Admin = () => {
       <main className="admin-main">
         <header className="admin-header">
           <h1 className="admin-page-title">
-            {activeTab === 'dashboard' ? 'ダッシュボード' : '予約一覧'}
+            {activeTab === 'dashboard' ? 'ダッシュボード' : 
+             activeTab === 'reservations' ? '予約一覧' : 
+             'お知らせ管理'}
           </h1>
           <button className="refresh-btn" onClick={handleRefresh} disabled={isLoading}>
             🔄 {isLoading ? '更新中...' : '更新'}
@@ -134,6 +146,10 @@ const Admin = () => {
 
               {activeTab === 'reservations' && (
                 <ReservationList reservations={reservations} onRefresh={fetchAdminData} />
+              )}
+
+              {activeTab === 'news' && (
+                <NewsEditor newsApiUrl={NEWS_API_URL} />
               )}
             </>
           )}
