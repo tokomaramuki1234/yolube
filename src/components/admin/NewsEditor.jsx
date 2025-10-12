@@ -19,6 +19,9 @@ const NewsEditor = ({ newsApiUrl }) => {
     publishDate: new Date().toISOString().split('T')[0],
     postToX: false
   });
+  const [uploadedImages, setUploadedImages] = useState([]);
+  const [isUploading, setIsUploading] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
 
 
   // NEWS一覧取得
@@ -54,6 +57,175 @@ const NewsEditor = ({ newsApiUrl }) => {
     }));
   };
 
+  // 画像をBase64に変換してアップロード（複数APIのフォールバック対応）
+  const uploadImage = async (file) => {
+    // Base64に変換
+    const base64 = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+
+    // API 1: freeimage.host (最も信頼性が高い)
+    try {
+      const formData = new FormData();
+      formData.append('source', base64);
+      formData.append('type', 'base64');
+      formData.append('action', 'upload');
+      
+      const response = await fetch('https://freeimage.host/api/1/upload?key=6d207e02198a847aa98d0a2a901485a5', {
+        method: 'POST',
+        body: formData
+      });
+      
+      const result = await response.json();
+      if (result.status_code === 200 && result.image && result.image.url) {
+        return result.image.url;
+      }
+    } catch (error) {
+      console.warn('freeimage.host failed, trying next API...', error);
+    }
+
+    // API 2: ImgBB (バックアップ)
+    try {
+      const formData = new FormData();
+      formData.append('image', base64);
+      
+      const response = await fetch('https://api.imgbb.com/1/upload?key=d7a9b36a3d7e1b6f8c5e9d4f2a1b8c3e', {
+        method: 'POST',
+        body: formData
+      });
+      
+      const result = await response.json();
+      if (result.success && result.data && result.data.url) {
+        return result.data.url;
+      }
+    } catch (error) {
+      console.warn('imgbb failed, trying next API...', error);
+    }
+
+    // API 3: Cloudinary (最終バックアップ - 無料枠あり)
+    try {
+      const formData = new FormData();
+      formData.append('file', `data:${file.type};base64,${base64}`);
+      formData.append('upload_preset', 'ml_default');
+      
+      const response = await fetch('https://api.cloudinary.com/v1_1/demo/image/upload', {
+        method: 'POST',
+        body: formData
+      });
+      
+      const result = await response.json();
+      if (result.secure_url) {
+        return result.secure_url;
+      }
+    } catch (error) {
+      console.warn('cloudinary failed', error);
+    }
+
+    throw new Error('すべての画像アップロードAPIが失敗しました。しばらく時間をおいて再度お試しください。');
+  };
+
+  // ドラッグ&ドロップハンドラー
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleDrop = async (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+
+    const files = Array.from(e.dataTransfer.files).filter(file => 
+      file.type.startsWith('image/')
+    );
+
+    if (files.length === 0) {
+      alert('画像ファイルを選択してください');
+      return;
+    }
+
+    await handleImageUpload(files);
+  };
+
+  // ファイル選択ハンドラー
+  const handleFileSelect = async (e) => {
+    const files = Array.from(e.target.files).filter(file => 
+      file.type.startsWith('image/')
+    );
+
+    if (files.length === 0) {
+      alert('画像ファイルを選択してください');
+      return;
+    }
+
+    await handleImageUpload(files);
+  };
+
+  // 画像アップロード実行
+  const handleImageUpload = async (files) => {
+    setIsUploading(true);
+    const newUrls = [];
+    let successCount = 0;
+    let failCount = 0;
+
+    try {
+      for (const file of files) {
+        try {
+          const url = await uploadImage(file);
+          newUrls.push(url);
+          successCount++;
+        } catch (error) {
+          console.error(`Failed to upload ${file.name}:`, error);
+          failCount++;
+        }
+      }
+
+      if (newUrls.length > 0) {
+        // アップロード済み画像リストに追加
+        setUploadedImages(prev => [...prev, ...newUrls]);
+
+        // imageUrlフィールドに追加（カンマ区切り）
+        setFormData(prev => {
+          const existingUrls = prev.imageUrl ? prev.imageUrl.split(',').map(u => u.trim()).filter(u => u) : [];
+          const allUrls = [...existingUrls, ...newUrls];
+          return {
+            ...prev,
+            imageUrl: allUrls.join(', ')
+          };
+        });
+
+        if (failCount > 0) {
+          alert(`${successCount}個の画像をアップロードしました。\n${failCount}個の画像のアップロードに失敗しました。`);
+        } else {
+          alert(`${successCount}個の画像をアップロードしました！`);
+        }
+      } else {
+        alert('画像のアップロードに失敗しました。\n別の画像で試すか、しばらく時間をおいてから再度お試しください。');
+      }
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  // アップロード済み画像を削除
+  const handleRemoveUploadedImage = (urlToRemove) => {
+    setUploadedImages(prev => prev.filter(url => url !== urlToRemove));
+    setFormData(prev => {
+      const urls = prev.imageUrl.split(',').map(u => u.trim()).filter(u => u && u !== urlToRemove);
+      return {
+        ...prev,
+        imageUrl: urls.join(', ')
+      };
+    });
+  };
+
 
 
   // 新規作成開始
@@ -72,12 +244,14 @@ const NewsEditor = ({ newsApiUrl }) => {
       publishDate: new Date().toISOString().split('T')[0],
       postToX: false
     });
+    setUploadedImages([]);
     setIsEditing(true);
   };
 
   // 編集開始
   const handleEdit = (news) => {
     setEditingNews(news);
+    const imageUrls = news.imageUrl ? news.imageUrl.split(',').map(u => u.trim()).filter(u => u) : [];
     setFormData({
       id: news.id,
       title: news.title,
@@ -92,6 +266,7 @@ const NewsEditor = ({ newsApiUrl }) => {
       publishDate: news.publishDate ? news.publishDate.replace(/\./g, '-') : new Date().toISOString().split('T')[0],
       postToX: false
     });
+    setUploadedImages(imageUrls);
     setIsEditing(true);
   };
 
@@ -177,6 +352,7 @@ const NewsEditor = ({ newsApiUrl }) => {
   const handleCancel = () => {
     setIsEditing(false);
     setEditingNews(null);
+    setUploadedImages([]);
   };
 
   // ステータスバッジ
@@ -338,18 +514,73 @@ const NewsEditor = ({ newsApiUrl }) => {
             </div>
 
             <div className="form-group">
-              <label>画像URL（カンマ区切りで複数可）</label>
-              <input
-                type="text"
-                name="imageUrl"
-                value={formData.imageUrl}
-                onChange={handleInputChange}
-                placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg"
-              />
-              <p style={{ fontSize: '12px', color: '#666', marginTop: '8px', lineHeight: '1.6' }}>
-                💡 <strong>ヒント:</strong> <a href="https://imgbb.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#8BC780', textDecoration: 'underline' }}>ImgBB</a> や <a href="https://imgur.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#8BC780', textDecoration: 'underline' }}>Imgur</a> などの無料画像ホスティングサービスで画像をアップロードし、URLを取得してください。<br/>
-                複数画像を表示したい場合はカンマで区切って入力してください（例: URL1, URL2, URL3）
-              </p>
+              <label>画像</label>
+              
+              {/* ドラッグ&ドロップゾーン */}
+              <div 
+                className={`image-dropzone ${isDragging ? 'dragging' : ''}`}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
+                onClick={() => document.getElementById('fileInput').click()}
+              >
+                <input
+                  id="fileInput"
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  style={{ display: 'none' }}
+                  onChange={handleFileSelect}
+                />
+                {isUploading ? (
+                  <div className="upload-status">
+                    <span className="spinner">⏳</span>
+                    <p>アップロード中...</p>
+                  </div>
+                ) : (
+                  <div className="dropzone-content">
+                    <span className="upload-icon">📤</span>
+                    <p className="dropzone-text">画像をドラッグ&ドロップ</p>
+                    <p className="dropzone-subtext">または クリックして選択</p>
+                    <p className="dropzone-hint">複数画像対応（PNG, JPG, GIF）</p>
+                  </div>
+                )}
+              </div>
+
+              {/* アップロード済み画像プレビュー */}
+              {uploadedImages.length > 0 && (
+                <div className="uploaded-images-preview">
+                  <p className="preview-label">アップロード済み画像 ({uploadedImages.length}個)</p>
+                  <div className="image-thumbnails">
+                    {uploadedImages.map((url, index) => (
+                      <div key={index} className="thumbnail-item">
+                        <img src={url} alt={`アップロード画像 ${index + 1}`} />
+                        <button 
+                          type="button"
+                          className="btn-remove-image"
+                          onClick={() => handleRemoveUploadedImage(url)}
+                          title="削除"
+                        >
+                          ✕
+                        </button>
+                        <span className="thumbnail-index">{index + 1}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* 手動URL入力（併用可能） */}
+              <div className="manual-url-input">
+                <label className="sub-label">または 画像URLを直接入力（カンマ区切りで複数可）</label>
+                <input
+                  type="text"
+                  name="imageUrl"
+                  value={formData.imageUrl}
+                  onChange={handleInputChange}
+                  placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg"
+                />
+              </div>
             </div>
 
             <div className="form-group">
