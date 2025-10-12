@@ -19,6 +19,14 @@ body {
   min-height: 100vh;
 }
 
+/* ローディング表示 */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 /* 統一されたタイポグラフィシステム */
 :root {
   /* カラー変数 */
@@ -201,15 +209,15 @@ p, .text-body {
 /* 統一されたセクションタイトル */
 .section-title {
   text-align: center;
-  font-size: var(--font-size-4xl) !important;
-  font-weight: var(--font-weight-bold) !important;
-  line-height: var(--line-height-tight) !important;
-  letter-spacing: var(--letter-spacing-tight) !important;
-  color: var(--text-primary) !important;
-  margin-bottom: 1.25rem !important;
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
   position: relative;
   padding: 0 2.5rem;
-  padding-bottom: 20px !important;
+  padding-bottom: 20px;
 }
 
 .section-title::after {
@@ -227,12 +235,12 @@ p, .text-body {
 /* 統一されたセクションサブタイトル */
 .section-subtitle {
   text-align: center;
-  font-size: var(--font-size-lg) !important;
-  font-weight: var(--font-weight-normal) !important;
-  line-height: var(--line-height-relaxed) !important;
-  letter-spacing: var(--letter-spacing-normal) !important;
-  color: var(--text-secondary) !important;
-  margin-bottom: 3.75rem !important;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--text-secondary);
+  margin-bottom: 3.75rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -340,12 +348,12 @@ p, .text-body {
   }
   
   .section-title {
-    font-size: var(--font-size-3xl) !important;
+    font-size: var(--font-size-3xl);
     padding: 0 1.25rem;
   }
-  
+
   .section-subtitle {
-    font-size: var(--font-size-base) !important;
+    font-size: var(--font-size-base);
     padding: 0 1.25rem;
   }
   
@@ -364,11 +372,11 @@ p, .text-body {
 
 @media (max-width: 480px) {
   .section-title {
-    font-size: var(--font-size-2xl) !important;
+    font-size: var(--font-size-2xl);
   }
-  
+
   .section-subtitle {
-    font-size: var(--font-size-sm) !important;
+    font-size: var(--font-size-sm);
   }
 
   h1, .h1 { font-size: var(--font-size-3xl); }

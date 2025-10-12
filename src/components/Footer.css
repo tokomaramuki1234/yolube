@@ -1,3 +1,92 @@
+/* SNSセクション */
+.sns {
+  padding: 40px 0;
+  background: linear-gradient(135deg, #8BC780 0%, #A5D59C 50%, #6BA563 100%);
+  text-align: center;
+}
+
+.sns-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sns-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.sns-subtitle {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.sns-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sns-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sns-link:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.sns-link img {
+  width: 60px;
+  height: 60px;
+  display: block;
+  object-fit: contain;
+}
+
+.sns-facebook {
+  width: 99px;
+  height: 99px;
+}
+
+.sns-facebook img {
+  width: 100px;
+  height: 100px;
+}
+
+.sns-instagram {
+  background: transparent;
+  box-shadow: none;
+}
+
+.sns-instagram:hover {
+  box-shadow: none;
+}
+
+.sns-instagram img {
+  width: 100px;
+  height: 100px;
+}
+
+/* モバイル改行用のspan */
+.mobile-br {
+  display: none;
+}
+
+/* フッターセクション */
 .footer {
   background: linear-gradient(135deg, var(--text-primary) 0%, #2c3e50 100%);
   color: white;
@@ -5,19 +94,16 @@
 }
 
 .footer-content {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 60px;
-}
-
-.footer-main {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 40px;
 }
 
 .footer-logo {
+  display: flex;
+  justify-content: center;
   max-width: 200px;
+  margin: 0 auto;
 }
 
 .footer-logo img {
@@ -28,8 +114,8 @@
 
 .footer-links {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
 }
 
 .footer-section h4 {
@@ -70,19 +156,75 @@
   font-size: 0.9rem;
 }
 
+/* アコーディオン用スタイル（デスクトップでは非表示） */
+.footer-accordion-header {
+  display: block;
+  cursor: default;
+}
+
+.footer-accordion-icon {
+  display: none;
+}
+
+.footer-accordion-content {
+  display: block;
+}
+
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
+  /* SNS レスポンシブ */
+  .sns-links {
+    gap: 25px;
+  }
+
+  .sns-link {
+    width: 80px;
+    height: 80px;
+  }
+
+  .sns-link img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .sns-facebook {
+    width: 79px;
+    height: 79px;
+  }
+
+  .sns-facebook img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .sns-instagram img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .sns-title {
+    font-size: 2rem;
+  }
+
+  .sns-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .mobile-br {
+    display: inline;
+  }
+
+  /* Footer レスポンシブ（タブレット: 2カラム） */
   .footer {
     padding: 40px 0 20px;
   }
 
   .footer-content {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 30px;
   }
 
   .footer-links {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
   }
 
@@ -92,7 +234,6 @@
 
   .footer-logo {
     max-width: 150px;
-    margin: 0 auto;
   }
 }
 
@@ -102,19 +243,70 @@
   }
 
   .footer-content {
-    gap: 30px;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    max-width: 120px;
   }
 
   .footer-links {
+    grid-template-columns: 1fr;
     gap: 25px;
+  }
+
+  .footer-section {
+    text-align: center;
   }
 
   .footer-section h4 {
     font-size: 1rem;
   }
 
+  .footer-section ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section li {
+    display: block;
+    text-align: center;
+  }
+
   .footer-section a,
   .footer-section span {
     font-size: 0.85rem;
+    display: inline-block;
+  }
+
+  /* アコーディオン有効化（モバイル） */
+  .footer-accordion-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+  }
+
+  .footer-accordion-icon {
+    display: inline-block;
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+  }
+
+  .footer-accordion-icon.open {
+    transform: rotate(180deg);
+  }
+
+  .footer-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .footer-accordion-content.open {
+    max-height: 500px;
   }
 } 

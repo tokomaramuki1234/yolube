@@ -101,9 +101,8 @@
   text-align: center;
   animation: fadeInUp 1s ease-out 0.3s both;
   min-height: 9.6rem; /* 2行分の固定高さを確保 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block; /* flexからblockに変更して縦方向改行を有効化 */
+  white-space: pre-line; /* 改行文字を有効にする */
 }
 
 .slide.active .slide-subtitle {
@@ -133,9 +132,8 @@
   opacity: 0;
   transform: translateX(-50px);
   min-height: 9.6rem; /* 2行分の固定高さを確保 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block; /* flexからblockに変更して縦方向改行を有効化 */
+  white-space: pre-line; /* 改行文字を有効にする */
 }
 
 .slide-subtitle {
@@ -270,12 +268,29 @@
 @media (max-width: 768px) {
   .slide-title {
     font-family: 'Kiwi Maru', 'Noto Sans JP', sans-serif;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
+    line-height: 1.2;
     text-align: center;
+    min-height: 4.3rem; /* 2行分の高さを調整 */
+    display: block; /* flexからblockに変更 */
+    white-space: pre-line; /* 改行文字を有効にする */
+    word-break: normal; /* 改行を優先 */
+    overflow-wrap: normal; /* 改行を優先 */
+  }
+
+  .slide.active .slide-title {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    min-height: 4.3rem; /* 2行分の高さを調整 */
+    display: block; /* flexからblockに変更 */
+    white-space: pre-line; /* 改行文字を有効にする */
+    word-break: normal; /* 改行を優先 */
+    overflow-wrap: normal; /* 改行を優先 */
   }
 
   .slide-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
     text-align: center;
   }
 
@@ -294,13 +309,33 @@
 @media (max-width: 480px) {
   .slide-title {
     font-family: 'Kiwi Maru', 'Noto Sans JP', sans-serif;
-    font-size: 2rem;
+    font-size: 1.4rem;
+    line-height: 1.15;
     text-align: center;
+    min-height: 3.2rem; /* 2行分の高さを調整 */
+    margin-bottom: 20px;
+    display: block; /* flexからblockに変更 */
+    white-space: pre-line; /* 改行文字を有効にする */
+    word-break: normal; /* 改行を優先 */
+    overflow-wrap: normal; /* 改行を優先 */
+  }
+
+  .slide.active .slide-title {
+    font-size: 1.4rem;
+    line-height: 1.15;
+    min-height: 3.2rem; /* 2行分の高さを調整 */
+    margin-bottom: 20px;
+    display: block; /* flexからblockに変更 */
+    white-space: pre-line; /* 改行文字を有効にする */
+    word-break: normal; /* 改行を優先 */
+    overflow-wrap: normal; /* 改行を優先 */
   }
 
   .slide-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    line-height: 1.5;
     text-align: center;
+    margin-bottom: 30px;
   }
 
   .slide-text {
@@ -310,6 +345,41 @@
 
   .slider-controls {
     display: none; /* スマホ版では矢印を非表示 */
+  }
+}
+
+/* 超小型デバイス対応（iPhone SE など） */
+@media (max-width: 375px) {
+  .slide-title {
+    font-size: 1.2rem;
+    line-height: 1.1;
+    min-height: 2.6rem;
+    margin-bottom: 15px;
+    display: block; /* flexからblockに変更 */
+    white-space: pre-line; /* 改行文字を有効にする */
+    word-break: normal; /* 改行を優先 */
+    overflow-wrap: normal; /* 改行を優先 */
+  }
+
+  .slide.active .slide-title {
+    font-size: 1.2rem;
+    line-height: 1.1;
+    min-height: 2.6rem;
+    margin-bottom: 15px;
+    display: block; /* flexからblockに変更 */
+    white-space: pre-line; /* 改行文字を有効にする */
+    word-break: normal; /* 改行を優先 */
+    overflow-wrap: normal; /* 改行を優先 */
+  }
+
+  .slide-subtitle {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 25px;
+  }
+
+  .slide-text {
+    padding: 0 15px;
   }
 }
 

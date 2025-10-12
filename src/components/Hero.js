@@ -25,7 +25,7 @@ const Hero = () => {
       id: 2,
       image: '/images/slider2/image1.png',
       alt: 'テーブルゲーム交流会：Ke.のシンボル',
-      title: 'ノーボーダーなテーブルゲーム交流会',
+      title: 'ノーボーダーな\nテーブルゲーム交流会',
       subtitle: '世代・性別・国籍を超えた交流文化を秋田に築きます',
       cta: '『け』について',
       label: 'テーブルゲーム文化醸成事業'
@@ -43,7 +43,7 @@ const Hero = () => {
       id: 4,
       image: '/images/slider4/image1.png',
       alt: 'テーブルゲームを活用した企業研修の様子',
-      title: '遊び心いっぱいの研修、試してみませんか？',
+      title: '遊び心いっぱいの研修、\n試してみませんか？',
       subtitle: '主体的に学び、多角的に考える研修を目指します',
       cta: '企業研修について',
       label: '企業研修事業'

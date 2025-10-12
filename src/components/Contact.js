@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import './Contact.css';
+import { trackContactFormSubmit } from '../utils/gtm';
 
 const Contact = () => {
   const form = useRef();
@@ -10,8 +11,8 @@ const Contact = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // GAS WebアプリのURL
-    const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwGhOV6W4DoMTK9Zagbdjqq0KVx0KVThPqFtIzbFG__fine1Kez4_EmO7G9TwMiYrIGbg/exec';
+    // GAS WebアプリのURL（環境変数から取得）
+    const GAS_WEB_APP_URL = process.env.REACT_APP_GAS_WEB_APP_URL || 'https://script.google.com/macros/s/AKfycbwGhOV6W4DoMTK9Zagbdjqq0KVx0KVThPqFtIzbFG__fine1Kez4_EmO7G9TwMiYrIGbg/exec';
 
     // HTMLフォーム送信でCORS回避
     const hiddenForm = document.createElement('form');
@@ -41,6 +42,13 @@ const Contact = () => {
     document.body.appendChild(hiddenForm);
     hiddenForm.submit();
     document.body.removeChild(hiddenForm);
+
+    // GTMイベント送信 - お問い合わせ完了
+    trackContactFormSubmit({
+      name: formData.user_name,
+      email: formData.user_email,
+      inquiry_type: formData.inquiry_type
+    });
 
     // ユーザーフィードバック
     setMessage('お問い合わせを送信いたしました。確認画面が新しいタブで開きます。自動返信メールをご確認ください。');

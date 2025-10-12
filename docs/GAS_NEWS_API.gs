@@ -1,5 +1,6 @@
 /**
  * YOLUBE NEWS管理システム - Google Apps Script API
+<<<<<<< HEAD
  * バージョン: v1.1
  * 作成日: 2025年10月12日
  * 更新日: 2025年10月12日
@@ -8,10 +9,15 @@
  * - X (Twitter) API連携機能を追加
  * - postToTwitter関数を実装（OAuth 1.0aライブラリ使用）
  * - createNews/updateNewsでpostToX=trueの場合に自動投稿
+=======
+ * バージョン: v1.0
+ * 作成日: 2025年10月12日
+>>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
  *
  * 【デプロイ手順】
  * 1. Google Sheetsで「拡張機能」→「Apps Script」を開く
  * 2. このコードを貼り付け
+<<<<<<< HEAD
  * 3. ライブラリを追加:
  *    - OAuth1ライブラリ: 1CXDCY5sqT9ph64fFwSzVtXnbjpSfWdRymafDrtIZ7Z_hwysTY7IIhi7s
  * 4. スクリプトプロパティを設定:
@@ -38,6 +44,19 @@ const TWITTER_API_CONFIG = {
   accessTokenSecret: PropertiesService.getScriptProperties().getProperty('TWITTER_ACCESS_TOKEN_SECRET') || '0lywM4yNL8QE5QgMMTHcNv2xi0wEZATweNIoexn7qoBsQ'
 };
 
+=======
+ * 3. 「デプロイ」→「新しいデプロイ」
+ * 4. 種類: ウェブアプリ
+ * 5. 実行ユーザー: 自分
+ * 6. アクセス: 全員
+ * 7. デプロイURLをReactアプリに設定
+ */
+
+// スプレッドシートとシート名の定義
+const SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID_HERE'; // ★要設定
+const NEWS_SHEET_NAME = 'NEWS';
+
+>>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
 /**
  * メインエントリーポイント（GET/POSTリクエスト処理）
  */
@@ -98,11 +117,14 @@ function handleRequest(e) {
         result = getNewsStats();
         break;
 
+<<<<<<< HEAD
       // X投稿テスト
       case 'testTwitterPost':
         result = testTwitterPost(e);
         break;
 
+=======
+>>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
       default:
         result = {
           success: false,
@@ -381,6 +403,7 @@ function createNews(e) {
 
     sheet.appendRow(newRow);
 
+<<<<<<< HEAD
     // X (Twitter) への投稿
     let twitterResult = null;
     if (params.postToX === true && params.status === 'published') {
@@ -398,6 +421,12 @@ function createNews(e) {
         id: newId,
         twitterPost: twitterResult
       }
+=======
+    return {
+      success: true,
+      message: 'NEWS記事を作成しました',
+      data: { id: newId }
+>>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
     };
 
   } catch (error) {
@@ -467,6 +496,7 @@ function updateNews(e) {
 
         sheet.getRange(rowNumber, 1, 1, updatedRow.length).setValues([updatedRow]);
 
+<<<<<<< HEAD
         // X (Twitter) への投稿
         let twitterResult = null;
         if (params.postToX === true && params.status === 'published') {
@@ -483,6 +513,11 @@ function updateNews(e) {
           data: {
             twitterPost: twitterResult
           }
+=======
+        return {
+          success: true,
+          message: 'NEWS記事を更新しました'
+>>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
         };
       }
     }
@@ -637,6 +672,7 @@ function getNewsStats() {
 }
 
 /**
+<<<<<<< HEAD
  * X (Twitter) に投稿
  * OAuth 1.0aを使用してツイート
  */
@@ -772,6 +808,8 @@ function testTwitterPost(e) {
 }
 
 /**
+=======
+>>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
  * 日付フォーマット（YYYY.MM.DD）
  */
 function formatDate(date) {

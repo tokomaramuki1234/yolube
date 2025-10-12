@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import GoogleSheetsService from '../services/googleSheets';
 import './ReservationForm.css';
+import { trackReservationComplete } from '../utils/gtm';
 
 const ReservationForm = ({ currentLanguage = 'ja' }) => {
   const form = useRef();
@@ -239,7 +240,6 @@ const ReservationForm = ({ currentLanguage = 'ja' }) => {
         const events = getUpcomingEventsList(sheetsService, data, 6);
         setUpcomingEvents(events);
       } catch (error) {
-        console.error('Failed to fetch events:', error);
         // デフォルトのイベントリストを設定
         setUpcomingEvents([
           {
@@ -395,10 +395,6 @@ const ReservationForm = ({ currentLanguage = 'ja' }) => {
       notes: form.current.special_notes.value
     };
 
-    console.log('=== Reservation Form Submit Debug ===');
-    console.log('Selected Event:', selectedEvent);
-    console.log('Form Data:', formData);
-
     // 文字数チェック
     if (formData.name.length > 50) {
       setMessage('お名前は50文字以内で入力してください。');
@@ -441,6 +437,13 @@ const ReservationForm = ({ currentLanguage = 'ja' }) => {
     document.body.appendChild(hiddenForm);
     hiddenForm.submit();
     document.body.removeChild(hiddenForm);
+
+    // GTMイベント送信 - 予約完了
+    trackReservationComplete({
+      eventName: selectedEvent.eventname || 'テーブルゲーム交流会：Ke.',
+      eventDate: selectedEvent.eventdate,
+      participantCount: hasCompanions ? (parseInt(formData.companionCount) + 1) : 1
+    });
 
     // ユーザーフィードバック
     setMessage('予約を送信しました。確認画面が新しいタブで開きます。自動返信メールをご確認ください。');

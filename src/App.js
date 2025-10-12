@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -10,8 +10,6 @@ import Hero from './components/Hero';
 import News from './components/News';
 import About from './components/About';
 import Services from './components/Services';
-import Profile from './components/Profile';
-import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
@@ -19,21 +17,47 @@ import BackToTop from './components/BackToTop';
 import KeLP from './pages/ke/KeLPWeb3';
 import Training from './components/Training';
 import ReservationDetail from './components/ReservationDetail';
+import NewsPage from './pages/NewsPage';
+import YolubePage from './pages/YolubePage';
+import AboutPage from './pages/AboutPage';
+import AchievementPage from './pages/AchievementPage';
+import FosterPage from './pages/FosterPage';
+import RRPPage from './pages/RRPPage';
+import DEVPage from './pages/DEVPage';
+import CSTPage from './pages/CSTPage';
+import IIDPage from './pages/IIDPage';
+import NotFoundPage from './pages/NotFoundPage';
+import MaintenancePage from './pages/MaintenancePage';
 
 // 管理画面
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Login from './pages/admin/Login';
 import Admin from './pages/admin/Admin';
 
+// GTMユーティリティ
+import { trackPageView } from './utils/gtm';
+
 // Font Awesomeライブラリにアイコンを追加
 library.add(fas, far, fab);
+
+// ページビュートラッカー
+const PageViewTracker = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const pageTitle = document.title;
+    trackPageView(location.pathname + location.search, pageTitle);
+  }, [location]);
+
+  return null;
+};
 
 // 認証保護ルート
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
 
   if (isLoading) {
-    return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>読み込み中...</div>;
+    return <div className="loading-container">読み込み中...</div>;
   }
 
   return isAuthenticated ? children : <Navigate to="/admin/login" />;
@@ -46,8 +70,6 @@ const HomePage = () => (
     <News />
     <About />
     <Services />
-    <Achievements />
-    <Profile />
     <Contact />
   </>
 );
@@ -57,6 +79,7 @@ function App() {
     <HelmetProvider>
       <AuthProvider>
         <Router>
+          <PageViewTracker />
           <div className="App">
             <Routes>
             <Route path="/" element={
@@ -67,15 +90,24 @@ function App() {
                 <BackToTop />
               </>
             } />
+            <Route path="/NEWS" element={<NewsPage />} />
+            <Route path="/YOLUBE" element={<YolubePage />} />
+            <Route path="/ABOUT" element={<AboutPage />} />
+            <Route path="/ACHIEVEMENT" element={<AchievementPage />} />
+            <Route path="/FOSTER" element={<FosterPage />} />
+            <Route path="/RRP" element={<RRPPage />} />
+            <Route path="/DEV" element={<DEVPage />} />
+            <Route path="/CST" element={<CSTPage />} />
+            <Route path="/IID" element={<IIDPage />} />
+
+            {/* 制作中ページ */}
+            <Route path="/HT" element={<MaintenancePage />} />
+            <Route path="/NNBNB" element={<MaintenancePage />} />
+            <Route path="/KanTo" element={<MaintenancePage />} />
+
             <Route path="/ke" element={<KeLP />} />
             <Route path="/ke/reservations/:eventId" element={<ReservationDetail />} />
-            <Route path="/training" element={
-              <>
-                <Header />
-                <Training />
-                <Footer />
-              </>
-            } />
+            <Route path="/training" element={<Training />} />
 
             {/* 管理画面ルート */}
             <Route path="/admin/login" element={<Login />} />
@@ -87,6 +119,9 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
+            {/* 404ページ */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
           </div>
         </Router>
