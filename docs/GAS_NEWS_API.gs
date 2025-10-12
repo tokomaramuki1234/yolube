@@ -335,7 +335,9 @@ function getNewsById(params) {
  */
 function createNews(e) {
   try {
-    const params = JSON.parse(e.postData.contents);
+    const rawParams = JSON.parse(e.postData.contents);
+    // actionプロパティを除外
+    const { action, ...params } = rawParams;
 
     // バリデーション
     if (!params.title || !params.category || !params.description || !params.content) {
@@ -412,7 +414,9 @@ function createNews(e) {
  */
 function updateNews(e) {
   try {
-    const params = JSON.parse(e.postData.contents);
+    const rawParams = JSON.parse(e.postData.contents);
+    // actionプロパティを除外
+    const { action, ...params } = rawParams;
     const id = parseInt(params.id);
 
     if (!id) {
@@ -504,7 +508,9 @@ function updateNews(e) {
  */
 function deleteNews(e) {
   try {
-    const params = JSON.parse(e.postData.contents);
+    const rawParams = JSON.parse(e.postData.contents);
+    // actionプロパティを除外
+    const { action, ...params } = rawParams;
     const id = parseInt(params.id);
 
     if (!id) {
