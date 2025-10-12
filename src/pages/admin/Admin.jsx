@@ -3,10 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import Dashboard from '../../components/admin/Dashboard';
 import ReservationList from '../../components/admin/ReservationList';
-<<<<<<< HEAD
-=======
-import NewsList from '../../components/admin/NewsList';
->>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
 import NewsEditor from '../../components/admin/NewsEditor';
 import './Admin.css';
 
@@ -22,9 +18,6 @@ const Admin = () => {
   const navigate = useNavigate();
 
   const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxZRZSDGyg_Z1rGcuD9xymlMXB4vV3Cz8EVTOWS2GvP-bLKeYcq7q122ixPQKV71Xg6iQ/exec';
-  const NEWS_API_URL = 'https://script.google.com/macros/s/AKfycbymI6FuKRcoFu6BP558Dwj7RQFYf1sCDm5dWhHdmHJt6ibEdlseflU-0krlqL2mAG7_/exec';
-
-  // NEWS用のGAS API URL（セットアップ完了）
   const NEWS_API_URL = 'https://script.google.com/macros/s/AKfycbymI6FuKRcoFu6BP558Dwj7RQFYf1sCDm5dWhHdmHJt6ibEdlseflU-0krlqL2mAG7_/exec';
 
   // 初回ロード時にデータ取得
@@ -193,20 +186,10 @@ const Admin = () => {
 
           <button
             className={`nav-item ${activeTab === 'news' ? 'active' : ''}`}
-<<<<<<< HEAD
             onClick={() => setActiveTab('news')}
           >
             <span className="nav-icon">📰</span>
-            お知らせ管理
-=======
-            onClick={() => {
-              setActiveTab('news');
-              setShowNewsEditor(false);
-            }}
-          >
-            <span className="nav-icon">📰</span>
             NEWS管理
->>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
           </button>
         </nav>
 
@@ -222,15 +205,9 @@ const Admin = () => {
       <main className="admin-main">
         <header className="admin-header">
           <h1 className="admin-page-title">
-<<<<<<< HEAD
             {activeTab === 'dashboard' ? 'ダッシュボード' : 
              activeTab === 'reservations' ? '予約一覧' : 
-             'お知らせ管理'}
-=======
-            {activeTab === 'dashboard' && 'ダッシュボード'}
-            {activeTab === 'reservations' && '予約一覧'}
-            {activeTab === 'news' && (showNewsEditor ? (editingNews ? 'NEWS記事を編集' : 'NEWS記事を作成') : 'NEWS管理')}
->>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
+             'NEWS管理'}
           </h1>
           {!showNewsEditor && (
             <button className="refresh-btn" onClick={handleRefresh} disabled={isLoading}>
@@ -255,26 +232,8 @@ const Admin = () => {
                 <ReservationList reservations={reservations} onRefresh={fetchAdminData} />
               )}
 
-<<<<<<< HEAD
               {activeTab === 'news' && (
                 <NewsEditor newsApiUrl={NEWS_API_URL} />
-=======
-              {activeTab === 'news' && !showNewsEditor && (
-                <NewsList
-                  news={news}
-                  onRefresh={fetchNewsData}
-                  onEdit={handleEditNews}
-                  onDelete={handleDeleteNews}
-                />
-              )}
-
-              {activeTab === 'news' && showNewsEditor && (
-                <NewsEditor
-                  newsItem={editingNews}
-                  onSave={handleSaveNews}
-                  onCancel={handleCancelEdit}
-                />
->>>>>>> 74e2628bb8a2e18b4c98be99ca9872774d7ac8d5
               )}
             </>
           )}
