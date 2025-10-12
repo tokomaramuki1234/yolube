@@ -87,6 +87,25 @@
   gap: 10px;
 }
 
+.news-card-image {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.news-card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-card-image img {
+  transform: scale(1.02);
+}
+
 .news-card-category {
   padding: 5px 15px;
   border-radius: 20px;

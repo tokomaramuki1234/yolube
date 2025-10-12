@@ -204,6 +204,12 @@ const NewsPage = () => {
                         <time className="news-card-date">{item.date}</time>
                       </div>
 
+                      {item.imageUrl && (
+                        <div className="news-card-image">
+                          <img src={item.imageUrl} alt={item.title} />
+                        </div>
+                      )}
+
                       <h2 className="news-card-title">{item.title}</h2>
                       <p className="news-card-description">{item.description}</p>
                       <p className="news-card-content">{item.content}</p>
