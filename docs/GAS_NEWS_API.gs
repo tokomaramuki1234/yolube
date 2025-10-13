@@ -1,6 +1,6 @@
 /**
  * YOLUBE NEWS管理システム - Google Apps Script API
- * バージョン: v1.3
+ * バージョン: v1.41
  * 作成日: 2025年10月12日
  * 更新日: 2025年10月13日
  *
@@ -35,11 +35,12 @@ const SPREADSHEET_ID = '1Ejs0annRLCGiV0dSTVGwm-1oDWbPHv65s1xLeWyRen8';
 const NEWS_SHEET_NAME = 'NEWS';
 
 // X (Twitter) API設定
+// ✅ OAuth 1.0a Access Token (Read and Write 権限で生成済み)
 const TWITTER_API_CONFIG = {
   apiKey: PropertiesService.getScriptProperties().getProperty('TWITTER_API_KEY') || 'wiO3ccIIo0Fnb8sutSLFdYqhA',
   apiSecret: PropertiesService.getScriptProperties().getProperty('TWITTER_API_SECRET') || 'XEfFTD1Wl7V6AoKXTCxxVmHfavebWUeLeKohI8uLAoq9Aauvub',
-  accessToken: PropertiesService.getScriptProperties().getProperty('TWITTER_ACCESS_TOKEN') || '1619904114326118402-vIkq9wlBEG7rAFndsMHlFKI0opG0cu',
-  accessTokenSecret: PropertiesService.getScriptProperties().getProperty('TWITTER_ACCESS_TOKEN_SECRET') || '0lywM4yNL8QE5QgMMTHcNv2xi0wEZATweNIoexn7qoBsQ'
+  accessToken: PropertiesService.getScriptProperties().getProperty('TWITTER_ACCESS_TOKEN') || '1619904114326118402-F4NnSKntbFgnIPNxhaa5tjToRiRd2G',
+  accessTokenSecret: PropertiesService.getScriptProperties().getProperty('TWITTER_ACCESS_TOKEN_SECRET') || 'be1oVo45UOIxYYqaOyQpqCKfvrLjl5JSwhKZmMfkdsoPL'
 };
 
 /**
@@ -414,12 +415,17 @@ function createNews(e) {
 
     // X (Twitter) への投稿
     let twitterResult = null;
-    if (params.postToX === true && params.status === 'published') {
+    // URLSearchParamsは文字列として送信されるため、"true"または trueを判定
+    Logger.log('X投稿判定: postToX=' + params.postToX + ' (type: ' + typeof params.postToX + '), status=' + params.status);
+    if ((params.postToX === 'true' || params.postToX === true) && params.status === 'published') {
+      Logger.log('X投稿を実行します: title=' + params.title);
       twitterResult = postToTwitter({
         title: params.title,
         description: params.description,
         link: params.link || `https://yolube.jp/news/${newId}`
       });
+    } else {
+      Logger.log('X投稿はスキップされました');
     }
 
     return {
@@ -514,12 +520,17 @@ function updateNews(e) {
 
         // X (Twitter) への投稿
         let twitterResult = null;
-        if (params.postToX === true && params.status === 'published') {
+        // URLSearchParamsは文字列として送信されるため、"true"または trueを判定
+        Logger.log('X投稿判定: postToX=' + params.postToX + ' (type: ' + typeof params.postToX + '), status=' + params.status);
+        if ((params.postToX === 'true' || params.postToX === true) && params.status === 'published') {
+          Logger.log('X投稿を実行します: title=' + params.title);
           twitterResult = postToTwitter({
             title: params.title,
             description: params.description,
             link: params.link || `https://yolube.jp/news/${id}`
           });
+        } else {
+          Logger.log('X投稿はスキップされました');
         }
 
         return {
@@ -756,7 +767,7 @@ function postToTwitter(params) {
 
     // HMAC-SHA1署名
     const signature = Utilities.base64Encode(
-      Utilities.computeHmacSha1Signature(signatureBaseString, signingKey)
+      Utilities.computeHmacSignature(Utilities.MacAlgorithm.HMAC_SHA_1, signatureBaseString, signingKey)
     );
 
     oauthParams.oauth_signature = signature;

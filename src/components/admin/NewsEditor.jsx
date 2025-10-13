@@ -262,6 +262,11 @@ const NewsEditor = ({ newsApiUrl }) => {
     const action = editingNews ? 'updateNews' : 'createNews';
     const payload = { ...formData };
 
+    // デバッグログ: 送信データを確認
+    console.log('📤 送信データ:', payload);
+    console.log('✓ postToX:', payload.postToX);
+    console.log('✓ status:', payload.status);
+
     try {
       // GAS向けにURLパラメータ形式で送信（プリフライト回避）
       const params = new URLSearchParams();
@@ -269,23 +274,30 @@ const NewsEditor = ({ newsApiUrl }) => {
         params.append(key, payload[key]);
       });
       
+      console.log('📤 URLSearchParams:', params.toString());
+      
       const response = await fetch(`${newsApiUrl}?action=${action}`, {
         method: 'POST',
         body: params
       });
 
       const result = await response.json();
+      
+      console.log('📥 GASレスポンス:', result);
 
       if (result.success) {
         alert(editingNews ? '更新しました' : '作成しました');
         
         // X投稿結果の表示
         if (result.data && result.data.twitterPost) {
+          console.log('🐦 X投稿結果:', result.data.twitterPost);
           if (result.data.twitterPost.success) {
             alert('Xへの投稿も成功しました！\nURL: ' + result.data.twitterPost.tweetUrl);
           } else {
             alert('Xへの投稿に失敗しました: ' + result.data.twitterPost.error);
           }
+        } else {
+          console.log('ℹ️ X投稿は実行されませんでした（postToX未チェックまたはステータスが非公開）');
         }
 
         setIsEditing(false);
