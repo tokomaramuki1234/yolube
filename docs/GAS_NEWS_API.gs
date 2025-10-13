@@ -835,7 +835,7 @@ function testTwitterPost(e) {
 
 /**
  * 画像アップロード（Proxy経由でCORS問題を回避）
- * 複数APIのフォールバック対応
+ * ImgBB + Imgur の2段階フォールバック対応
  */
 function uploadImage(e) {
   try {
@@ -903,44 +903,7 @@ function uploadImage(e) {
       Logger.log('ImgBB failed: ' + error.toString());
     }
 
-    // API 2: Cloudinary (バックアップ - 無料プラン月25GB)
-    try {
-      const cloudinaryCloudName = PropertiesService.getScriptProperties().getProperty('CLOUDINARY_CLOUD_NAME') || 'demo';
-      const cloudinaryUploadPreset = PropertiesService.getScriptProperties().getProperty('CLOUDINARY_UPLOAD_PRESET') || 'ml_default';
-
-      const cloudinaryPayload = {
-        file: `data:image/jpeg;base64,${base64Image}`,
-        upload_preset: cloudinaryUploadPreset
-      };
-
-      const cloudinaryOptions = {
-        method: 'post',
-        payload: cloudinaryPayload,
-        muteHttpExceptions: true
-      };
-
-      const cloudinaryResponse = UrlFetchApp.fetch(
-        `https://api.cloudinary.com/v1_1/${cloudinaryCloudName}/image/upload`,
-        cloudinaryOptions
-      );
-
-      const cloudinaryResult = JSON.parse(cloudinaryResponse.getContentText());
-
-      if (cloudinaryResult.secure_url) {
-        Logger.log('Cloudinary upload success: ' + cloudinaryResult.secure_url);
-        return {
-          success: true,
-          url: cloudinaryResult.secure_url,
-          displayUrl: cloudinaryResult.secure_url,
-          deleteUrl: null,
-          provider: 'cloudinary'
-        };
-      }
-    } catch (error) {
-      Logger.log('Cloudinary failed: ' + error.toString());
-    }
-
-    // API 3: Imgur (最終バックアップ - アカウント不要、匿名アップロード)
+    // API 2: Imgur (バックアップ - アカウント不要、匿名アップロード)
     try {
       const imgurClientId = PropertiesService.getScriptProperties().getProperty('IMGUR_CLIENT_ID') || '546c25a59c58ad7';
 
