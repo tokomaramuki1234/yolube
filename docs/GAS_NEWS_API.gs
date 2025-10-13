@@ -836,18 +836,37 @@ function testTwitterPost(e) {
  */
 function uploadImage(e) {
   try {
-    // FormDataからパラメータを取得
+    // デバッグログ
+    Logger.log('uploadImage called');
+    Logger.log('e.parameter: ' + JSON.stringify(e.parameter));
+    Logger.log('e.postData: ' + JSON.stringify(e.postData));
+    
+    // URLSearchParamsからパラメータを取得
     let base64Image, fileName, fileType;
     
-    if (e.postData && e.postData.contents) {
-      // FormDataまたはURLSearchParams形式のパース
+    // e.parameterを優先的に使用（URLSearchParamsはここに格納される）
+    if (e.parameter && e.parameter.image) {
+      base64Image = e.parameter.image;
+      fileName = e.parameter.fileName || 'image.jpg';
+      fileType = e.parameter.fileType || 'image/jpeg';
+      Logger.log('Parameters found in e.parameter');
+    } else if (e.postData && e.postData.contents) {
+      // フォールバック: postDataから取得
       const contentType = e.postData.type;
+      Logger.log('Content-Type: ' + contentType);
       
       if (contentType === 'application/x-www-form-urlencoded' || contentType === 'multipart/form-data') {
-        // e.parameterからFormDataのフィールドを取得
-        base64Image = e.parameter.image;
-        fileName = e.parameter.fileName || 'image.jpg';
-        fileType = e.parameter.fileType || 'image/jpeg';
+        // e.parameterから取得（既に上で試行済み）
+        Logger.log('Trying to parse from postData.contents');
+        // URLSearchParamsの場合、手動パース
+        const params = {};
+        e.postData.contents.split('&').forEach(pair => {
+          const [key, value] = pair.split('=');
+          params[decodeURIComponent(key)] = decodeURIComponent(value);
+        });
+        base64Image = params.image;
+        fileName = params.fileName || 'image.jpg';
+        fileType = params.fileType || 'image/jpeg';
       } else {
         // JSON形式のフォールバック（後方互換性）
         try {
@@ -858,14 +877,14 @@ function uploadImage(e) {
         } catch (jsonError) {
           return {
             success: false,
-            message: 'Invalid request format. Expected FormData or JSON.'
+            message: 'Invalid request format. Expected URLSearchParams or JSON. Error: ' + jsonError.toString()
           };
         }
       }
     } else {
       return {
         success: false,
-        message: 'No image data provided'
+        message: 'No image data provided. e.parameter: ' + JSON.stringify(e.parameter) + ', e.postData: ' + JSON.stringify(e.postData)
       };
     }
 

@@ -82,17 +82,17 @@ const NewsEditor = ({ newsApiUrl }) => {
       reader.readAsDataURL(file);
     });
 
-    // FormDataを使用してGAS経由でアップロード
-    // Content-Type: multipart/form-data は自動設定されるため、CORS Preflightが発生しない
-    const formData = new FormData();
-    formData.append('image', base64);
-    formData.append('fileName', file.name);
-    formData.append('fileType', file.type);
+    // URLSearchParamsを使用してGAS経由でアップロード
+    // Content-Type: application/x-www-form-urlencoded（Simple Request）でCORS Preflightを回避
+    const params = new URLSearchParams();
+    params.append('image', base64);
+    params.append('fileName', file.name);
+    params.append('fileType', file.type);
 
     try {
       const response = await fetch(`${newsApiUrl}?action=uploadImage`, {
         method: 'POST',
-        body: formData // headersを指定しない（自動的にmultipart/form-dataになる）
+        body: params // headersを指定しない（自動的にapplication/x-www-form-urlencodedになる）
       });
 
       const result = await response.json();
