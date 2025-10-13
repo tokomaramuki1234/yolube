@@ -1,6 +1,6 @@
 /**
  * YOLUBE NEWS管理システム - Google Apps Script API
- * バージョン: v1.2
+ * バージョン: v1.3
  * 作成日: 2025年10月12日
  * 更新日: 2025年10月13日
  *
@@ -836,16 +836,31 @@ function testTwitterPost(e) {
  */
 function uploadImage(e) {
   try {
-    // POSTデータからBase64画像を取得
-    let params;
+    // FormDataからパラメータを取得
+    let base64Image, fileName, fileType;
+    
     if (e.postData && e.postData.contents) {
-      try {
-        params = JSON.parse(e.postData.contents);
-      } catch (jsonError) {
-        return {
-          success: false,
-          message: 'Invalid JSON format'
-        };
+      // FormDataまたはURLSearchParams形式のパース
+      const contentType = e.postData.type;
+      
+      if (contentType === 'application/x-www-form-urlencoded' || contentType === 'multipart/form-data') {
+        // e.parameterからFormDataのフィールドを取得
+        base64Image = e.parameter.image;
+        fileName = e.parameter.fileName || 'image.jpg';
+        fileType = e.parameter.fileType || 'image/jpeg';
+      } else {
+        // JSON形式のフォールバック（後方互換性）
+        try {
+          const params = JSON.parse(e.postData.contents);
+          base64Image = params.image;
+          fileName = params.fileName || 'image.jpg';
+          fileType = params.fileType || 'image/jpeg';
+        } catch (jsonError) {
+          return {
+            success: false,
+            message: 'Invalid request format. Expected FormData or JSON.'
+          };
+        }
       }
     } else {
       return {
@@ -854,14 +869,31 @@ function uploadImage(e) {
       };
     }
 
-    const base64Image = params.image;
-    const fileName = params.fileName || 'image.jpg';
-
     if (!base64Image) {
       return {
         success: false,
         message: 'No image data in request'
       };
+    }
+
+    // Base64ヘッダーが付いている場合は除去（data:image/xxx;base64,を除去）
+    if (base64Image.indexOf(',') > -1) {
+      base64Image = base64Image.split(',')[1];
+    }
+
+    // ファイル名の拡張子検証（fileTypeと整合性チェック）
+    const fileExtension = fileName.split('.').pop().toLowerCase();
+    const expectedExtensions = {
+      'image/jpeg': ['jpg', 'jpeg'],
+      'image/png': ['png'],
+      'image/gif': ['gif'],
+      'image/webp': ['webp']
+    };
+
+    const validExtensions = expectedExtensions[fileType] || [];
+    if (validExtensions.length > 0 && !validExtensions.includes(fileExtension)) {
+      Logger.log(`Warning: File extension mismatch. fileName: ${fileName}, fileType: ${fileType}`);
+      // 警告のみ、処理は続行
     }
 
     // API 1: ImgBB (推奨 - 無料プラン月5000枚)
