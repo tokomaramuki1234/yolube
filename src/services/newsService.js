@@ -5,7 +5,7 @@
 
 // GAS API エンドポイント（環境変数から取得、なければデフォルトを使用）
 const GAS_ENDPOINT = process.env.REACT_APP_GAS_ENDPOINT || 
-  'https://script.google.com/macros/s/AKfycbxZRZSDGyg_Z1rGcuD9xymlMXB4vV3Cz8EVTOWS2GvP-bLKeYcq7q122ixPQKV71Xg6iQ/exec';
+  'https://script.google.com/macros/s/AKfycbzZYxMs2LyWPu6z5BzOJKrlg37j2SUThPomirpOJ2FFrV6guzQ71oaO5dMh9uqCNlz4PQ/exec';
 
 class NewsService {
   /**

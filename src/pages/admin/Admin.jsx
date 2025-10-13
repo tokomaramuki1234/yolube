@@ -17,8 +17,11 @@ const Admin = () => {
   const { logout } = useAuth();
   const navigate = useNavigate();
 
-  const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxZRZSDGyg_Z1rGcuD9xymlMXB4vV3Cz8EVTOWS2GvP-bLKeYcq7q122ixPQKV71Xg6iQ/exec';
-  const NEWS_API_URL = 'https://script.google.com/macros/s/AKfycbymI6FuKRcoFu6BP558Dwj7RQFYf1sCDm5dWhHdmHJt6ibEdlseflU-0krlqL2mAG7_/exec';
+  // GAS API エンドポイント（環境変数から取得）
+  const GAS_WEB_APP_URL = process.env.REACT_APP_GAS_ENDPOINT || 
+    'https://script.google.com/macros/s/AKfycbzZYxMs2LyWPu6z5BzOJKrlg37j2SUThPomirpOJ2FFrV6guzQ71oaO5dMh9uqCNlz4PQ/exec';
+  const NEWS_API_URL = process.env.REACT_APP_GAS_ENDPOINT || 
+    'https://script.google.com/macros/s/AKfycbzZYxMs2LyWPu6z5BzOJKrlg37j2SUThPomirpOJ2FFrV6guzQ71oaO5dMh9uqCNlz4PQ/exec';
 
   // 初回ロード時にデータ取得
   useEffect(() => {
