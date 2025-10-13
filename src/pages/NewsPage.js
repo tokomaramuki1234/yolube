@@ -86,7 +86,7 @@ const NewsPage = () => {
   const [error, setError] = useState(null);
 
   // NEWS API URL（GAS デプロイURL）
-  const NEWS_API_URL = 'https://script.google.com/macros/s/AKfycbymI6FuKRcoFu6BP558Dwj7RQFYf1sCDm5dWhHdmHJt6ibEdlseflU-0krlqL2mAG7_/exec';
+  const NEWS_API_URL = 'https://script.google.com/macros/s/AKfycbzZYxMs2LyWPu6z5BzOJKrlg37j2SUThPomirpOJ2FFrV6guzQ71oaO5dMh9uqCNlz4PQ/exec';
 
   // NEWS データ取得
   useEffect(() => {

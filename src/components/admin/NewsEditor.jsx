@@ -57,7 +57,7 @@ const NewsEditor = ({ newsApiUrl }) => {
     }));
   };
 
-  // 画像をBase64に変換してアップロード（複数APIのフォールバック対応）
+  // 画像をBase64に変換してGAS Proxy経由でアップロード（CORS問題を回避）
   const uploadImage = async (file) => {
     // Base64に変換
     const base64 = await new Promise((resolve, reject) => {
@@ -67,64 +67,31 @@ const NewsEditor = ({ newsApiUrl }) => {
       reader.readAsDataURL(file);
     });
 
-    // API 1: freeimage.host (最も信頼性が高い)
+    // GAS Proxy経由でアップロード
     try {
-      const formData = new FormData();
-      formData.append('source', base64);
-      formData.append('type', 'base64');
-      formData.append('action', 'upload');
-      
-      const response = await fetch('https://freeimage.host/api/1/upload?key=6d207e02198a847aa98d0a2a901485a5', {
+      const response = await fetch(`${newsApiUrl}?action=uploadImage`, {
         method: 'POST',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          image: base64,
+          fileName: file.name
+        })
       });
-      
+
       const result = await response.json();
-      if (result.status_code === 200 && result.image && result.image.url) {
-        return result.image.url;
+
+      if (result.success && result.url) {
+        console.log(`画像アップロード成功 (${result.provider}):`, result.url);
+        return result.url;
+      } else {
+        throw new Error(result.message || 'アップロードに失敗しました');
       }
     } catch (error) {
-      console.warn('freeimage.host failed, trying next API...', error);
+      console.error('GAS Proxy upload failed:', error);
+      throw new Error('画像アップロードに失敗しました: ' + error.message);
     }
-
-    // API 2: ImgBB (バックアップ)
-    try {
-      const formData = new FormData();
-      formData.append('image', base64);
-      
-      const response = await fetch('https://api.imgbb.com/1/upload?key=d7a9b36a3d7e1b6f8c5e9d4f2a1b8c3e', {
-        method: 'POST',
-        body: formData
-      });
-      
-      const result = await response.json();
-      if (result.success && result.data && result.data.url) {
-        return result.data.url;
-      }
-    } catch (error) {
-      console.warn('imgbb failed, trying next API...', error);
-    }
-
-    // API 3: Cloudinary (最終バックアップ - 無料枠あり)
-    try {
-      const formData = new FormData();
-      formData.append('file', `data:${file.type};base64,${base64}`);
-      formData.append('upload_preset', 'ml_default');
-      
-      const response = await fetch('https://api.cloudinary.com/v1_1/demo/image/upload', {
-        method: 'POST',
-        body: formData
-      });
-      
-      const result = await response.json();
-      if (result.secure_url) {
-        return result.secure_url;
-      }
-    } catch (error) {
-      console.warn('cloudinary failed', error);
-    }
-
-    throw new Error('すべての画像アップロードAPIが失敗しました。しばらく時間をおいて再度お試しください。');
   };
 
   // ドラッグ&ドロップハンドラー

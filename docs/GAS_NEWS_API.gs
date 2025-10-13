@@ -48,11 +48,14 @@ function doPost(e) {
 }
 
 // CORS プリフライトリクエスト対応
-// 注: GASは「全員」アクセスでデプロイすると自動的にCORSヘッダーを付与します
 function doOptions(e) {
   return ContentService
     .createTextOutput('')
-    .setMimeType(ContentService.MimeType.JSON);
+    .setMimeType(ContentService.MimeType.TEXT)
+    .setHeader('Access-Control-Allow-Origin', '*')
+    .setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    .setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    .setHeader('Access-Control-Max-Age', '86400');
 }
 
 /**
@@ -104,6 +107,10 @@ function handleRequest(e) {
         result = testTwitterPost(e);
         break;
 
+      // 画像アップロード（Proxy経由）
+      case 'uploadImage':
+        result = uploadImage(e);
+        break;
 
       default:
         result = {
@@ -112,19 +119,25 @@ function handleRequest(e) {
         };
     }
 
-    // レスポンス返却（GASが自動的にCORSヘッダーを付与）
+    // レスポンス返却（明示的にCORSヘッダーを付与）
     return ContentService
       .createTextOutput(JSON.stringify(result))
-      .setMimeType(ContentService.MimeType.JSON);
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeader('Access-Control-Allow-Origin', '*')
+      .setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+      .setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
   } catch (error) {
-    // エラーレスポンス返却（GASが自動的にCORSヘッダーを付与）
+    // エラーレスポンス返却（明示的にCORSヘッダーを付与）
     return ContentService
       .createTextOutput(JSON.stringify({
         success: false,
         message: 'Server error: ' + error.toString()
       }))
-      .setMimeType(ContentService.MimeType.JSON);
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeader('Access-Control-Allow-Origin', '*')
+      .setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+      .setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   }
 }
 
@@ -803,7 +816,7 @@ function postToTwitter(params) {
 function testTwitterPost(e) {
   try {
     const params = JSON.parse(e.postData.contents);
-    
+
     const result = postToTwitter({
       title: params.title || 'テスト投稿',
       description: params.description || 'これはテスト投稿です。',
@@ -816,6 +829,168 @@ function testTwitterPost(e) {
     return {
       success: false,
       message: 'テスト投稿エラー: ' + error.toString()
+    };
+  }
+}
+
+/**
+ * 画像アップロード（Proxy経由でCORS問題を回避）
+ * 複数APIのフォールバック対応
+ */
+function uploadImage(e) {
+  try {
+    // POSTデータからBase64画像を取得
+    let params;
+    if (e.postData && e.postData.contents) {
+      try {
+        params = JSON.parse(e.postData.contents);
+      } catch (jsonError) {
+        return {
+          success: false,
+          message: 'Invalid JSON format'
+        };
+      }
+    } else {
+      return {
+        success: false,
+        message: 'No image data provided'
+      };
+    }
+
+    const base64Image = params.image;
+    const fileName = params.fileName || 'image.jpg';
+
+    if (!base64Image) {
+      return {
+        success: false,
+        message: 'No image data in request'
+      };
+    }
+
+    // API 1: ImgBB (推奨 - 無料プラン月5000枚)
+    try {
+      const imgbbApiKey = PropertiesService.getScriptProperties().getProperty('IMGBB_API_KEY') || 'b3cbf2e9b99618f28f29d624a6d18b40';
+
+      const imgbbPayload = {
+        image: base64Image,
+        name: fileName
+      };
+
+      const imgbbOptions = {
+        method: 'post',
+        payload: imgbbPayload,
+        muteHttpExceptions: true
+      };
+
+      const imgbbResponse = UrlFetchApp.fetch(
+        `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`,
+        imgbbOptions
+      );
+
+      const imgbbResult = JSON.parse(imgbbResponse.getContentText());
+
+      if (imgbbResult.success && imgbbResult.data && imgbbResult.data.url) {
+        Logger.log('ImgBB upload success: ' + imgbbResult.data.url);
+        return {
+          success: true,
+          url: imgbbResult.data.url,
+          displayUrl: imgbbResult.data.display_url || imgbbResult.data.url,
+          deleteUrl: imgbbResult.data.delete_url || null,
+          provider: 'imgbb'
+        };
+      }
+    } catch (error) {
+      Logger.log('ImgBB failed: ' + error.toString());
+    }
+
+    // API 2: Cloudinary (バックアップ - 無料プラン月25GB)
+    try {
+      const cloudinaryCloudName = PropertiesService.getScriptProperties().getProperty('CLOUDINARY_CLOUD_NAME') || 'demo';
+      const cloudinaryUploadPreset = PropertiesService.getScriptProperties().getProperty('CLOUDINARY_UPLOAD_PRESET') || 'ml_default';
+
+      const cloudinaryPayload = {
+        file: `data:image/jpeg;base64,${base64Image}`,
+        upload_preset: cloudinaryUploadPreset
+      };
+
+      const cloudinaryOptions = {
+        method: 'post',
+        payload: cloudinaryPayload,
+        muteHttpExceptions: true
+      };
+
+      const cloudinaryResponse = UrlFetchApp.fetch(
+        `https://api.cloudinary.com/v1_1/${cloudinaryCloudName}/image/upload`,
+        cloudinaryOptions
+      );
+
+      const cloudinaryResult = JSON.parse(cloudinaryResponse.getContentText());
+
+      if (cloudinaryResult.secure_url) {
+        Logger.log('Cloudinary upload success: ' + cloudinaryResult.secure_url);
+        return {
+          success: true,
+          url: cloudinaryResult.secure_url,
+          displayUrl: cloudinaryResult.secure_url,
+          deleteUrl: null,
+          provider: 'cloudinary'
+        };
+      }
+    } catch (error) {
+      Logger.log('Cloudinary failed: ' + error.toString());
+    }
+
+    // API 3: Imgur (最終バックアップ - アカウント不要、匿名アップロード)
+    try {
+      const imgurClientId = PropertiesService.getScriptProperties().getProperty('IMGUR_CLIENT_ID') || '546c25a59c58ad7';
+
+      const imgurPayload = {
+        image: base64Image,
+        type: 'base64',
+        name: fileName
+      };
+
+      const imgurOptions = {
+        method: 'post',
+        headers: {
+          Authorization: `Client-ID ${imgurClientId}`
+        },
+        payload: imgurPayload,
+        muteHttpExceptions: true
+      };
+
+      const imgurResponse = UrlFetchApp.fetch(
+        'https://api.imgur.com/3/image',
+        imgurOptions
+      );
+
+      const imgurResult = JSON.parse(imgurResponse.getContentText());
+
+      if (imgurResult.success && imgurResult.data && imgurResult.data.link) {
+        Logger.log('Imgur upload success: ' + imgurResult.data.link);
+        return {
+          success: true,
+          url: imgurResult.data.link,
+          displayUrl: imgurResult.data.link,
+          deleteUrl: imgurResult.data.deletehash ? `https://imgur.com/delete/${imgurResult.data.deletehash}` : null,
+          provider: 'imgur'
+        };
+      }
+    } catch (error) {
+      Logger.log('Imgur failed: ' + error.toString());
+    }
+
+    // すべてのAPIが失敗した場合
+    return {
+      success: false,
+      message: 'すべての画像アップロードAPIが失敗しました。しばらく時間をおいて再度お試しください。'
+    };
+
+  } catch (error) {
+    Logger.log('Upload error: ' + error.toString());
+    return {
+      success: false,
+      message: 'アップロードエラー: ' + error.toString()
     };
   }
 }
