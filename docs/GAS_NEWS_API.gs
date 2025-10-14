@@ -279,7 +279,7 @@ function getAllNews(params) {
       // 日付フォーマット
       newsItem.createdAt = formatDateTime(newsItem.createdAt);
       newsItem.updatedAt = formatDateTime(newsItem.updatedAt);
-      newsItem.publishDate = formatDate(new Date(newsItem.publishDate));
+      newsItem.publishDate = formatDateTime(new Date(newsItem.publishDate));
 
       newsItems.push(newsItem);
     }
