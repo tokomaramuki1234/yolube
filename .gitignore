@@ -11,3 +11,7 @@ cursor/
 
 # Google Sheets credentials
 google-sheets-credentials.json
+
+# デザインファイル（大容量）
+OGP画像.ai
+OGP画像/

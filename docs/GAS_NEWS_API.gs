@@ -177,11 +177,14 @@ function getPublishedNews(params) {
       // 公開判定
       const status = newsItem.status;
       const publishDate = new Date(newsItem.publishDate);
-      publishDate.setHours(0, 0, 0, 0);
+
+      // 公開判定用の日付（時刻を00:00:00にリセット）
+      const publishDateOnly = new Date(publishDate);
+      publishDateOnly.setHours(0, 0, 0, 0);
 
       const isPublished =
         status === 'published' ||
-        (status === 'scheduled' && publishDate <= today);
+        (status === 'scheduled' && publishDateOnly <= today);
 
       if (!isPublished) continue;
 
@@ -189,13 +192,15 @@ function getPublishedNews(params) {
       if (category && newsItem.category !== category) continue;
 
       // 公開日から7日以内はNEWバッジ表示
-      const daysSincePublish = Math.floor((today - publishDate) / (1000 * 60 * 60 * 24));
+      const daysSincePublish = Math.floor((today - publishDateOnly) / (1000 * 60 * 60 * 24));
       const autoIsNew = daysSincePublish <= 7;
 
       // フォーマット変換
       const formattedItem = {
         id: newsItem.id,
         date: formatDate(publishDate),
+        publishDateTime: publishDate,  // ソート用（時刻情報を含む）
+        displayOrder: newsItem.displayOrder || 0,  // 表示順序
         category: newsItem.category,
         title: newsItem.title,
         description: newsItem.description,
@@ -209,15 +214,20 @@ function getPublishedNews(params) {
       newsItems.push(formattedItem);
     }
 
-    // 表示順序でソート（大きい方が上）→ 公開日でソート（新しい方が上）
+    // 表示順序でソート（大きい方が上）→ 公開日時でソート（新しい方が上）
     newsItems.sort((a, b) => {
       const orderA = parseInt(a.displayOrder) || 0;
       const orderB = parseInt(b.displayOrder) || 0;
       if (orderA !== orderB) return orderB - orderA;
 
-      const dateA = new Date(a.date.replace(/\./g, '-'));
-      const dateB = new Date(b.date.replace(/\./g, '-'));
-      return dateB - dateA;
+      // publishDateTime（Date型）で比較
+      return b.publishDateTime - a.publishDateTime;
+    });
+
+    // publishDateTimeとdisplayOrderを削除（フロントエンドには送信しない）
+    newsItems.forEach(item => {
+      delete item.publishDateTime;
+      delete item.displayOrder;
     });
 
     // 件数制限

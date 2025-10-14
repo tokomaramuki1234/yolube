@@ -16,7 +16,7 @@ const NewsEditor = ({ newsApiUrl }) => {
     tags: '',
     status: 'draft',
     isNew: false,
-    publishDate: new Date().toISOString().split('T')[0],
+    publishDate: new Date().toISOString().slice(0, 16),
     postToX: false
   });
   const [uploadedImages, setUploadedImages] = useState([]);
@@ -222,7 +222,7 @@ const NewsEditor = ({ newsApiUrl }) => {
       tags: '',
       status: 'draft',
       isNew: false,
-      publishDate: new Date().toISOString().split('T')[0],
+      publishDate: new Date().toISOString().slice(0, 16),
       postToX: false
     });
     setUploadedImages([]);
@@ -244,7 +244,7 @@ const NewsEditor = ({ newsApiUrl }) => {
       tags: news.tags || '',
       status: news.status,
       isNew: news.isNew === 'TRUE' || news.isNew === true,
-      publishDate: news.publishDate ? news.publishDate.replace(/\./g, '-') : new Date().toISOString().split('T')[0],
+      publishDate: news.publishDate ? news.publishDate.replace(/\./g, '-').replace(' ', 'T').slice(0, 16) : new Date().toISOString().slice(0, 16),
       postToX: false
     });
     setUploadedImages(imageUrls);
@@ -451,9 +451,9 @@ const NewsEditor = ({ newsApiUrl }) => {
               </div>
 
               <div className="form-group">
-                <label>公開日 *</label>
+                <label>公開日時 *</label>
                 <input
-                  type="date"
+                  type="datetime-local"
                   name="publishDate"
                   value={formData.publishDate}
                   onChange={handleInputChange}
