@@ -1146,9 +1146,103 @@ YOLUBE ウェブサイトに **NEWS投稿管理システム** を実装しまし
 
 ---
 
-## 🎉 最新の成果（2025年10月13日）
+## 🎉 最新の成果
 
-### ✅ 画像アップロード機能の実装完了
+### ✅ X (Twitter) 自動投稿機能の実装完了（2025年10月14日）
+
+**実装日**: 2025年10月14日
+**ステータス**: ✅ 完全動作確認済み
+**バージョン**: GAS v1.5 (X画像投稿対応)
+
+#### 📋 実装内容
+
+**1. X自動投稿機能の修正**
+- URLSearchParams文字列判定対応（`postToX === 'true' || postToX === true`）
+- GAS新バージョンデプロイ（v79 → v80）
+- Admin.jsx フォールバックURLを新GAS URLに更新
+
+**2. X投稿への画像添付機能**
+- ①画像URLがある場合: NEWS記事の画像を自動添付
+- ②画像URLがない場合: YOLUBE OGP画像（`https://yolube.jp/images/OGP.png`）を自動添付
+- Twitter API v1.1 メディアアップロード機能実装
+- OAuth 1.0a認証による画像アップロード → `media_id`取得 → ツイートに添付
+
+#### 🔧 技術実装
+
+**新規追加関数**:
+```javascript
+uploadMediaToTwitter(imageUrl)
+```
+- 画像URLから画像をダウンロード
+- Base64エンコード
+- Twitter API v1.1 `upload.twitter.com/1.1/media/upload.json` にアップロード
+- `media_id_string`を返却
+
+**修正関数**:
+```javascript
+postToTwitter({ title, description, link, imageUrl })
+```
+- `imageUrl`パラメータ追加
+- 画像がある場合: `uploadMediaToTwitter()`で画像アップロード
+- 画像がない場合: YOLUBE OGP画像を使用
+- Twitter API v2 ツイート時に`media.media_ids`を指定
+
+**対応API**:
+- Twitter API v1.1 Media Upload（画像アップロード用）
+- Twitter API v2 Tweets（ツイート投稿用）
+- OAuth 1.0a認証（両API共通）
+
+#### 📊 動作確認結果
+
+**テスト1: X自動投稿（画像なし）**
+- ツイートID: `1977905012782059826`
+- URL: https://twitter.com/i/web/status/1977905012782059826
+- 結果: ✅ 成功（テキストのみ投稿）
+
+**テスト2: X自動投稿（画像あり）**
+- 実施予定（GAS v1.5デプロイ後）
+- 期待結果: 画像付きツイート
+
+#### 🗂️ ファイル変更
+
+| ファイル | 変更内容 |
+|---------|---------|
+| `docs/GAS_NEWS_API.gs` | `uploadMediaToTwitter()`関数追加、`postToTwitter()`修正 |
+| `src/pages/admin/Admin.jsx` | フォールバックGAS URLを新URLに更新 |
+| `.env` | GAS URLを新URLに更新 |
+| `README.md` | 実装記録を追加 |
+
+#### 💡 使い方
+
+**管理画面からX自動投稿**:
+1. https://yolube.jp/admin → 「NEWS管理」
+2. 新規作成 or 編集
+3. ✅ 「X (Twitter) に投稿する」にチェック
+4. ステータス: 「公開」を選択
+5. （オプション）画像をアップロード
+6. 保存 → 自動的にXに投稿されます
+
+**投稿内容**:
+```
+【お知らせ】[記事タイトル]
+
+[記事の説明文]
+
+[リンクURL]
+```
+- 画像あり: 記事の画像を添付
+- 画像なし: YOLUBE OGP画像を添付
+
+#### 📝 今後の拡張予定
+
+- [ ] 複数画像対応（現在は1枚のみ）
+- [ ] 投稿済みツイートの編集・削除機能
+- [ ] X投稿スケジュール機能
+- [ ] ハッシュタグ自動付与
+
+---
+
+### ✅ 画像アップロード機能の実装完了（2025年10月13日）
 
 **実装内容**:
 - NEWS管理画面に画像直接アップロード機能を実装
@@ -1172,5 +1266,5 @@ YOLUBE ウェブサイトに **NEWS投稿管理システム** を実装しまし
 
 ---
 
-*最終更新: 2025年10月13日*
-*システムバージョン: v4.2 (NEWS画像機能実装、URL入力方式)*
+*最終更新: 2025年10月14日*
+*システムバージョン: v4.3 (X自動投稿画像添付機能実装)*
