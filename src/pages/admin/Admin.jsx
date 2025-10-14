@@ -19,9 +19,9 @@ const Admin = () => {
 
   // GAS API エンドポイント（環境変数から取得）
   const GAS_WEB_APP_URL = process.env.REACT_APP_GAS_ENDPOINT || 
-    'https://script.google.com/macros/s/AKfycbzZYxMs2LyWPu6z5BzOJKrlg37j2SUThPomirpOJ2FFrV6guzQ71oaO5dMh9uqCNlz4PQ/exec';
+    'https://script.google.com/macros/s/AKfycbyt2adBouUjz5D_IOOvTjE-VpJK6Cx9VsqIJIBPPfng94bqtSQn8ph00t9dbOQvcYYPUw/exec';
   const NEWS_API_URL = process.env.REACT_APP_GAS_ENDPOINT || 
-    'https://script.google.com/macros/s/AKfycbzZYxMs2LyWPu6z5BzOJKrlg37j2SUThPomirpOJ2FFrV6guzQ71oaO5dMh9uqCNlz4PQ/exec';
+    'https://script.google.com/macros/s/AKfycbyt2adBouUjz5D_IOOvTjE-VpJK6Cx9VsqIJIBPPfng94bqtSQn8ph00t9dbOQvcYYPUw/exec';
 
   // 初回ロード時にデータ取得
   useEffect(() => {
