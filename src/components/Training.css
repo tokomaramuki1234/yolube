@@ -88,9 +88,25 @@
 
 /* Hero Section */
 .training-hero {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 8rem 0 6rem;
+  position: relative;
+  background: linear-gradient(135deg, rgba(139, 199, 128, 0.15) 0%, rgba(107, 165, 99, 0.15) 100%);
+  padding: 10rem 0 8rem;
   overflow: hidden;
+}
+
+.training-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.9) 100%);
+  z-index: 1;
+}
+
+.training-hero .training-container {
+  position: relative;
+  z-index: 2;
 }
 
 .training-hero-content {
@@ -148,11 +164,57 @@
   line-height: 1.8;
 }
 
+.training-hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 2.5rem 0;
+  flex-wrap: wrap;
+}
+
+.training-stat-item {
+  text-align: center;
+}
+
+.training-stat-number {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #8BC780;
+  line-height: 1;
+}
+
+.training-stat-number span {
+  font-size: 1.5rem;
+}
+
+.training-stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
 .training-hero-buttons {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 2rem;
+}
+
+.training-btn-hero {
+  font-size: 1.3rem;
+  padding: 1.5rem 3rem;
+  box-shadow: 0 6px 25px rgba(139, 199, 128, 0.4);
+  animation: pulse-cta 2s infinite;
+}
+
+@keyframes pulse-cta {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
 }
 
 .training-hero-image {
@@ -385,6 +447,212 @@
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
+/* Timeline */
+.training-timeline {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem 0;
+}
+
+.training-timeline-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.training-timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.training-timeline-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 15px rgba(139, 199, 128, 0.3);
+  z-index: 2;
+}
+
+.training-timeline-icon-final {
+  background: linear-gradient(135deg, #FFD93D 0%, #FFC107 100%);
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+  animation: pulse-icon 2s infinite;
+}
+
+@keyframes pulse-icon {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.training-timeline-line {
+  width: 4px;
+  flex-grow: 1;
+  background: linear-gradient(to bottom, #8BC780, #e9ecef);
+  margin-top: 0.5rem;
+}
+
+.training-timeline-item:last-child .training-timeline-line {
+  display: none;
+}
+
+.training-timeline-content {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.training-timeline-content:hover {
+  transform: translateX(5px);
+}
+
+.training-timeline-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.training-timeline-content h4 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.training-timeline-content p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Before After Comparison */
+.training-before-after {
+  margin-top: 4rem;
+  padding: 3rem 0;
+}
+
+.training-comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 100px 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.training-comparison-before,
+.training-comparison-after {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.training-comparison-before {
+  border-left: 4px solid #dc3545;
+}
+
+.training-comparison-after {
+  border-left: 4px solid #28a745;
+}
+
+.training-comparison-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.training-comparison-header svg {
+  font-size: 1.5rem;
+}
+
+.training-comparison-before .training-comparison-header svg {
+  color: #dc3545;
+}
+
+.training-comparison-after .training-comparison-header svg {
+  color: #28a745;
+}
+
+.training-comparison-header h4 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #2c3e50;
+}
+
+.training-comparison-before ul,
+.training-comparison-after ul {
+  list-style: none;
+  padding: 0;
+}
+
+.training-comparison-before li,
+.training-comparison-after li {
+  padding: 0.75rem 0;
+  padding-left: 2rem;
+  position: relative;
+  line-height: 1.6;
+  color: #555;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.training-comparison-before li:last-child,
+.training-comparison-after li:last-child {
+  border-bottom: none;
+}
+
+.training-comparison-before li::before {
+  content: "×";
+  position: absolute;
+  left: 0;
+  color: #dc3545;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.training-comparison-after li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #28a745;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.training-comparison-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: #8BC780;
+  animation: slide-right 1.5s ease-in-out infinite;
+}
+
+@keyframes slide-right {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
 .training-program-phases {
   margin-top: 3rem;
 }
@@ -554,12 +822,65 @@
   font-weight: bold;
 }
 
-/* Testimonials Section */
-.training-testimonials {
+/* Social Proof Section */
+.training-social-proof {
   padding: 6rem 0;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
+.training-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.training-stat-card {
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.training-stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.training-stat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
+  color: white;
+  border-radius: 50%;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.training-stat-card .training-stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #8BC780;
+  margin-bottom: 0.5rem;
+}
+
+.training-stat-card .training-stat-label {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.training-stat-desc {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Testimonials Section */
 .training-testimonials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -573,6 +894,11 @@
   border-radius: 12px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   position: relative;
+  transition: transform 0.3s ease;
+}
+
+.training-testimonial:hover {
+  transform: translateY(-5px);
 }
 
 .training-testimonial-icon {
@@ -582,35 +908,400 @@
 }
 
 .training-testimonial p {
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.7;
   color: #555;
   margin-bottom: 1.5rem;
-  font-style: italic;
 }
 
 .training-testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  border-top: 1px solid #e9ecef;
+  padding-top: 1rem;
 }
 
-.training-testimonial-author img {
-  width: 50px;
-  height: 50px;
+.training-testimonial-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.training-testimonial-name {
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.training-testimonial-company {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.training-testimonial-role {
+  color: #8BC780;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* Instructor Section */
+.training-instructor-section {
+  margin-top: 4rem;
+  padding-top: 4rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.training-instructor-profile {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 3rem;
+  align-items: start;
+  background: #fff;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.training-instructor-image {
+  text-align: center;
+}
+
+.training-instructor-image img {
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #8BC780;
+}
+
+.training-instructor-info h4 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.training-instructor-title {
+  color: #8BC780;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.training-instructor-credentials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.training-credential-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #555;
+}
+
+.training-credential-item svg {
+  color: #8BC780;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.training-instructor-message {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-left: 4px solid #8BC780;
+  border-radius: 8px;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* Game Introduction Section */
+.training-games {
+  padding: 6rem 0;
+  background: #fff;
+}
+
+.training-games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.training-game-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.training-game-card:hover {
+  transform: translateY(-5px);
+}
+
+.training-game-image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.training-game-image img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-.training-testimonial-author span {
-  font-weight: bold;
+.training-game-content {
+  padding: 2rem;
+}
+
+.training-game-content h4 {
+  font-size: 1.4rem;
   color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.training-game-purpose {
+  background: #f8f9fa;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.training-game-purpose strong {
+  color: #8BC780;
+}
+
+.training-game-content p {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.training-game-theory {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
+  color: white;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.training-game-theory svg {
+  font-size: 1.2rem;
+}
+
+.training-games-note {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: #fff3cd;
+  border-radius: 8px;
+  color: #856404;
+  line-height: 1.7;
+}
+
+/* FAQ Section */
+.training-faq {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.training-faq-list {
+  max-width: 900px;
+  margin: 3rem auto 0;
+}
+
+.training-faq-item {
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+.training-faq-question {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
+  color: white;
+  cursor: pointer;
+}
+
+.training-faq-question svg {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.training-faq-question h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.training-faq-answer {
+  padding: 2rem;
+}
+
+.training-faq-answer p {
+  line-height: 1.8;
+  color: #555;
+  margin: 0;
+}
+
+.training-faq-answer strong {
+  color: #8BC780;
+}
+
+.training-faq-cta {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+}
+
+.training-faq-cta p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: #555;
 }
 
 /* Pricing Section */
 .training-pricing {
   padding: 6rem 0;
   background: #fff;
+}
+
+/* Limited Offer */
+.training-limited-offer {
+  background: linear-gradient(135deg, #FFD93D 0%, #FFC107 100%);
+  padding: 3rem;
+  border-radius: 12px;
+  text-align: center;
+  margin: 3rem auto;
+  max-width: 900px;
+  box-shadow: 0 8px 30px rgba(255, 193, 7, 0.3);
+  position: relative;
+  animation: shine 2s infinite;
+}
+
+@keyframes shine {
+  0%, 100% {
+    box-shadow: 0 8px 30px rgba(255, 193, 7, 0.3);
+  }
+  50% {
+    box-shadow: 0 12px 40px rgba(255, 193, 7, 0.5);
+  }
+}
+
+.training-offer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #dc3545;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.training-limited-offer h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.training-limited-offer > p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.training-offer-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 2rem 0;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.training-offer-benefit {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.training-offer-benefit svg {
+  color: #28a745;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.training-offer-deadline {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.training-offer-remaining {
+  color: #dc3545;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.training-pricing-guarantee {
+  font-weight: bold;
+  color: #28a745;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.training-akita-special {
+  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.training-akita-special h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.training-akita-special p {
+  line-height: 1.7;
+  font-size: 1.1rem;
 }
 
 .training-target-companies {
@@ -969,7 +1660,7 @@
 
   /* Hero Section */
   .training-hero {
-    padding: 4rem 0 3rem;
+    padding: 5rem 0 4rem;
   }
 
   .training-hero-content {
@@ -990,8 +1681,71 @@
     font-size: 1.1rem;
   }
 
+  .training-hero-stats {
+    gap: 2rem;
+  }
+
+  .training-stat-item .training-stat-number {
+    font-size: 2.5rem;
+  }
+
   .training-hero-buttons {
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .training-btn-hero {
+    font-size: 1.1rem;
+    padding: 1.25rem 2rem;
+  }
+
+  /* Social Proof */
+  .training-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .training-instructor-profile {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .training-instructor-image img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }
+
+  .training-instructor-credentials {
+    text-align: left;
+  }
+
+  /* Games Grid */
+  .training-games-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* FAQ */
+  .training-faq-question {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .training-faq-question h4 {
+    font-size: 1.05rem;
+  }
+
+  .training-faq-answer {
+    padding: 1.5rem;
+  }
+
+  /* Limited Offer */
+  .training-limited-offer {
+    padding: 2rem;
+  }
+
+  .training-limited-offer h3 {
+    font-size: 1.4rem;
   }
 
   /* Problems Grid */
@@ -1014,6 +1768,30 @@
   }
 
   /* Program Section */
+  .training-timeline {
+    padding: 1rem 0;
+  }
+
+  .training-timeline-item {
+    grid-template-columns: 60px 1fr;
+    gap: 1.5rem;
+  }
+
+  .training-timeline-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .training-comparison-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .training-comparison-arrow {
+    display: none;
+  }
+
   .training-phase {
     padding: 2rem;
   }
@@ -1083,7 +1861,34 @@
 
   /* Hero Section */
   .training-hero {
-    padding: 3rem 0 2rem;
+    padding: 4rem 0 3rem;
+  }
+
+  .training-hero-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .training-stat-item .training-stat-number {
+    font-size: 2rem;
+  }
+
+  /* Limited Offer */
+  .training-limited-offer {
+    padding: 1.5rem;
+  }
+
+  .training-limited-offer h3 {
+    font-size: 1.2rem;
+  }
+
+  .training-offer-benefits {
+    text-align: center;
+  }
+
+  /* Instructor */
+  .training-instructor-profile {
+    padding: 2rem;
   }
 
   /* Sections */
