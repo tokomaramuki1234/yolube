@@ -129,10 +129,6 @@ const Training = () => {
                   <div className="training-stat-number">2<span>ヶ月</span></div>
                   <div className="training-stat-label">効果実感期間</div>
                 </div>
-                <div className="training-stat-item">
-                  <div className="training-stat-number">50<span>社+</span></div>
-                  <div className="training-stat-label">導入実績</div>
-                </div>
               </div>
               <div className="training-hero-buttons">
                 <a href="#contact" className="training-btn training-btn-primary training-btn-hero">
