@@ -26,6 +26,7 @@ import RRPPage from './pages/RRPPage';
 import DEVPage from './pages/DEVPage';
 import CSTPage from './pages/CSTPage';
 import IIDPage from './pages/IIDPage';
+import TableGamePage from './pages/TableGamePage';
 import NotFoundPage from './pages/NotFoundPage';
 import MaintenancePage from './pages/MaintenancePage';
 
@@ -99,6 +100,7 @@ function App() {
             <Route path="/DEV" element={<DEVPage />} />
             <Route path="/CST" element={<CSTPage />} />
             <Route path="/IID" element={<IIDPage />} />
+            <Route path="/tablegame" element={<TableGamePage />} />
 
             {/* 制作中ページ */}
             <Route path="/HT" element={<MaintenancePage />} />

@@ -1,0 +1,670 @@
+/* テーブルゲームページ専用スタイル */
+
+/* ヒーローセクション */
+.tablegame-hero {
+  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
+  color: white;
+  padding: 8rem 0 6rem;
+}
+
+.tablegame-hero-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tablegame-hero-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.tablegame-hero .base-hero-title {
+  color: white;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.tablegame-hero-subtitle {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  opacity: 0.95;
+}
+
+/* 定義セクション */
+.tablegame-definition {
+  margin-bottom: 6rem;
+}
+
+.definition-box {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 3rem;
+  border-radius: 12px;
+  border-left: 6px solid #8BC780;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.definition-main {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.definition-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.type-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.type-item:hover {
+  transform: translateY(-5px);
+}
+
+.type-item h4 {
+  color: #8BC780;
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.type-item p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.definition-note {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: white;
+  padding: 1.25rem;
+  border-radius: 8px;
+  color: #555;
+  margin-top: 2rem;
+  font-size: 1.05rem;
+}
+
+.definition-note svg {
+  color: #FFD93D;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* 特徴セクション */
+.tablegame-features {
+  margin-bottom: 6rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.feature-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-top: 4px solid #8BC780;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.feature-card > p {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.feature-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.feature-card li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #666;
+  line-height: 1.6;
+}
+
+.feature-card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #8BC780;
+  font-weight: bold;
+}
+
+/* 経済的効果セクション */
+.tablegame-economics {
+  margin-bottom: 6rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 4rem 3rem;
+  border-radius: 12px;
+}
+
+.economics-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.economics-intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.economics-grid {
+  display: grid;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.economics-card {
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border-left: 6px solid #8BC780;
+}
+
+.economics-number {
+  position: absolute;
+  top: -20px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(139, 199, 128, 0.4);
+}
+
+.economics-card h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  padding-top: 1rem;
+}
+
+.economics-content p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.economics-content ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.economics-content li {
+  padding: 0.75rem 0;
+  padding-left: 2rem;
+  position: relative;
+  line-height: 1.7;
+  color: #666;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.economics-content li:last-child {
+  border-bottom: none;
+}
+
+.economics-content li::before {
+  content: "💰";
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+.economics-example {
+  background: #fff3cd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+  margin-top: 1rem;
+}
+
+.economics-example strong {
+  color: #856404;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.economics-example .highlight {
+  color: #dc3545;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.economics-summary {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  margin-top: 3rem;
+  border: 2px solid #8BC780;
+}
+
+.economics-summary h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.economics-summary h3 svg {
+  color: #8BC780;
+  font-size: 1.5rem;
+}
+
+.economics-summary p {
+  line-height: 1.8;
+  color: #555;
+}
+
+/* 活動事例セクション */
+.tablegame-cases {
+  margin-bottom: 6rem;
+}
+
+.cases-grid {
+  display: grid;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.case-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.case-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.case-category {
+  display: inline-block;
+  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.case-card h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.case-info {
+  margin-bottom: 1.5rem;
+}
+
+.case-industry {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.case-challenge,
+.case-solution,
+.case-result {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  border-radius: 8px;
+}
+
+.case-challenge {
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+}
+
+.case-solution {
+  background: #cfe2ff;
+  border-left: 4px solid #0d6efd;
+}
+
+.case-result {
+  background: #d1e7dd;
+  border-left: 4px solid #28a745;
+}
+
+.case-challenge strong,
+.case-solution strong,
+.case-result strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+/* 効果セクション */
+.tablegame-effects {
+  margin-bottom: 6rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 4rem 3rem;
+  border-radius: 12px;
+}
+
+.effects-intro {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+}
+
+.effects-intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.effects-grid {
+  display: grid;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.effect-card {
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #8BC780;
+}
+
+.effect-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.effect-card h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.effect-description {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.effect-detail h4 {
+  font-size: 1.2rem;
+  color: #34495e;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+}
+
+.effect-detail ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.effect-detail li {
+  padding: 0.75rem 0;
+  padding-left: 2rem;
+  position: relative;
+  line-height: 1.7;
+  color: #666;
+}
+
+.effect-detail li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #8BC780;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.effect-example {
+  background: #e7f3ff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #0d6efd;
+  margin-top: 1rem;
+}
+
+.effect-example strong {
+  color: #0d6efd;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.effects-summary {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  margin-top: 3rem;
+  border: 2px solid #8BC780;
+}
+
+.effects-summary h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.effects-summary h3 svg {
+  color: #8BC780;
+  font-size: 1.5rem;
+}
+
+.effects-summary p {
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+/* CTAセクション */
+.tablegame-cta {
+  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
+  color: white;
+  padding: 4rem 3rem;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.tablegame-cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tablegame-cta > p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 2.5rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cta-btn-primary {
+  background: white;
+  color: #8BC780;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.cta-btn-primary:hover {
+  background: #f8f9fa;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+}
+
+.cta-btn-outline {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.cta-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .tablegame-hero {
+    padding: 5rem 0 4rem;
+  }
+
+  .tablegame-hero .base-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .tablegame-hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .features-grid,
+  .cases-grid,
+  .effects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .definition-types {
+    grid-template-columns: 1fr;
+  }
+
+  .tablegame-economics,
+  .tablegame-effects {
+    padding: 3rem 1.5rem;
+  }
+
+  .economics-card,
+  .effect-card {
+    padding: 2rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-btn {
+    width: 100%;
+    max-width: 350px;
+    justify-content: center;
+  }
+
+  .tablegame-cta h2 {
+    font-size: 2rem;
+  }
+
+  .tablegame-cta > p {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tablegame-hero .base-hero-title {
+    font-size: 2rem;
+  }
+
+  .feature-card,
+  .case-card {
+    padding: 1.5rem;
+  }
+
+  .definition-box {
+    padding: 2rem 1.5rem;
+  }
+
+  .tablegame-cta {
+    padding: 3rem 1.5rem;
+  }
+}
