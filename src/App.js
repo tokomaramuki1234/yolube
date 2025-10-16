@@ -27,6 +27,10 @@ import DEVPage from './pages/DEVPage';
 import CSTPage from './pages/CSTPage';
 import IIDPage from './pages/IIDPage';
 import TableGamePage from './pages/TableGamePage';
+import DetailFeatures from './pages/tablegame/DetailFeatures';
+import DetailEconomics from './pages/tablegame/DetailEconomics';
+import DetailCases from './pages/tablegame/DetailCases';
+import DetailEffects from './pages/tablegame/DetailEffects';
 import NotFoundPage from './pages/NotFoundPage';
 import MaintenancePage from './pages/MaintenancePage';
 
@@ -101,6 +105,10 @@ function App() {
             <Route path="/CST" element={<CSTPage />} />
             <Route path="/IID" element={<IIDPage />} />
             <Route path="/tablegame" element={<TableGamePage />} />
+            <Route path="/tablegame/detail-features" element={<DetailFeatures />} />
+            <Route path="/tablegame/detail-economics" element={<DetailEconomics />} />
+            <Route path="/tablegame/detail-cases" element={<DetailCases />} />
+            <Route path="/tablegame/detail-effects" element={<DetailEffects />} />
 
             {/* 制作中ページ */}
             <Route path="/HT" element={<MaintenancePage />} />

@@ -1,755 +1,661 @@
-/* テーブルゲームページ専用スタイル */
+/* 若者向け楽しいデザイン */
+
+.tablegame-page-fun {
+  background-color: #f8f9fa;
+}
 
 /* ヒーローセクション */
-.tablegame-hero {
-  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
-  color: white;
-  padding: 8rem 0 6rem;
+.tablegame-fun-hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 100px 0 80px;
+  position: relative;
+  overflow: hidden;
 }
 
-.tablegame-hero-content {
+.tablegame-fun-hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveBackground 20s linear infinite;
+}
+
+@keyframes moveBackground {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+.fun-hero-content {
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-.tablegame-hero-icon {
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
-  animation: bounce 2s infinite;
+.fun-hero-emoji {
+  font-size: 100px;
+  margin-bottom: 20px;
+  animation: bounce 2s ease-in-out infinite;
 }
 
 @keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
-.tablegame-hero .base-hero-title {
-  color: white;
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
+.fun-hero-title {
+  font-size: 48px;
+  color: #fff;
+  font-weight: 900;
+  margin: 0 0 25px 0;
+  line-height: 1.3;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
 }
 
-.tablegame-hero-subtitle {
-  font-size: 1.3rem;
+.fun-hero-catch {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.95);
   line-height: 1.8;
-  opacity: 0.95;
+  margin-bottom: 30px;
+  font-weight: 500;
 }
 
-/* 定義セクション */
-.tablegame-definition {
-  margin-bottom: 6rem;
-}
-
-.definition-box {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 3rem;
-  border-radius: 12px;
-  border-left: 6px solid #8BC780;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.definition-main {
-  font-size: 1.15rem;
-  line-height: 1.9;
-  color: #2c3e50;
-  margin-bottom: 2rem;
-}
-
-.definition-types {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-
-.type-item {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.type-item:hover {
-  transform: translateY(-5px);
-}
-
-.type-item h4 {
-  color: #8BC780;
-  font-size: 1.2rem;
-  margin-bottom: 0.75rem;
-}
-
-.type-item p {
-  color: #666;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.definition-note {
+.fun-hero-tags {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: white;
-  padding: 1.25rem;
-  border-radius: 8px;
-  color: #555;
-  margin-top: 2rem;
-  font-size: 1.05rem;
-}
-
-.definition-note svg {
-  color: #FFD93D;
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-/* 特徴セクション */
-.tablegame-features {
-  margin-bottom: 6rem;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2.5rem;
-  margin-top: 3rem;
-}
-
-.feature-card {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  border-top: 4px solid #8BC780;
-}
-
-.feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
-
-.feature-icon {
-  width: 70px;
-  height: 70px;
-  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.feature-card h3 {
-  font-size: 1.4rem;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-}
-
-.feature-card > p {
-  color: #555;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-}
-
-.feature-card ul {
-  list-style: none;
-  padding: 0;
-}
-
-.feature-card li {
-  padding: 0.5rem 0;
-  padding-left: 1.5rem;
-  position: relative;
-  color: #666;
-  line-height: 1.6;
-}
-
-.feature-card li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: #8BC780;
-  font-weight: bold;
-}
-
-/* 経済的効果セクション */
-.tablegame-economics {
-  margin-bottom: 6rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 4rem 3rem;
-  border-radius: 12px;
-}
-
-.economics-intro {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 3rem;
-}
-
-.economics-intro p {
-  font-size: 1.15rem;
-  line-height: 1.8;
-  color: #555;
-}
-
-.economics-grid {
-  display: grid;
-  gap: 3rem;
-  margin-top: 3rem;
-}
-
-.economics-card {
-  background: white;
-  padding: 3rem;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  position: relative;
-  border-left: 6px solid #8BC780;
-}
-
-.economics-number {
-  position: absolute;
-  top: -20px;
-  left: 30px;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  font-weight: bold;
-  box-shadow: 0 4px 15px rgba(139, 199, 128, 0.4);
-}
-
-.economics-card h3 {
-  font-size: 1.5rem;
-  color: #2c3e50;
-  margin-bottom: 1.5rem;
-  padding-top: 1rem;
-}
-
-.economics-content p {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 1.5rem;
-}
-
-.economics-content ul {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 2rem;
-}
-
-.economics-content li {
-  padding: 0.75rem 0;
-  padding-left: 2rem;
-  position: relative;
-  line-height: 1.7;
-  color: #666;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.economics-content li:last-child {
-  border-bottom: none;
-}
-
-.economics-content li::before {
-  content: "💰";
-  position: absolute;
-  left: 0;
-  font-size: 1.2rem;
-}
-
-.economics-example {
-  background: #fff3cd;
-  padding: 1.5rem;
-  border-radius: 8px;
-  border-left: 4px solid #ffc107;
-  margin-top: 1rem;
-}
-
-.economics-example strong {
-  color: #856404;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.economics-example .highlight {
-  color: #dc3545;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.economics-summary {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 12px;
-  margin-top: 3rem;
-  border: 2px solid #8BC780;
-}
-
-.economics-summary h3 {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: #2c3e50;
-  margin-bottom: 1.5rem;
-}
-
-.economics-summary h3 svg {
-  color: #8BC780;
-  font-size: 1.5rem;
-}
-
-.economics-summary p {
-  line-height: 1.8;
-  color: #555;
-}
-
-/* 活動事例セクション */
-.tablegame-cases {
-  margin-bottom: 6rem;
-}
-
-.cases-intro {
-  text-align: center;
-  max-width: 800px;
-  margin: 2rem auto 3rem;
-}
-
-.cases-intro p {
-  font-size: 1.15rem;
-  line-height: 1.8;
-  color: #555;
-}
-
-.cases-grid {
-  display: grid;
-  gap: 3rem;
-  margin-top: 3rem;
-}
-
-.case-card {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.case-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
-
-.case-category {
-  display: inline-block;
-  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
-  color: white;
-  padding: 0.5rem 1.25rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.case-card h3 {
-  font-size: 1.5rem;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-}
-
-.case-info {
-  margin-bottom: 1.5rem;
-}
-
-.case-industry {
-  color: #666;
-  font-size: 0.95rem;
-}
-
-.case-description {
-  color: #555;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-}
-
-.case-benefits {
-  background: #f8f9fa;
-  padding: 1.5rem;
-  border-radius: 8px;
-  border-left: 4px solid #8BC780;
-}
-
-.case-benefits h4 {
-  font-size: 1.1rem;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-}
-
-.case-benefits ul {
-  list-style: none;
-  padding: 0;
-}
-
-.case-benefits li {
-  padding: 0.5rem 0;
-  padding-left: 1.5rem;
-  position: relative;
-  color: #666;
-  line-height: 1.6;
-}
-
-.case-benefits li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: #8BC780;
-  font-weight: bold;
-}
-
-.cases-note {
-  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
-  padding: 2rem;
-  border-radius: 12px;
-  margin-top: 3rem;
-  text-align: center;
-}
-
-.cases-note p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #856404;
-  margin: 0;
-}
-
-.cases-note svg {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-/* 効果セクション */
-.tablegame-effects {
-  margin-bottom: 6rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 4rem 3rem;
-  border-radius: 12px;
-}
-
-.effects-intro {
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto 3rem;
-}
-
-.effects-intro p {
-  font-size: 1.15rem;
-  line-height: 1.8;
-  color: #555;
-}
-
-.effects-grid {
-  display: grid;
-  gap: 3rem;
-  margin-top: 3rem;
-}
-
-.effect-card {
-  background: white;
-  padding: 3rem;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  border-top: 4px solid #8BC780;
-}
-
-.effect-icon {
-  width: 70px;
-  height: 70px;
-  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.effect-card h3 {
-  font-size: 1.5rem;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-}
-
-.effect-description {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 1.5rem;
-  line-height: 1.8;
-}
-
-.effect-detail h4 {
-  font-size: 1.2rem;
-  color: #34495e;
-  margin-bottom: 1rem;
-  margin-top: 1.5rem;
-}
-
-.effect-detail ul {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 1.5rem;
-}
-
-.effect-detail li {
-  padding: 0.75rem 0;
-  padding-left: 2rem;
-  position: relative;
-  line-height: 1.7;
-  color: #666;
-}
-
-.effect-detail li::before {
-  content: "→";
-  position: absolute;
-  left: 0;
-  color: #8BC780;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.effect-example {
-  background: #e7f3ff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  border-left: 4px solid #0d6efd;
-  margin-top: 1rem;
-}
-
-.effect-example strong {
-  color: #0d6efd;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.effects-summary {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 12px;
-  margin-top: 3rem;
-  border: 2px solid #8BC780;
-}
-
-.effects-summary h3 {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: #2c3e50;
-  margin-bottom: 1.5rem;
-}
-
-.effects-summary h3 svg {
-  color: #8BC780;
-  font-size: 1.5rem;
-}
-
-.effects-summary p {
-  line-height: 1.8;
-  color: #555;
-  margin-bottom: 1rem;
-}
-
-/* CTAセクション */
-.tablegame-cta {
-  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
-  color: white;
-  padding: 4rem 3rem;
-  border-radius: 12px;
-  text-align: center;
-  margin-top: 4rem;
-}
-
-.tablegame-cta h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.tablegame-cta > p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  margin-bottom: 2.5rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.cta-content {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 2.5rem;
-  border-radius: 12px;
-  margin: 3rem auto;
-  max-width: 900px;
-  text-align: left;
-}
-
-.cta-content h3 {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: white;
-  text-align: center;
-  justify-content: center;
-}
-
-.experience-list {
-  list-style: none;
-  padding: 0;
-}
-
-.experience-list li {
-  padding: 0.75rem 0;
-  padding-left: 2rem;
-  position: relative;
-  line-height: 1.7;
-}
-
-.experience-list li::before {
-  content: "→";
-  position: absolute;
-  left: 0;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.cta-buttons {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
+  gap: 15px;
   flex-wrap: wrap;
 }
 
-.cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1.25rem 2.5rem;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-decoration: none;
+.fun-hero-tags .tag {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border: 2px solid rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
 }
 
-.cta-btn-primary {
-  background: white;
-  color: #8BC780;
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+.fun-hero-tags .tag:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
 }
 
-.cta-btn-primary:hover {
-  background: #f8f9fa;
+/* セクション共通 */
+.fun-section {
+  background: #fff;
+  padding: 60px 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  margin-bottom: 40px;
+}
+
+.fun-section-benefit {
+  background: linear-gradient(135deg, #fff9f0 0%, #ffe6cc 100%);
+  border: 3px solid #ff9800;
+}
+
+.fun-section-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid #f0f0f0;
+}
+
+.fun-icon {
+  font-size: 48px;
+  color: #667eea;
+  flex-shrink: 0;
+}
+
+.fun-section-header h2 {
+  font-size: 32px;
+  color: #2c3e50;
+  margin: 0;
+  font-weight: 800;
+}
+
+/* テキストブロック */
+.fun-text-block {
+  margin-bottom: 40px;
+}
+
+.fun-text-block p {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.fun-text-block strong {
+  color: #667eea;
+  font-weight: 700;
+}
+
+.highlight-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+/* タイプカード */
+.fun-types-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.fun-type-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.fun-type-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  border-color: #667eea;
+}
+
+.type-emoji {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.fun-type-card h3 {
+  font-size: 22px;
+  color: #2c3e50;
+  margin: 0 0 15px 0;
+  font-weight: 700;
+}
+
+.fun-type-card p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ファクトボックス */
+.fun-fact-box {
+  background: linear-gradient(135deg, #fff9e6 0%, #ffe6cc 100%);
+  padding: 30px;
+  border-radius: 16px;
+  border-left: 5px solid #ff9800;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.fact-icon {
+  font-size: 48px;
+  flex-shrink: 0;
+}
+
+.fun-fact-box p {
+  font-size: 17px;
+  color: #555;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.fun-fact-box strong {
+  color: #ff9800;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* 理由カード */
+.fun-reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.fun-reason-card {
+  background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%);
+  padding: 35px;
+  border-radius: 20px;
+  border: 3px solid #667eea;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.fun-reason-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.reason-emoji {
+  font-size: 72px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.fun-reason-card h3 {
+  font-size: 24px;
+  color: #2c3e50;
+  margin: 0 0 20px 0;
+  font-weight: 800;
+}
+
+.fun-reason-card p {
+  font-size: 17px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #667eea;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.detail-link:hover {
+  gap: 12px;
+  color: #764ba2;
+}
+
+/* 場所カード */
+.fun-places-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.fun-place-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  border: 2px solid #e0e0e0;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.fun-place-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  border-color: #667eea;
+}
+
+.place-emoji {
+  font-size: 64px;
+  margin-bottom: 15px;
+}
+
+.fun-place-card h3 {
+  font-size: 22px;
+  color: #2c3e50;
+  margin: 0 0 15px 0;
+  font-weight: 700;
+}
+
+.fun-place-card p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.fun-section-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+}
+
+.fun-section-link:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+  gap: 15px;
 }
 
-.cta-btn-outline {
-  background: transparent;
-  color: white;
-  border: 2px solid white;
+/* ベネフィットカード */
+.fun-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-bottom: 40px;
 }
 
-.cta-btn-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
+.fun-benefit-card {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 16px;
+  text-align: center;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.fun-benefit-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  border-color: #667eea;
+}
+
+.benefit-emoji {
+  font-size: 56px;
+  margin-bottom: 15px;
+}
+
+.fun-benefit-card h3 {
+  font-size: 20px;
+  color: #2c3e50;
+  margin: 0 0 15px 0;
+  font-weight: 700;
+}
+
+.fun-benefit-card p {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* CTAボックス */
+.fun-cta-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  border: 3px solid #667eea;
+  text-align: center;
+}
+
+.fun-cta-box h3 {
+  font-size: 26px;
+  color: #2c3e50;
+  margin: 0 0 20px 0;
+  font-weight: 800;
+}
+
+.fun-cta-box > p {
+  font-size: 17px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.cta-links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.cta-link-btn {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #2c3e50;
+  padding: 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.cta-link-btn svg {
+  font-size: 32px;
+  color: #667eea;
+}
+
+.cta-link-btn:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-color: #667eea;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.cta-link-btn:hover svg {
+  color: #fff;
+}
+
+/* 最終CTA */
+.fun-final-cta {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 80px 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+}
+
+.final-cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+}
+
+.final-cta-content h2 {
+  font-size: 42px;
+  margin: 0 0 30px 0;
+  font-weight: 900;
+  color: #fff;
+}
+
+.final-cta-content p {
+  font-size: 19px;
+  line-height: 1.9;
+  margin-bottom: 25px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.final-cta-message {
+  font-size: 22px !important;
+  margin: 40px 0 !important;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.final-cta-message strong {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.final-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.final-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.final-cta-btn.primary {
+  background: #fff;
+  color: #667eea;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.final-cta-btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.final-cta-btn.secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.final-cta-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
   transform: translateY(-3px);
 }
 
-/* レスポンシブデザイン */
+/* レスポンシブ */
 @media (max-width: 768px) {
-  .tablegame-hero {
-    padding: 5rem 0 4rem;
+  .tablegame-fun-hero {
+    padding: 80px 0 60px;
   }
 
-  .tablegame-hero .base-hero-title {
-    font-size: 2.5rem;
+  .fun-hero-emoji {
+    font-size: 80px;
   }
 
-  .tablegame-hero-subtitle {
-    font-size: 1.1rem;
+  .fun-hero-title {
+    font-size: 36px;
   }
 
-  .features-grid,
-  .cases-grid,
-  .effects-grid {
-    grid-template-columns: 1fr;
+  .fun-hero-catch {
+    font-size: 18px;
   }
 
-  .definition-types {
-    grid-template-columns: 1fr;
+  .fun-section {
+    padding: 40px 25px;
   }
 
-  .tablegame-economics,
-  .tablegame-effects {
-    padding: 3rem 1.5rem;
-  }
-
-  .economics-card,
-  .effect-card {
-    padding: 2rem;
-  }
-
-  .cta-buttons {
+  .fun-section-header {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 
-  .cta-btn {
-    width: 100%;
-    max-width: 350px;
-    justify-content: center;
+  .fun-section-header h2 {
+    font-size: 28px;
   }
 
-  .tablegame-cta h2 {
-    font-size: 2rem;
+  .fun-types-grid {
+    grid-template-columns: 1fr;
   }
 
-  .tablegame-cta > p {
-    font-size: 1.05rem;
+  .fun-reasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fun-places-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fun-benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cta-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .final-cta-content h2 {
+    font-size: 32px;
+  }
+
+  .final-cta-content p {
+    font-size: 17px;
+  }
+
+  .final-cta-buttons {
+    flex-direction: column;
   }
 }
 
 @media (max-width: 480px) {
-  .tablegame-hero .base-hero-title {
-    font-size: 2rem;
+  .fun-hero-emoji {
+    font-size: 64px;
   }
 
-  .feature-card,
-  .case-card {
-    padding: 1.5rem;
+  .fun-hero-title {
+    font-size: 30px;
   }
 
-  .definition-box {
-    padding: 2rem 1.5rem;
+  .fun-hero-catch {
+    font-size: 16px;
   }
 
-  .tablegame-cta {
-    padding: 3rem 1.5rem;
+  .fun-hero-tags {
+    gap: 10px;
+  }
+
+  .fun-hero-tags .tag {
+    font-size: 13px;
+    padding: 8px 15px;
+  }
+
+  .fun-section {
+    padding: 30px 20px;
+  }
+
+  .fun-section-header h2 {
+    font-size: 24px;
+  }
+
+  .fun-icon {
+    font-size: 40px;
+  }
+
+  .fun-text-block p {
+    font-size: 16px;
+  }
+
+  .highlight-text {
+    font-size: 18px;
+  }
+
+  .fun-benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-links-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .final-cta-content h2 {
+    font-size: 28px;
+  }
+
+  .final-cta-content p {
+    font-size: 16px;
+  }
+
+  .final-cta-message {
+    font-size: 18px !important;
+    padding: 20px;
+  }
+
+  .final-cta-message strong {
+    font-size: 20px;
   }
 }
