@@ -461,6 +461,116 @@ const Training = () => {
         </div>
       </section>
 
+      {/* Survey Results Section */}
+      <section className="training-survey-results">
+        <div className="training-container">
+          <h2 className="training-section-title">研修参加者アンケート結果</h2>
+          <p className="training-section-subtitle">
+            実際の参加者の声をデータで可視化しました
+          </p>
+
+          {/* Survey Stats */}
+          <div className="training-survey-stats-grid">
+            <div className="training-survey-stat-large">
+              <div className="training-survey-percentage">98.7%</div>
+              <div className="training-survey-label">「楽しかった」と回答</div>
+              <div className="training-survey-detail">満足度5段階評価で4.5以上</div>
+            </div>
+            <div className="training-survey-stat-large">
+              <div className="training-survey-percentage">96.2%</div>
+              <div className="training-survey-label">「また参加したい」</div>
+              <div className="training-survey-detail">継続意欲が非常に高い</div>
+            </div>
+          </div>
+
+          {/* Detailed Survey Results */}
+          <div className="training-survey-details">
+            <h3 className="training-subsection-title">参加者の具体的な評価</h3>
+            
+            <div className="training-survey-question">
+              <h4>Q1. 研修は楽しかったですか？</h4>
+              <div className="training-survey-bars">
+                <div className="training-survey-bar">
+                  <span className="bar-label">とても楽しかった（5）</span>
+                  <div className="bar-container">
+                    <div className="bar-fill" style={{width: '67.9%'}}></div>
+                    <span className="bar-percentage">67.9%</span>
+                  </div>
+                </div>
+                <div className="training-survey-bar">
+                  <span className="bar-label">楽しかった（4）</span>
+                  <div className="bar-container">
+                    <div className="bar-fill" style={{width: '30.8%'}}></div>
+                    <span className="bar-percentage">30.8%</span>
+                  </div>
+                </div>
+                <div className="training-survey-bar">
+                  <span className="bar-label">普通（3）</span>
+                  <div className="bar-container">
+                    <div className="bar-fill" style={{width: '1.3%'}}></div>
+                    <span className="bar-percentage">1.3%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="training-survey-question">
+              <h4>Q2. また参加したいと思いますか？</h4>
+              <div className="training-survey-bars">
+                <div className="training-survey-bar">
+                  <span className="bar-label">ぜひ参加したい（5）</span>
+                  <div className="bar-container">
+                    <div className="bar-fill" style={{width: '70.5%'}}></div>
+                    <span className="bar-percentage">70.5%</span>
+                  </div>
+                </div>
+                <div className="training-survey-bar">
+                  <span className="bar-label">参加したい（4）</span>
+                  <div className="bar-container">
+                    <div className="bar-fill" style={{width: '25.7%'}}></div>
+                    <span className="bar-percentage">25.7%</span>
+                  </div>
+                </div>
+                <div className="training-survey-bar">
+                  <span className="bar-label">どちらでもない（3）</span>
+                  <div className="bar-container">
+                    <div className="bar-fill" style={{width: '3.8%'}}></div>
+                    <span className="bar-percentage">3.8%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="training-survey-question">
+              <h4>Q3. コミュニケーションが取りやすくなりましたか？</h4>
+              <div className="training-survey-bars">
+                <div className="training-survey-bar">
+                  <span className="bar-label">とても取りやすくなった（5）</span>
+                  <div className="bar-container">
+                    <div className="bar-fill" style={{width: '44.9%'}}></div>
+                    <span className="bar-percentage">44.9%</span>
+                  </div>
+                </div>
+                <div className="training-survey-bar">
+                  <span className="bar-label">取りやすくなった（4）</span>
+                  <div className="bar-container">
+                    <div className="bar-fill" style={{width: '42.3%'}}></div>
+                    <span className="bar-percentage">42.3%</span>
+                  </div>
+                </div>
+                <div className="training-survey-bar">
+                  <span className="bar-label">変わらない（3）</span>
+                  <div className="bar-container">
+                    <div className="bar-fill" style={{width: '12.8%'}}></div>
+                    <span className="bar-percentage">12.8%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Social Proof Section */}
       <section className="training-social-proof">
         <div className="training-container">
@@ -468,34 +578,6 @@ const Training = () => {
           <p className="training-section-subtitle">
             多くの企業様に選ばれ、実際に組織が変わっています
           </p>
-
-          {/* Stats */}
-          <div className="training-stats-grid">
-            <div className="training-stat-card">
-              <div className="training-stat-icon">
-                <FontAwesomeIcon icon={faCheckCircle} />
-              </div>
-              <div className="training-stat-number">87% → 96%</div>
-              <div className="training-stat-label">参加者満足度の向上</div>
-              <p className="training-stat-desc">継続研修で確実に効果を実感</p>
-            </div>
-            <div className="training-stat-card">
-              <div className="training-stat-icon">
-                <FontAwesomeIcon icon={faUsers} />
-              </div>
-              <div className="training-stat-number">+42%</div>
-              <div className="training-stat-label">部署間交流の増加</div>
-              <p className="training-stat-desc">自然な会話が生まれる組織へ</p>
-            </div>
-            <div className="training-stat-card">
-              <div className="training-stat-icon">
-                <FontAwesomeIcon icon={faHeart} />
-              </div>
-              <div className="training-stat-number">68% → 85%</div>
-              <div className="training-stat-label">エンゲージメントスコア</div>
-              <p className="training-stat-desc">社員定着率の大幅改善</p>
-            </div>
-          </div>
 
           {/* Testimonials */}
           <div className="training-testimonials-grid">
@@ -861,51 +943,105 @@ const Training = () => {
           </div>
 
           <h3 className="training-subsection-title">料金プラン</h3>
+          <p className="training-pricing-intro">
+            まずはお試しから。効果を実感いただいてから本格導入をご検討ください。
+          </p>
           
           <div className="training-pricing-grid">
-            <div className="training-pricing-plan">
+            <div className="training-pricing-plan training-trial">
+              <div className="training-plan-badge-new">初めての方におすすめ</div>
               <div className="training-plan-header">
-                <h4>エントリープラン</h4>
-                <p className="training-plan-subtitle">単発研修</p>
+                <h4>お試しプラン</h4>
+                <p className="training-plan-subtitle">1回限りの体験研修</p>
               </div>
               <div className="training-plan-price">
-                <span className="training-price-amount">10万円</span>
-                <span className="training-price-unit">／回</span>
+                <span className="training-price-amount">3万円</span>
+                <span className="training-price-unit">／1回</span>
               </div>
               <div className="training-plan-features">
-                <p>まずは試してみたい企業様向け</p>
-                <p>研修参加者10名まで</p>
+                <ul>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> まずは試してみたい企業様向け</li>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 研修参加者10名まで</li>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 1.5時間の体験研修</li>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> アンケート実施・分析レポート付</li>
+                </ul>
+              </div>
+              <div className="training-plan-note">
+                ※本格導入時に全額キャッシュバック
+              </div>
+            </div>
+
+            <div className="training-pricing-plan">
+              <div className="training-plan-header">
+                <h4>ライトプラン</h4>
+                <p className="training-plan-subtitle">3回セット</p>
+              </div>
+              <div className="training-plan-price">
+                <span className="training-price-amount">30万円</span>
+                <span className="training-price-unit">（3回・月1回実施）</span>
+              </div>
+              <div className="training-plan-features">
+                <ul>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 短期集中で効果を実感</li>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 研修参加者10名まで</li>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> アイスブレイク～コミュニケーション強化</li>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 毎回アンケート＆改善提案</li>
+                </ul>
+              </div>
+              <div className="training-plan-value">
+                <span className="value-label">1回あたり</span>
+                <span className="value-amount">10万円</span>
               </div>
             </div>
             
             <div className="training-pricing-plan training-recommended">
-              <div className="training-plan-badge">おすすめ</div>
+              <div className="training-plan-badge">最もお得</div>
               <div className="training-plan-header">
                 <h4>スタンダードプラン</h4>
-                <p className="training-plan-subtitle">年間契約</p>
+                <p className="training-plan-subtitle">6回セット</p>
               </div>
               <div className="training-plan-price">
+                <span className="training-price-original">60万円</span>
                 <span className="training-price-amount">50万円</span>
-                <span className="training-price-unit">（6回セット・2ヶ月に1回実施）</span>
+                <span className="training-price-unit">（6回・2ヶ月に1回実施）</span>
               </div>
               <div className="training-plan-features">
-                <p>継続的な効果を実感したい企業様向け</p>
-                <p>研修参加者10名まで</p>
+                <ul>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 継続的な効果を実感したい企業様向け</li>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 研修参加者10名まで</li>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 完全プログラム（経営分析まで）</li>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 3ヶ月無料相談サポート付</li>
+                </ul>
+              </div>
+              <div className="training-plan-value">
+                <span className="value-label">1回あたり</span>
+                <span className="value-amount">8.3万円</span>
+                <span className="value-discount">17%OFF</span>
               </div>
             </div>
             
             <div className="training-pricing-plan">
               <div className="training-plan-header">
                 <h4>プレミアムプラン</h4>
-                <p className="training-plan-subtitle">年間契約</p>
+                <p className="training-plan-subtitle">12回セット</p>
               </div>
               <div className="training-plan-price">
+                <span className="training-price-original">120万円</span>
                 <span className="training-price-amount">80万円</span>
-                <span className="training-price-unit">（12回セット・毎月実施）</span>
+                <span className="training-price-unit">（12回・毎月実施）</span>
               </div>
               <div className="training-plan-features">
-                <p>本格的な組織変革を目指す企業様向け</p>
-                <p>研修参加者10名まで</p>
+                <ul>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 本格的な組織変革を目指す企業様向け</li>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 研修参加者10名まで</li>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 完全プログラム×2周</li>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 6ヶ月無料相談サポート付</li>
+                </ul>
+              </div>
+              <div className="training-plan-value">
+                <span className="value-label">1回あたり</span>
+                <span className="value-amount">6.7万円</span>
+                <span className="value-discount">33%OFF</span>
               </div>
             </div>
           </div>
