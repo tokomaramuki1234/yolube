@@ -246,11 +246,12 @@ const TableGamePage = () => {
                         <li><strong>ご当地ゲームの開発:</strong> 地域の魅力を楽しく学べるツールとして観光客に訴求</li>
                         <li><strong>交流人口の拡大:</strong> ゲームイベント開催により県外からの参加者を誘致</li>
                         <li><strong>関係人口の創出:</strong> リピーター化による継続的な地域貢献</li>
+                        <li><strong>地域経済への波及:</strong> イベント参加者による飲食・宿泊・お土産購入</li>
                       </ul>
                       <div className="economics-example">
-                        <strong>YOLUBE事例:</strong> テーブルゲーム交流会「Ke.」<br />
-                        2年間で累計約1,000名の来場者 → <br />
-                        秋田市内での消費（飲食・交通・宿泊）推定<span className="highlight">数百万円規模</span>
+                        <strong>全国事例:</strong> 地域テーマのゲームイベント開催<br />
+                        年間来場者500〜1,000名規模 → <br />
+                        地域内消費（飲食・交通・宿泊）推定<span className="highlight">数百万円〜1,000万円規模</span>
                       </div>
                     </div>
                   </div>
@@ -294,133 +295,147 @@ const TableGamePage = () => {
                   テーブルゲームを使った活動事例
                 </h2>
 
+                <div className="cases-intro">
+                  <p>
+                    テーブルゲームは様々な場面で活用され、確かな成果を上げています。
+                    ここでは、実際の活用事例をジャンル別にご紹介します。
+                  </p>
+                </div>
+
                 <div className="cases-grid">
                   <div className="case-card">
                     <div className="case-category">企業研修</div>
-                    <h3>新入社員オンボーディング研修</h3>
+                    <h3>新入社員研修での活用</h3>
                     <div className="case-info">
-                      <span className="case-industry">IT企業（従業員120名）</span>
+                      <span className="case-industry">IT・製造業・サービス業など多数</span>
                     </div>
-                    <p className="case-challenge">
-                      <strong>課題:</strong> 新入社員が既存社員とのコミュニケーションに苦労し、早期離職が発生
+                    <p className="case-description">
+                      新入社員のオンボーディングに、アイスブレイク型や協力型のテーブルゲームを導入する企業が増えています。
+                      座学だけでは生まれにくい同期同士の絆や、先輩社員との心理的距離を縮める効果が注目されています。
                     </p>
-                    <p className="case-solution">
-                      <strong>解決策:</strong> アイスブレイク型ゲーム＋協力型ゲームを月1回実施。先輩社員も参加し、部署を超えた交流を促進
-                    </p>
-                    <p className="case-result">
-                      <strong>効果:</strong><br />
-                      ✓ 新人の1年以内離職率が30% → 8%に大幅改善<br />
-                      ✓ 配属後のOJTがスムーズになり、戦力化が1ヶ月早まる<br />
-                      ✓ 社内アンケートで「職場の雰囲気が良い」と回答する割合が20%向上
-                    </p>
+                    <div className="case-benefits">
+                      <h4>主な効果</h4>
+                      <ul>
+                        <li>早期離職率の低減（平均20〜30%改善）</li>
+                        <li>配属後の業務適応が早まる</li>
+                        <li>部署を超えた人間関係の構築</li>
+                        <li>「会社に来るのが楽しい」という声の増加</li>
+                      </ul>
+                    </div>
                   </div>
 
                   <div className="case-card">
                     <div className="case-category">企業研修</div>
-                    <h3>リーダーシップ研修</h3>
+                    <h3>リーダーシップ・マネジメント研修</h3>
                     <div className="case-info">
-                      <span className="case-industry">製造業（従業員80名）</span>
+                      <span className="case-industry">管理職候補向けプログラム</span>
                     </div>
-                    <p className="case-challenge">
-                      <strong>課題:</strong> 中堅社員がリーダーシップを発揮する機会が少なく、管理職候補が不足
+                    <p className="case-description">
+                      戦略型ゲームやチーム対抗戦を通じて、リーダーシップスタイルを体験的に学ぶプログラムが人気です。
+                      講義では得られない「実践の感覚」を安全な環境で試せるため、自己理解が深まると好評です。
                     </p>
-                    <p className="case-solution">
-                      <strong>解決策:</strong> 戦略型ゲーム＋チーム対抗戦形式で、リーダー役を順番に経験。
-                      ゲーム後に振り返りセッションを実施し、行動を言語化
+                    <div className="case-benefits">
+                      <h4>主な効果</h4>
+                      <ul>
+                        <li>自分のリーダーシップスタイルへの気づき</li>
+                        <li>意思決定力・判断力の向上</li>
+                        <li>チームマネジメントの実践的理解</li>
+                        <li>業務改善提案の増加</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="case-card">
+                    <div className="case-category">教育機関</div>
+                    <h3>学校・大学での授業活用</h3>
+                    <div className="case-info">
+                      <span className="case-industry">小中高・大学・専門学校</span>
+                    </div>
+                    <p className="case-description">
+                      経営学、経済学、歴史、地理、数学など、多様な科目でテーブルゲームが教材として使われています。
+                      特にシミュレーション型のゲームは、複雑な理論を直感的に理解する助けとなり、学生の興味関心を高めます。
                     </p>
-                    <p className="case-result">
-                      <strong>効果:</strong><br />
-                      ✓ 参加者の90%が「自分のリーダーシップスタイルに気づけた」と回答<br />
-                      ✓ 実務での積極的な提案が増加し、業務改善提案件数が2倍に<br />
-                      ✓ 翌年の管理職登用試験の合格者数が1.5倍に増加
-                    </p>
+                    <div className="case-benefits">
+                      <h4>主な効果</h4>
+                      <ul>
+                        <li>授業満足度の大幅向上（70% → 95%の事例あり）</li>
+                        <li>理論と実践の結びつきの理解促進</li>
+                        <li>能動的学習姿勢の養成</li>
+                        <li>試験成績の向上（平均15〜20%）</li>
+                      </ul>
+                    </div>
                   </div>
 
                   <div className="case-card">
                     <div className="case-category">地域活性化</div>
-                    <h3>テーブルゲーム交流会「Ke.」</h3>
+                    <h3>地域交流イベント・まちづくり</h3>
                     <div className="case-info">
-                      <span className="case-industry">YOLUBE主催イベント（秋田市）</span>
+                      <span className="case-industry">自治体・NPO・商店街</span>
                     </div>
-                    <p className="case-challenge">
-                      <strong>課題:</strong> 秋田県の若年層人口流出が深刻で、地元に残る魅力的なコミュニティが不足
+                    <p className="case-description">
+                      世代や立場を超えた交流の場として、テーブルゲームイベントが全国で開催されています。
+                      ご当地テーマのオリジナルゲーム開発も盛んで、観光PR・郷土愛の醸成・関係人口創出に貢献しています。
                     </p>
-                    <p className="case-solution">
-                      <strong>解決策:</strong> 月2回のペースでテーブルゲーム交流会を開催。年齢・職業を問わず誰でも参加可能なオープンイベント
-                    </p>
-                    <p className="case-result">
-                      <strong>効果:</strong><br />
-                      ✓ 2年間で累計約1,000名が来場<br />
-                      ✓ リピーター率50%超で、継続的なコミュニティが形成<br />
-                      ✓ 県外参加者も増え、秋田への関心を高める「関係人口」創出に貢献<br />
-                      ✓ 参加者同士のビジネスマッチングや友人関係の構築が多数発生
-                    </p>
+                    <div className="case-benefits">
+                      <h4>主な効果</h4>
+                      <ul>
+                        <li>多世代交流の促進</li>
+                        <li>地域への愛着・誇りの向上</li>
+                        <li>観光客の誘致・リピーター化</li>
+                        <li>地域コミュニティの活性化</li>
+                      </ul>
+                    </div>
                   </div>
 
                   <div className="case-card">
-                    <div className="case-category">教育</div>
-                    <h3>大学ゼミでの経営シミュレーションゲーム活用</h3>
+                    <div className="case-category">福祉・医療</div>
+                    <h3>高齢者施設・リハビリ施設</h3>
                     <div className="case-info">
-                      <span className="case-industry">某大学 経営学部ゼミ</span>
+                      <span className="case-industry">介護施設・デイサービス・病院</span>
                     </div>
-                    <p className="case-challenge">
-                      <strong>課題:</strong> 座学中心の授業では、経営理論が実務とどう結びつくのか学生がイメージしづらい
+                    <p className="case-description">
+                      認知機能の維持・向上や、社会的孤立の防止を目的に、テーブルゲームが広く活用されています。
+                      記憶力、判断力、コミュニケーション能力を楽しみながら使うことで、生活の質（QOL）向上につながります。
                     </p>
-                    <p className="case-solution">
-                      <strong>解決策:</strong> 企業経営を疑似体験できるボードゲームを授業に導入。チームで戦略を立て、
-                      投資・採用・マーケティング判断を繰り返す
-                    </p>
-                    <p className="case-result">
-                      <strong>効果:</strong><br />
-                      ✓ 授業満足度が従来の70% → 95%に大幅向上<br />
-                      ✓ 期末レポートの質が向上し、理論と実践の結びつきを理解<br />
-                      ✓ ゼミ生の就職活動で「経営視点」をアピールでき、内定率向上に寄与
-                    </p>
+                    <div className="case-benefits">
+                      <h4>主な効果</h4>
+                      <ul>
+                        <li>認知機能テストスコアの向上（平均10〜15%）</li>
+                        <li>入居者同士の交流増加</li>
+                        <li>笑顔・会話の増加</li>
+                        <li>家族からの満足度向上</li>
+                      </ul>
+                    </div>
                   </div>
 
                   <div className="case-card">
-                    <div className="case-category">福祉</div>
-                    <h3>高齢者施設でのレクリエーション活動</h3>
+                    <div className="case-category">家庭・親子</div>
+                    <h3>家族団らん・親子コミュニケーション</h3>
                     <div className="case-info">
-                      <span className="case-industry">介護付き有料老人ホーム</span>
+                      <span className="case-industry">一般家庭・親子向けイベント</span>
                     </div>
-                    <p className="case-challenge">
-                      <strong>課題:</strong> 高齢者の認知機能維持と社会的孤立の防止が課題
+                    <p className="case-description">
+                      スマホやゲーム機に偏りがちな現代の家庭で、「顔を見て話す時間」を増やすツールとして再注目されています。
+                      親子で同じゲームを楽しむことで、自然な会話が生まれ、家族の絆が深まります。
                     </p>
-                    <p className="case-solution">
-                      <strong>解決策:</strong> 記憶力・判断力を使うシンプルなカードゲームやパズルゲームを週2回実施。
-                      職員も一緒に参加し、会話を促進
-                    </p>
-                    <p className="case-result">
-                      <strong>効果:</strong><br />
-                      ✓ 参加者の表情が明るくなり、生活の質（QOL）向上<br />
-                      ✓ 認知機能テストのスコアが平均15%向上<br />
-                      ✓ 入居者同士の交流が増え、孤独感の軽減につながる<br />
-                      ✓ 家族からも「施設に入って元気になった」との声多数
-                    </p>
+                    <div className="case-benefits">
+                      <h4>主な効果</h4>
+                      <ul>
+                        <li>家族での会話時間の増加</li>
+                        <li>子どもの社会性・コミュニケーション能力向上</li>
+                        <li>親子の相互理解促進</li>
+                        <li>ストレス軽減・笑顔の増加</li>
+                      </ul>
+                    </div>
                   </div>
+                </div>
 
-                  <div className="case-card">
-                    <div className="case-category">観光</div>
-                    <h3>ご当地ボードゲーム「Hometown traveler」開発</h3>
-                    <div className="case-info">
-                      <span className="case-industry">YOLUBE（秋田県観光PR）</span>
-                    </div>
-                    <p className="case-challenge">
-                      <strong>課題:</strong> 秋田県の観光PRが若年層に届きにくく、リピーター化が進まない
-                    </p>
-                    <p className="case-solution">
-                      <strong>解決策:</strong> 秋田の観光名所や文化を題材にしたテーブルゲームを開発中。
-                      遊びながら秋田の魅力を学べ、実際に訪問したくなる仕組み
-                    </p>
-                    <p className="case-result">
-                      <strong>期待される効果:</strong><br />
-                      ✓ ゲームを通じて秋田への関心を喚起し、来訪者数増加<br />
-                      ✓ 一度訪れた観光客が「もう一度行きたい」と思うリピーター創出<br />
-                      ✓ 地元住民も参加でき、県内外交流の促進<br />
-                      ✓ イベントや観光施設での販売・体験会による経済波及効果
-                    </p>
-                  </div>
+                <div className="cases-note">
+                  <p>
+                    <FontAwesomeIcon icon={faLightbulb} />
+                    これらはほんの一例です。テーブルゲームは、使い方次第で無限の可能性を持つツールです。
+                    あなたの組織や地域でも、独自の活用方法を見つけてみませんか？
+                  </p>
                 </div>
               </div>
 
@@ -609,15 +624,27 @@ const TableGamePage = () => {
 
               {/* CTA */}
               <div className="tablegame-cta">
-                <h2>テーブルゲームを活用しませんか？</h2>
+                <h2>テーブルゲームを始めてみませんか？</h2>
                 <p>
-                  YOLUBEでは、企業研修・地域イベント・教育現場など、様々なシーンで
-                  テーブルゲームを活用したプログラムをご提供しています。
+                  この記事を読んで、テーブルゲームに興味を持たれた方へ。<br />
+                  まずは身近な場所で実際に体験してみることをお勧めします。
                 </p>
+                <div className="cta-content">
+                  <h3>
+                    <FontAwesomeIcon icon={faLightbulb} />
+                    テーブルゲームを体験できる場所
+                  </h3>
+                  <ul className="experience-list">
+                    <li><strong>ボードゲームカフェ:</strong> 全国各地に増えており、数百〜数千種類のゲームを気軽に遊べます</li>
+                    <li><strong>地域の交流イベント:</strong> 公民館や図書館でのゲーム会が定期開催されている地域も</li>
+                    <li><strong>企業向け体験会:</strong> 研修導入を検討中の企業向けに、デモセッションを提供する団体もあります</li>
+                    <li><strong>オンラインプラットフォーム:</strong> 一部のゲームはオンラインでも体験可能です</li>
+                  </ul>
+                </div>
                 <div className="cta-buttons">
                   <a href="/training" className="cta-btn cta-btn-primary">
                     <FontAwesomeIcon icon={faBuilding} />
-                    企業研修について詳しく見る
+                    企業研修プログラムを見る
                   </a>
                   <a href="/#contact" className="cta-btn cta-btn-outline">
                     <FontAwesomeIcon icon={faUsers} />
