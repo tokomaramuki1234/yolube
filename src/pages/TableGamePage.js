@@ -29,8 +29,7 @@ const TableGamePage = () => {
             <div className="fun-hero-content">
               <div className="fun-hero-emoji">🎲</div>
               <h1 className="fun-hero-title">
-                テーブルゲームって<br />
-                知ってる?
+                テーブルゲームとは?
               </h1>
               <p className="fun-hero-catch">
                 スマホを置いて、友達と顔を見合わせて<br />
