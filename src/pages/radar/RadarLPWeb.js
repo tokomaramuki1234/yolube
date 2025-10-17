@@ -998,7 +998,9 @@ schedule: {
       <section className="ke-top-logo">
         <div className="ke-container">
           <div className="ke-logo-container">
-            <img src="/images/ke_mainImage.svg" alt="Ke. ロゴ" className="ke-main-logo" loading="eager" fetchPriority="high" />
+            <p style={{ fontSize: '3rem', fontWeight: 'bold', color: '#333', textAlign: 'center', lineHeight: '1.5' }}>
+              ここにレーダー作戦ゲームオープニング動画<br />（マキノさんの新作）を表示します
+            </p>
           </div>
         </div>
       </section>
