@@ -1,7 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGraduationCap, faUsers, faHandshake, faBrain, faHeart, faSmile, faLightbulb, faArrowLeft, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -24,12 +22,11 @@ const DetailEffects = () => {
         <section className="base-hero detail-hero">
           <div className="container">
             <Link to="/tablegame" className="back-link">
-              <FontAwesomeIcon icon={faArrowLeft} />
-              テーブルゲームとは に戻る
+              ← テーブルゲームとは に戻る
             </Link>
             <div className="detail-hero-content">
               <div className="detail-hero-icon">
-                <FontAwesomeIcon icon={faGraduationCap} />
+                🎓
               </div>
               <h1 className="base-hero-title">テーブルゲームがもたらす効果</h1>
               <p className="detail-hero-subtitle">
@@ -56,9 +53,6 @@ const DetailEffects = () => {
               {/* 効果1: コミュニケーション能力の向上 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faUsers} />
-                  </div>
                   <h2>1. コミュニケーション能力の向上</h2>
                 </div>
 
@@ -133,9 +127,6 @@ const DetailEffects = () => {
               {/* 効果2: チームワークと協調性の強化 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faHandshake} />
-                  </div>
                   <h2>2. チームワークと協調性の強化</h2>
                 </div>
 
@@ -213,9 +204,6 @@ const DetailEffects = () => {
               {/* 効果3: 論理的思考力・問題解決能力の向上 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faBrain} />
-                  </div>
                   <h2>3. 論理的思考力・問題解決能力の向上</h2>
                 </div>
 
@@ -292,9 +280,6 @@ const DetailEffects = () => {
               {/* 効果4: 心理的安全性の向上 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faHeart} />
-                  </div>
                   <h2>4. 心理的安全性の向上</h2>
                 </div>
 
@@ -372,9 +357,6 @@ const DetailEffects = () => {
               {/* 効果5: ストレス軽減とモチベーション向上 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faSmile} />
-                  </div>
                   <h2>5. ストレス軽減とモチベーション向上</h2>
                 </div>
 
@@ -453,9 +435,6 @@ const DetailEffects = () => {
               {/* 効果6: 創造性とイノベーションの促進 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faLightbulb} />
-                  </div>
                   <h2>6. 創造性とイノベーションの促進</h2>
                 </div>
 
@@ -535,7 +514,6 @@ const DetailEffects = () => {
               {/* 総合まとめ */}
               <div className="detail-summary">
                 <h2>
-                  <FontAwesomeIcon icon={faCheckCircle} />
                   まとめ: なぜテーブルゲームは効果的なのか
                 </h2>
                 <p>
@@ -569,8 +547,7 @@ const DetailEffects = () => {
               {/* CTA */}
               <div className="detail-cta">
                 <Link to="/tablegame" className="cta-btn-back">
-                  <FontAwesomeIcon icon={faArrowLeft} />
-                  テーブルゲームとは に戻る
+                  ← テーブルゲームとは に戻る
                 </Link>
               </div>
 

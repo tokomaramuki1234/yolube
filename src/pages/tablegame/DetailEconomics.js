@@ -1,7 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartLine, faYenSign, faUserTie, faRocket, faGlobe, faGraduationCap, faArrowLeft, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -24,12 +22,11 @@ const DetailEconomics = () => {
         <section className="base-hero detail-hero">
           <div className="container">
             <Link to="/tablegame" className="back-link">
-              <FontAwesomeIcon icon={faArrowLeft} />
-              テーブルゲームとは に戻る
+              ← テーブルゲームとは に戻る
             </Link>
             <div className="detail-hero-content">
               <div className="detail-hero-icon">
-                <FontAwesomeIcon icon={faChartLine} />
+                📊
               </div>
               <h1 className="base-hero-title">テーブルゲームの経済的効果</h1>
               <p className="detail-hero-subtitle">
@@ -56,9 +53,6 @@ const DetailEconomics = () => {
               {/* 効果1: 企業研修コストの削減 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faYenSign} />
-                  </div>
                   <h2>1. 企業研修コストの削減</h2>
                 </div>
 
@@ -95,8 +89,7 @@ const DetailEconomics = () => {
                       </div>
                     </div>
                     <div className="savings-result">
-                      <FontAwesomeIcon icon={faCheckCircle} />
-                      <strong>年間約80万円のコスト削減</strong>（2年目以降は120万円削減）
+                      ✓ <strong>年間約80万円のコスト削減</strong>（2年目以降は120万円削減）
                     </div>
                   </div>
                 </div>
@@ -126,9 +119,6 @@ const DetailEconomics = () => {
               {/* 効果2: 離職率低下による採用コスト削減 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faUserTie} />
-                  </div>
                   <h2>2. 離職率低下による採用コスト削減</h2>
                 </div>
 
@@ -187,9 +177,6 @@ const DetailEconomics = () => {
               {/* 効果3: 生産性向上による売上増加 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faRocket} />
-                  </div>
                   <h2>3. 生産性向上による売上増加</h2>
                 </div>
 
@@ -244,9 +231,6 @@ const DetailEconomics = () => {
               {/* 効果4: 地域活性化・観光促進 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faGlobe} />
-                  </div>
                   <h2>4. 地域活性化・観光促進</h2>
                 </div>
 
@@ -311,9 +295,6 @@ const DetailEconomics = () => {
               {/* 効果5: 教育コストの最適化 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faGraduationCap} />
-                  </div>
                   <h2>5. 教育コストの最適化</h2>
                 </div>
 
@@ -411,7 +392,6 @@ const DetailEconomics = () => {
               {/* 総合まとめ */}
               <div className="detail-summary">
                 <h2>
-                  <FontAwesomeIcon icon={faCheckCircle} />
                   まとめ: テーブルゲームの経済的価値
                 </h2>
                 <p>
@@ -432,8 +412,7 @@ const DetailEconomics = () => {
               {/* CTA */}
               <div className="detail-cta">
                 <Link to="/tablegame" className="cta-btn-back">
-                  <FontAwesomeIcon icon={faArrowLeft} />
-                  テーブルゲームとは に戻る
+                  ← テーブルゲームとは に戻る
                 </Link>
               </div>
 

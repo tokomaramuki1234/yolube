@@ -57,7 +57,6 @@
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   margin-bottom: 40px;
-  border-left: 4px solid #667eea;
 }
 
 .detail-intro p {
@@ -174,7 +173,6 @@
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;
-  border-left: 4px solid #667eea;
 }
 
 .skill-detail-list li::before {
@@ -204,7 +202,6 @@
   padding: 30px;
   border-radius: 12px;
   margin-top: 30px;
-  border-left: 5px solid #667eea;
 }
 
 .research-box h4 {
@@ -350,7 +347,6 @@
 /* ケーススタディボックス */
 .case-study, .case-box {
   background: #fff;
-  border: 2px solid #667eea;
   border-radius: 12px;
   padding: 30px;
   margin-top: 30px;
@@ -411,7 +407,6 @@
   padding: 20px;
   border-radius: 10px;
   margin-top: 20px;
-  border-left: 4px solid #ff9800;
 }
 
 .case-data .impact strong {
@@ -459,7 +454,6 @@
   background: #fff;
   padding: 20px;
   border-radius: 10px;
-  border: 2px solid #667eea;
 }
 
 .effect-item h5 {
@@ -572,7 +566,6 @@
   padding: 30px;
   border-radius: 12px;
   margin-top: 30px;
-  border-left: 5px solid #ff9800;
 }
 
 .voice-box h4 {
@@ -595,7 +588,6 @@
   padding: 20px;
   border-radius: 8px;
   margin: 0 0 15px 0;
-  border-left: 3px solid #ff9800;
   font-style: italic;
   color: #555;
   line-height: 1.7;
@@ -640,7 +632,6 @@
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   padding: 25px;
   border-radius: 12px;
-  border: 2px solid #667eea;
   text-align: center;
 }
 
@@ -699,7 +690,6 @@
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 15px;
-  border-left: 4px solid #667eea;
   padding-left: 50px;
   position: relative;
 }
@@ -734,7 +724,6 @@
   padding: 18px;
   border-radius: 8px;
   margin-bottom: 12px;
-  border: 2px solid #ecf0f1;
   padding-left: 45px;
   position: relative;
 }
@@ -760,7 +749,6 @@
   padding: 50px 40px;
   border-radius: 12px;
   margin-top: 50px;
-  border: 3px solid #667eea;
 }
 
 .detail-summary h2 {
@@ -802,7 +790,6 @@
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-  border-top: 4px solid #667eea;
 }
 
 .summary-point h3 {

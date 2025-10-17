@@ -1,7 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faUsers, faBrain, faHandshake, faSmile, faHeart, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -24,12 +22,11 @@ const DetailFeatures = () => {
         <section className="base-hero detail-hero">
           <div className="container">
             <Link to="/tablegame" className="back-link">
-              <FontAwesomeIcon icon={faArrowLeft} />
-              テーブルゲームとは に戻る
+              ← テーブルゲームとは に戻る
             </Link>
             <div className="detail-hero-content">
               <div className="detail-hero-icon">
-                <FontAwesomeIcon icon={faStar} />
+                ⭐
               </div>
               <h1 className="base-hero-title">テーブルゲームの5つの特徴</h1>
               <p className="detail-hero-subtitle">
@@ -55,9 +52,6 @@ const DetailFeatures = () => {
               {/* 特徴1: 対面コミュニケーション */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faUsers} />
-                  </div>
                   <h2>1. 対面コミュニケーション</h2>
                 </div>
 
@@ -97,9 +91,6 @@ const DetailFeatures = () => {
               {/* 特徴2: 戦略的思考の訓練 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faBrain} />
-                  </div>
                   <h2>2. 戦略的思考の訓練</h2>
                 </div>
 
@@ -138,9 +129,6 @@ const DetailFeatures = () => {
               {/* 特徴3: チームワークの醸成 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faHandshake} />
-                  </div>
                   <h2>3. チームワークの醸成</h2>
                 </div>
 
@@ -179,9 +167,6 @@ const DetailFeatures = () => {
               {/* 特徴4: 楽しさと学びの両立 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faSmile} />
-                  </div>
                   <h2>4. 楽しさと学びの両立</h2>
                 </div>
 
@@ -221,9 +206,6 @@ const DetailFeatures = () => {
               {/* 特徴5: バリアフリーな参加 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faHeart} />
-                  </div>
                   <h2>5. バリアフリーな参加</h2>
                 </div>
 
@@ -278,8 +260,7 @@ const DetailFeatures = () => {
               {/* CTA */}
               <div className="detail-cta">
                 <Link to="/tablegame" className="cta-btn-back">
-                  <FontAwesomeIcon icon={faArrowLeft} />
-                  テーブルゲームとは に戻る
+                  ← テーブルゲームとは に戻る
                 </Link>
               </div>
 

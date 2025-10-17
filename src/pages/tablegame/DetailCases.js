@@ -1,7 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBuilding, faBriefcase, faGraduationCap, faGlobe, faHeartbeat, faHome, faArrowLeft, faCheckCircle, faChartLine } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -24,12 +22,11 @@ const DetailCases = () => {
         <section className="base-hero detail-hero">
           <div className="container">
             <Link to="/tablegame" className="back-link">
-              <FontAwesomeIcon icon={faArrowLeft} />
-              テーブルゲームとは に戻る
+              ← テーブルゲームとは に戻る
             </Link>
             <div className="detail-hero-content">
               <div className="detail-hero-icon">
-                <FontAwesomeIcon icon={faBuilding} />
+                🏢
               </div>
               <h1 className="base-hero-title">テーブルゲーム活用事例</h1>
               <p className="detail-hero-subtitle">
@@ -56,9 +53,6 @@ const DetailCases = () => {
               {/* 事例1: 企業研修（新入社員） */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faBriefcase} />
-                  </div>
                   <h2>1. 企業研修: 新入社員オンボーディング</h2>
                 </div>
 
@@ -96,7 +90,7 @@ const DetailCases = () => {
                         <div className="data-label">1年以内離職率</div>
                         <div className="data-before-after">
                           <span className="before">導入前: 25%</span>
-                          <FontAwesomeIcon icon={faArrowLeft} style={{transform: 'rotate(180deg)'}} />
+                          →
                           <span className="after">導入後: 10%</span>
                         </div>
                         <div className="data-improvement">15ポイント改善</div>
@@ -105,7 +99,7 @@ const DetailCases = () => {
                         <div className="data-label">「上司・先輩に相談しやすい」</div>
                         <div className="data-before-after">
                           <span className="before">導入前: 50%</span>
-                          <FontAwesomeIcon icon={faArrowLeft} style={{transform: 'rotate(180deg)'}} />
+                          →
                           <span className="after">導入後: 85%</span>
                         </div>
                         <div className="data-improvement">35ポイント向上</div>
@@ -114,7 +108,7 @@ const DetailCases = () => {
                         <div className="data-label">新人研修満足度</div>
                         <div className="data-before-after">
                           <span className="before">導入前: 68%</span>
-                          <FontAwesomeIcon icon={faArrowLeft} style={{transform: 'rotate(180deg)'}} />
+                          →
                           <span className="after">導入後: 94%</span>
                         </div>
                         <div className="data-improvement">26ポイント向上</div>
@@ -147,9 +141,6 @@ const DetailCases = () => {
               {/* 事例2: 企業研修（リーダーシップ） */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faBriefcase} />
-                  </div>
                   <h2>2. 企業研修: リーダーシップ・マネジメント研修</h2>
                 </div>
 
@@ -223,9 +214,6 @@ const DetailCases = () => {
               {/* 事例3: 教育機関 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faGraduationCap} />
-                  </div>
                   <h2>3. 教育機関: 大学・専門学校での授業活用</h2>
                 </div>
 
@@ -263,7 +251,7 @@ const DetailCases = () => {
                         <div className="data-label">授業満足度</div>
                         <div className="data-before-after">
                           <span className="before">導入前: 70%</span>
-                          <FontAwesomeIcon icon={faArrowLeft} style={{transform: 'rotate(180deg)'}} />
+                          →
                           <span className="after">導入後: 95%</span>
                         </div>
                         <div className="data-improvement">25ポイント向上</div>
@@ -272,7 +260,7 @@ const DetailCases = () => {
                         <div className="data-label">期末試験平均点</div>
                         <div className="data-before-after">
                           <span className="before">導入前: 68点</span>
-                          <FontAwesomeIcon icon={faArrowLeft} style={{transform: 'rotate(180deg)'}} />
+                          →
                           <span className="after">導入後: 82点</span>
                         </div>
                         <div className="data-improvement">14点向上</div>
@@ -281,7 +269,7 @@ const DetailCases = () => {
                         <div className="data-label">出席率</div>
                         <div className="data-before-after">
                           <span className="before">導入前: 78%</span>
-                          <FontAwesomeIcon icon={faArrowLeft} style={{transform: 'rotate(180deg)'}} />
+                          →
                           <span className="after">導入後: 96%</span>
                         </div>
                         <div className="data-improvement">18ポイント向上</div>
@@ -314,9 +302,6 @@ const DetailCases = () => {
               {/* 事例4: 地域活性化 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faGlobe} />
-                  </div>
                   <h2>4. 地域活性化: ご当地ゲームイベント</h2>
                 </div>
 
@@ -397,9 +382,6 @@ const DetailCases = () => {
               {/* 事例5: 福祉・医療 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faHeartbeat} />
-                  </div>
                   <h2>5. 福祉・医療: 高齢者施設でのレクリエーション</h2>
                 </div>
 
@@ -437,7 +419,7 @@ const DetailCases = () => {
                         <div className="data-label">認知機能テスト（MMSE）スコア</div>
                         <div className="data-before-after">
                           <span className="before">導入前: 平均22.5点</span>
-                          <FontAwesomeIcon icon={faArrowLeft} style={{transform: 'rotate(180deg)'}} />
+                          →
                           <span className="after">6ヶ月後: 平均24.8点</span>
                         </div>
                         <div className="data-improvement">2.3点向上</div>
@@ -450,7 +432,7 @@ const DetailCases = () => {
                         <div className="data-label">レクリエーション参加率</div>
                         <div className="data-before-after">
                           <span className="before">導入前: 55%</span>
-                          <FontAwesomeIcon icon={faArrowLeft} style={{transform: 'rotate(180deg)'}} />
+                          →
                           <span className="after">導入後: 88%</span>
                         </div>
                         <div className="data-improvement">33ポイント向上</div>
@@ -483,9 +465,6 @@ const DetailCases = () => {
               {/* 事例6: 家庭・親子 */}
               <div className="detail-section">
                 <div className="detail-section-header">
-                  <div className="detail-section-icon">
-                    <FontAwesomeIcon icon={faHome} />
-                  </div>
                   <h2>6. 家庭: 親子コミュニケーションの促進</h2>
                 </div>
 
@@ -523,7 +502,7 @@ const DetailCases = () => {
                         <div className="data-label">家族での会話時間（1日あたり）</div>
                         <div className="data-before-after">
                           <span className="before">導入前: 15分</span>
-                          <FontAwesomeIcon icon={faArrowLeft} style={{transform: 'rotate(180deg)'}} />
+                          →
                           <span className="after">導入後: 45分</span>
                         </div>
                         <div className="data-improvement">3倍に増加</div>
@@ -567,7 +546,6 @@ const DetailCases = () => {
               {/* 総合まとめ */}
               <div className="detail-summary">
                 <h2>
-                  <FontAwesomeIcon icon={faCheckCircle} />
                   まとめ: あらゆる場面で活躍するテーブルゲーム
                 </h2>
                 <p>
@@ -586,8 +564,7 @@ const DetailCases = () => {
               {/* CTA */}
               <div className="detail-cta">
                 <Link to="/tablegame" className="cta-btn-back">
-                  <FontAwesomeIcon icon={faArrowLeft} />
-                  テーブルゲームとは に戻る
+                  ← テーブルゲームとは に戻る
                 </Link>
               </div>
 
