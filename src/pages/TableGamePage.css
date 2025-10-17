@@ -118,6 +118,11 @@
   margin-bottom: 40px;
 }
 
+.fun-text-block h3 {
+  border-left: none;
+  padding-left: 0;
+}
+
 .fun-text-block p {
   font-size: 18px;
   line-height: 1.9;
