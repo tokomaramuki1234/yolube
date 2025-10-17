@@ -120,16 +120,6 @@ const Training = () => {
                 座学では届かない。遊びだから届く。<br />
                 心が動く研修で、組織の未来が変わります。
               </p>
-              <div className="training-hero-stats">
-                <div className="training-stat-item">
-                  <div className="training-stat-number">96<span>%</span></div>
-                  <div className="training-stat-label">参加者満足度</div>
-                </div>
-                <div className="training-stat-item">
-                  <div className="training-stat-number">2<span>ヶ月</span></div>
-                  <div className="training-stat-label">効果実感期間</div>
-                </div>
-              </div>
               <div className="training-hero-buttons">
                 <a href="#contact" className="training-btn training-btn-primary training-btn-hero">
                   <FontAwesomeIcon icon={faComments} />
