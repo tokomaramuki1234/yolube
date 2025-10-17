@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
@@ -72,6 +72,10 @@ const ProtectedRoute = ({ children }) => {
 // ホームページコンポーネント
 const HomePage = () => (
   <>
+    <Helmet>
+      <title>YOLUBE - 遊び心で社会を変える</title>
+      <meta name="description" content="YOLUBEはテーブルゲームの力で地域社会の課題解決に挑みます。秋田を拠点に、世代・性別・国籍を超えた交流文化を創造します。" />
+    </Helmet>
     <Hero />
     <News />
     <About />

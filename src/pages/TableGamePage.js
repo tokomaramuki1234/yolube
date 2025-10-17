@@ -32,15 +32,11 @@ const TableGamePage = () => {
                 テーブルゲームとは?
               </h1>
               <p className="fun-hero-catch">
-                スマホを置いて、友達と顔を見合わせて<br />
-                笑いながら遊ぶ。それだけで、とても楽しいです。
+                スマホを置いて、遊び相手と顔を見合わせる。<br />
+                ともに悩み、ともにドキドキし、ともに笑顔になる。<br />
+                そんな素敵な時間を提供してくれるのが、<br />
+                <strong>テーブルゲーム</strong>です。
               </p>
-              <div className="fun-hero-tags">
-                <span className="tag">#盛り上がる</span>
-                <span className="tag">#新しい友達できる</span>
-                <span className="tag">#頭使う</span>
-                <span className="tag">#ストレス解消</span>
-              </div>
             </div>
           </div>
         </section>
@@ -53,46 +49,20 @@ const TableGamePage = () => {
               {/* テーブルゲームってなに? */}
               <div className="fun-section">
                 <div className="fun-section-header">
-                  <div className="fun-icon">
-                    <FontAwesomeIcon icon={faGamepad} />
-                  </div>
                   <h2>テーブルゲームってなに?</h2>
                 </div>
 
                 <div className="fun-text-block">
                   <p>
-                    <strong>テーブルゲーム</strong>とは、簡単に言えば<br />
-                    <span className="highlight-text">「机の上で、みんなで遊ぶゲーム」</span>のことです。
+                    <strong>テーブルゲーム</strong>とは、簡単に言えば<span className="highlight-text">「机の上で遊ぶゲーム」</span>のことです。
                   </p>
                   <p>
-                    ボードゲーム、カードゲーム、パーティーゲーム…呼び方はいろいろありますが、<br />
-                    共通しているのは<strong>「友達と直接顔を合わせて、ワイワイ楽しむ」</strong>ということです。
+                    ボードゲーム、カードゲーム、パーティーゲーム、アナログゲーム…呼び方はいろいろありますが、共通しているのは<strong>「友達と直接顔を合わせて、ワイワイ楽しむ」</strong>ということです。
                   </p>
                   <p>
-                    スマホゲームも楽しいですが、<br />
-                    <strong>画面越しではなく、隣にいる友達の笑顔や反応を見ながら遊ぶ</strong>というのは、<br />
-                    全く違う楽しさがあります。
+                    スマホゲームも楽しいですが、<strong>画面越しではなく、隣にいる友達の笑顔や反応を見ながら遊ぶ</strong>というのは、全く違う楽しさがあります。
                   </p>
                 </div>
-
-                <div className="fun-types-grid">
-                  <div className="fun-type-card">
-                    <div className="type-emoji">🎴</div>
-                    <h3>ボードゲーム</h3>
-                    <p>盤面やボードを使って遊ぶゲームです。<br />人生ゲーム、モノポリー、カタンなどがあります。</p>
-                  </div>
-                  <div className="fun-type-card">
-                    <div className="type-emoji">🃏</div>
-                    <h3>カードゲーム</h3>
-                    <p>カードで遊ぶゲームです。<br />UNO、トランプ、ナナトカなどがあります。</p>
-                  </div>
-                  <div className="fun-type-card">
-                    <div className="type-emoji">🎉</div>
-                    <h3>パーティーゲーム</h3>
-                    <p>大人数で盛り上がれる軽快なゲームです。<br />ワードウルフ、ジェスチャーなどがあります。</p>
-                  </div>
-                </div>
-
                 <div className="fun-fact-box">
                   <div className="fact-icon">💡</div>
                   <p>
@@ -105,87 +75,66 @@ const TableGamePage = () => {
               {/* なんで楽しいの? */}
               <div className="fun-section">
                 <div className="fun-section-header">
-                  <div className="fun-icon">
-                    <FontAwesomeIcon icon={faStar} />
-                  </div>
                   <h2>なんでこんなに楽しいの?</h2>
                 </div>
 
-                <div className="fun-reasons-grid">
-                  <div className="fun-reason-card">
-                    <div className="reason-emoji">😆</div>
-                    <h3>とにかく盛り上がる!</h3>
-                    <p>
-                      「それはやめて!」<br />
-                      「勝った!」<br />
-                      「本当に?!」<br /><br />
-                      こんな会話が自然に生まれ、とても盛り上がります。<br />
-                      時間を忘れて没頭できるため、ストレス解消にも最適です。
-                    </p>
+                <div className="fun-text-block">
+                  <h3>🌟 誰でも楽しめる</h3>
+                  <p>
+                    年齢、性別、経験は関係ありません。初心者でもベテランでも、みんな対等です。おおむね３歳くらいから遊べますし、１００歳でも１０代の子たちと対等に遊べます。
+                  </p>
+                  <p>
+                    テーブルゲームでは様々なテーマを取り扱っているので、ソロ向けから協力型のゲーム、ワイワイ楽しむパーティーゲーム、知育・脳トレなどの教育系ゲーム、囲碁や将棋のように真剣勝負のゲームなど様々あります。
+                  </p>
+                  <p>
+                    <Link to="/tablegame/detail-features" className="detail-link">
+                      もっと詳しく(特徴の解説) →
+                    </Link>
+                  </p>  
+                  <h3>😆 とにかく盛り上がる!</h3>
+                  <p>
+                    「それはやめて!」「勝った!」「本当に?!」
+                  </p>
+                  <p>
+                    こんな会話が自然に生まれ、とても盛り上がります。時間を忘れて没頭できるため、ストレス解消にも最適です。
+                  </p>
+                  <p>
                     <Link to="/tablegame/detail-effects" className="detail-link">
-                      <FontAwesomeIcon icon={faArrowRight} />
-                      もっと詳しく(効果の科学)
+                      もっと詳しく(効果の科学) →
                     </Link>
-                  </div>
+                  </p>
 
-                  <div className="fun-reason-card">
-                    <div className="reason-emoji">👥</div>
-                    <h3>友達との距離が縮まる</h3>
-                    <p>
-                      初対面でも、ゲームを一緒にやると<br />
-                      すぐに打ち解けられます。<br /><br />
-                      協力して目標をクリアしたり、<br />
-                      お互いの戦略を読み合ったりする中で、<br />
-                      相手の性格や考え方が分かり、<br />
-                      自然と仲良くなれます。
-                    </p>
+                  <h3>👥 友達との距離が縮まる</h3>
+                  <p>
+                    初対面でも、ゲームを一緒にやるとすぐに打ち解けられます。
+                  </p>
+                  <p>
+                    協力して目標をクリアしたり、お互いの戦略を読み合ったりする中で、相手の性格や考え方が分かり、自然と仲良くなれます。
+                  </p>
+                  <p>
                     <Link to="/tablegame/detail-features" className="detail-link">
-                      <FontAwesomeIcon icon={faArrowRight} />
-                      もっと詳しく(特徴の解説)
+                      もっと詳しく(特徴の解説) →
                     </Link>
-                  </div>
+                  </p>
 
-                  <div className="fun-reason-card">
-                    <div className="reason-emoji">🧠</div>
-                    <h3>頭を使うのが楽しい</h3>
-                    <p>
-                      「この手はどうでしょう?」<br />
-                      「次はどうしますか?」<br /><br />
-                      戦略を考えたり、相手の動きを予測したり。<br />
-                      でも「勉強」とか「難しい」という感じではなく、<br />
-                      <strong>楽しみながら自然と頭が回る</strong>感覚です。<br />
-                      これがとても心地良いです。
-                    </p>
+                  <h3>🧠 頭を使うのが楽しい</h3>
+                  <p>
+                    「この手はどうでしょう?」「次はどうしますか?」
+                  </p>
+                  <p>
+                    戦略を考えたり、相手の動きを予測したり。でも「勉強」とか「難しい」という感じではなく、<strong>楽しみながら自然と頭が回る</strong>感覚です。これがとても心地良いです。
+                  </p>
+                  <p>
                     <Link to="/tablegame/detail-features" className="detail-link">
-                      <FontAwesomeIcon icon={faArrowRight} />
-                      もっと詳しく(特徴の解説)
+                      もっと詳しく(特徴の解説) →
                     </Link>
-                  </div>
-
-                  <div className="fun-reason-card">
-                    <div className="reason-emoji">🌟</div>
-                    <h3>誰でも楽しめる</h3>
-                    <p>
-                      年齢、性別、経験は関係ありません。<br />
-                      初心者でもベテランでも、みんな対等です。<br /><br />
-                      「ゲームが上手い」と自慢できますし、<br />
-                      「初めてでも勝てた!」という喜びもあります。<br />
-                      それぞれの楽しみ方があります。
-                    </p>
-                    <Link to="/tablegame/detail-features" className="detail-link">
-                      <FontAwesomeIcon icon={faArrowRight} />
-                      もっと詳しく(特徴の解説)
-                    </Link>
-                  </div>
+                  </p>
                 </div>
               </div>
 
               {/* どこで遊べるの? */}
               <div className="fun-section">
                 <div className="fun-section-header">
-                  <div className="fun-icon">
-                    <FontAwesomeIcon icon={faUsers} />
-                  </div>
                   <h2>どこで遊べるの?</h2>
                 </div>
 
@@ -240,17 +189,13 @@ const TableGamePage = () => {
                 </div>
 
                 <Link to="/tablegame/detail-cases" className="fun-section-link">
-                  <FontAwesomeIcon icon={faArrowRight} />
-                  いろんな場所での活用事例を見る
+                  いろんな場所での活用事例を見る →
                 </Link>
               </div>
 
               {/* 実はすごい効果もある */}
               <div className="fun-section fun-section-benefit">
                 <div className="fun-section-header">
-                  <div className="fun-icon">
-                    <FontAwesomeIcon icon={faRocket} />
-                  </div>
                   <h2>実は、すごい効果もあるんだって</h2>
                 </div>
 
@@ -319,19 +264,15 @@ const TableGamePage = () => {
                   </p>
                   <div className="cta-links-grid">
                     <Link to="/tablegame/detail-features" className="cta-link-btn">
-                      <FontAwesomeIcon icon={faStar} />
                       5つの特徴
                     </Link>
                     <Link to="/tablegame/detail-effects" className="cta-link-btn">
-                      <FontAwesomeIcon icon={faHeart} />
                       得られる効果
                     </Link>
                     <Link to="/tablegame/detail-economics" className="cta-link-btn">
-                      <FontAwesomeIcon icon={faLightbulb} />
                       経済的効果
                     </Link>
                     <Link to="/tablegame/detail-cases" className="cta-link-btn">
-                      <FontAwesomeIcon icon={faUsers} />
                       活用事例
                     </Link>
                   </div>
@@ -357,11 +298,9 @@ const TableGamePage = () => {
                   </p>
                   <div className="final-cta-buttons">
                     <a href="/training" className="final-cta-btn primary">
-                      <FontAwesomeIcon icon={faRocket} />
                       企業研修プログラムを見る
                     </a>
                     <a href="/#contact" className="final-cta-btn secondary">
-                      <FontAwesomeIcon icon={faUsers} />
                       お問い合わせ
                     </a>
                   </div>

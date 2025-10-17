@@ -122,6 +122,17 @@ const Header = () => {
                   新着情報
                 </a>
               </li>
+              <li>
+                <a
+                  href="/tablegame"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handlePageChange('/tablegame');
+                  }}
+                >
+                  テーブルゲームについて
+                </a>
+              </li>
               <li
                 className="dropdown"
                 onMouseEnter={() => window.innerWidth > 768 && setOpenDropdown('organization')}
