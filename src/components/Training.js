@@ -105,30 +105,23 @@ const Training = () => {
         <div className="training-container">
           <div className="training-hero-content-center">
             <div className="training-hero-text">
-              <div className="training-badge">
-                <FontAwesomeIcon icon={faStar} /> 秋田県企業様限定特別プラン実施中
-              </div>
+
               <h1 className="training-title">
-                遊びが変える、<br />
-                <span className="training-title-sub">チームの関係性。</span>
+                遊びが、<br />
+                <span className="training-title-sub">組織を強くする。</span>
               </h1>
               <p className="training-subtitle">
-                <strong>"楽しい"が生み出す、本物の信頼関係</strong><br />
-                ボードゲームで実現する、誰もが参加したくなる企業研修
-              </p>
-              <p className="training-description">
-                座学では届かない。遊びだから届く。<br />
-                心が動く研修で、組織の未来が変わります。
+                <strong>"楽しい"が生み出す、本物の社内交流</strong><br />
+                テーブルゲームで実現する、誰もが参加したくなる企業研修
               </p>
               <div className="training-hero-buttons">
                 <a href="#contact" className="training-btn training-btn-primary training-btn-hero">
                   <FontAwesomeIcon icon={faComments} />
-                  無料で課題を相談する
+                  お申し込みはこちら
                 </a>
-                <a href="#about" className="training-btn training-btn-outline">
-                  研修内容を見る
-                  <FontAwesomeIcon icon={faArrowRight} />
-                </a>
+              </div><br />
+              <div className="training-badge">
+                秋田県企業様限定特別プラン実施中
               </div>
             </div>
           </div>
@@ -150,8 +143,8 @@ const Training = () => {
                 <img src="/images/training_01_01.jpeg" alt="話しかける人が固定化している様子" />
               </div>
               <div className="training-problem-content">
-                <h4>話しかける人が固定化している</h4>
-                <p>組織内で一部の人だけがコミュニケーションを取るため、重要な情報が全体に共有されない</p>
+                <h4>話しかける人の固定化</h4>
+                <p>組織内で一部の人同士だけでコミュニケーションを取るため、重要な情報が全体に共有されない</p>
               </div>
             </div>
             
@@ -160,7 +153,7 @@ const Training = () => {
                 <img src="/images/training_01_02.png" alt="部署間の情報共有が欠けている様子" />
               </div>
               <div className="training-problem-content">
-                <h4>部署間の情報共有が欠けている</h4>
+                <h4>部署間の情報共有不足</h4>
                 <p>関連部署とのコミュニケーション不足で予期せぬトラブルが発生</p>
               </div>
             </div>
@@ -170,7 +163,7 @@ const Training = () => {
                 <img src="/images/training_01_03.jpeg" alt="新入社員が不安を感じている様子" />
               </div>
               <div className="training-problem-content">
-                <h4>新入社員が不安を感じている</h4>
+                <h4>新人を襲う漠然とした不安</h4>
                 <p>コミュニケーション不足により上司/同僚/組織の全体像が見えない</p>
               </div>
             </div>
@@ -183,14 +176,9 @@ const Training = () => {
         <div className="training-container">
           <div className="training-solution-content">
             <div className="training-solution-text">
-              <h2 className="training-section-title">"遊び"が社員を動かす。</h2>
-              <h3 className="training-subsection-title">遊び心で組織変革を実現する新しい研修スタイル</h3>
+              <h2 className="training-section-title">そのお悩みを<br />「遊び」で解決します</h2>
               
-              <p>YOLUBEの研修ではコミュニケーション機会を創ることにこだわります。</p>
-              <p>20万種類ともいわれるテーブルゲームの中から様々な形のコミュニケーション機会を提供。</p>
-              <p>楽しみながら共通体験を得るため、参加者同士で自然な結束が生まれます。</p>
-              <p>ただ"楽しい"だけでなく、行動変容に直結する設計を行っています。</p>
-              <p>また、毎回の研修後に参加者へアンケートを実施することで研修そのものをPDCAサイクルに載せていきます。</p>
+              <p>「遊び」という敷居の低さ。目的に応じた柔軟性。<br />そのどちらも兼ね備えたテーブルゲームをフル活用してご支援致します</p>
             </div>
           </div>
         </div>
@@ -200,7 +188,7 @@ const Training = () => {
       <section id="features" className="training-features">
         <div className="training-container">
           <h2 className="training-section-title">2つの目的を同時に実現</h2>
-              <p>コミュニケーション研修を通じて下記の2点へ寄与してまいります。</p>
+              <p className="training-section-subtitle">テーブルゲームによるコミュニケーション研修を通じて下記の2点へ寄与してまいります。</p>
           <div className="training-features-grid">
             <div className="training-feature-item">
               <div className="training-feature-image">
@@ -210,7 +198,7 @@ const Training = () => {
               <ul>
                 <li>組織内に横断的な交流機会を創出</li>
                 <li>お互いの「職場以外の一面」を知る機会で相互理解が進む</li>
-                <li>職位の関係で交流機会を持たない同僚との会話で自社への解像度を高める</li>
+                <li>職位を超えた交流機会が自社への解像度を高める</li>
               </ul>
             </div>
             
@@ -220,7 +208,7 @@ const Training = () => {
               </div>
               <h3>エンゲージメント向上</h3>
               <ul>
-                <li>ゲームを通じてコミュニケーションへの感度を高め、社員の定着率を向上</li>
+                <li>相互理解によってコミュニケーション感度を高め、社員の定着率を向上</li>
                 <li>組織の中で「話しかけやすい雰囲気」を創出</li>
                 <li>経営陣が求めている現場の声を拾いやすくする</li>
               </ul>
@@ -235,7 +223,7 @@ const Training = () => {
         <div className="training-container">
           <h2 className="training-section-title">研修プログラムの流れ</h2>
           <p className="training-section-subtitle">
-            6ヶ月かけて段階的に組織を変革していきます
+            ６回の研修を通して実施した場合のモデルケースをご紹介します。
           </p>
 
           {/* Timeline Visual */}

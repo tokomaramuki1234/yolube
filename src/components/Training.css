@@ -118,12 +118,11 @@
 
 .training-hero-content-center {
   text-align: center;
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: 0 auto;
 }
 
 .training-hero-text {
-  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -140,7 +139,7 @@
 }
 
 .training-title {
-  font-size: 3rem;
+  font-size: 9rem;
   font-weight: bold;
   line-height: 1.2;
   margin-bottom: 1.5rem;
@@ -271,6 +270,7 @@
 
 .training-problem-content {
   padding: 2rem;
+  text-align: center;
 }
 
 .training-problem-icon {
