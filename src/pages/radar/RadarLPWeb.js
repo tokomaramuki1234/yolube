@@ -118,13 +118,7 @@ const RadarLPWeb = () => {
           { age: '20代女性', text: '程よく難しく、シンプルに遊べるのがよかった。人と楽しくコミュニケーションとれる感じがよかった。' }
         ]
       },
-      faq: {
-        title: '参加登録',
-        items: [
-          { q: 'エントリー方法', a: '下記のお申し込みフォームからエントリーをお願いいたします！' },
-          { q: '必要事項', a: '・お名前<br />・ニックネーム<br />・テーブルゲームの経験　あり／なし<br />・一言' }
-        ]
-      },
+
       schedule: {
         title: '大会情報',
         eventName: 'レーダー作戦ゲーム ワールドカップ',
@@ -228,17 +222,7 @@ const RadarLPWeb = () => {
           { age: 'Woman in 20s', text: 'It was good that it was moderately difficult and simple to play. I liked that I could communicate with people in a fun way.' }
         ]
       },
-      faq: {
-        title: 'FAQ',
-        items: [
-          { q: 'Is participation really free?', a: 'Yes, completely free. You can come empty-handed. With the purpose of conveying the charm of tabletop games to inexperienced people, all venue setup costs are borne by the organizers. Donations and sponsorships are very welcome!' },
-          { q: "I'm inexperienced with games themselves. Can I still participate?", a: 'Of course! Beginners and inexperienced people are very welcome. Staff will carefully explain the rules, so please participate with confidence.' },
-          { q: 'Is advance registration required?', a: 'Advance registration is not required, but making a reservation in advance allows us to guide you smoothly. Please apply from <a href="#reservation">this participation reservation form</a>!' },
-          { q: 'Is there an age limit?', a: 'There is no age limit. People of a wide range of ages participate. Everyone is welcome.\nHowever, if participating with children in 2nd grade or below, parents must accompany them. We firmly decline behavior such as leaving childcare entirely to staff.' },
-          { q: 'Can I join midway or leave early?', a: 'Yes, you can. You can participate or leave at any time during the event hours. Feel free to come.' },
-          { q: 'Is there parking?', a: "Minna no Jikka Kadowaki-ke and Akita Bay Paradise have free parking. Please use nearby paid parking for Akita City Cultural Creation Center and Yokote City Exchange Center/Y2 Plaza. Other venues also basically require using nearby paid parking." }
-        ]
-      },
+
       schedule: {
         title: 'Next Event',
         eventName: 'Tabletop Game Social: Ke.',
@@ -342,17 +326,7 @@ const RadarLPWeb = () => {
           { age: 'Nữ 20 tuổi', text: 'Tốt là vừa phải khó và đơn giản để chơi. Tôi thích có thể giao tiếp với mọi người một cách vui vẻ.' }
         ]
       },
-      faq: {
-        title: 'Câu Hỏi Thường Gặp',
-        items: [
-          { q: 'Tham gia thực sự miễn phí?', a: 'Vâng, hoàn toàn miễn phí. Bạn có thể đến mà không cần mang gì. Với mục đích truyền đạt sức hấp dẫn của board game cho người chưa có kinh nghiệm, tất cả chi phí thiết lập địa điểm được ban tổ chức chịu. Quyên góp và tài trợ rất được hoan nghênh!' },
-          { q: 'Tôi chưa có kinh nghiệm với trò chơi. Tôi vẫn có thể tham gia?', a: 'Tất nhiên! Người mới bắt đầu và chưa có kinh nghiệm rất được hoan nghênh. Nhân viên sẽ cẩn thận giải thích luật, vì vậy hãy tham gia với sự tự tin.' },
-          { q: 'Đăng ký trước có bắt buộc không?', a: 'Đăng ký trước không bắt buộc, nhưng đặt chỗ trước cho phép chúng tôi hướng dẫn bạn một cách suôn sẻ. Vui lòng đăng ký từ <a href="#reservation">mẫu đăng ký tham gia này</a>!' },
-          { q: 'Có giới hạn độ tuổi không?', a: 'Không có giới hạn độ tuổi. Mọi người ở nhiều độ tuổi tham gia. Mọi người đều được chào đón.\nTuy nhiên, nếu tham gia với trẻ em lớp 2 trở xuống, phụ huynh phải đi cùng. Chúng tôi kiên quyết từ chối hành vi như giao phó chăm sóc trẻ hoàn toàn cho nhân viên.' },
-          { q: 'Có thể tham gia giữa chừng hoặc rời đi sớm?', a: 'Vâng, bạn có thể. Bạn có thể tham gia hoặc rời đi bất cứ lúc nào trong giờ sự kiện. Hãy thoải mái đến.' },
-          { q: 'Có chỗ đậu xe không?', a: 'Minna no Jikka Kadowaki-ke và Akita Bay Paradise có bãi đậu xe miễn phí. Vui lòng sử dụng bãi đậu xe trả phí gần đó cho Trung tâm Sáng tạo Văn hóa Thành phố Akita và Trung tâm Giao lưu Thành phố Yokote/Y2 Plaza. Các địa điểm khác cũng cơ bản yêu cầu sử dụng bãi đậu xe trả phí gần đó.' }
-        ]
-      },
+
       schedule: {
         title: 'Sự Kiện Tiếp Theo',
         eventName: 'Câu Lạc Bộ Board Game Giao Lưu: Ke.',
@@ -456,18 +430,7 @@ const RadarLPWeb = () => {
           { age: 'Frau in den 20ern', text: 'Es war gut, dass es mäßig schwierig und einfach zu spielen war. Mir hat gefallen, dass ich auf unterhaltsame Weise mit Menschen kommunizieren konnte.' }
         ]
       },
-      faq: {
-        title: 'Häufig gestellte Fragen',
-        items: [
-          { q: 'Ist die Teilnahme wirklich kostenlos?', a: 'Ja, völlig kostenlos. Sie können mit leeren Händen kommen. Mit dem Ziel, unerfahrenen Menschen den Charme von Brettspielen zu vermitteln, werden alle Kosten für die Veranstaltungseinrichtung von den Organisatoren getragen. Spenden und Sponsoring sind sehr willkommen!' },
-          { q: 'Ich habe keine Erfahrung mit Spielen selbst. Kann ich trotzdem teilnehmen?', a: 'Natürlich! Anfänger und unerfahrene Personen sind sehr willkommen. Die Mitarbeiter erklären die Regeln sorgfältig, also nehmen Sie bitte selbstbewusst teil.' },
-          { q: 'Ist eine Voranmeldung erforderlich?', a: 'Eine Voranmeldung ist nicht erforderlich, aber eine Reservierung im Voraus ermöglicht es uns, Sie reibungslos zu führen. Bitte melden Sie sich über <a href="#reservation">dieses Teilnahme-Anmeldeformular</a> an!' },
-          { q: 'Gibt es eine Altersgrenze?', a: 'Es gibt keine Altersgrenze. Menschen unterschiedlichen Alters nehmen teil. Jeder ist willkommen.\nWenn Sie jedoch mit Kindern der 2. Klasse oder darunter teilnehmen, müssen Eltern sie begleiten. Wir lehnen Verhaltensweisen wie die vollständige Überlassung der Kinderbetreuung an das Personal strikt ab.' },
-          { q: 'Kann ich mittendrin beitreten oder früher gehen?', a: 'Ja, Sie können. Sie können jederzeit während der Veranstaltungszeiten teilnehmen oder gehen. Kommen Sie gerne vorbei.' },
-          { q: 'Gibt es Parkplätze?', a: 'Minna no Jikka Kadowaki-ke und Akita Bay Paradise haben kostenlose Parkplätze. Bitte nutzen Sie die nahegelegenen kostenpflichtigen Parkplätze für das Akita City Cultural Creation Center und das Yokote City Exchange Center/Y2 Plaza. Andere Veranstaltungsorte erfordern grundsätzlich auch die Nutzung nahegelegener kostenpflichtiger Parkplätze.' }
-        ]
-      },
-      schedule: {
+schedule: {
         title: 'Nächste Veranstaltung',
         eventName: 'Brettspiel-Treff: Ke.',
         loading: 'Nächste Veranstaltungsinformationen werden geladen...',
@@ -570,18 +533,7 @@ const RadarLPWeb = () => {
           { age: '20대 여성', text: '적당히 어렵고 간단하게 즐길 수 있어서 좋았어요. 사람들과 즐겁게 소통할 수 있어서 좋았습니다.' }
         ]
       },
-      faq: {
-        title: '자주 묻는 질문',
-        items: [
-          { q: '참가비가 정말 무료인가요?', a: '네, 완전히 무료입니다. 빈손으로 오셔도 됩니다. 경험이 없는 사람들에게 보드게임의 매력을 전달하려는 목적으로 모든 장소 설치 비용은 주최자가 부담합니다. 기부와 후원은 매우 환영합니다!' },
-          { q: '게임 자체가 처음인데 참가할 수 있나요?', a: '물론입니다! 초보자와 경험이 없는 분들을 환영합니다. 스태프가 규칙을 자세히 설명해드리니 자신 있게 참가하세요.' },
-          { q: '사전 등록이 필요한가요?', a: '사전 등록은 필수가 아니지만 미리 예약하시면 원활하게 안내해드릴 수 있습니다. <a href="#reservation">이 참가 예약 양식</a>을 통해 신청해주세요!' },
-          { q: '나이 제한이 있나요?', a: '나이 제한은 없습니다. 다양한 연령대의 사람들이 참가합니다. 누구나 환영합니다.\n단, 초등학교 2학년 이하 자녀와 함께 참가하는 경우 반드시 보호자와 함께 참가해야 합니다. 육아를 스태프에게 전적으로 맡기는 행위는 엄격히 금지합니다.' },
-          { q: '중간에 참가하거나 일찍 퇴장할 수 있나요?', a: '네, 가능합니다. 행사 시간 내 언제든지 참가하거나 퇴장하실 수 있습니다. 편하게 오세요.' },
-          { q: '주차장이 있나요?', a: 'Minna no Jikka Kadowaki-ke와 Akita Bay Paradise에는 무료 주차장이 있습니다. Akita City Cultural Creation Center와 Yokote City Exchange Center/Y2 Plaza는 인근 유료 주차장을 이용해주세요. 다른 장소도 기본적으로 인근 유료 주차장을 이용해야 합니다.' }
-        ]
-      },
-      schedule: {
+schedule: {
         title: '다음 이벤트',
         eventName: '보드게임 교류회: Ke.',
         loading: '다음 이벤트 정보를 불러오는 중...',
@@ -684,18 +636,7 @@ const RadarLPWeb = () => {
           { age: '20多岁女性', text: '难度适中，玩法简单很好。能和人愉快地交流很好。' }
         ]
       },
-      faq: {
-        title: '常见问题',
-        items: [
-          { q: '参加真的免费吗？', a: '是的，完全免费。可以空手来。为了向没有经验的人传达桌游的魅力，所有场地设置费用都由主办方承担。非常欢迎捐款和赞助！' },
-          { q: '我完全没玩过游戏。也能参加吗？', a: '当然可以！非常欢迎初学者和没有经验的人。工作人员会仔细说明规则，请放心参加。' },
-          { q: '需要提前报名吗？', a: '不需要提前报名，但提前预约可以让我们更顺利地为您提供引导。请通过<a href="#reservation">此参加预约表</a>报名！' },
-          { q: '有年龄限制吗？', a: '没有年龄限制。各个年龄段的人都有参加。欢迎所有人。\n但如果带小学二年级及以下的孩子参加，必须有监护人陪同。严禁将育儿完全交给工作人员的行为。' },
-          { q: '可以中途参加或提前离开吗？', a: '可以。在活动时间内随时可以参加或离开。请随意前来。' },
-          { q: '有停车场吗？', a: 'Minna no Jikka Kadowaki-ke和Akita Bay Paradise有免费停车场。Akita City Cultural Creation Center和Yokote City Exchange Center/Y2 Plaza请使用附近的收费停车场。其他场地基本上也请使用附近的收费停车场。' }
-        ]
-      },
-      schedule: {
+schedule: {
         title: '下次活动',
         eventName: '桌游交流会：Ke.',
         loading: '正在加载下次活动信息...',
@@ -798,18 +739,7 @@ const RadarLPWeb = () => {
           { age: 'Femme dans la vingtaine', text: 'C\'était bien que ce soit modérément difficile et simple à jouer. J\'ai aimé pouvoir communiquer avec les gens de manière amusante.' }
         ]
       },
-      faq: {
-        title: 'FAQ',
-        items: [
-          { q: 'La participation est-elle vraiment gratuite ?', a: 'Oui, complètement gratuite. Vous pouvez venir les mains vides. Dans le but de transmettre le charme des jeux de société aux personnes inexpérimentées, tous les frais d\'installation du lieu sont pris en charge par les organisateurs. Les dons et parrainages sont très bienvenus !' },
-          { q: 'Je suis inexpérimenté avec les jeux eux-mêmes. Puis-je quand même participer ?', a: 'Bien sûr ! Les débutants et les personnes inexpérimentées sont les bienvenus. Le personnel expliquera soigneusement les règles, alors participez en toute confiance.' },
-          { q: 'L\'inscription préalable est-elle requise ?', a: 'L\'inscription préalable n\'est pas requise, mais faire une réservation à l\'avance nous permet de vous guider en douceur. Veuillez postuler depuis <a href="#reservation">ce formulaire de réservation de participation</a> !' },
-          { q: 'Y a-t-il une limite d\'âge ?', a: 'Il n\'y a pas de limite d\'âge. Des personnes d\'un large éventail d\'âges participent. Tout le monde est le bienvenu.\nCependant, si vous participez avec des enfants en 2e année ou moins, les parents doivent les accompagner. Nous refusons fermement les comportements tels que laisser la garde d\'enfants entièrement au personnel.' },
-          { q: 'Puis-je rejoindre en cours ou partir tôt ?', a: 'Oui, vous le pouvez. Vous pouvez participer ou partir à tout moment pendant les heures de l\'événement. N\'hésitez pas à venir.' },
-          { q: 'Y a-t-il un parking ?', a: "Minna no Jikka Kadowaki-ke et Akita Bay Paradise ont un parking gratuit. Veuillez utiliser le parking payant à proximité pour Akita City Cultural Creation Center et Yokote City Exchange Center/Y2 Plaza. Les autres lieux nécessitent également généralement l'utilisation d'un parking payant à proximité." }
-        ]
-      },
-      schedule: {
+schedule: {
         title: 'Prochain événement',
         eventName: 'Rencontre Jeux de Société : Ke.',
         loading: 'Chargement des informations du prochain événement...',
@@ -1320,25 +1250,6 @@ const RadarLPWeb = () => {
             <a href="#sns" className="ke-btn ke-btn-outline">
               {t.hero.btn2}
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="ke-faq">
-        <div className="ke-container">
-          <h2 className="ke-section-title">{t.faq.title}</h2>
-          <div className="ke-faq-list">
-            {t.faq.items.map((item, index) => (
-              <div key={index} className="ke-faq-item">
-                <div className="ke-faq-question">
-                  <h3>{item.q}</h3>
-                </div>
-                <div className="ke-faq-answer">
-                  <div dangerouslySetInnerHTML={{ __html: item.a.replace(/\n/g, '<br />') }}></div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
