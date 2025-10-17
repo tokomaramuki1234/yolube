@@ -1012,49 +1012,49 @@ schedule: {
             <div className="ke-sponsor-group">
               <h3 className="ke-sponsor-title">{t.sponsors.cooperation}</h3>
               <div className="ke-sponsor-list">
-                <a href="https://all-akita-furusato.jp/" target="_blank" rel="noopener noreferrer">
-                  <span>みんなの実家 門脇家</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <span>〇✖株式会社</span>
                 </a>
-                <a href="https://rise.webu.jp/" target="_blank" rel="noopener noreferrer">
-                  <span>立志塾RISE</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <span>〇✖株式会社</span>
                 </a>
-                <a href="http://baypara.jp/" target="_blank" rel="noopener noreferrer">
-                  <span>秋田ベイパラダイス</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <span>〇✖株式会社</span>
                 </a>
               </div>
             </div>
             <div className="ke-sponsor-group">
               <h3 className="ke-sponsor-title">{t.sponsors.support}</h3>
               <div className="ke-sponsor-list">
-                <a href="https://www.pref.akita.lg.jp/" target="_blank" rel="noopener noreferrer">
-                  <span>秋田県</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <span>〇✖株式会社</span>
                 </a>
-                <a href="https://www.pref.akita.lg.jp/pages/education" target="_blank" rel="noopener noreferrer">
-                  <span>秋田県教育委員会</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <span>〇✖株式会社</span>
                 </a>
-                <a href="https://www.city.akita.lg.jp/" target="_blank" rel="noopener noreferrer">
-                  <span>秋田市</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <span>〇✖株式会社</span>
                 </a>
-                <a href="https://youthpal-akita.com/" target="_blank" rel="noopener noreferrer">
-                  <span>一般財団法人秋田県青年会館</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <span>〇✖株式会社</span>
                 </a>
-                <a href="https://www.akita-abs.co.jp/" target="_blank" rel="noopener noreferrer">
-                  <span>ABS秋田放送</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <span>〇✖株式会社</span>
                 </a>
-                <a href="https://www.cna.ne.jp/" target="_blank" rel="noopener noreferrer">
-                  <span>CNA秋田ケーブルテレビ</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <span>〇✖株式会社</span>
                 </a>
-                <a href="https://www.sakigake.jp/" target="_blank" rel="noopener noreferrer">
-                  <span>秋田魁新報社</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <span>〇✖株式会社</span>
                 </a>
-                <a href="https://mutsumi-l.co.jp/" target="_blank" rel="noopener noreferrer">
-                  <span>むつみ造園土木株式会社</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <span>〇✖株式会社</span>
                 </a>
-                <a href="https://kitaho.or.jp/yg88/news/4885.html" target="_blank" rel="noopener noreferrer">
-                  <span>株式会社EGEN</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <span>〇✖株式会社</span>
                 </a>
-                <a href="https://x.com/icepick_yokote" target="_blank" rel="noopener noreferrer">
-                  <span>一般社団法人ICEPICK</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <span>〇✖株式会社</span>
                 </a>
               </div>
             </div>
