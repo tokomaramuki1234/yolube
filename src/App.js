@@ -15,6 +15,7 @@ import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 
 import KeLP from './pages/ke/KeLPWeb3';
+import RadarLP from './pages/radar/RadarLPWeb';
 import Training from './components/Training';
 import ReservationDetail from './components/ReservationDetail';
 import NewsPage from './pages/NewsPage';
@@ -117,6 +118,7 @@ function App() {
 
             <Route path="/ke" element={<KeLP />} />
             <Route path="/ke/reservations/:eventId" element={<ReservationDetail />} />
+            <Route path="/radar" element={<RadarLP />} />
             <Route path="/training" element={<Training />} />
 
             {/* 管理画面ルート */}
