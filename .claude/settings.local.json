@@ -38,7 +38,8 @@
       "Bash(done)",
       "Bash([ -d \".vercel\" ])",
       "Bash(git rm:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(git stash:*)"
     ],
     "deny": [],
     "ask": []
