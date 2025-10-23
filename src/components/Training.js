@@ -568,7 +568,7 @@ const Training = () => {
               <div className="training-instructor-name-section">
                 <h4>木村 允</h4>
                 <p className="training-instructor-name-en">KIMURA MAKOTO</p>
-                <p className="training-instructor-title">YOLUBE 代表 / テーブルゲームイノベーター</p>
+                <p className="training-instructor-title">YOLUBE 代表 / テーブルゲームイノベーター / <a href="https://www.mitsulu.style/" target="_blank" rel="noopener noreferrer">IT系便利屋 MITSULU.STYLE</a> 代表</p>
               </div>
             </div>
 
@@ -579,17 +579,17 @@ const Training = () => {
                   <div className="training-expertise-item">
                     <div className="training-expertise-number">1,000+</div>
                     <div className="training-expertise-label">イベント来場者数</div>
-                    <p>「Ke.」イベントを2年間運営し、累計約1,000名の参加者をファシリテート</p>
+                    <p>2023年より「テーブルゲーム交流会：Ke.」を運営。累計参加者数約1,100名超のイベントの中で、数多の参加者へテーブルゲームのルール説明等を実施。</p>
                   </div>
                   <div className="training-expertise-item">
                     <div className="training-expertise-number">98.7%</div>
                     <div className="training-expertise-label">研修満足度</div>
-                    <p>「楽しかった」「また参加したい」と高評価。参加者の心を掴むファシリテーション力</p>
+                    <p>研修目的のテーブルゲーム選定に定評あり。未経験者からは「楽しかった」「また参加したい」などの高評価を得ている。</p>
                   </div>
                   <div className="training-expertise-item">
                     <div className="training-expertise-number">実践経験</div>
                     <div className="training-expertise-label">組織マネジメント</div>
-                    <p>IT企業でのマネジメント経験、ベトナム現地でのコミュニケーション課題解決実績</p>
+                    <p>本業としてIT企業でのマネジメント経験を持つ。駐在員として赴任したベトナムで60名超のベトナム人部下とのコミュニケーション課題解決を行い、当時のプロジェクトを成功させた。</p>
                   </div>
                 </div>
               </div>
@@ -610,119 +610,6 @@ const Training = () => {
           </div>
         </div>
       </section>
-
-      {/* Game Introduction Section */}
-      <section className="training-games">
-        <div className="training-container">
-          <h2 className="training-section-title">使用するテーブルゲーム（例）</h2>
-          <p className="training-section-subtitle">
-            心理学・組織論に基づいて厳選されたゲームで、楽しみながら学びます
-          </p>
-
-          <div className="training-games-grid">
-            <div className="training-game-card">
-              <div className="training-game-image">
-                <img src="/images/training_01_01.jpeg" alt="コミュニケーションゲーム" />
-              </div>
-              <div className="training-game-content">
-                <h4>コミュニケーションゲーム</h4>
-                <div className="training-game-purpose">
-                  <strong>目的:</strong> 言語化能力・傾聴力の向上
-                </div>
-                <p>
-                  限られた情報を正確に伝え合うゲーム。「相手に伝わる説明」と「理解するための質問」のスキルが自然に磨かれます。
-                </p>
-                <div className="training-game-theory">
-                  <FontAwesomeIcon icon={faLightbulb} />
-                  <span>心理学理論: アクティブリスニング、情報の非対称性</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="training-game-card">
-              <div className="training-game-image">
-                <img src="/images/training_01_02.png" alt="協力型問題解決ゲーム" />
-              </div>
-              <div className="training-game-content">
-                <h4>協力型問題解決ゲーム</h4>
-                <div className="training-game-purpose">
-                  <strong>目的:</strong> チームワーク・役割分担の理解
-                </div>
-                <p>
-                  全員で協力しなければクリアできないゲーム。自然と役割分担が生まれ、お互いの強みを活かす組織づくりを体験します。
-                </p>
-                <div className="training-game-theory">
-                  <FontAwesomeIcon icon={faLightbulb} />
-                  <span>組織論: タックマンモデル、相互依存理論</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="training-game-card">
-              <div className="training-game-image">
-                <img src="/images/training_01_03.jpeg" alt="戦略的思考ゲーム" />
-              </div>
-              <div className="training-game-content">
-                <h4>戦略的思考ゲーム</h4>
-                <div className="training-game-purpose">
-                  <strong>目的:</strong> 意思決定力・論理的思考の強化
-                </div>
-                <p>
-                  限られたリソースで最大の成果を目指すゲーム。経営判断の疑似体験を通じて、戦略的思考とリスク管理を学びます。
-                </p>
-                <div className="training-game-theory">
-                  <FontAwesomeIcon icon={faLightbulb} />
-                  <span>経営理論: ゲーム理論、リスクマネジメント</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="training-game-card">
-              <div className="training-game-image">
-                <img src="/images/training_02_01.png" alt="アイスブレイクゲーム" />
-              </div>
-              <div className="training-game-content">
-                <h4>アイスブレイクゲーム</h4>
-                <div className="training-game-purpose">
-                  <strong>目的:</strong> 心理的安全性の構築
-                </div>
-                <p>
-                  笑いが生まれる軽快なゲームで緊張を解きほぐします。職場の立場を忘れ、フラットな関係性を作る最初のステップです。
-                </p>
-                <div className="training-game-theory">
-                  <FontAwesomeIcon icon={faLightbulb} />
-                  <span>心理学理論: 心理的安全性、ラポール形成</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="training-game-card">
-              <div className="training-game-image">
-                <img src="/images/training_02_02.jpeg" alt="創造性発揮ゲーム" />
-              </div>
-              <div className="training-game-content">
-                <h4>創造性発揮ゲーム</h4>
-                <div className="training-game-purpose">
-                  <strong>目的:</strong> 発想力・イノベーション思考の促進
-                </div>
-                <p>
-                  既成概念にとらわれない自由な発想を求められるゲーム。ブレインストーミング研修の準備として創造性を解放します。
-                </p>
-                <div className="training-game-theory">
-                  <FontAwesomeIcon icon={faLightbulb} />
-                  <span>創造性理論: デザイン思考、ラテラルシンキング</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <p className="training-games-note">
-            ※研修では貴社の課題や参加者の特性に合わせて、20万種類以上のテーブルゲームから最適なものを選定します。
-          </p>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
 
       {/* FAQ Section */}
       <section id="faq" className="training-faq">
