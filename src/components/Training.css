@@ -199,6 +199,15 @@
   line-height: 1.2;
   margin-bottom: 1.5rem;
   color: #2c3e50;
+  text-shadow:
+    2px 2px 0 #fff,
+    -2px 2px 0 #fff,
+    2px -2px 0 #fff,
+    -2px -2px 0 #fff,
+    2px 0 0 #fff,
+    -2px 0 0 #fff,
+    0 2px 0 #fff,
+    0 -2px 0 #fff;
 }
 
 .training-title-sub {
@@ -2013,6 +2022,15 @@
 
   .training-title {
     font-size: 2rem;
+    text-shadow:
+      1px 1px 0 #fff,
+      -1px 1px 0 #fff,
+      1px -1px 0 #fff,
+      -1px -1px 0 #fff,
+      1px 0 0 #fff,
+      -1px 0 0 #fff,
+      0 1px 0 #fff,
+      0 -1px 0 #fff;
   }
 
   .training-subtitle {
@@ -2264,6 +2282,15 @@
 
   .training-title {
     font-size: 1.75rem;
+    text-shadow:
+      1px 1px 0 #fff,
+      -1px 1px 0 #fff,
+      1px -1px 0 #fff,
+      -1px -1px 0 #fff,
+      1px 0 0 #fff,
+      -1px 0 0 #fff,
+      0 1px 0 #fff,
+      0 -1px 0 #fff;
   }
 
   /* Hero Section */
