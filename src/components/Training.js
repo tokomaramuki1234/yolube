@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGamepad, faUsers, faCalendarAlt, faMapMarkerAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faChevronLeft, faChevronRight, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faBuilding, faPhone, faEnvelope, faArrowRight, faCheckCircle, faStar, faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faCalendarAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faBuilding, faArrowRight, faCheckCircle, faStar } from '@fortawesome/free-solid-svg-icons';
 import Footer from './Footer';
 import './Training.css';
 
@@ -549,111 +549,29 @@ const Training = () => {
         </div>
       </section>
 
-      {/* Social Proof Section */}
-      <section className="training-social-proof">
+      {/* Instructor Section */}
+      <section className="training-instructor">
         <div className="training-container">
-          <h2 className="training-section-title">導入企業様の声</h2>
-          <p className="training-section-subtitle">
-            多くの企業様に選ばれ、実際に組織が変わっています
-          </p>
-
-          {/* Testimonials */}
-          <div className="training-testimonials-grid">
-            <div className="training-testimonial">
-              <div className="training-testimonial-icon">
-                <FontAwesomeIcon icon={faQuoteLeft} />
-              </div>
-              <p>
-                「最初は半信半疑でしたが、研修後の社内の雰囲気が明らかに変わりました。部署を超えた会話が自然に生まれ、情報共有がスムーズになりました。」
-              </p>
-              <div className="training-testimonial-author">
-                <div className="training-testimonial-author-info">
-                  <span className="training-testimonial-name">佐藤 様</span>
-                  <span className="training-testimonial-company">秋田市・製造業（従業員30名）</span>
-                  <span className="training-testimonial-role">人事部長</span>
-                </div>
-              </div>
+          <h2 className="training-section-title">研修講師・ファシリテーター</h2>
+          <div className="training-instructor-profile">
+            <div className="training-instructor-image">
+              <img src="/images/makoto.jpg" alt="木村 允" />
             </div>
+            <div className="training-instructor-info">
+              <h4>木村 允</h4>
+              <p className="training-instructor-name-en">KIMURA MAKOTO</p>
+              <p className="training-instructor-title">YOLUBE 代表 / テーブルゲームイノベーター</p>
 
-            <div className="training-testimonial">
-              <div className="training-testimonial-icon">
-                <FontAwesomeIcon icon={faQuoteLeft} />
-              </div>
-              <p>
-                「新入社員の離職率が大幅に下がりました。先輩社員との距離が縮まり、相談しやすい環境が生まれたことが大きいと感じています。」
-              </p>
-              <div className="training-testimonial-author">
-                <div className="training-testimonial-author-info">
-                  <span className="training-testimonial-name">田中 様</span>
-                  <span className="training-testimonial-company">大仙市・IT企業（従業員15名）</span>
-                  <span className="training-testimonial-role">代表取締役</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="training-testimonial">
-              <div className="training-testimonial-icon">
-                <FontAwesomeIcon icon={faQuoteLeft} />
-              </div>
-              <p>
-                「従来の座学研修では眠くなる社員もいましたが、この研修は全員が前のめりで参加。楽しみながら学べるので定着率が全く違います。」
-              </p>
-              <div className="training-testimonial-author">
-                <div className="training-testimonial-author-info">
-                  <span className="training-testimonial-name">鈴木 様</span>
-                  <span className="training-testimonial-company">横手市・サービス業（従業員45名）</span>
-                  <span className="training-testimonial-role">総務課長</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="training-testimonial">
-              <div className="training-testimonial-icon">
-                <FontAwesomeIcon icon={faQuoteLeft} />
-              </div>
-              <p>
-                「経営分析研修では、普段は意見を言わない社員からも積極的な提案が出ました。ボトムアップの土壌ができたことを実感しています。」
-              </p>
-              <div className="training-testimonial-author">
-                <div className="training-testimonial-author-info">
-                  <span className="training-testimonial-name">高橋 様</span>
-                  <span className="training-testimonial-company">能代市・建設業（従業員25名）</span>
-                  <span className="training-testimonial-role">専務取締役</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Instructor Profile */}
-          <div className="training-instructor-section">
-            <h3 className="training-subsection-title">研修講師・ファシリテーター</h3>
-            <div className="training-instructor-profile">
-              <div className="training-instructor-image">
-                <img src="/images/YOLUBE_logo.png" alt="YOLUBE代表" />
-              </div>
-              <div className="training-instructor-info">
-                <h4>まことさん</h4>
-                <p className="training-instructor-title">YOLUBE 代表 / テーブルゲームファシリテーター</p>
-                <div className="training-instructor-credentials">
-                  <div className="training-credential-item">
-                    <FontAwesomeIcon icon={faCheckCircle} />
-                    <span>IT企業での組織マネジメント経験</span>
-                  </div>
-                  <div className="training-credential-item">
-                    <FontAwesomeIcon icon={faCheckCircle} />
-                    <span>ベトナム現地でのコミュニケーション課題解決実績</span>
-                  </div>
-                  <div className="training-credential-item">
-                    <FontAwesomeIcon icon={faCheckCircle} />
-                    <span>2023年2月TxGAME設立（現YOLUBE）</span>
-                  </div>
-                  <div className="training-credential-item">
-                    <FontAwesomeIcon icon={faCheckCircle} />
-                    <span>20万種類以上のテーブルゲームから最適な研修を設計</span>
-                  </div>
-                </div>
-                <p className="training-instructor-message">
-                  「対面のコミュニケーションこそが組織の課題を解決する」という信念のもと、楽しさと学びを融合した研修プログラムを提供しています。秋田から日本の組織文化を変えていきます。
+              <div className="training-instructor-bio">
+                <h5>略歴</h5>
+                <p>
+                  日系IT企業の駐在員として赴任したベトナムで"日本人のコミュニケーション能力"に関心を持つようになる。SNSやチャットに依存する現代社会で、対面コミュニケーション能力の重要性を痛感し、テーブルゲームをその解決策として位置づける。
+                </p>
+                <p>
+                  その後、地元秋田県の社会問題・地域問題に対してテーブルゲームの有用性を見出し、２０２３年２月にTxGAME（ティーバイゲーム）を発足。同団体が主催するイベント「テーブルゲーム交流会：Ke.」を通じて２年間で累計約１０００名の来場者数を獲得。２０２５年７月１日、団体名を「YOLUBE」に改称。
+                </p>
+                <p>
+                  現在は秋田県の観光PRを目的とするテーブルゲーム「Hometown traveler」を開発中。企業研修においては、テーブルゲームを活用した独自のコミュニケーション研修プログラムを提供し、組織の課題解決をサポートしています。
                 </p>
               </div>
             </div>
