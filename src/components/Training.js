@@ -553,25 +553,47 @@ const Training = () => {
       <section className="training-instructor">
         <div className="training-container">
           <h2 className="training-section-title">研修講師・ファシリテーター</h2>
-          <div className="training-instructor-profile">
-            <div className="training-instructor-image">
-              <img src="/images/makoto.jpg" alt="木村 允" />
-            </div>
-            <div className="training-instructor-info">
-              <h4>木村 允</h4>
-              <p className="training-instructor-name-en">KIMURA MAKOTO</p>
-              <p className="training-instructor-title">YOLUBE 代表 / テーブルゲームイノベーター</p>
 
-              <div className="training-instructor-bio">
-                <h5>略歴</h5>
+          <div className="training-instructor-profile">
+            <div className="training-instructor-header">
+              <div className="training-instructor-image">
+                <img src="/images/makoto.jpg" alt="木村 允" />
+              </div>
+              <div className="training-instructor-name-section">
+                <h4>木村 允</h4>
+                <p className="training-instructor-name-en">KIMURA MAKOTO</p>
+                <p className="training-instructor-title">YOLUBE 代表 / テーブルゲームイノベーター</p>
+              </div>
+            </div>
+
+            <div className="training-instructor-content">
+              <div className="training-instructor-expertise">
+                <h5><FontAwesomeIcon icon={faCheckCircle} /> 講師としての強み</h5>
+                <div className="training-expertise-grid">
+                  <div className="training-expertise-item">
+                    <div className="training-expertise-number">1,000+</div>
+                    <div className="training-expertise-label">イベント来場者数</div>
+                    <p>「Ke.」イベントを2年間運営し、累計約1,000名の参加者をファシリテート</p>
+                  </div>
+                  <div className="training-expertise-item">
+                    <div className="training-expertise-number">20万種</div>
+                    <div className="training-expertise-label">テーブルゲーム知識</div>
+                    <p>世界中の20万種類以上のテーブルゲームから、研修目的に最適なゲームを選定</p>
+                  </div>
+                  <div className="training-expertise-item">
+                    <div className="training-expertise-number">実践経験</div>
+                    <div className="training-expertise-label">組織マネジメント</div>
+                    <p>IT企業でのマネジメント経験、ベトナム現地でのコミュニケーション課題解決実績</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="training-instructor-message">
                 <p>
-                  日系IT企業の駐在員として赴任したベトナムで"日本人のコミュニケーション能力"に関心を持つようになる。SNSやチャットに依存する現代社会で、対面コミュニケーション能力の重要性を痛感し、テーブルゲームをその解決策として位置づける。
+                  ベトナムでのIT企業駐在員経験を通じて、対面コミュニケーションの重要性を痛感。テーブルゲームを活用した独自の研修手法で、<strong>「楽しさ」と「学び」を融合</strong>させることで、参加者の本質的な変化を引き出します。
                 </p>
                 <p>
-                  その後、地元秋田県の社会問題・地域問題に対してテーブルゲームの有用性を見出し、２０２３年２月にTxGAME（ティーバイゲーム）を発足。同団体が主催するイベント「テーブルゲーム交流会：Ke.」を通じて２年間で累計約１０００名の来場者数を獲得。２０２５年７月１日、団体名を「YOLUBE」に改称。
-                </p>
-                <p>
-                  現在は秋田県の観光PRを目的とするテーブルゲーム「Hometown traveler」を開発中。企業研修においては、テーブルゲームを活用した独自のコミュニケーション研修プログラムを提供し、組織の課題解決をサポートしています。
+                  研修では、心理学・組織論に基づいたゲーム選定と、参加者一人ひとりに寄り添ったファシリテーションで、<strong>組織の課題を根本から解決</strong>します。
                 </p>
               </div>
             </div>

@@ -1057,10 +1057,6 @@
 }
 
 .training-instructor-profile {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 3rem;
-  align-items: start;
   background: #fff;
   padding: 3rem;
   border-radius: 12px;
@@ -1068,20 +1064,34 @@
   margin-top: 2rem;
 }
 
+.training-instructor-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #e9ecef;
+  margin-bottom: 2rem;
+}
+
 .training-instructor-image {
-  text-align: center;
+  flex-shrink: 0;
 }
 
 .training-instructor-image img {
-  width: 200px;
-  height: 200px;
-  border-radius: 12px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
   object-fit: cover;
   border: 4px solid #8BC780;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
-.training-instructor-info h4 {
+.training-instructor-name-section {
+  text-align: left;
+}
+
+.training-instructor-name-section h4 {
   font-size: 2rem;
   color: #2c3e50;
   margin-bottom: 0.5rem;
@@ -1099,31 +1109,94 @@
 .training-instructor-title {
   color: #8BC780;
   font-weight: bold;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.training-instructor-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.training-instructor-expertise h5 {
+  font-size: 1.5rem;
+  color: #2c3e50;
   margin-bottom: 2rem;
-  font-size: 1.2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.training-instructor-bio {
-  margin-top: 2rem;
+.training-instructor-expertise h5 svg {
+  color: #8BC780;
 }
 
-.training-instructor-bio h5 {
-  font-size: 1.3rem;
+.training-expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.training-expertise-item {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.training-expertise-item:hover {
+  transform: translateY(-5px);
+  border-color: #8BC780;
+}
+
+.training-expertise-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #8BC780;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.training-expertise-label {
+  font-size: 1.1rem;
+  font-weight: bold;
   color: #2c3e50;
   margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #8BC780;
 }
 
-.training-instructor-bio p {
-  line-height: 1.8;
+.training-expertise-item p {
+  font-size: 0.95rem;
   color: #555;
-  margin-bottom: 1.25rem;
-  text-align: left;
+  line-height: 1.6;
 }
 
-.training-instructor-bio p:last-child {
+.training-instructor-message {
+  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  line-height: 1.8;
+}
+
+.training-instructor-message p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.training-instructor-message p:last-child {
   margin-bottom: 0;
+}
+
+.training-instructor-message strong {
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 
 /* Game Introduction Section */
@@ -1918,34 +1991,51 @@
   }
 
   .training-instructor-profile {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    padding: 2rem;
   }
 
-  .training-instructor-image {
+  .training-instructor-header {
+    flex-direction: column;
     text-align: center;
+    gap: 1.5rem;
   }
 
   .training-instructor-image img {
-    width: 180px;
-    height: 180px;
-    margin: 0 auto;
+    width: 120px;
+    height: 120px;
   }
 
-  .training-instructor-info h4 {
+  .training-instructor-name-section {
     text-align: center;
   }
 
-  .training-instructor-name-en {
-    text-align: center;
+  .training-instructor-name-section h4 {
+    font-size: 1.6rem;
   }
 
-  .training-instructor-title {
-    text-align: center;
+  .training-expertise-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
-  .training-instructor-bio h5 {
-    text-align: center;
+  .training-expertise-number {
+    font-size: 2rem;
+  }
+
+  .training-expertise-label {
+    font-size: 1rem;
+  }
+
+  .training-expertise-item p {
+    font-size: 0.9rem;
+  }
+
+  .training-instructor-message {
+    padding: 1.5rem;
+  }
+
+  .training-instructor-message p {
+    font-size: 1rem;
   }
 
   /* Games Grid */
@@ -2147,23 +2237,55 @@
 
   /* Instructor */
   .training-instructor-profile {
-    padding: 2rem;
+    padding: 1.5rem;
+  }
+
+  .training-instructor-header {
+    padding-bottom: 1.5rem;
   }
 
   .training-instructor-image img {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
   }
 
-  .training-instructor-info h4 {
-    font-size: 1.5rem;
+  .training-instructor-name-section h4 {
+    font-size: 1.4rem;
   }
 
-  .training-instructor-bio h5 {
-    font-size: 1.2rem;
+  .training-instructor-name-en {
+    font-size: 0.9rem;
   }
 
-  .training-instructor-bio p {
+  .training-instructor-title {
+    font-size: 1rem;
+  }
+
+  .training-instructor-expertise h5 {
+    font-size: 1.3rem;
+  }
+
+  .training-expertise-number {
+    font-size: 1.8rem;
+  }
+
+  .training-expertise-label {
+    font-size: 0.95rem;
+  }
+
+  .training-expertise-item {
+    padding: 1.5rem 1rem;
+  }
+
+  .training-expertise-item p {
+    font-size: 0.85rem;
+  }
+
+  .training-instructor-message {
+    padding: 1.25rem;
+  }
+
+  .training-instructor-message p {
     font-size: 0.95rem;
   }
 
