@@ -576,9 +576,9 @@ const Training = () => {
                     <p>「Ke.」イベントを2年間運営し、累計約1,000名の参加者をファシリテート</p>
                   </div>
                   <div className="training-expertise-item">
-                    <div className="training-expertise-number">20万種</div>
-                    <div className="training-expertise-label">テーブルゲーム知識</div>
-                    <p>世界中の20万種類以上のテーブルゲームから、研修目的に最適なゲームを選定</p>
+                    <div className="training-expertise-number">98.7%</div>
+                    <div className="training-expertise-label">研修満足度</div>
+                    <p>「楽しかった」「また参加したい」と高評価。参加者の心を掴むファシリテーション力</p>
                   </div>
                   <div className="training-expertise-item">
                     <div className="training-expertise-number">実践経験</div>
@@ -589,11 +589,15 @@ const Training = () => {
               </div>
 
               <div className="training-instructor-message">
+                <h5>研修への想い</h5>
                 <p>
-                  ベトナムでのIT企業駐在員経験を通じて、対面コミュニケーションの重要性を痛感。テーブルゲームを活用した独自の研修手法で、<strong>「楽しさ」と「学び」を融合</strong>させることで、参加者の本質的な変化を引き出します。
+                  ベトナムのIT企業で、異文化チームのマネジメントを経験する中で、言葉や立場を超えた「本質的なコミュニケーション」の重要性に気づきました。SNSやチャットツールが発達した現代でも、対面でしか築けない信頼関係があります。
                 </p>
                 <p>
-                  研修では、心理学・組織論に基づいたゲーム選定と、参加者一人ひとりに寄り添ったファシリテーションで、<strong>組織の課題を根本から解決</strong>します。
+                  テーブルゲーム研修では、「遊び」という安全な環境の中で、参加者の素の人間性が表れます。この「職場のペルソナを脱いだ状態」での交流こそが、真の相互理解と組織変革の第一歩だと考えています。
+                </p>
+                <p>
+                  2年間のKe.イベント運営で培った1,000名以上へのファシリテーション経験を活かし、貴社の組織課題に寄り添った研修を設計いたします。
                 </p>
               </div>
             </div>
