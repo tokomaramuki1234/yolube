@@ -9,6 +9,8 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import News from './components/News';
 import About from './components/About';
+import Achievements from './components/Achievements';
+import Press from './components/Press';
 import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
