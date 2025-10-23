@@ -193,7 +193,7 @@ const Training = () => {
       {/* Features Section */}
       <section id="features" className="training-features">
         <div className="training-container">
-          <h2 className="training-section-title">2つの目的を同時に実現</h2>
+          <h2 className="training-section-title">遊びがもたらす二つの効果</h2>
               <p className="training-section-subtitle">テーブルゲームによるコミュニケーション研修を通じて下記の2点へ寄与してまいります。</p>
           <div className="training-features-grid">
             <div className="training-feature-item">
@@ -229,7 +229,7 @@ const Training = () => {
         <div className="training-container">
           <h2 className="training-section-title">研修プログラムの流れ</h2>
           <p className="training-section-subtitle">
-            ６回の研修を通して実施した場合のモデルケースをご紹介します。
+            モデルケース：年６回の研修を通して実施した場合
           </p>
 
           {/* Timeline Visual */}
@@ -358,12 +358,13 @@ const Training = () => {
             </div>
           </div>
 
-          <h3 className="training-subsection-title" style={{marginTop: '4rem'}}>詳細プログラム</h3>
+          <h3 className="training-subsection-title" style={{marginTop: '4rem'}}>プログラム詳細</h3>
           <div className="training-program-phases">
             <div className="training-phase">
               <div className="training-phase-header">
                 <h3>【第1～4回】アイスブレイク＆情報収集フェーズ</h3>
                 <p className="training-phase-purpose"><strong>目的：</strong> 社内コミュニケーション円滑化・エンゲージメント向上</p>
+                <p className="training-phase-purpose"><strong>実施内容：</strong> テーブルゲームを通じて、多面的に相互理解を得る機会を提供。毎回の研修後にアンケートにて効果測定。</p>
               </div>
               
               <div className="training-effects">
@@ -379,6 +380,10 @@ const Training = () => {
                   <h5>2. 成功体験を共有する</h5>
                   <p>研修の参加者同士が共有する成功体験は、その後の何気ない日常の中でも思い返されることとなります。研修を重ねることでチームメンバーとの成功体験も増え、自然とポジティブな話題が増えていきます。</p>
                 </div>
+                <div className="training-effect-item">
+                  <h5>3. ボトムアップの下地作り</h5>
+                  <p>アイスブレイクのなかでアンケート実施するため、研修内容自体がPDCAサイクルを堅持しやすくなります。本丸であるエンゲージメント向上への道筋を探りやすくなります。</p>
+                </div>
               </div>
             </div>
             
@@ -386,6 +391,7 @@ const Training = () => {
               <div className="training-phase-header">
                 <h3>【第5～6回】実践活用フェーズ</h3>
                 <p className="training-phase-purpose"><strong>目的：</strong> 全員参加型での経営分析・戦略立案</p>
+                <p className="training-phase-purpose"><strong>実施内容：</strong> 第1～4回で構築した信頼関係を活かし、ブレインストーミング研修と経営分析研修を実施。</p>
               </div>
               
               <div className="training-phase-details">
@@ -881,7 +887,7 @@ const Training = () => {
               秋田県企業様 特別優遇制度
             </h4>
             <p>
-              地元秋田の企業様を全力で応援します！秋田県内企業様限定で、<strong>交通費完全無料</strong>＋<strong>初回お試し研修20%OFF</strong>を実施中。まずはお気軽にご相談ください。
+              地元秋田の企業様を全力で応援します！秋田県内企業様限定で、<strong>ライトプラン、スタンダードプラン、プレミアムプランを初年度20%OFF</strong>を実施中。まずはお気軽にご相談ください。
             </p>
           </div>
         </div>
