@@ -79,6 +79,8 @@ const HomePage = () => (
     <Hero />
     <News />
     <About />
+    <Achievements />
+    <Press />
     <Services />
     <Contact />
   </>

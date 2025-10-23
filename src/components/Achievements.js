@@ -1,123 +1,140 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers, faBullseye, faCalendarAlt, faGamepad } from '@fortawesome/free-solid-svg-icons';
+import { faDice, faUsers, faCalendarAlt, faTv } from '@fortawesome/free-solid-svg-icons';
 import './Achievements.css';
 
 const Achievements = () => {
-  const stats = [
+  const [isVisible, setIsVisible] = useState(false);
+  const [counts, setCounts] = useState({
+    events: 0,
+    participants: 0,
+    regular: 0,
+    media: 0
+  });
+  const sectionRef = useRef(null);
+  const hasAnimated = useRef(false);
+
+  const achievements = [
     {
+      id: 1,
+      icon: faDice,
+      number: 81,
+      suffix: '+',
+      label: '開催イベント数',
+      key: 'events'
+    },
+    {
+      id: 2,
       icon: faUsers,
-      number: '1,000+',
+      number: 1100,
+      suffix: '+',
       label: '累計参加者数',
-      description: '2025年6月30日時点'
+      key: 'participants'
     },
     {
-      icon: faBullseye,
-      number: '55',
-      label: '定期イベント開催回数',
-      description: '「テーブルゲーム交流会：Ke.」'
-    },
-    {
+      id: 3,
       icon: faCalendarAlt,
-      number: '15+',
-      label: '臨時イベント開催回数',
-      description: '様々なコラボイベントを展開中'
+      number: 64,
+      suffix: '+',
+      label: '定例会開催回数',
+      key: 'regular'
+    },
+    {
+      id: 4,
+      icon: faTv,
+      number: 9,
+      suffix: '+',
+      label: 'メディア掲載',
+      key: 'media'
     }
   ];
 
-  const games = [
-    {
-      title: 'Hometown Traveler',
-      description: '秋田県の観光PRを目的としたテーブルゲーム。プレイヤーは秋田県へ訪れた旅行者として四季折々の観光スポットを旅する。',
-      features: [
-        '観光スポット／イベント情報のカード化',
-        'QRコード連携による多言語対応',
-        '秋田県内小学校全校への寄贈を目指し開発中'
-      ],
-      status: 'in-progress'
-    },
-    {
-      title: 'ねねばねべ',
-      description: '秋田弁の「～ね」「～ば」「～べ」を使って遊ぶカードタイプのテーブルゲーム。',
-      features: [
-        '実際の秋田弁を使用したゲーム',
-        '敗北即ち、ナマハゲ・レイジ激震！',
-        '他のボドゲマーヘッズを出し抜くワザマエ試される重篤極まりないゲーム'
-      ],
-      status: 'in-progress'
+  // Intersection Observer for scroll trigger
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated.current) {
+            setIsVisible(true);
+            hasAnimated.current = true;
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
-  ];
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Count up animation
+  useEffect(() => {
+    if (isVisible) {
+      achievements.forEach((achievement) => {
+        const duration = 2000; // 2秒
+        const steps = 60;
+        const increment = achievement.number / steps;
+        let currentStep = 0;
+
+        const timer = setInterval(() => {
+          currentStep++;
+          if (currentStep <= steps) {
+            setCounts((prev) => ({
+              ...prev,
+              [achievement.key]: Math.floor(increment * currentStep)
+            }));
+          } else {
+            setCounts((prev) => ({
+              ...prev,
+              [achievement.key]: achievement.number
+            }));
+            clearInterval(timer);
+          }
+        }, duration / steps);
+
+        return () => clearInterval(timer);
+      });
+    }
+  }, [isVisible]);
+
+  const formatNumber = (num) => {
+    return num.toLocaleString();
+  };
 
   return (
-    <section id="achievements" className="achievements section">
+    <section id="achievements" className="achievements section" ref={sectionRef}>
       <div className="section-container">
-        <h2 className="section-title">ACHIEVEMENT</h2>
-        <p className="section-subtitle">
-          これまでの活動実績と開発中のテーブルゲームをご紹介します
-        </p>
+        <h2 className="section-title">数字で見るYOLUBE</h2>
+        <p className="section-subtitle-en">Achievement in Numbers</p>
 
-        <div className="achievements-content">
-          {/* 統計情報 */}
-          <div className="stats-section">
-            <h3 className="subsection-title">活動実績</h3>
-            <div className="stats-grid">
-              {stats.map((stat, index) => (
-                <div key={index} className="stat-card">
-                  <FontAwesomeIcon icon={stat.icon} className="stat-icon" />
-                  <div className="stat-number">{stat.number}</div>
-                  <div className="stat-label">{stat.label}</div>
-                  <div className="stat-description">{stat.description}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* ゲーム開発実績 */}
-          <div className="games-section">
-            <h3 className="subsection-title">開発ゲーム</h3>
-            
-            {/* ショーケース */}
-            <div className="games-showcase">
-              <div className="showcase-images">
-                <img src="https://picsum.photos/600/400?random=20" alt="テーブルゲーム" className="main-img" />
-                <div className="sub-images">
-                  <img src="https://picsum.photos/300/200?random=21" alt="ゲーム詳細1" className="sub-img" />
-                  <img src="https://picsum.photos/300/200?random=22" alt="ゲーム詳細2" className="sub-img" />
-                </div>
+        <div className="achievements-grid">
+          {achievements.map((achievement) => (
+            <div 
+              key={achievement.id} 
+              className={`achievement-item ${isVisible ? 'visible' : ''}`}
+              style={{ transitionDelay: `${achievement.id * 0.1}s` }}
+            >
+              <div className="achievement-icon">
+                <FontAwesomeIcon icon={achievement.icon} />
               </div>
-              <div className="showcase-text">
-                <h4>地域文化を遊びで学ぶ</h4>
-                <p>遊びながら学び、楽しみながら地元を知ることができる体験を提供すべく開発しています。</p>
+              <div className="achievement-number">
+                {formatNumber(counts[achievement.key])}
+                <span className="achievement-suffix">{achievement.suffix}</span>
               </div>
+              <div className="achievement-label">{achievement.label}</div>
             </div>
-
-            {/* ゲーム詳細 */}
-            <div className="games-grid">
-              {games.map((game, index) => (
-                <div key={index} className="game-card">
-                  <div className="game-header">
-                    <h4 className="game-title">{game.title}</h4>
-                    <span className={`game-status ${game.status}`}>
-                      {game.status === 'completed' ? '完成' : '開発中'}
-                    </span>
-                  </div>
-                  <p className="game-description">{game.description}</p>
-                  <ul className="game-features">
-                    {game.features.map((feature, featureIndex) => (
-                      <li key={featureIndex}>
-                        <FontAwesomeIcon icon={faGamepad} className="feature-bullet" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-export default Achievements; 
+export default Achievements;
