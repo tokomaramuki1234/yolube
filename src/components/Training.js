@@ -11,6 +11,23 @@ const Training = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
 
+  // 背景画像のプリロード
+  useEffect(() => {
+    const imageUrls = [
+      'https://images.unsplash.com/photo-1611891487253-156f9817e54d?w=1200&h=675&fit=crop&q=80&fm=webp',
+      'https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=1200&h=675&fit=crop&q=80&fm=webp',
+      'https://images.unsplash.com/photo-1566694271453-390536dd1f0d?w=1200&h=675&fit=crop&q=80&fm=webp'
+    ];
+
+    imageUrls.forEach(url => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = url;
+      document.head.appendChild(link);
+    });
+  }, []);
+
   // スクロール位置を監視
   useEffect(() => {
     const handleScroll = () => {
