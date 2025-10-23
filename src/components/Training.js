@@ -589,7 +589,7 @@ const Training = () => {
                   <div className="training-expertise-item">
                     <div className="training-expertise-number">実践経験</div>
                     <div className="training-expertise-label">組織マネジメント</div>
-                    <p>本業としてIT企業でのマネジメント経験を持つ。駐在員として赴任したベトナムで60名超のベトナム人部下とのコミュニケーション課題解決を行い、当時のプロジェクトを成功させた。</p>
+                    <p>本業としてIT企業でのマネジメント経験を持つ。駐在員として赴任したベトナムで60名超のベトナム人チームと日本人チーム30名との間に生じたコミュニケーション課題を解決。</p>
                   </div>
                 </div>
               </div>
@@ -761,19 +761,25 @@ const Training = () => {
           <p className="training-pricing-intro">
             まずはお試しから。効果を実感いただいてから本格導入をご検討ください。
           </p>
-          
-          <div className="training-pricing-grid">
-            <div className="training-pricing-plan training-trial">
+
+          {/* お試しプラン - 特別レイアウト */}
+          <div className="training-trial-special">
+            <div className="training-trial-badge-wrapper">
               <div className="training-plan-badge-new">初めての方におすすめ</div>
-              <div className="training-plan-header">
+            </div>
+            <div className="training-trial-content">
+              <div className="training-trial-left">
                 <h4>お試しプラン</h4>
-                <p className="training-plan-subtitle">1回限りの体験研修</p>
+                <p className="training-trial-subtitle">1回限りの体験研修</p>
+                <div className="training-trial-price">
+                  <span className="training-price-amount">3万円</span>
+                  <span className="training-price-unit">／1回</span>
+                </div>
+                <div className="training-trial-note">
+                  ※本格導入時に全額キャッシュバック
+                </div>
               </div>
-              <div className="training-plan-price">
-                <span className="training-price-amount">3万円</span>
-                <span className="training-price-unit">／1回</span>
-              </div>
-              <div className="training-plan-features">
+              <div className="training-trial-right">
                 <ul>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> まずは試してみたい企業様向け</li>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> 研修参加者10名まで</li>
@@ -781,11 +787,11 @@ const Training = () => {
                   <li><FontAwesomeIcon icon={faCheckCircle} /> アンケート実施・分析レポート付</li>
                 </ul>
               </div>
-              <div className="training-plan-note">
-                ※本格導入時に全額キャッシュバック
-              </div>
             </div>
+          </div>
 
+          {/* 通常プラン */}
+          <div className="training-pricing-grid">
             <div className="training-pricing-plan">
               <div className="training-plan-header">
                 <h4>ライトプラン</h4>
