@@ -101,6 +101,12 @@ const Training = () => {
 
       {/* Hero Section */}
       <section className="training-hero">
+        {/* 背景スライドショー */}
+        <div className="training-hero-slideshow">
+          <div className="training-hero-slide training-hero-slide-1"></div>
+          <div className="training-hero-slide training-hero-slide-2"></div>
+          <div className="training-hero-slide training-hero-slide-3"></div>
+        </div>
         <div className="training-hero-overlay"></div>
         <div className="training-container">
           <div className="training-hero-content-center">
