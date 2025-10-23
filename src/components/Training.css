@@ -1059,9 +1059,9 @@
 .training-instructor-profile {
   background: #fff;
   padding: 3rem;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   margin-top: 2rem;
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .training-instructor-header {
@@ -1084,8 +1084,7 @@
   border-radius: 50%;
   object-fit: cover;
   object-position: center 20%;
-  border: 4px solid #8BC780;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  border: 3px solid #8BC780;
 }
 
 .training-instructor-name-section {
@@ -1142,17 +1141,14 @@
 }
 
 .training-expertise-item {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: #f8f9fa;
   padding: 2rem 1.5rem;
-  border-radius: 12px;
   text-align: center;
-  transition: transform 0.3s ease;
-  border: 2px solid transparent;
+  border-bottom: 1px solid #dee2e6;
 }
 
-.training-expertise-item:hover {
-  transform: translateY(-5px);
-  border-color: #8BC780;
+.training-expertise-item:last-child {
+  border-bottom: none;
 }
 
 .training-expertise-number {
@@ -1179,17 +1175,15 @@
 .training-instructor-message {
   background: #f8f9fa;
   padding: 2rem;
-  border-radius: 12px;
-  border-left: 5px solid #8BC780;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+  margin-top: 1rem;
 }
 
 .training-instructor-message h5 {
   font-size: 1.4rem;
   color: #2c3e50;
   margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 2px solid #8BC780;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .training-instructor-message p {
