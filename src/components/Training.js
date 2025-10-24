@@ -513,21 +513,21 @@ const Training = () => {
               <h4>Q1. 研修は楽しかったですか？</h4>
               <div className="training-survey-bars">
                 <div className="training-survey-bar">
-                  <span className="bar-label">とても楽しかった（5）</span>
+                  <span className="bar-label">とても楽しかった</span>
                   <div className="bar-container">
                     <div className="bar-fill" style={{width: '67.9%'}}></div>
                     <span className="bar-percentage">67.9%</span>
                   </div>
                 </div>
                 <div className="training-survey-bar">
-                  <span className="bar-label">楽しかった（4）</span>
+                  <span className="bar-label">楽しかった</span>
                   <div className="bar-container">
                     <div className="bar-fill" style={{width: '30.8%'}}></div>
                     <span className="bar-percentage">30.8%</span>
                   </div>
                 </div>
                 <div className="training-survey-bar">
-                  <span className="bar-label">普通（3）</span>
+                  <span className="bar-label">普通</span>
                   <div className="bar-container">
                     <div className="bar-fill" style={{width: '1.3%'}}></div>
                     <span className="bar-percentage">1.3%</span>
@@ -540,21 +540,21 @@ const Training = () => {
               <h4>Q2. また参加したいと思いますか？</h4>
               <div className="training-survey-bars">
                 <div className="training-survey-bar">
-                  <span className="bar-label">ぜひ参加したい（5）</span>
+                  <span className="bar-label">ぜひ参加したい</span>
                   <div className="bar-container">
                     <div className="bar-fill" style={{width: '70.5%'}}></div>
                     <span className="bar-percentage">70.5%</span>
                   </div>
                 </div>
                 <div className="training-survey-bar">
-                  <span className="bar-label">参加したい（4）</span>
+                  <span className="bar-label">参加したい</span>
                   <div className="bar-container">
                     <div className="bar-fill" style={{width: '25.7%'}}></div>
                     <span className="bar-percentage">25.7%</span>
                   </div>
                 </div>
                 <div className="training-survey-bar">
-                  <span className="bar-label">どちらでもない（3）</span>
+                  <span className="bar-label">どちらでもない</span>
                   <div className="bar-container">
                     <div className="bar-fill" style={{width: '3.8%'}}></div>
                     <span className="bar-percentage">3.8%</span>
@@ -567,21 +567,21 @@ const Training = () => {
               <h4>Q3. コミュニケーションが取りやすくなりましたか？</h4>
               <div className="training-survey-bars">
                 <div className="training-survey-bar">
-                  <span className="bar-label">とても取りやすくなった（5）</span>
+                  <span className="bar-label">とても取りやすくなった</span>
                   <div className="bar-container">
                     <div className="bar-fill" style={{width: '44.9%'}}></div>
                     <span className="bar-percentage">44.9%</span>
                   </div>
                 </div>
                 <div className="training-survey-bar">
-                  <span className="bar-label">取りやすくなった（4）</span>
+                  <span className="bar-label">取りやすくなった</span>
                   <div className="bar-container">
                     <div className="bar-fill" style={{width: '42.3%'}}></div>
                     <span className="bar-percentage">42.3%</span>
                   </div>
                 </div>
                 <div className="training-survey-bar">
-                  <span className="bar-label">変わらない（3）</span>
+                  <span className="bar-label">変わらない</span>
                   <div className="bar-container">
                     <div className="bar-fill" style={{width: '12.8%'}}></div>
                     <span className="bar-percentage">12.8%</span>
