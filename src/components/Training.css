@@ -2101,9 +2101,8 @@
 /* Floating CTA Button */
 .training-floating-cta {
   position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 6rem;
+  right: 2rem;
   background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
   color: white;
   border: none;
@@ -2122,13 +2121,13 @@
 }
 
 .training-floating-cta:hover {
-  transform: translateX(-50%) translateY(-3px);
+  transform: translateY(-3px);
   box-shadow: 0 8px 30px rgba(139, 199, 128, 0.5);
   background: linear-gradient(135deg, #9DCB8E 0%, #7BB56F 100%);
 }
 
 .training-floating-cta:active {
-  transform: translateX(-50%) translateY(-1px);
+  transform: translateY(-1px);
 }
 
 @keyframes float-pulse {
@@ -2414,21 +2413,20 @@
 
   /* Floating CTA Button - Mobile */
   .training-floating-cta {
-    bottom: 1rem;
+    top: 5rem;
+    right: 1rem;
     padding: 0.875rem 1.5rem;
     font-size: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
     max-width: calc(100% - 2rem);
     white-space: nowrap;
   }
 
   .training-floating-cta:hover {
-    transform: translateX(-50%) translateY(-3px);
+    transform: translateY(-3px);
   }
 
   .training-floating-cta:active {
-    transform: translateX(-50%) translateY(-1px);
+    transform: translateY(-1px);
   }
 
   /* Back to Top Button */
