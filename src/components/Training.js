@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGamepad, faUsers, faCalendarAlt, faMapMarkerAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faChevronLeft, faChevronRight, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faBuilding, faPhone, faEnvelope, faArrowRight, faCheckCircle, faStar, faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faCalendarAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faBuilding, faArrowRight, faCheckCircle, faStar } from '@fortawesome/free-solid-svg-icons';
 import Footer from './Footer';
 import './Training.css';
 
@@ -11,6 +11,23 @@ const Training = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
+
+  // 背景画像のプリロード
+  useEffect(() => {
+    const imageUrls = [
+      'https://images.unsplash.com/photo-1611891487253-156f9817e54d?w=1200&h=675&fit=crop&q=80&fm=webp',
+      'https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=1200&h=675&fit=crop&q=80&fm=webp',
+      'https://images.unsplash.com/photo-1566694271453-390536dd1f0d?w=1200&h=675&fit=crop&q=80&fm=webp'
+    ];
+
+    imageUrls.forEach(url => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = url;
+      document.head.appendChild(link);
+    });
+  }, []);
 
   // スクロール位置を監視
   useEffect(() => {
@@ -116,6 +133,12 @@ const Training = () => {
 
       {/* Hero Section */}
       <section className="training-hero">
+        {/* 背景スライドショー */}
+        <div className="training-hero-slideshow">
+          <div className="training-hero-slide training-hero-slide-1"></div>
+          <div className="training-hero-slide training-hero-slide-2"></div>
+          <div className="training-hero-slide training-hero-slide-3"></div>
+        </div>
         <div className="training-hero-overlay"></div>
         <div className="training-container">
           <div className="training-hero-content-center">
@@ -202,7 +225,7 @@ const Training = () => {
       {/* Features Section */}
       <section id="features" className="training-features">
         <div className="training-container">
-          <h2 className="training-section-title">2つの目的を同時に実現</h2>
+          <h2 className="training-section-title">遊びがもたらす二つの効果</h2>
               <p className="training-section-subtitle">テーブルゲームによるコミュニケーション研修を通じて下記の2点へ寄与してまいります。</p>
           <div className="training-features-grid">
             <div className="training-feature-item">
@@ -238,7 +261,7 @@ const Training = () => {
         <div className="training-container">
           <h2 className="training-section-title">研修プログラムの流れ</h2>
           <p className="training-section-subtitle">
-            ６回の研修を通して実施した場合のモデルケースをご紹介します。
+            モデルケース：年６回の研修を通して実施した場合
           </p>
 
           {/* Timeline Visual */}
@@ -367,12 +390,13 @@ const Training = () => {
             </div>
           </div>
 
-          <h3 className="training-subsection-title" style={{marginTop: '4rem'}}>詳細プログラム</h3>
+          <h3 className="training-subsection-title" style={{marginTop: '4rem'}}>プログラム詳細</h3>
           <div className="training-program-phases">
             <div className="training-phase">
               <div className="training-phase-header">
                 <h3>【第1～4回】アイスブレイク＆情報収集フェーズ</h3>
                 <p className="training-phase-purpose"><strong>目的：</strong> 社内コミュニケーション円滑化・エンゲージメント向上</p>
+                <p className="training-phase-purpose"><strong>実施内容：</strong> テーブルゲームを通じて、多面的に相互理解を得る機会を提供。毎回の研修後にアンケートにて効果測定。</p>
               </div>
               
               <div className="training-effects">
@@ -388,6 +412,10 @@ const Training = () => {
                   <h5>2. 成功体験を共有する</h5>
                   <p>研修の参加者同士が共有する成功体験は、その後の何気ない日常の中でも思い返されることとなります。研修を重ねることでチームメンバーとの成功体験も増え、自然とポジティブな話題が増えていきます。</p>
                 </div>
+                <div className="training-effect-item">
+                  <h5>3. ボトムアップの下地作り</h5>
+                  <p>アイスブレイクのなかでアンケート実施するため、研修内容自体がPDCAサイクルを堅持しやすくなります。本丸であるエンゲージメント向上への道筋を探りやすくなります。</p>
+                </div>
               </div>
             </div>
             
@@ -395,6 +423,7 @@ const Training = () => {
               <div className="training-phase-header">
                 <h3>【第5～6回】実践活用フェーズ</h3>
                 <p className="training-phase-purpose"><strong>目的：</strong> 全員参加型での経営分析・戦略立案</p>
+                <p className="training-phase-purpose"><strong>実施内容：</strong> 第1～4回で構築した信頼関係を活かし、ブレインストーミング研修と経営分析研修を実施。</p>
               </div>
               
               <div className="training-phase-details">
@@ -564,230 +593,61 @@ const Training = () => {
         </div>
       </section>
 
-      {/* Social Proof Section */}
-      <section className="training-social-proof">
+      {/* Instructor Section */}
+      <section className="training-instructor">
         <div className="training-container">
-          <h2 className="training-section-title">導入企業様の声</h2>
-          <p className="training-section-subtitle">
-            多くの企業様に選ばれ、実際に組織が変わっています
-          </p>
+          <h2 className="training-section-title">研修講師・ファシリテーター</h2>
 
-          {/* Testimonials */}
-          <div className="training-testimonials-grid">
-            <div className="training-testimonial">
-              <div className="training-testimonial-icon">
-                <FontAwesomeIcon icon={faQuoteLeft} />
-              </div>
-              <p>
-                「最初は半信半疑でしたが、研修後の社内の雰囲気が明らかに変わりました。部署を超えた会話が自然に生まれ、情報共有がスムーズになりました。」
-              </p>
-              <div className="training-testimonial-author">
-                <div className="training-testimonial-author-info">
-                  <span className="training-testimonial-name">佐藤 様</span>
-                  <span className="training-testimonial-company">秋田市・製造業（従業員30名）</span>
-                  <span className="training-testimonial-role">人事部長</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="training-testimonial">
-              <div className="training-testimonial-icon">
-                <FontAwesomeIcon icon={faQuoteLeft} />
-              </div>
-              <p>
-                「新入社員の離職率が大幅に下がりました。先輩社員との距離が縮まり、相談しやすい環境が生まれたことが大きいと感じています。」
-              </p>
-              <div className="training-testimonial-author">
-                <div className="training-testimonial-author-info">
-                  <span className="training-testimonial-name">田中 様</span>
-                  <span className="training-testimonial-company">大仙市・IT企業（従業員15名）</span>
-                  <span className="training-testimonial-role">代表取締役</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="training-testimonial">
-              <div className="training-testimonial-icon">
-                <FontAwesomeIcon icon={faQuoteLeft} />
-              </div>
-              <p>
-                「従来の座学研修では眠くなる社員もいましたが、この研修は全員が前のめりで参加。楽しみながら学べるので定着率が全く違います。」
-              </p>
-              <div className="training-testimonial-author">
-                <div className="training-testimonial-author-info">
-                  <span className="training-testimonial-name">鈴木 様</span>
-                  <span className="training-testimonial-company">横手市・サービス業（従業員45名）</span>
-                  <span className="training-testimonial-role">総務課長</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="training-testimonial">
-              <div className="training-testimonial-icon">
-                <FontAwesomeIcon icon={faQuoteLeft} />
-              </div>
-              <p>
-                「経営分析研修では、普段は意見を言わない社員からも積極的な提案が出ました。ボトムアップの土壌ができたことを実感しています。」
-              </p>
-              <div className="training-testimonial-author">
-                <div className="training-testimonial-author-info">
-                  <span className="training-testimonial-name">高橋 様</span>
-                  <span className="training-testimonial-company">能代市・建設業（従業員25名）</span>
-                  <span className="training-testimonial-role">専務取締役</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Instructor Profile */}
-          <div className="training-instructor-section">
-            <h3 className="training-subsection-title">研修講師・ファシリテーター</h3>
-            <div className="training-instructor-profile">
+          <div className="training-instructor-profile">
+            <div className="training-instructor-header">
               <div className="training-instructor-image">
-                <img src="/images/YOLUBE_logo.png" alt="YOLUBE代表" />
+                <img src="/images/makoto.jpg" alt="木村 允" />
               </div>
-              <div className="training-instructor-info">
-                <h4>まことさん</h4>
-                <p className="training-instructor-title">YOLUBE 代表 / テーブルゲームファシリテーター</p>
-                <div className="training-instructor-credentials">
-                  <div className="training-credential-item">
-                    <FontAwesomeIcon icon={faCheckCircle} />
-                    <span>IT企業での組織マネジメント経験</span>
+              <div className="training-instructor-name-section">
+                <h4>木村 允</h4>
+                <p className="training-instructor-name-en">KIMURA MAKOTO</p>
+                <p className="training-instructor-title">YOLUBE 代表 / テーブルゲームイノベーター / <a href="https://www.mitsulu.style/" target="_blank" rel="noopener noreferrer">IT系便利屋 MITSULU.STYLE</a> 代表</p>
+              </div>
+            </div>
+
+            <div className="training-instructor-content">
+              <div className="training-instructor-expertise">
+                <h5><FontAwesomeIcon icon={faCheckCircle} /> 講師としての強み</h5>
+                <div className="training-expertise-grid">
+                  <div className="training-expertise-item">
+                    <div className="training-expertise-number">1,000+</div>
+                    <div className="training-expertise-label">イベント来場者数</div>
+                    <p>2023年より「テーブルゲーム交流会：Ke.」を運営。累計参加者数約1,100名超のイベントの中で、数多の参加者へテーブルゲームのルール説明等を実施。</p>
                   </div>
-                  <div className="training-credential-item">
-                    <FontAwesomeIcon icon={faCheckCircle} />
-                    <span>ベトナム現地でのコミュニケーション課題解決実績</span>
+                  <div className="training-expertise-item">
+                    <div className="training-expertise-number">98.7%</div>
+                    <div className="training-expertise-label">研修満足度</div>
+                    <p>研修目的のテーブルゲーム選定に定評あり。未経験者からは「楽しかった」「また参加したい」などの高評価を得ている。</p>
                   </div>
-                  <div className="training-credential-item">
-                    <FontAwesomeIcon icon={faCheckCircle} />
-                    <span>2023年2月TxGAME設立（現YOLUBE）</span>
-                  </div>
-                  <div className="training-credential-item">
-                    <FontAwesomeIcon icon={faCheckCircle} />
-                    <span>20万種類以上のテーブルゲームから最適な研修を設計</span>
+                  <div className="training-expertise-item">
+                    <div className="training-expertise-number">実践経験</div>
+                    <div className="training-expertise-label">組織マネジメント</div>
+                    <p>本業としてIT企業でのマネジメント経験を持つ。駐在員として赴任したベトナムで60名超のベトナム人チームと日本人チーム30名との間に生じたコミュニケーション課題を解決。</p>
                   </div>
                 </div>
-                <p className="training-instructor-message">
-                  「対面のコミュニケーションこそが組織の課題を解決する」という信念のもと、楽しさと学びを融合した研修プログラムを提供しています。秋田から日本の組織文化を変えていきます。
+              </div>
+
+              <div className="training-instructor-message">
+                <h5>研修への想い</h5>
+                <p>
+                  ベトナムのIT企業で、異文化チームのマネジメントを経験する中で、言葉や立場を超えた「本質的なコミュニケーション」の重要性に気づきました。SNSやチャットツールが発達した現代でも、対面でしか築けない信頼関係があります。
+                </p>
+                <p>
+                  テーブルゲーム研修では、「遊び」という安全な環境の中で、参加者の素の人間性が表れます。この「職場のペルソナを脱いだ状態」での交流こそが、真の相互理解と組織変革の第一歩だと考えています。
+                </p>
+                <p>
+                  2年間のKe.イベント運営で培った1,000名以上へのファシリテーション経験を活かし、貴社の組織課題に寄り添った研修を設計いたします。
                 </p>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Game Introduction Section */}
-      <section className="training-games">
-        <div className="training-container">
-          <h2 className="training-section-title">使用するテーブルゲーム（例）</h2>
-          <p className="training-section-subtitle">
-            心理学・組織論に基づいて厳選されたゲームで、楽しみながら学びます
-          </p>
-
-          <div className="training-games-grid">
-            <div className="training-game-card">
-              <div className="training-game-image">
-                <img src="/images/training_01_01.jpeg" alt="コミュニケーションゲーム" />
-              </div>
-              <div className="training-game-content">
-                <h4>コミュニケーションゲーム</h4>
-                <div className="training-game-purpose">
-                  <strong>目的:</strong> 言語化能力・傾聴力の向上
-                </div>
-                <p>
-                  限られた情報を正確に伝え合うゲーム。「相手に伝わる説明」と「理解するための質問」のスキルが自然に磨かれます。
-                </p>
-                <div className="training-game-theory">
-                  <FontAwesomeIcon icon={faLightbulb} />
-                  <span>心理学理論: アクティブリスニング、情報の非対称性</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="training-game-card">
-              <div className="training-game-image">
-                <img src="/images/training_01_02.png" alt="協力型問題解決ゲーム" />
-              </div>
-              <div className="training-game-content">
-                <h4>協力型問題解決ゲーム</h4>
-                <div className="training-game-purpose">
-                  <strong>目的:</strong> チームワーク・役割分担の理解
-                </div>
-                <p>
-                  全員で協力しなければクリアできないゲーム。自然と役割分担が生まれ、お互いの強みを活かす組織づくりを体験します。
-                </p>
-                <div className="training-game-theory">
-                  <FontAwesomeIcon icon={faLightbulb} />
-                  <span>組織論: タックマンモデル、相互依存理論</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="training-game-card">
-              <div className="training-game-image">
-                <img src="/images/training_01_03.jpeg" alt="戦略的思考ゲーム" />
-              </div>
-              <div className="training-game-content">
-                <h4>戦略的思考ゲーム</h4>
-                <div className="training-game-purpose">
-                  <strong>目的:</strong> 意思決定力・論理的思考の強化
-                </div>
-                <p>
-                  限られたリソースで最大の成果を目指すゲーム。経営判断の疑似体験を通じて、戦略的思考とリスク管理を学びます。
-                </p>
-                <div className="training-game-theory">
-                  <FontAwesomeIcon icon={faLightbulb} />
-                  <span>経営理論: ゲーム理論、リスクマネジメント</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="training-game-card">
-              <div className="training-game-image">
-                <img src="/images/training_02_01.png" alt="アイスブレイクゲーム" />
-              </div>
-              <div className="training-game-content">
-                <h4>アイスブレイクゲーム</h4>
-                <div className="training-game-purpose">
-                  <strong>目的:</strong> 心理的安全性の構築
-                </div>
-                <p>
-                  笑いが生まれる軽快なゲームで緊張を解きほぐします。職場の立場を忘れ、フラットな関係性を作る最初のステップです。
-                </p>
-                <div className="training-game-theory">
-                  <FontAwesomeIcon icon={faLightbulb} />
-                  <span>心理学理論: 心理的安全性、ラポール形成</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="training-game-card">
-              <div className="training-game-image">
-                <img src="/images/training_02_02.jpeg" alt="創造性発揮ゲーム" />
-              </div>
-              <div className="training-game-content">
-                <h4>創造性発揮ゲーム</h4>
-                <div className="training-game-purpose">
-                  <strong>目的:</strong> 発想力・イノベーション思考の促進
-                </div>
-                <p>
-                  既成概念にとらわれない自由な発想を求められるゲーム。ブレインストーミング研修の準備として創造性を解放します。
-                </p>
-                <div className="training-game-theory">
-                  <FontAwesomeIcon icon={faLightbulb} />
-                  <span>創造性理論: デザイン思考、ラテラルシンキング</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <p className="training-games-note">
-            ※研修では貴社の課題や参加者の特性に合わせて、20万種類以上のテーブルゲームから最適なものを選定します。
-          </p>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
 
       {/* FAQ Section */}
       <section id="faq" className="training-faq">
@@ -939,19 +799,25 @@ const Training = () => {
           <p className="training-pricing-intro">
             まずはお試しから。効果を実感いただいてから本格導入をご検討ください。
           </p>
-          
-          <div className="training-pricing-grid">
-            <div className="training-pricing-plan training-trial">
+
+          {/* お試しプラン - 特別レイアウト */}
+          <div className="training-trial-special">
+            <div className="training-trial-badge-wrapper">
               <div className="training-plan-badge-new">初めての方におすすめ</div>
-              <div className="training-plan-header">
+            </div>
+            <div className="training-trial-content">
+              <div className="training-trial-left">
                 <h4>お試しプラン</h4>
-                <p className="training-plan-subtitle">1回限りの体験研修</p>
+                <p className="training-trial-subtitle">1回限りの体験研修</p>
+                <div className="training-trial-price">
+                  <span className="training-price-amount">3万円</span>
+                  <span className="training-price-unit">／1回</span>
+                </div>
+                <div className="training-trial-note">
+                  ※本格導入時に全額キャッシュバック
+                </div>
               </div>
-              <div className="training-plan-price">
-                <span className="training-price-amount">3万円</span>
-                <span className="training-price-unit">／1回</span>
-              </div>
-              <div className="training-plan-features">
+              <div className="training-trial-right">
                 <ul>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> まずは試してみたい企業様向け</li>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> 研修参加者10名まで</li>
@@ -959,11 +825,11 @@ const Training = () => {
                   <li><FontAwesomeIcon icon={faCheckCircle} /> アンケート実施・分析レポート付</li>
                 </ul>
               </div>
-              <div className="training-plan-note">
-                ※本格導入時に全額キャッシュバック
-              </div>
             </div>
+          </div>
 
+          {/* 通常プラン */}
+          <div className="training-pricing-grid">
             <div className="training-pricing-plan">
               <div className="training-plan-header">
                 <h4>ライトプラン</h4>
@@ -1053,7 +919,7 @@ const Training = () => {
               秋田県企業様 特別優遇制度
             </h4>
             <p>
-              地元秋田の企業様を全力で応援します！秋田県内企業様限定で、<strong>交通費完全無料</strong>＋<strong>初回お試し研修20%OFF</strong>を実施中。まずはお気軽にご相談ください。
+              地元秋田の企業様を全力で応援します！秋田県内企業様限定で、<strong>ライトプラン、スタンダードプラン、プレミアムプランを初年度20%OFF</strong>を実施中。まずはお気軽にご相談ください。
             </p>
           </div>
         </div>
