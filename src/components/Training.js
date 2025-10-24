@@ -10,12 +10,16 @@ const Training = () => {
   const [message, setMessage] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [showFloatingCTA, setShowFloatingCTA] = useState(false);
 
   // スクロール位置を監視
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       setShowBackToTop(scrollTop > 300);
+      
+      // ヒーローセクションを過ぎたら追従ボタンを表示
+      setShowFloatingCTA(scrollTop > 600);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -28,6 +32,17 @@ const Training = () => {
       top: 0,
       behavior: 'smooth'
     });
+  };
+
+  // お問い合わせセクションへスクロール
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -1131,6 +1146,18 @@ const Training = () => {
           </div>
         </div>
       </section>
+
+      {/* Floating CTA Button */}
+      {showFloatingCTA && (
+        <button
+          className="training-floating-cta"
+          onClick={scrollToContact}
+          aria-label="お申し込みはこちら"
+        >
+          <FontAwesomeIcon icon={faComments} />
+          <span>お申し込みはこちら</span>
+        </button>
+      )}
 
       {/* Back to Top Button */}
       {showBackToTop && (

@@ -1832,6 +1832,48 @@
   color: #bdc3c7;
 }
 
+/* Floating CTA Button */
+.training-floating-cta {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 25px rgba(139, 199, 128, 0.4);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  animation: float-pulse 2s infinite;
+}
+
+.training-floating-cta:hover {
+  transform: translateX(-50%) translateY(-3px);
+  box-shadow: 0 8px 30px rgba(139, 199, 128, 0.5);
+  background: linear-gradient(135deg, #9DCB8E 0%, #7BB56F 100%);
+}
+
+.training-floating-cta:active {
+  transform: translateX(-50%) translateY(-1px);
+}
+
+@keyframes float-pulse {
+  0%, 100% {
+    box-shadow: 0 6px 25px rgba(139, 199, 128, 0.4);
+  }
+  50% {
+    box-shadow: 0 8px 35px rgba(139, 199, 128, 0.6);
+  }
+}
+
 /* Back to Top Button */
 .training-back-to-top {
   position: fixed;
@@ -2056,6 +2098,25 @@
     font-size: 1rem;
   }
 
+  /* Floating CTA Button - Mobile */
+  .training-floating-cta {
+    bottom: 1rem;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: calc(100% - 2rem);
+    white-space: nowrap;
+  }
+
+  .training-floating-cta:hover {
+    transform: translateX(-50%) translateY(-3px);
+  }
+
+  .training-floating-cta:active {
+    transform: translateX(-50%) translateY(-1px);
+  }
+
   /* Back to Top Button */
   .training-back-to-top {
     bottom: 1rem;
@@ -2203,6 +2264,17 @@
 
   .training-survey-label {
     font-size: 1.2rem;
+  }
+
+  /* Floating CTA Button - Extra Small Mobile */
+  .training-floating-cta {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+    gap: 0.5rem;
+  }
+
+  .training-floating-cta span {
+    display: inline;
   }
 }
 
