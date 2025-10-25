@@ -11,7 +11,6 @@ const Training = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
 
   // 背景画像のプリロード
   useEffect(() => {
@@ -50,11 +49,6 @@ const Training = () => {
       top: 0,
       behavior: 'smooth'
     });
-  };
-
-  // FAQアコーディオン切り替え関数
-  const toggleFaq = (index) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
   // お問い合わせセクションへスクロール
@@ -165,9 +159,9 @@ const Training = () => {
                   お申し込みはこちら
                 </a>
               </div><br />
-              <div className="training-badge">
+              <a href="#limited-offer" className="training-badge">
                 秋田県企業様限定特別プラン実施中
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -274,11 +268,12 @@ const Training = () => {
           {/* Timeline Visual */}
           <div className="training-timeline">
             <div className="training-timeline-item">
-              <div className="training-timeline-marker">
-                <div className="training-timeline-icon">
-                  <FontAwesomeIcon icon={faUsers} />
-                </div>
+              <div className="training-timeline-arrow">
+                <FontAwesomeIcon icon={faArrowRight} />
                 <div className="training-timeline-line"></div>
+              </div>
+              <div className="training-timeline-image">
+                <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&h=300&fit=crop&q=80" alt="アイスブレイク" />
               </div>
               <div className="training-timeline-content">
                 <div className="training-timeline-badge">第1回</div>
@@ -288,11 +283,12 @@ const Training = () => {
             </div>
 
             <div className="training-timeline-item">
-              <div className="training-timeline-marker">
-                <div className="training-timeline-icon">
-                  <FontAwesomeIcon icon={faComments} />
-                </div>
+              <div className="training-timeline-arrow">
+                <FontAwesomeIcon icon={faArrowRight} />
                 <div className="training-timeline-line"></div>
+              </div>
+              <div className="training-timeline-image">
+                <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=400&h=300&fit=crop&q=80" alt="コミュニケーション強化" />
               </div>
               <div className="training-timeline-content">
                 <div className="training-timeline-badge">第2回</div>
@@ -302,11 +298,12 @@ const Training = () => {
             </div>
 
             <div className="training-timeline-item">
-              <div className="training-timeline-marker">
-                <div className="training-timeline-icon">
-                  <FontAwesomeIcon icon={faHandshake} />
-                </div>
+              <div className="training-timeline-arrow">
+                <FontAwesomeIcon icon={faArrowRight} />
                 <div className="training-timeline-line"></div>
+              </div>
+              <div className="training-timeline-image">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=300&fit=crop&q=80" alt="チームワーク構築" />
               </div>
               <div className="training-timeline-content">
                 <div className="training-timeline-badge">第3回</div>
@@ -316,11 +313,12 @@ const Training = () => {
             </div>
 
             <div className="training-timeline-item">
-              <div className="training-timeline-marker">
-                <div className="training-timeline-icon">
-                  <FontAwesomeIcon icon={faHeart} />
-                </div>
+              <div className="training-timeline-arrow">
+                <FontAwesomeIcon icon={faArrowRight} />
                 <div className="training-timeline-line"></div>
+              </div>
+              <div className="training-timeline-image">
+                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop&q=80" alt="信頼関係の確立" />
               </div>
               <div className="training-timeline-content">
                 <div className="training-timeline-badge">第4回</div>
@@ -330,11 +328,12 @@ const Training = () => {
             </div>
 
             <div className="training-timeline-item">
-              <div className="training-timeline-marker">
-                <div className="training-timeline-icon">
-                  <FontAwesomeIcon icon={faLightbulb} />
-                </div>
+              <div className="training-timeline-arrow">
+                <FontAwesomeIcon icon={faArrowRight} />
                 <div className="training-timeline-line"></div>
+              </div>
+              <div className="training-timeline-image">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop&q=80" alt="ブレインストーミング" />
               </div>
               <div className="training-timeline-content">
                 <div className="training-timeline-badge">第5回</div>
@@ -344,10 +343,11 @@ const Training = () => {
             </div>
 
             <div className="training-timeline-item">
-              <div className="training-timeline-marker">
-                <div className="training-timeline-icon training-timeline-icon-final">
-                  <FontAwesomeIcon icon={faChartLine} />
-                </div>
+              <div className="training-timeline-arrow training-timeline-arrow-final">
+                <FontAwesomeIcon icon={faArrowRight} />
+              </div>
+              <div className="training-timeline-image">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&q=80" alt="経営分析・戦略立案" />
               </div>
               <div className="training-timeline-content">
                 <div className="training-timeline-badge">第6回</div>
@@ -362,6 +362,9 @@ const Training = () => {
             <h3 className="training-subsection-title">研修前・研修後の変化</h3>
             <div className="training-comparison-grid">
               <div className="training-comparison-before">
+                <div className="training-comparison-image">
+                  <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=400&fit=crop&q=80" alt="お互いに無関心な雰囲気のサラリーマンたち" />
+                </div>
                 <div className="training-comparison-header">
                   <FontAwesomeIcon icon={faExclamationTriangle} />
                   <h4>研修前</h4>
@@ -381,6 +384,9 @@ const Training = () => {
               </div>
 
               <div className="training-comparison-after">
+                <div className="training-comparison-image">
+                  <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop&q=80" alt="一緒に笑い合っているサラリーマンたち" />
+                </div>
                 <div className="training-comparison-header">
                   <FontAwesomeIcon icon={faCheckCircle} />
                   <h4>研修後</h4>
@@ -405,7 +411,18 @@ const Training = () => {
                 <p className="training-phase-purpose"><strong>目的：</strong> 社内コミュニケーション円滑化・エンゲージメント向上</p>
                 <p className="training-phase-purpose"><strong>実施内容：</strong> テーブルゲームを通じて、多面的に相互理解を得る機会を提供。毎回の研修後にアンケートにて効果測定。</p>
               </div>
-              
+
+              <div className="training-phase-images">
+                <div className="training-phase-image">
+                  <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&h=350&fit=crop&q=80" alt="ゲームを楽しむ会社員、OLたち" />
+                  <p className="training-image-caption">ゲームを楽しむ会社員、OLたち</p>
+                </div>
+                <div className="training-phase-image">
+                  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=350&fit=crop&q=80" alt="オンラインアンケート集計中" />
+                  <p className="training-image-caption">オンラインアンケート集計中</p>
+                </div>
+              </div>
+
               <div className="training-effects">
                 <h4>期待できる効果</h4>
                 
@@ -431,6 +448,17 @@ const Training = () => {
                 <h3>【第5～6回】実践活用フェーズ</h3>
                 <p className="training-phase-purpose"><strong>目的：</strong> 全員参加型での経営分析・戦略立案</p>
                 <p className="training-phase-purpose"><strong>実施内容：</strong> 第1～4回で構築した信頼関係を活かし、ブレインストーミング研修と経営分析研修を実施。</p>
+              </div>
+
+              <div className="training-phase-images">
+                <div className="training-phase-image">
+                  <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=500&h=350&fit=crop&q=80" alt="ブレインストーミング実施風景" />
+                  <p className="training-image-caption">ブレインストーミング実施風景</p>
+                </div>
+                <div className="training-phase-image">
+                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=350&fit=crop&q=80" alt="SWOT分析に関する画像" />
+                  <p className="training-image-caption">SWOT分析に関する画像</p>
+                </div>
               </div>
 
               <div className="training-effects">
@@ -463,6 +491,9 @@ const Training = () => {
 
           <div className="training-comparison">
             <div className="training-traditional">
+              <div className="training-traditional-image">
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=400&fit=crop&q=80" alt="一般的な研修風景" />
+              </div>
               <h4>一般的な研修の課題</h4>
               <ul>
                 <li><strong>単発型：</strong> 効果が定着しにくい。また、根深い課題に対しアプローチしにくい</li>
@@ -477,11 +508,17 @@ const Training = () => {
           
           <div className="training-unique-values">
             <div className="training-unique-item">
+              <div className="training-unique-image">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&q=80" alt="ペルソナを連想させる画像" />
+              </div>
               <h5>1. 「職場のペルソナ」を無効化する稀有な研修</h5>
               <p>従来研修では職場での立場や先入観が邪魔をしますが、テーブルゲームでは参加者全員がフラットな状態になります。ゲーム中は職位や部署に関係なく、純粋な人間性が表面化するため、<strong>"職場では見えなかった一面"</strong> での相互理解が深まります。</p>
             </div>
-            
+
             <div className="training-unique-item">
+              <div className="training-unique-image">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&q=80" alt="PDCAサイクルを表すイラスト" />
+              </div>
               <h5>2. 段階的PDCAサイクルで確実な成果創出</h5>
               <ul>
                 <li><strong>第1～4回：</strong> アイスブレイク＆情報収集で土壌づくり</li>
@@ -492,6 +529,9 @@ const Training = () => {
             </div>
             
             <div className="training-unique-item">
+              <div className="training-unique-image">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop&q=80" alt="ボードゲームで盛り上がる人たちの画像" />
+              </div>
               <h5>3. 共有される成功体験が組織文化を変える</h5>
               <p>研修で生まれた成功体験は日常業務でも思い返され、自然とポジティブな話題が増加。忘年会や日常会話でも話題となり、<strong>組織全体の雰囲気を根本から改善</strong>します。</p>
             </div>
@@ -648,101 +688,87 @@ const Training = () => {
 
           <div className="training-faq-list">
             <div className="training-faq-item">
-              <div className="training-faq-question" onClick={() => toggleFaq(0)}>
+              <div className="training-faq-question">
                 <FontAwesomeIcon icon={faQuestionCircle} />
                 <h4>オンラインでの実施は可能ですか？</h4>
               </div>
-              {openFaqIndex === 0 && (
-                <div className="training-faq-answer">
-                  <p>
-                    申し訳ございません、当研修は<strong>対面実施のみ</strong>となっております。テーブルゲーム研修の最大の価値は、実際に顔を合わせて遊ぶことで生まれる「本物のコミュニケーション」です。画面越しでは得られない、表情・雰囲気・空気感を共有することで、組織の関係性が根本から変わります。
-                  </p>
-                </div>
-              )}
+              <div className="training-faq-answer">
+                <p>
+                  申し訳ございません、当研修は<strong>対面実施のみ</strong>となっております。テーブルゲーム研修の最大の価値は、実際に顔を合わせて遊ぶことで生まれる「本物のコミュニケーション」です。画面越しでは得られない、表情・雰囲気・空気感を共有することで、組織の関係性が根本から変わります。
+                </p>
+              </div>
             </div>
 
             <div className="training-faq-item">
-              <div className="training-faq-question" onClick={() => toggleFaq(1)}>
+              <div className="training-faq-question">
                 <FontAwesomeIcon icon={faQuestionCircle} />
                 <h4>ボードゲーム初心者でも大丈夫ですか？</h4>
               </div>
-              {openFaqIndex === 1 && (
-                <div className="training-faq-answer">
-                  <p>
-                    <strong>まったく問題ありません！</strong>むしろ初心者の方こそ効果を実感いただけます。使用するゲームはルールが簡単で、誰でもすぐに楽しめるものを厳選しています。ファシリテーターが丁寧にサポートしますので、ゲーム経験ゼロの方でも安心してご参加いただけます。
-                  </p>
-                </div>
-              )}
+              <div className="training-faq-answer">
+                <p>
+                  <strong>まったく問題ありません！</strong>むしろ初心者の方こそ効果を実感いただけます。使用するゲームはルールが簡単で、誰でもすぐに楽しめるものを厳選しています。ファシリテーターが丁寧にサポートしますので、ゲーム経験ゼロの方でも安心してご参加いただけます。
+                </p>
+              </div>
             </div>
 
             <div className="training-faq-item">
-              <div className="training-faq-question" onClick={() => toggleFaq(2)}>
+              <div className="training-faq-question">
                 <FontAwesomeIcon icon={faQuestionCircle} />
                 <h4>1回の研修時間はどれくらいですか？</h4>
               </div>
-              {openFaqIndex === 2 && (
-                <div className="training-faq-answer">
-                  <p>
-                    <strong>標準2〜3時間</strong>を想定しています。参加人数や実施内容によって調整可能です。半日コース（4時間）や、業務後の夕方実施（1.5時間×複数回）など、貴社のご都合に合わせて柔軟に対応いたします。
-                  </p>
-                </div>
-              )}
+              <div className="training-faq-answer">
+                <p>
+                  <strong>標準2〜3時間</strong>を想定しています。参加人数や実施内容によって調整可能です。半日コース（4時間）や、業務後の夕方実施（1.5時間×複数回）など、貴社のご都合に合わせて柔軟に対応いたします。
+                </p>
+              </div>
             </div>
 
             <div className="training-faq-item">
-              <div className="training-faq-question" onClick={() => toggleFaq(3)}>
+              <div className="training-faq-question">
                 <FontAwesomeIcon icon={faQuestionCircle} />
                 <h4>会場はどこで実施しますか？</h4>
               </div>
-              {openFaqIndex === 3 && (
-                <div className="training-faq-answer">
-                  <p>
-                    <strong>貴社の会議室や社内スペース</strong>で実施可能です。机と椅子があれば十分です。秋田市内であれば交通費無料、秋田県内一律5,000円で伺います。県外の場合は別途ご相談ください。また、YOLUBEの拠点（秋田ベイパラダイス）でも実施可能です。
-                  </p>
-                </div>
-              )}
+              <div className="training-faq-answer">
+                <p>
+                  <strong>貴社の会議室や社内スペース</strong>で実施可能です。机と椅子があれば十分です。秋田市内であれば交通費無料、秋田県内一律5,000円で伺います。県外の場合は別途ご相談ください。また、YOLUBEの拠点（秋田ベイパラダイス）でも実施可能です。
+                </p>
+              </div>
             </div>
 
             <div className="training-faq-item">
-              <div className="training-faq-question" onClick={() => toggleFaq(4)}>
+              <div className="training-faq-question">
                 <FontAwesomeIcon icon={faQuestionCircle} />
                 <h4>単発での実施も可能ですか？</h4>
               </div>
-              {openFaqIndex === 4 && (
-                <div className="training-faq-answer">
-                  <p>
-                    <strong>可能です！</strong>お試しプラン（3万円/回）で単発実施いただけます。ただし、継続研修（年6回）の方が効果は圧倒的に高くなります。1〜4回で信頼関係の土壌を作り、5〜6回で本格的な経営分析を行う設計のため、単発では得られない組織変革を実感いただけます。
-                  </p>
-                </div>
-              )}
+              <div className="training-faq-answer">
+                <p>
+                  <strong>可能です！</strong>お試しプラン（3万円/回）で単発実施いただけます。ただし、継続研修（年6回）の方が効果は圧倒的に高くなります。1〜4回で信頼関係の土壌を作り、5〜6回で本格的な経営分析を行う設計のため、単発では得られない組織変革を実感いただけます。
+                </p>
+              </div>
             </div>
 
             <div className="training-faq-item">
-              <div className="training-faq-question" onClick={() => toggleFaq(5)}>
+              <div className="training-faq-question">
                 <FontAwesomeIcon icon={faQuestionCircle} />
                 <h4>効果測定はどのように行いますか？</h4>
               </div>
-              {openFaqIndex === 5 && (
-                <div className="training-faq-answer">
-                  <p>
-                    毎回の研修後に<strong>参加者アンケート</strong>を実施し、満足度・気づき・改善点を収集します。このデータをもとに次回研修を最適化するPDCAサイクルを回します。また、初回と最終回でエンゲージメントスコアを測定し、数値で効果を可視化することも可能です。
-                  </p>
-                </div>
-              )}
+              <div className="training-faq-answer">
+                <p>
+                  毎回の研修後に<strong>参加者アンケート</strong>を実施し、満足度・気づき・改善点を収集します。このデータをもとに次回研修を最適化するPDCAサイクルを回します。また、初回と最終回でエンゲージメントスコアを測定し、数値で効果を可視化することも可能です。
+                </p>
+              </div>
             </div>
 
             <div className="training-faq-item">
-              <div className="training-faq-question" onClick={() => toggleFaq(6)}>
+              <div className="training-faq-question">
                 <FontAwesomeIcon icon={faQuestionCircle} />
                 <h4>途中解約は可能ですか？</h4>
               </div>
-              {openFaqIndex === 6 && (
-                <div className="training-faq-answer">
-                  <p>
-                    年間契約プラン（スタンダード・プレミアム）の途中解約は原則として承っておりません。ただし、やむを得ない事情がある場合はご相談ください。まずはお試しプラン（単発）で体験いただき、効果を実感された上で年間契約をご検討いただくことをおすすめします。
-                  </p>
-                </div>
-              )}
+              <div className="training-faq-answer">
+                <p>
+                  年間契約プラン（スタンダード・プレミアム）の途中解約は原則として承っておりません。ただし、やむを得ない事情がある場合はご相談ください。まずはお試しプラン（単発）で体験いただき、効果を実感された上で年間契約をご検討いただくことをおすすめします。
+                </p>
+              </div>
             </div>
           </div>
 
@@ -772,7 +798,7 @@ const Training = () => {
           </div>
           
           {/* Limited Offer Banner */}
-          <div className="training-limited-offer">
+          <div id="limited-offer" className="training-limited-offer">
             <div className="training-offer-badge">
               <FontAwesomeIcon icon={faExclamationTriangle} />
               期間限定キャンペーン
