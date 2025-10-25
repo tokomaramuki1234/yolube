@@ -510,27 +510,27 @@ const Training = () => {
             <h3 className="training-subsection-title">参加者の具体的な評価</h3>
             
             <div className="training-survey-question">
-              <h4>Q1. 研修は楽しかったですか？</h4>
+              <h4>Q1. コミュニケーションが取りやすくなりましたか？</h4>
               <div className="training-survey-bars">
                 <div className="training-survey-bar">
-                  <span className="bar-label">とても楽しかった</span>
+                  <span className="bar-label">とても取りやすくなった</span>
                   <div className="bar-container">
-                    <div className="bar-fill" style={{width: '67.9%'}}></div>
-                    <span className="bar-percentage">67.9%</span>
+                    <div className="bar-fill" style={{width: '44.9%'}}></div>
+                    <span className="bar-percentage">44.9%</span>
                   </div>
                 </div>
                 <div className="training-survey-bar">
-                  <span className="bar-label">楽しかった</span>
+                  <span className="bar-label">取りやすくなった</span>
                   <div className="bar-container">
-                    <div className="bar-fill" style={{width: '30.8%'}}></div>
-                    <span className="bar-percentage">30.8%</span>
+                    <div className="bar-fill" style={{width: '42.3%'}}></div>
+                    <span className="bar-percentage">42.3%</span>
                   </div>
                 </div>
                 <div className="training-survey-bar">
-                  <span className="bar-label">普通</span>
+                  <span className="bar-label">変わらない</span>
                   <div className="bar-container">
-                    <div className="bar-fill" style={{width: '1.3%'}}></div>
-                    <span className="bar-percentage">1.3%</span>
+                    <div className="bar-fill" style={{width: '12.8%'}}></div>
+                    <span className="bar-percentage">12.8%</span>
                   </div>
                 </div>
               </div>
@@ -558,33 +558,6 @@ const Training = () => {
                   <div className="bar-container">
                     <div className="bar-fill" style={{width: '3.8%'}}></div>
                     <span className="bar-percentage">3.8%</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="training-survey-question">
-              <h4>Q3. コミュニケーションが取りやすくなりましたか？</h4>
-              <div className="training-survey-bars">
-                <div className="training-survey-bar">
-                  <span className="bar-label">とても取りやすくなった</span>
-                  <div className="bar-container">
-                    <div className="bar-fill" style={{width: '44.9%'}}></div>
-                    <span className="bar-percentage">44.9%</span>
-                  </div>
-                </div>
-                <div className="training-survey-bar">
-                  <span className="bar-label">取りやすくなった</span>
-                  <div className="bar-container">
-                    <div className="bar-fill" style={{width: '42.3%'}}></div>
-                    <span className="bar-percentage">42.3%</span>
-                  </div>
-                </div>
-                <div className="training-survey-bar">
-                  <span className="bar-label">変わらない</span>
-                  <div className="bar-container">
-                    <div className="bar-fill" style={{width: '12.8%'}}></div>
-                    <span className="bar-percentage">12.8%</span>
                   </div>
                 </div>
               </div>
