@@ -42,6 +42,7 @@
 .training-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   padding: 1rem 2rem;
   border: none;
@@ -1185,6 +1186,20 @@
   margin: 0;
 }
 
+.training-instructor-title a {
+  color: #4A90E2;
+  text-decoration: none;
+  border-bottom: 2px solid #4A90E2;
+  transition: all 0.3s ease;
+  padding-bottom: 2px;
+}
+
+.training-instructor-title a:hover {
+  color: #2563EB;
+  border-bottom-color: #2563EB;
+  background-color: rgba(74, 144, 226, 0.1);
+}
+
 .training-instructor-content {
   display: flex;
   flex-direction: column;
@@ -1398,6 +1413,7 @@
   margin: 0;
   font-size: 1.2rem;
   font-weight: bold;
+  color: white;
 }
 
 .training-faq-answer {
@@ -1411,7 +1427,15 @@
 }
 
 .training-faq-answer strong {
-  color: #8BC780;
+  font-weight: bold;
+  background: linear-gradient(transparent 60%, #FFD93D 60%);
+  padding: 0 0.2rem;
+}
+
+.highlight {
+  font-weight: bold;
+  background: linear-gradient(transparent 60%, #FFD93D 60%);
+  padding: 0 0.2rem;
 }
 
 .training-faq-cta {
@@ -1935,13 +1959,59 @@
 }
 
 .training-pricing-notes {
-  text-align: center;
-  margin-top: 2rem;
-  color: #666;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
 }
 
-.training-pricing-notes p {
-  margin: 0.5rem 0;
+.training-pricing-notes h4 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.pricing-notes-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.pricing-note-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #8BC780;
+}
+
+.pricing-note-label {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+}
+
+.pricing-note-value {
+  font-size: 1.05rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pricing-note-detail {
+  font-size: 0.9rem;
+  color: #777;
+  background: #f8f9fa;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+
+.fee-item {
+  display: inline-block;
+  padding: 0.25rem 0;
 }
 
 /* CTA Section */
@@ -2162,6 +2232,18 @@
   margin-bottom: 0.5rem;
   font-weight: bold;
   color: #2c3e50;
+}
+
+.required-mark {
+  color: #dc3545;
+  font-weight: bold;
+  margin-left: 0.25rem;
+}
+
+.optional-mark {
+  color: #6c757d;
+  font-weight: normal;
+  font-size: 0.9rem;
 }
 
 .training-form-group input,

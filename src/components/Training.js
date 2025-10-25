@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers, faCalendarAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faBuilding, faArrowRight, faCheckCircle, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faCalendarAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faBuilding, faArrowRight, faCheckCircle, faStar, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import Footer from './Footer';
 import './Training.css';
 
@@ -11,6 +11,7 @@ const Training = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
 
   // 背景画像のプリロード
   useEffect(() => {
@@ -51,6 +52,11 @@ const Training = () => {
     });
   };
 
+  // FAQアコーディオン切り替え関数
+  const toggleFaq = (index) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
   // お問い合わせセクションへスクロール
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
@@ -82,6 +88,7 @@ const Training = () => {
       company_name: form.current.company_name.value,
       user_name: form.current.user_name.value,
       user_email: form.current.user_email.value,
+      user_phone: form.current.user_phone.value,
       message: form.current.message.value
     };
 
@@ -425,13 +432,23 @@ const Training = () => {
                 <p className="training-phase-purpose"><strong>目的：</strong> 全員参加型での経営分析・戦略立案</p>
                 <p className="training-phase-purpose"><strong>実施内容：</strong> 第1～4回で構築した信頼関係を活かし、ブレインストーミング研修と経営分析研修を実施。</p>
               </div>
-              
-              <div className="training-phase-details">
-                <div className="training-phase-item">
-                  <strong>第5回：</strong> ブレインストーミング研修 → 1～4回で構築した「意見を出しやすい土壌」を活かし、効果的なボトムアップを狙います。
+
+              <div className="training-effects">
+                <h4>期待できる効果</h4>
+
+                <div className="training-effect-item">
+                  <h5>1. 全員参加型の意思決定を実現</h5>
+                  <p>第1～4回で構築した「意見を出しやすい土壌」を活かし、経営層だけでなく現場社員も含めた全員参加型の意思決定プロセスを実現します。多様な視点からの意見が集まることで、より実効性の高い戦略立案が可能になります。</p>
                 </div>
-                <div className="training-phase-item">
-                  <strong>第6回：</strong> 経営分析研修 → SWOT分析等の経営分析手法を活用し、<strong>全員参加型での経営分析を実現</strong>。社員一人一人が自社に対する解像度を高く持つことを狙います。
+
+                <div className="training-effect-item">
+                  <h5>2. 組織への理解度向上</h5>
+                  <p>SWOT分析等の経営分析手法を実践することで、社員一人一人が自社の強み・弱み・機会・脅威を深く理解できるようになります。自社に対する解像度が高まることで、日常業務においても戦略的な判断ができるようになります。</p>
+                </div>
+
+                <div className="training-effect-item">
+                  <h5>3. 実践的なビジネススキルの習得</h5>
+                  <p>ブレインストーミングや経営分析といった実践的な手法を体験することで、問題解決力や論理的思考力が向上します。研修で学んだスキルは、日常業務やプロジェクトマネジメントにも応用可能です。</p>
                 </div>
               </div>
             </div>
@@ -443,8 +460,7 @@ const Training = () => {
       <section className="training-advantage">
         <div className="training-container">
           <h2 className="training-section-title">なぜテーブルゲーム研修なのか？</h2>
-          <h3 className="training-subsection-title">従来研修の限界を突破する革新的アプローチ</h3>
-          
+
           <div className="training-comparison">
             <div className="training-traditional">
               <h4>一般的な研修の課題</h4>
@@ -579,7 +595,7 @@ const Training = () => {
               <div className="training-instructor-name-section">
                 <h4>木村 允</h4>
                 <p className="training-instructor-name-en">KIMURA MAKOTO</p>
-                <p className="training-instructor-title">YOLUBE 代表 / テーブルゲームイノベーター / <a href="https://www.mitsulu.style/" target="_blank" rel="noopener noreferrer">IT系便利屋 MITSULU.STYLE</a> 代表</p>
+                <p className="training-instructor-title">YOLUBE 代表 / テーブルゲームイノベーター / <a href="https://www.mitsulu.style/" target="_blank" rel="noopener noreferrer">IT系便利屋 三流</a> 代表</p>
               </div>
             </div>
 
@@ -590,17 +606,17 @@ const Training = () => {
                   <div className="training-expertise-item">
                     <div className="training-expertise-number">1,000+</div>
                     <div className="training-expertise-label">イベント来場者数</div>
-                    <p>2023年より「テーブルゲーム交流会：Ke.」を運営。累計参加者数約1,100名超のイベントの中で、数多の参加者へテーブルゲームのルール説明等を実施。</p>
+                    <p>2023年より「テーブルゲーム交流会：Ke.」を運営。累計参加者数約<strong className="highlight">1,100名超</strong>のイベントの中で、数多の参加者へテーブルゲームのルール説明等を実施。</p>
                   </div>
                   <div className="training-expertise-item">
                     <div className="training-expertise-number">87.2%</div>
                     <div className="training-expertise-label">業務改善効果</div>
-                    <p>研修目的のテーブルゲーム選定に定評あり。参加者の87%以上がコミュニケーション改善を実感し、96%が継続参加を希望するなど高評価を得ている。</p>
+                    <p>研修目的のテーブルゲーム選定に定評あり。参加者の<strong className="highlight">87%以上</strong>がコミュニケーション改善を実感し、<strong className="highlight">96%が継続参加</strong>を希望するなど高評価を得ている。</p>
                   </div>
                   <div className="training-expertise-item">
                     <div className="training-expertise-number">実践経験</div>
                     <div className="training-expertise-label">組織マネジメント</div>
-                    <p>本業としてIT企業でのマネジメント経験を持つ。駐在員として赴任したベトナムで60名超のベトナム人チームと日本人チーム30名との間に生じたコミュニケーション課題を解決。</p>
+                    <p>本業としてIT企業でのマネジメント経験を持つ。駐在員として赴任したベトナムで60名超のベトナム人チームと日本人チーム30名との間に生じた<strong className="highlight">コミュニケーション課題を解決</strong>。</p>
                   </div>
                 </div>
               </div>
@@ -608,13 +624,13 @@ const Training = () => {
               <div className="training-instructor-message">
                 <h5>研修への想い</h5>
                 <p>
-                  ベトナムのIT企業で、異文化チームのマネジメントを経験する中で、言葉や立場を超えた「本質的なコミュニケーション」の重要性に気づきました。SNSやチャットツールが発達した現代でも、対面でしか築けない信頼関係があります。
+                  ベトナムのIT企業で、異文化チームのマネジメントを経験する中で、<strong className="highlight">言葉や立場を超えた「本質的なコミュニケーション」の重要性</strong>に気づきました。SNSやチャットツールが発達した現代でも、<strong className="highlight">対面でしか築けない信頼関係</strong>があります。
                 </p>
                 <p>
-                  テーブルゲーム研修では、「遊び」という安全な環境の中で、参加者の素の人間性が表れます。この「職場のペルソナを脱いだ状態」での交流こそが、真の相互理解と組織変革の第一歩だと考えています。
+                  テーブルゲーム研修では、「遊び」という安全な環境の中で、<strong className="highlight">参加者の素の人間性</strong>が表れます。この<strong className="highlight">「職場のペルソナを脱いだ状態」での交流こそが、真の相互理解と組織変革の第一歩</strong>だと考えています。
                 </p>
                 <p>
-                  2年間のKe.イベント運営で培った1,000名以上へのファシリテーション経験を活かし、貴社の組織課題に寄り添った研修を設計いたします。
+                  2年間のKe.イベント運営で培った<strong className="highlight">1,000名以上へのファシリテーション経験</strong>を活かし、貴社の組織課題に寄り添った研修を設計いたします。
                 </p>
               </div>
             </div>
@@ -632,87 +648,101 @@ const Training = () => {
 
           <div className="training-faq-list">
             <div className="training-faq-item">
-              <div className="training-faq-question">
-                <FontAwesomeIcon icon={faComments} />
+              <div className="training-faq-question" onClick={() => toggleFaq(0)}>
+                <FontAwesomeIcon icon={faQuestionCircle} />
                 <h4>オンラインでの実施は可能ですか？</h4>
               </div>
-              <div className="training-faq-answer">
-                <p>
-                  申し訳ございません、当研修は<strong>対面実施のみ</strong>となっております。テーブルゲーム研修の最大の価値は、実際に顔を合わせて遊ぶことで生まれる「本物のコミュニケーション」です。画面越しでは得られない、表情・雰囲気・空気感を共有することで、組織の関係性が根本から変わります。
-                </p>
-              </div>
+              {openFaqIndex === 0 && (
+                <div className="training-faq-answer">
+                  <p>
+                    申し訳ございません、当研修は<strong>対面実施のみ</strong>となっております。テーブルゲーム研修の最大の価値は、実際に顔を合わせて遊ぶことで生まれる「本物のコミュニケーション」です。画面越しでは得られない、表情・雰囲気・空気感を共有することで、組織の関係性が根本から変わります。
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className="training-faq-item">
-              <div className="training-faq-question">
-                <FontAwesomeIcon icon={faUsers} />
+              <div className="training-faq-question" onClick={() => toggleFaq(1)}>
+                <FontAwesomeIcon icon={faQuestionCircle} />
                 <h4>ボードゲーム初心者でも大丈夫ですか？</h4>
               </div>
-              <div className="training-faq-answer">
-                <p>
-                  <strong>まったく問題ありません！</strong>むしろ初心者の方こそ効果を実感いただけます。使用するゲームはルールが簡単で、誰でもすぐに楽しめるものを厳選しています。ファシリテーターが丁寧にサポートしますので、ゲーム経験ゼロの方でも安心してご参加いただけます。
-                </p>
-              </div>
+              {openFaqIndex === 1 && (
+                <div className="training-faq-answer">
+                  <p>
+                    <strong>まったく問題ありません！</strong>むしろ初心者の方こそ効果を実感いただけます。使用するゲームはルールが簡単で、誰でもすぐに楽しめるものを厳選しています。ファシリテーターが丁寧にサポートしますので、ゲーム経験ゼロの方でも安心してご参加いただけます。
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className="training-faq-item">
-              <div className="training-faq-question">
-                <FontAwesomeIcon icon={faClock} />
+              <div className="training-faq-question" onClick={() => toggleFaq(2)}>
+                <FontAwesomeIcon icon={faQuestionCircle} />
                 <h4>1回の研修時間はどれくらいですか？</h4>
               </div>
-              <div className="training-faq-answer">
-                <p>
-                  <strong>標準2〜3時間</strong>を想定しています。参加人数や実施内容によって調整可能です。半日コース（4時間）や、業務後の夕方実施（1.5時間×複数回）など、貴社のご都合に合わせて柔軟に対応いたします。
-                </p>
-              </div>
+              {openFaqIndex === 2 && (
+                <div className="training-faq-answer">
+                  <p>
+                    <strong>標準2〜3時間</strong>を想定しています。参加人数や実施内容によって調整可能です。半日コース（4時間）や、業務後の夕方実施（1.5時間×複数回）など、貴社のご都合に合わせて柔軟に対応いたします。
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className="training-faq-item">
-              <div className="training-faq-question">
-                <FontAwesomeIcon icon={faBuilding} />
+              <div className="training-faq-question" onClick={() => toggleFaq(3)}>
+                <FontAwesomeIcon icon={faQuestionCircle} />
                 <h4>会場はどこで実施しますか？</h4>
               </div>
-              <div className="training-faq-answer">
-                <p>
-                  <strong>貴社の会議室や社内スペース</strong>で実施可能です。机と椅子があれば十分です。秋田市内であれば交通費無料、秋田県内一律5,000円で伺います。県外の場合は別途ご相談ください。また、YOLUBEの拠点（秋田ベイパラダイス）でも実施可能です。
-                </p>
-              </div>
+              {openFaqIndex === 3 && (
+                <div className="training-faq-answer">
+                  <p>
+                    <strong>貴社の会議室や社内スペース</strong>で実施可能です。机と椅子があれば十分です。秋田市内であれば交通費無料、秋田県内一律5,000円で伺います。県外の場合は別途ご相談ください。また、YOLUBEの拠点（秋田ベイパラダイス）でも実施可能です。
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className="training-faq-item">
-              <div className="training-faq-question">
-                <FontAwesomeIcon icon={faCalendarAlt} />
+              <div className="training-faq-question" onClick={() => toggleFaq(4)}>
+                <FontAwesomeIcon icon={faQuestionCircle} />
                 <h4>単発での実施も可能ですか？</h4>
               </div>
-              <div className="training-faq-answer">
-                <p>
-                  <strong>可能です！</strong>お試しプラン（3万円/回）で単発実施いただけます。ただし、継続研修（年6回）の方が効果は圧倒的に高くなります。1〜4回で信頼関係の土壌を作り、5〜6回で本格的な経営分析を行う設計のため、単発では得られない組織変革を実感いただけます。
-                </p>
-              </div>
+              {openFaqIndex === 4 && (
+                <div className="training-faq-answer">
+                  <p>
+                    <strong>可能です！</strong>お試しプラン（3万円/回）で単発実施いただけます。ただし、継続研修（年6回）の方が効果は圧倒的に高くなります。1〜4回で信頼関係の土壌を作り、5〜6回で本格的な経営分析を行う設計のため、単発では得られない組織変革を実感いただけます。
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className="training-faq-item">
-              <div className="training-faq-question">
-                <FontAwesomeIcon icon={faChartLine} />
+              <div className="training-faq-question" onClick={() => toggleFaq(5)}>
+                <FontAwesomeIcon icon={faQuestionCircle} />
                 <h4>効果測定はどのように行いますか？</h4>
               </div>
-              <div className="training-faq-answer">
-                <p>
-                  毎回の研修後に<strong>参加者アンケート</strong>を実施し、満足度・気づき・改善点を収集します。このデータをもとに次回研修を最適化するPDCAサイクルを回します。また、初回と最終回でエンゲージメントスコアを測定し、数値で効果を可視化することも可能です。
-                </p>
-              </div>
+              {openFaqIndex === 5 && (
+                <div className="training-faq-answer">
+                  <p>
+                    毎回の研修後に<strong>参加者アンケート</strong>を実施し、満足度・気づき・改善点を収集します。このデータをもとに次回研修を最適化するPDCAサイクルを回します。また、初回と最終回でエンゲージメントスコアを測定し、数値で効果を可視化することも可能です。
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className="training-faq-item">
-              <div className="training-faq-question">
-                <FontAwesomeIcon icon={faHandshake} />
+              <div className="training-faq-question" onClick={() => toggleFaq(6)}>
+                <FontAwesomeIcon icon={faQuestionCircle} />
                 <h4>途中解約は可能ですか？</h4>
               </div>
-              <div className="training-faq-answer">
-                <p>
-                  年間契約プラン（スタンダード・プレミアム）の途中解約は原則として承っておりません。ただし、やむを得ない事情がある場合はご相談ください。まずはお試しプラン（単発）で体験いただき、効果を実感された上で年間契約をご検討いただくことをおすすめします。
-                </p>
-              </div>
+              {openFaqIndex === 6 && (
+                <div className="training-faq-answer">
+                  <p>
+                    年間契約プラン（スタンダード・プレミアム）の途中解約は原則として承っておりません。ただし、やむを得ない事情がある場合はご相談ください。まずはお試しプラン（単発）で体験いただき、効果を実感された上で年間契約をご検討いただくことをおすすめします。
+                  </p>
+                </div>
+              )}
             </div>
           </div>
 
@@ -751,21 +781,6 @@ const Training = () => {
             <p>今なら<strong>50万円 → 42.5万円（税別）</strong>で年間6回の研修を導入可能！</p>
             <p className="training-offer-price-detail">（6回・2ヶ月に1回実施、1回あたり7.1万円）</p>
             
-            <div className="training-offer-benefits">
-              <div className="training-offer-benefit">
-                <FontAwesomeIcon icon={faCheckCircle} />
-                <span>秋田県企業様限定：交通費完全無料</span>
-              </div>
-              <div className="training-offer-benefit">
-                <FontAwesomeIcon icon={faCheckCircle} />
-                <span>初回アンケート分析レポート無料進呈</span>
-              </div>
-              <div className="training-offer-benefit">
-                <FontAwesomeIcon icon={faCheckCircle} />
-                <span>導入後3ヶ月間の無料相談サポート</span>
-              </div>
-            </div>
-            
             <div className="training-offer-conditions">
               <h4>【適用条件】</h4>
               <ul>
@@ -799,14 +814,14 @@ const Training = () => {
                   <span className="training-price-unit">／1回</span>
                 </div>
                 <div className="training-trial-note">
-                  ※本格導入時に全額キャッシュバック
+                  ※ご満足いただけなかった場合、お試しプランの研修費用は全額返金いたします。
                 </div>
               </div>
               <div className="training-trial-right">
                 <ul>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> まずは試してみたい企業様向け</li>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> 研修参加者10名まで</li>
-                  <li><FontAwesomeIcon icon={faCheckCircle} /> 1.5時間の体験研修</li>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 2時間の体験研修</li>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> アンケート実施・分析レポート付</li>
                 </ul>
               </div>
@@ -891,57 +906,29 @@ const Training = () => {
           </div>
           
           <div className="training-pricing-notes">
-            <p><strong>追加参加者料金：</strong> 5名まで7,500円</p>
-            <p><strong>例）26名参加の場合：</strong> 追加16名 → 7,500円×4 = 30,000円</p>
-            <p><strong>交通費：</strong> 秋田市内無料、秋田県内一律5,000円、県外応相談</p>
-            <p className="training-pricing-guarantee"><FontAwesomeIcon icon={faCheckCircle} /> 満足いただけない場合、初回研修費用は全額返金いたします</p>
-          </div>
-
-          {/* Akita Special Offer */}
-          <div className="training-akita-special">
-            <h4>
-              <FontAwesomeIcon icon={faStar} />
-              秋田県企業様 特別優遇制度
-            </h4>
-            <p>
-              地元秋田の企業様を全力で応援します！秋田県内企業様限定で、<strong>ライトプラン、スタンダードプラン、プレミアムプランを初年度20%OFF</strong>を実施中。まずはお気軽にご相談ください。
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="training-cta">
-        <div className="training-container">
-          <div className="training-cta-content">
-            <div className="training-cta-icon">
-              <FontAwesomeIcon icon={faComments} />
-            </div>
-            <h2 className="training-section-title">まずは無料相談から</h2>
-            <p className="training-section-subtitle">
-              貴社の課題に合わせたオリジナル研修のご提案も可能です
-            </p>
-            <div className="training-cta-features">
-              <div className="training-cta-feature">
-                <FontAwesomeIcon icon={faCheckCircle} />
-                <span>相談無料</span>
+            <h4>料金詳細</h4>
+            <div className="pricing-notes-grid">
+              <div className="pricing-note-item">
+                <div className="pricing-note-label">追加参加者料金</div>
+                <div className="pricing-note-value">5名まで7,500円</div>
+                <div className="pricing-note-detail">例）26名参加の場合: 追加16名 → 7,500円×4 = 30,000円</div>
               </div>
-              <div className="training-cta-feature">
-                <FontAwesomeIcon icon={faCheckCircle} />
-                <span>オンライン対応可</span>
-              </div>
-              <div className="training-cta-feature">
-                <FontAwesomeIcon icon={faCheckCircle} />
-                <span>即日回答</span>
+              <div className="pricing-note-item">
+                <div className="pricing-note-label">交通費</div>
+                <div className="pricing-note-value">
+                  <span className="fee-item">秋田市内: 無料</span>
+                  <span className="fee-item">秋田県内: 一律5,000円</span>
+                  <span className="fee-item">県外: 応相談</span>
+                </div>
               </div>
             </div>
-            <p className="training-cta-message">
-              遊び心で組織を変える新しい研修体験を、ぜひ体験ください
-            </p>
-            <a href="#contact" className="training-btn training-btn-large training-btn-cta-primary">
+          </div>
+
+          {/* CTA Button */}
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <a href="#contact" className="training-btn training-btn-primary training-btn-hero">
               <FontAwesomeIcon icon={faComments} />
-              無料相談・お問い合わせはこちら
-              <FontAwesomeIcon icon={faArrowRight} />
+              お申し込みはこちら
             </a>
           </div>
         </div>
@@ -956,42 +943,51 @@ const Training = () => {
               <h3>お問い合わせフォーム</h3>
               <form ref={form} onSubmit={handleSubmit} className="training-form">
                 <div className="training-form-group">
-                  <label>会社名・団体名</label>
-                  <input 
-                    type="text" 
-                    name="company_name" 
-                    placeholder="株式会社○○" 
+                  <label>会社名・団体名 <span className="required-mark">*</span></label>
+                  <input
+                    type="text"
+                    name="company_name"
+                    placeholder="株式会社○○"
                     required
                     disabled={isLoading}
                   />
                 </div>
                 <div className="training-form-group">
-                  <label>ご担当者名</label>
-                  <input 
-                    type="text" 
-                    name="user_name" 
-                    placeholder="山田 太郎" 
+                  <label>ご担当者名 <span className="required-mark">*</span></label>
+                  <input
+                    type="text"
+                    name="user_name"
+                    placeholder="山田 太郎"
                     required
                     disabled={isLoading}
                   />
                 </div>
                 <div className="training-form-group">
-                  <label>メールアドレス</label>
-                  <input 
-                    type="email" 
-                    name="user_email" 
-                    placeholder="example@company.com" 
+                  <label>メールアドレス <span className="required-mark">*</span></label>
+                  <input
+                    type="email"
+                    name="user_email"
+                    placeholder="example@company.com"
                     required
                     disabled={isLoading}
                   />
                 </div>
                 <div className="training-form-group">
-                  <label>お問い合わせ内容</label>
-                  <textarea 
-                    rows="4" 
-                    name="message" 
+                  <label>電話番号 <span className="required-mark">*</span></label>
+                  <input
+                    type="tel"
+                    name="user_phone"
+                    placeholder="090-1234-5678"
+                    required
+                    disabled={isLoading}
+                  />
+                </div>
+                <div className="training-form-group">
+                  <label>備考 <span className="optional-mark">（任意）</span></label>
+                  <textarea
+                    rows="4"
+                    name="message"
                     placeholder="研修についてのご質問や、組織の課題についてお聞かせください"
-                    required
                     disabled={isLoading}
                   ></textarea>
                 </div>

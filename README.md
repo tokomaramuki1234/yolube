@@ -792,6 +792,7 @@ Copyright (c) 2025 YOLUBE
    ```
 
 2. **GTM管理画面でのタグ設定**
+
    ```
    タグ:
    - GA4 Configuration Tag（基本設定）
