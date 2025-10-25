@@ -713,7 +713,7 @@ const Training = () => {
               </div>
               <div className="training-faq-answer">
                 <p>
-                  <strong>可能です！</strong>エントリープラン（10万円/回）で単発実施いただけます。ただし、継続研修（年6回）の方が効果は圧倒的に高くなります。1〜4回で信頼関係の土壌を作り、5〜6回で本格的な経営分析を行う設計のため、単発では得られない組織変革を実感いただけます。
+                  <strong>可能です！</strong>お試しプラン（3万円/回）で単発実施いただけます。ただし、継続研修（年6回）の方が効果は圧倒的に高くなります。1〜4回で信頼関係の土壌を作り、5〜6回で本格的な経営分析を行う設計のため、単発では得られない組織変革を実感いただけます。
                 </p>
               </div>
             </div>
@@ -737,7 +737,7 @@ const Training = () => {
               </div>
               <div className="training-faq-answer">
                 <p>
-                  年間契約プラン（スタンダード・プレミアム）の途中解約は原則として承っておりません。ただし、やむを得ない事情がある場合はご相談ください。まずはエントリープラン（単発）でお試しいただき、効果を実感された上で年間契約をご検討いただくことをおすすめします。
+                  年間契約プラン（スタンダード・プレミアム）の途中解約は原則として承っておりません。ただし、やむを得ない事情がある場合はご相談ください。まずはお試しプラン（単発）で体験いただき、効果を実感された上で年間契約をご検討いただくことをおすすめします。
                 </p>
               </div>
             </div>
@@ -854,7 +854,7 @@ const Training = () => {
             </div>
             
             <div className="training-pricing-plan training-recommended">
-              <div className="training-plan-badge">最もお得</div>
+              <div className="training-plan-badge">おすすめ</div>
               <div className="training-plan-header">
                 <h4>スタンダードプラン</h4>
                 <p className="training-plan-subtitle">6回セット</p>
