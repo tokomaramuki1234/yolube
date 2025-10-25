@@ -494,9 +494,9 @@ const Training = () => {
           {/* Survey Stats */}
           <div className="training-survey-stats-grid">
             <div className="training-survey-stat-large">
-              <div className="training-survey-percentage">98.7%</div>
-              <div className="training-survey-label">「楽しかった」と回答</div>
-              <div className="training-survey-detail">満足度5段階評価で4.5以上</div>
+              <div className="training-survey-percentage">87.2%</div>
+              <div className="training-survey-label">「コミュニケーションが取りやすくなった」と回答</div>
+              <div className="training-survey-detail">業務改善効果を実感</div>
             </div>
             <div className="training-survey-stat-large">
               <div className="training-survey-percentage">96.2%</div>
@@ -593,9 +593,9 @@ const Training = () => {
                     <p>2023年より「テーブルゲーム交流会：Ke.」を運営。累計参加者数約1,100名超のイベントの中で、数多の参加者へテーブルゲームのルール説明等を実施。</p>
                   </div>
                   <div className="training-expertise-item">
-                    <div className="training-expertise-number">98.7%</div>
-                    <div className="training-expertise-label">研修満足度</div>
-                    <p>研修目的のテーブルゲーム選定に定評あり。未経験者からは「楽しかった」「また参加したい」などの高評価を得ている。</p>
+                    <div className="training-expertise-number">87.2%</div>
+                    <div className="training-expertise-label">業務改善効果</div>
+                    <p>研修目的のテーブルゲーム選定に定評あり。参加者の87%以上がコミュニケーション改善を実感し、96%が継続参加を希望するなど高評価を得ている。</p>
                   </div>
                   <div className="training-expertise-item">
                     <div className="training-expertise-number">実践経験</div>
