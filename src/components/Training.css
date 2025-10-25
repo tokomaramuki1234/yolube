@@ -1950,25 +1950,112 @@
   background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
   color: white;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.training-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .training-cta-content {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.training-cta-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  animation: pulse-icon 2s infinite;
+}
+
+@keyframes pulse-icon {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
 }
 
 .training-cta .training-section-title {
   color: white;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .training-cta .training-section-subtitle {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.training-cta-features {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2.5rem 0;
+  flex-wrap: wrap;
+}
+
+.training-cta-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.training-cta-feature svg {
+  font-size: 1.2rem;
 }
 
 .training-cta-message {
   font-size: 1.2rem;
-  margin: 2rem 0;
-  line-height: 1.6;
+  margin: 2rem 0 3rem 0;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.training-btn-cta-primary {
+  background: white;
+  color: #6BA563;
+  font-size: 1.3rem;
+  padding: 1.25rem 3rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.training-btn-cta-primary:hover {
+  background: #f8f9fa;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.training-btn-cta-primary svg:first-child {
+  margin-right: 0.5rem;
+}
+
+.training-btn-cta-primary svg:last-child {
+  margin-left: 0.5rem;
 }
 
 .training-brand-message {
@@ -2738,4 +2825,79 @@ html {
 .training-form-group textarea:focus {
   outline: 2px solid #8BC780;
   outline-offset: 2px;
+}
+/* CTA Section Responsive */
+@media (max-width: 768px) {
+  .training-cta {
+    padding: 4rem 0;
+  }
+
+  .training-cta-icon {
+    font-size: 3rem;
+  }
+
+  .training-cta .training-section-title {
+    font-size: 2rem;
+  }
+
+  .training-cta .training-section-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .training-cta-features {
+    gap: 1rem;
+  }
+
+  .training-cta-feature {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+  }
+
+  .training-cta-message {
+    font-size: 1.1rem;
+  }
+
+  .training-btn-cta-primary {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .training-cta {
+    padding: 3rem 0;
+  }
+
+  .training-cta-icon {
+    font-size: 2.5rem;
+  }
+
+  .training-cta .training-section-title {
+    font-size: 1.8rem;
+  }
+
+  .training-cta .training-section-subtitle {
+    font-size: 1rem;
+  }
+
+  .training-cta-features {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .training-cta-feature {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .training-cta-message {
+    font-size: 1rem;
+  }
+
+  .training-btn-cta-primary {
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+    width: 100%;
+  }
 }

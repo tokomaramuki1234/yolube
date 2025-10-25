@@ -914,14 +914,32 @@ const Training = () => {
       <section className="training-cta">
         <div className="training-container">
           <div className="training-cta-content">
+            <div className="training-cta-icon">
+              <FontAwesomeIcon icon={faComments} />
+            </div>
             <h2 className="training-section-title">まずは無料相談から</h2>
             <p className="training-section-subtitle">
-              貴社の課題に合わせたオリジナル研修のご提案も可能です。
+              貴社の課題に合わせたオリジナル研修のご提案も可能です
             </p>
+            <div className="training-cta-features">
+              <div className="training-cta-feature">
+                <FontAwesomeIcon icon={faCheckCircle} />
+                <span>相談無料</span>
+              </div>
+              <div className="training-cta-feature">
+                <FontAwesomeIcon icon={faCheckCircle} />
+                <span>オンライン対応可</span>
+              </div>
+              <div className="training-cta-feature">
+                <FontAwesomeIcon icon={faCheckCircle} />
+                <span>即日回答</span>
+              </div>
+            </div>
             <p className="training-cta-message">
-              遊び心で組織を変える新しい研修体験を、ぜひ体験いただけますと幸いです。
+              遊び心で組織を変える新しい研修体験を、ぜひ体験ください
             </p>
-            <a href="#contact" className="training-btn training-btn-large">
+            <a href="#contact" className="training-btn training-btn-large training-btn-cta-primary">
+              <FontAwesomeIcon icon={faComments} />
               無料相談・お問い合わせはこちら
               <FontAwesomeIcon icon={faArrowRight} />
             </a>
