@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers, faCalendarAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faBuilding, faArrowRight, faCheckCircle, faStar, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faCalendarAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faBuilding, faArrowRight, faArrowDown, faCheckCircle, faStar, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import Footer from './Footer';
 import './Training.css';
 
@@ -269,7 +269,7 @@ const Training = () => {
           <div className="training-timeline">
             <div className="training-timeline-item">
               <div className="training-timeline-arrow">
-                <FontAwesomeIcon icon={faArrowRight} />
+                <FontAwesomeIcon icon={faArrowDown} />
                 <div className="training-timeline-line"></div>
               </div>
               <div className="training-timeline-image">
@@ -284,7 +284,7 @@ const Training = () => {
 
             <div className="training-timeline-item">
               <div className="training-timeline-arrow">
-                <FontAwesomeIcon icon={faArrowRight} />
+                <FontAwesomeIcon icon={faArrowDown} />
                 <div className="training-timeline-line"></div>
               </div>
               <div className="training-timeline-image">
@@ -299,7 +299,7 @@ const Training = () => {
 
             <div className="training-timeline-item">
               <div className="training-timeline-arrow">
-                <FontAwesomeIcon icon={faArrowRight} />
+                <FontAwesomeIcon icon={faArrowDown} />
                 <div className="training-timeline-line"></div>
               </div>
               <div className="training-timeline-image">
@@ -314,7 +314,7 @@ const Training = () => {
 
             <div className="training-timeline-item">
               <div className="training-timeline-arrow">
-                <FontAwesomeIcon icon={faArrowRight} />
+                <FontAwesomeIcon icon={faArrowDown} />
                 <div className="training-timeline-line"></div>
               </div>
               <div className="training-timeline-image">
@@ -329,7 +329,7 @@ const Training = () => {
 
             <div className="training-timeline-item">
               <div className="training-timeline-arrow">
-                <FontAwesomeIcon icon={faArrowRight} />
+                <FontAwesomeIcon icon={faArrowDown} />
                 <div className="training-timeline-line"></div>
               </div>
               <div className="training-timeline-image">
@@ -344,7 +344,7 @@ const Training = () => {
 
             <div className="training-timeline-item">
               <div className="training-timeline-arrow training-timeline-arrow-final">
-                <FontAwesomeIcon icon={faArrowRight} />
+                <FontAwesomeIcon icon={faArrowDown} />
               </div>
               <div className="training-timeline-image">
                 <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&q=80" alt="経営分析・戦略立案" />
