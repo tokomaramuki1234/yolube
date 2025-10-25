@@ -269,8 +269,8 @@ const Training = () => {
           <div className="training-timeline">
             <div className="training-timeline-item">
               <div className="training-timeline-arrow">
-                <FontAwesomeIcon icon={faArrowDown} />
                 <div className="training-timeline-line"></div>
+                <FontAwesomeIcon icon={faArrowDown} />
               </div>
               <div className="training-timeline-image">
                 <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&h=300&fit=crop&q=80" alt="アイスブレイク" />
@@ -284,8 +284,8 @@ const Training = () => {
 
             <div className="training-timeline-item">
               <div className="training-timeline-arrow">
-                <FontAwesomeIcon icon={faArrowDown} />
                 <div className="training-timeline-line"></div>
+                <FontAwesomeIcon icon={faArrowDown} />
               </div>
               <div className="training-timeline-image">
                 <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=400&h=300&fit=crop&q=80" alt="コミュニケーション強化" />
@@ -299,8 +299,8 @@ const Training = () => {
 
             <div className="training-timeline-item">
               <div className="training-timeline-arrow">
-                <FontAwesomeIcon icon={faArrowDown} />
                 <div className="training-timeline-line"></div>
+                <FontAwesomeIcon icon={faArrowDown} />
               </div>
               <div className="training-timeline-image">
                 <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=300&fit=crop&q=80" alt="チームワーク構築" />
@@ -314,8 +314,8 @@ const Training = () => {
 
             <div className="training-timeline-item">
               <div className="training-timeline-arrow">
-                <FontAwesomeIcon icon={faArrowDown} />
                 <div className="training-timeline-line"></div>
+                <FontAwesomeIcon icon={faArrowDown} />
               </div>
               <div className="training-timeline-image">
                 <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop&q=80" alt="信頼関係の確立" />
@@ -329,8 +329,8 @@ const Training = () => {
 
             <div className="training-timeline-item">
               <div className="training-timeline-arrow">
-                <FontAwesomeIcon icon={faArrowDown} />
                 <div className="training-timeline-line"></div>
+                <FontAwesomeIcon icon={faArrowDown} />
               </div>
               <div className="training-timeline-image">
                 <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop&q=80" alt="ブレインストーミング" />
