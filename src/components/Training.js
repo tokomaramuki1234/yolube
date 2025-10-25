@@ -747,8 +747,10 @@ const Training = () => {
               <FontAwesomeIcon icon={faExclamationTriangle} />
               期間限定キャンペーン
             </div>
-            <h3>🎉 初回導入3社限定：スタンダードプラン10%OFF 🎉</h3>
-            <p>今なら<strong>50万円 → 45万円（税別）</strong>で年間6回の研修を導入可能！</p>
+            <h3>🎉 初回導入5社限定：スタンダードプラン15%OFF 🎉</h3>
+            <p>今なら<strong>50万円 → 42.5万円（税別）</strong>で年間6回の研修を導入可能！</p>
+            <p className="training-offer-price-detail">（6回・2ヶ月に1回実施、1回あたり7.1万円）</p>
+            
             <div className="training-offer-benefits">
               <div className="training-offer-benefit">
                 <FontAwesomeIcon icon={faCheckCircle} />
@@ -763,8 +765,18 @@ const Training = () => {
                 <span>導入後3ヶ月間の無料相談サポート</span>
               </div>
             </div>
+            
+            <div className="training-offer-conditions">
+              <h4>【適用条件】</h4>
+              <ul>
+                <li>秋田県内の企業様</li>
+                <li>初めて当団体の研修を導入される企業様</li>
+                <li>2025年度内に研修を開始できる企業様</li>
+              </ul>
+            </div>
+            
             <p className="training-offer-deadline">
-              ※ 残り<strong className="training-offer-remaining">2社</strong>で受付終了となります
+              ※ 5社に達し次第、または2025年12月31日まで（いずれか早い方）で受付終了となります
             </p>
           </div>
 
