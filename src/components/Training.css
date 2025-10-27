@@ -478,6 +478,91 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Table Game Introduction Section */
+.training-tablegame-intro {
+  padding: 6rem 0;
+  background: #fff;
+}
+
+.training-tablegame-content {
+  margin-top: 3rem;
+}
+
+.training-tablegame-text {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.training-tablegame-text p {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.training-tablegame-text .highlight {
+  background: linear-gradient(transparent 60%, #8BC780 60%);
+  font-weight: bold;
+  padding: 0 0.2rem;
+}
+
+.training-tablegame-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.training-tablegame-point {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.training-tablegame-point:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.training-tablegame-point .point-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.training-tablegame-point h4 {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+}
+
+.training-tablegame-point p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.training-tablegame-link {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.training-tablegame-link a {
+  font-size: 0.85rem;
+  color: #999;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+  padding-bottom: 2px;
+}
+
+.training-tablegame-link a:hover {
+  color: #8BC780;
+  border-bottom-color: #8BC780;
+}
+
 /* Features Section */
 .training-features {
   padding: 6rem 0;
@@ -2102,6 +2187,24 @@
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
+  }
+
+  /* Table Game Introduction Section */
+  .training-tablegame-intro {
+    padding: 4rem 0;
+  }
+
+  .training-tablegame-points {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .training-tablegame-point {
+    padding: 1.5rem;
+  }
+
+  .training-tablegame-link {
+    margin-top: 2rem;
   }
 
   /* Features Grid */

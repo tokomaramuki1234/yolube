@@ -229,6 +229,50 @@ const Training = () => {
         </div>
       </section>
 
+      {/* What is Table Game Section */}
+      <section className="training-tablegame-intro">
+        <div className="training-container">
+          <h2 className="training-section-title">テーブルゲームってなに？</h2>
+          
+          <div className="training-tablegame-content">
+            <div className="training-tablegame-text">
+              <p>
+                <strong>テーブルゲーム</strong>とは、<span className="highlight">机の上で遊ぶゲーム</span>のことです。ボードゲームやカードゲームなど、呼び方はいろいろありますが、共通しているのは<strong>「顔を合わせて、ワイワイ楽しむ」</strong>ということ。
+              </p>
+              <p>
+                年齢、性別、経験は関係ありません。<strong>ゲーム中はお互いにフラットな人間関係</strong>なので、上司や部下の顔色を伺う必要はありません。自然と会話が生まれ、気づけば数時間も夢中になっている、そんな魅力があります。
+              </p>
+            </div>
+
+            <div className="training-tablegame-points">
+              <div className="training-tablegame-point">
+                <div className="point-icon">😆</div>
+                <h4>とにかく盛り上がる</h4>
+                <p>「それはやめて！」「勝った！」自然な会話と笑顔が生まれます</p>
+              </div>
+
+              <div className="training-tablegame-point">
+                <div className="point-icon">👥</div>
+                <h4>距離が縮まる</h4>
+                <p>共通の体験を通じて、相手の人となりが自然と伝わってきます</p>
+              </div>
+
+              <div className="training-tablegame-point">
+                <div className="point-icon">🧠</div>
+                <h4>新しい発見がある</h4>
+                <p>普段とは違う頭の使い方。意外な一面が見えることも</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="training-tablegame-link">
+            <a href="https://yolube.jp/tablegame" target="_blank" rel="noopener noreferrer">
+              テーブルゲームについてより詳しい情報はこちら
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section id="features" className="training-features">
         <div className="training-container">
