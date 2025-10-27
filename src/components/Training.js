@@ -303,7 +303,7 @@ const Training = () => {
                 <FontAwesomeIcon icon={faArrowDown} />
               </div>
               <div className="training-timeline-image">
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=300&fit=crop&q=80" alt="チームワーク構築" />
+                <img src="/images/training/session3_teamwork.jpg" alt="YOLUBEチームワーク構築研修 - 協力と一体感を育む" />
               </div>
               <div className="training-timeline-content">
                 <div className="training-timeline-badge">第3回</div>
