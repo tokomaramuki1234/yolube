@@ -3120,6 +3120,12 @@ html {
     width: 100%;
   }
 
+  /* スマホ版のみタイトルの改行位置を調整 */
+  .training-section-title .mobile-break::before {
+    content: "\A";
+    white-space: pre;
+  }
+
   /* 左右レイアウトをモバイルで背景画像オーバーレイ方式に変更 */
   .training-comparison-row {
     position: relative;

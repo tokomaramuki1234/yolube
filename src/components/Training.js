@@ -395,7 +395,9 @@ const Training = () => {
       {/* Competitive Advantage Section */}
       <section className="training-advantage">
         <div className="training-container">
-          <h2 className="training-section-title">なぜテーブルゲーム研修なのか？</h2>
+          <h2 className="training-section-title">
+            なぜテーブルゲーム研修<span className="mobile-break">なのか？</span>
+          </h2>
 
           {/* 構成１：一般的な研修の課題（左：画像、右：テキスト） */}
           <div className="training-comparison-row" data-bg-row="1" style={{'--bg-image': 'url(/images/training/traditional_training.jpg)'}}>
