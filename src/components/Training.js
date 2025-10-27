@@ -363,7 +363,7 @@ const Training = () => {
             <div className="training-comparison-grid">
               <div className="training-comparison-before">
                 <div className="training-comparison-image">
-                  <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=400&fit=crop&q=80" alt="お互いに無関心な雰囲気のサラリーマンたち" />
+                  <img src="/images/training/before_training.jpg" alt="研修前：固い雰囲気のオフィス" />
                 </div>
                 <div className="training-comparison-header">
                   <FontAwesomeIcon icon={faExclamationTriangle} />
@@ -385,7 +385,7 @@ const Training = () => {
 
               <div className="training-comparison-after">
                 <div className="training-comparison-image">
-                  <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop&q=80" alt="一緒に笑い合っているサラリーマンたち" />
+                  <img src="/images/training/after_training.png" alt="研修後：笑顔で協力し合うチーム" />
                 </div>
                 <div className="training-comparison-header">
                   <FontAwesomeIcon icon={faCheckCircle} />
