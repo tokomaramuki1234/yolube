@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers, faCalendarAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faBuilding, faArrowRight, faArrowDown, faCheckCircle, faStar, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faCalendarAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faChevronDown, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faBuilding, faArrowRight, faArrowDown, faCheckCircle, faStar, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import Footer from './Footer';
 import './Training.css';
 
@@ -162,13 +162,20 @@ const Training = () => {
               <a href="#limited-offer" className="training-badge">
                 秋田県企業様限定特別プラン実施中
               </a>
+              
+              {/* スクロール促進アイコン */}
+              <div className="training-scroll-indicator">
+                <a href="#problems" className="training-scroll-icon">
+                  <FontAwesomeIcon icon={faChevronDown} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Problem Section */}
-      <section id="about" className="training-problem">
+      <section id="problems" className="training-problem">
         <div className="training-container">
           <div className="training-section-header">
             <h2 className="training-section-title">

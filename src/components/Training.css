@@ -3061,6 +3061,45 @@
   }
 }
 
+/* Scroll Indicator */
+.training-scroll-indicator {
+  margin-top: 3rem;
+  display: none; /* デフォルトは非表示 */
+}
+
+.training-scroll-icon {
+  display: inline-block;
+  color: #8BC780;
+  font-size: 2rem;
+  text-decoration: none;
+  animation: bounce 2s infinite;
+  transition: all 0.3s ease;
+}
+
+.training-scroll-icon:hover {
+  color: #6fa865;
+  transform: translateY(5px);
+}
+
+/* スマホでのみ表示 */
+@media (max-width: 768px) {
+  .training-scroll-indicator {
+    display: block;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
 /* Animation */
 @keyframes fadeInUp {
   from {
