@@ -265,145 +265,7 @@ const Training = () => {
             モデルケース：年６回の研修を通して実施した場合
           </p>
 
-          {/* Timeline Visual */}
-          <div className="training-timeline">
-            <div className="training-timeline-item">
-              <div className="training-timeline-arrow">
-                <div className="training-timeline-line"></div>
-                <FontAwesomeIcon icon={faArrowDown} />
-              </div>
-              <div className="training-timeline-image">
-                <img src="/images/training/session1_icebreak.jpg" alt="YOLUBEアイスブレイク研修 - カードゲームで緊張をほぐす" />
-              </div>
-              <div className="training-timeline-content">
-                <div className="training-timeline-badge">第1回</div>
-                <h4>アイスブレイク</h4>
-                <p>心理的安全性の構築、緊張の解きほぐし</p>
-              </div>
-            </div>
-
-            <div className="training-timeline-item">
-              <div className="training-timeline-arrow">
-                <div className="training-timeline-line"></div>
-                <FontAwesomeIcon icon={faArrowDown} />
-              </div>
-              <div className="training-timeline-image">
-                <img src="/images/training/session2_communication.jpg" alt="YOLUBEコミュニケーション研修 - 対話と傾聴力の向上" />
-              </div>
-              <div className="training-timeline-content">
-                <div className="training-timeline-badge">第2回</div>
-                <h4>コミュニケーション強化</h4>
-                <p>言語化能力・傾聴力の向上</p>
-              </div>
-            </div>
-
-            <div className="training-timeline-item">
-              <div className="training-timeline-arrow">
-                <div className="training-timeline-line"></div>
-                <FontAwesomeIcon icon={faArrowDown} />
-              </div>
-              <div className="training-timeline-image">
-                <img src="/images/training/session3_teamwork.jpg" alt="YOLUBEチームワーク構築研修 - 協力と一体感を育む" />
-              </div>
-              <div className="training-timeline-content">
-                <div className="training-timeline-badge">第3回</div>
-                <h4>チームワーク構築</h4>
-                <p>協力と役割分担の理解</p>
-              </div>
-            </div>
-
-            <div className="training-timeline-item">
-              <div className="training-timeline-arrow">
-                <div className="training-timeline-line"></div>
-                <FontAwesomeIcon icon={faArrowDown} />
-              </div>
-              <div className="training-timeline-image">
-                <img src="/images/training/session4_trust.jpg" alt="YOLUBE信頼関係構築研修 - 笑顔と達成感の共有" />
-              </div>
-              <div className="training-timeline-content">
-                <div className="training-timeline-badge">第4回</div>
-                <h4>信頼関係の確立</h4>
-                <p>成功体験の共有、相互理解の深化</p>
-              </div>
-            </div>
-
-            <div className="training-timeline-item">
-              <div className="training-timeline-arrow">
-                <div className="training-timeline-line"></div>
-                <FontAwesomeIcon icon={faArrowDown} />
-              </div>
-              <div className="training-timeline-image">
-                <img src="/images/training/session5_brainstorm.jpg" alt="YOLUBEブレインストーミング研修 - 多様な意見を引き出すファシリテーション" />
-              </div>
-              <div className="training-timeline-content">
-                <div className="training-timeline-badge">第5回</div>
-                <h4>ブレインストーミング</h4>
-                <p>構築された土壌で自由な発想を引き出す</p>
-              </div>
-            </div>
-
-            <div className="training-timeline-item">
-              <div className="training-timeline-arrow training-timeline-arrow-final">
-                <FontAwesomeIcon icon={faArrowDown} />
-              </div>
-              <div className="training-timeline-image">
-                <img src="/images/training/session6_strategy.jpg" alt="YOLUBE経営分析研修 - SWOT分析による戦略立案" />
-              </div>
-              <div className="training-timeline-content">
-                <div className="training-timeline-badge">第6回</div>
-                <h4>経営分析・戦略立案</h4>
-                <p>全員参加型でSWOT分析、組織変革の完成</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Before After Comparison */}
-          <div className="training-before-after">
-            <h3 className="training-subsection-title">研修前・研修後の変化</h3>
-            <div className="training-comparison-grid">
-              <div className="training-comparison-before">
-                <div className="training-comparison-image">
-                  <img src="/images/training/before_training.jpg" alt="研修前：固い雰囲気のオフィス" />
-                </div>
-                <div className="training-comparison-header">
-                  <FontAwesomeIcon icon={faExclamationTriangle} />
-                  <h4>研修前</h4>
-                </div>
-                <ul>
-                  <li>話しかける人が固定化</li>
-                  <li>部署間の情報共有不足</li>
-                  <li>新入社員の不安感</li>
-                  <li>研修が座学中心で退屈</li>
-                  <li>上司への相談がしづらい</li>
-                  <li>意見を言いづらい雰囲気</li>
-                </ul>
-              </div>
-
-              <div className="training-comparison-arrow">
-                <FontAwesomeIcon icon={faArrowRight} />
-              </div>
-
-              <div className="training-comparison-after">
-                <div className="training-comparison-image">
-                  <img src="/images/training/after_training.png" alt="研修後：笑顔で協力し合うチーム" />
-                </div>
-                <div className="training-comparison-header">
-                  <FontAwesomeIcon icon={faCheckCircle} />
-                  <h4>研修後</h4>
-                </div>
-                <ul>
-                  <li>自然な会話が生まれる</li>
-                  <li>部署を越えた情報交換</li>
-                  <li>先輩に相談しやすい環境</li>
-                  <li>研修への積極的参加</li>
-                  <li>心理的安全性の確保</li>
-                  <li>ボトムアップが機能する</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <h3 className="training-subsection-title" style={{marginTop: '4rem'}}>プログラム詳細</h3>
+          {/* Program Phases */}
           <div className="training-program-phases">
             <div className="training-phase">
               <div className="training-phase-header">
@@ -478,6 +340,52 @@ const Training = () => {
                   <h5>3. 実践的なビジネススキルの習得</h5>
                   <p>ブレインストーミングや経営分析といった実践的な手法を体験することで、問題解決力や論理的思考力が向上します。研修で学んだスキルは、日常業務やプロジェクトマネジメントにも応用可能です。</p>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Before After Comparison */}
+          <div className="training-before-after">
+            <h3 className="training-subsection-title">研修前・研修後の変化</h3>
+            <div className="training-comparison-grid">
+              <div className="training-comparison-before">
+                <div className="training-comparison-image">
+                  <img src="/images/training/before_training.jpg" alt="研修前：固い雰囲気のオフィス" />
+                </div>
+                <div className="training-comparison-header">
+                  <FontAwesomeIcon icon={faExclamationTriangle} />
+                  <h4>研修前</h4>
+                </div>
+                <ul>
+                  <li>話しかける人が固定化</li>
+                  <li>部署間の情報共有不足</li>
+                  <li>新入社員の不安感</li>
+                  <li>研修が座学中心で退屈</li>
+                  <li>上司への相談がしづらい</li>
+                  <li>意見を言いづらい雰囲気</li>
+                </ul>
+              </div>
+
+              <div className="training-comparison-arrow">
+                <FontAwesomeIcon icon={faArrowRight} />
+              </div>
+
+              <div className="training-comparison-after">
+                <div className="training-comparison-image">
+                  <img src="/images/training/after_training.png" alt="研修後：笑顔で協力し合うチーム" />
+                </div>
+                <div className="training-comparison-header">
+                  <FontAwesomeIcon icon={faCheckCircle} />
+                  <h4>研修後</h4>
+                </div>
+                <ul>
+                  <li>自然な会話が生まれる</li>
+                  <li>部署を越えた情報交換</li>
+                  <li>先輩に相談しやすい環境</li>
+                  <li>研修への積極的参加</li>
+                  <li>心理的安全性の確保</li>
+                  <li>ボトムアップが機能する</li>
+                </ul>
               </div>
             </div>
           </div>
