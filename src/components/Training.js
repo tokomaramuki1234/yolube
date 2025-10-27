@@ -768,7 +768,8 @@ const Training = () => {
               <FontAwesomeIcon icon={faExclamationTriangle} />
               期間限定キャンペーン
             </div>
-            <h3>🎉 初回導入5社限定：スタンダードプラン15%OFF 🎉</h3>
+            <h3>🎉 初回導入5社限定 🎉</h3>
+            <p className="training-offer-discount">スタンダードプラン15%OFF</p>
             <p>今なら<strong>50万円 → 42.5万円（税別）</strong>で年間6回の研修を導入可能！</p>
             <p className="training-offer-price-detail">（6回・2ヶ月に1回実施、1回あたり7.1万円）</p>
             
