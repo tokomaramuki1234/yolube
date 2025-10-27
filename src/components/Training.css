@@ -1078,6 +1078,7 @@
   margin-bottom: 0.5rem;
   position: relative;
   padding-left: 1.5rem;
+  text-align: left; /* デスクトップは左揃え */
 }
 
 .training-issue-item h5::before {
@@ -2501,12 +2502,12 @@
 
   /* すべてのIssue Item H5 - スマホ・タブレット版は中央揃え */
   .training-issue-item h5 {
-    text-align: center;
-    padding-left: 0;
+    text-align: center !important;
+    padding-left: 0 !important;
   }
 
   .training-issue-item h5::before {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -2883,12 +2884,12 @@
 
   /* すべてのIssue Item H5 - モバイル版は中央揃え */
   .training-issue-item h5 {
-    text-align: center;
-    padding-left: 0;
+    text-align: center !important;
+    padding-left: 0 !important;
   }
 
   .training-issue-item h5::before {
-    display: none;
+    display: none !important;
   }
 }
 
