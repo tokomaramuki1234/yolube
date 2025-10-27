@@ -3136,6 +3136,7 @@ html {
   .training-comparison-row[data-bg-row="1"] {
     background-image: linear-gradient(rgba(255, 255, 153, 0.92), rgba(255, 255, 153, 0.92)), 
                       var(--bg-image);
+    background-position: center bottom; /* 講師と受講者が見えるように下側を表示 */
   }
 
   .training-comparison-row[data-bg-row="3"] {
