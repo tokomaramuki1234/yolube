@@ -333,7 +333,7 @@ const Training = () => {
                 <FontAwesomeIcon icon={faArrowDown} />
               </div>
               <div className="training-timeline-image">
-                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop&q=80" alt="ブレインストーミング" />
+                <img src="/images/training/session5_brainstorm.jpg" alt="YOLUBEブレインストーミング研修 - 多様な意見を引き出すファシリテーション" />
               </div>
               <div className="training-timeline-content">
                 <div className="training-timeline-badge">第5回</div>
