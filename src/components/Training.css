@@ -2847,7 +2847,10 @@
 
   /* Hero Section */
   .training-hero {
-    padding: 4rem 0 3rem;
+    min-height: 100vh; /* 画面全体の高さを確保 */
+    padding: 2rem 0;
+    display: flex;
+    align-items: center; /* コンテンツを縦方向に中央配置 */
   }
 
   .training-hero-content-center {
@@ -3024,6 +3027,13 @@
 
 /* iPhone 13 Pro and similar resolution devices */
 @media (max-width: 390px) {
+  .training-hero {
+    min-height: 100vh; /* 画面全体の高さを確保 */
+    padding: 2rem 0;
+    display: flex;
+    align-items: center; /* コンテンツを縦方向に中央配置 */
+  }
+
   .training-hero-content-center {
     text-align: center;
   }
