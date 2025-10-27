@@ -872,8 +872,8 @@
 
 /* 構成１（一般的な研修の課題）専用スタイル */
 .training-comparison-row:first-of-type {
-  background: #fff3cd;
-  border: 1px solid #ffeaa7;
+  background: #ffff99;
+  border: 1px solid #ffff66;
 }
 
 .training-comparison-row:first-of-type h4 {
