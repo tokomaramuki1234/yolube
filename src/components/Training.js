@@ -596,7 +596,7 @@ const Training = () => {
                   テーブルゲーム研修では、「遊び」という安全な環境の中で、<strong className="highlight">参加者の素の人間性</strong>が表れます。この<strong className="highlight">「職場のペルソナを脱いだ状態」での交流こそが、真の相互理解と組織変革の第一歩</strong>だと考えています。
                 </p>
                 <p>
-                  2年間のKe.イベント運営で培った<strong className="highlight">1,000名以上へのファシリテーション経験</strong>を活かし、貴社の組織課題に寄り添った研修を設計いたします。
+                  <a href="https://yolube.jp/ke" target="_blank" rel="noopener noreferrer" className="training-link">2023年から続けているテーブルゲーム交流会：Ke.</a>の運営で培った<strong className="highlight">1,000名以上へのファシリテーション経験</strong>を活かし、貴社の組織課題に寄り添った研修を設計いたします。
                 </p>
               </div>
             </div>
