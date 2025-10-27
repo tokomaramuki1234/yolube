@@ -804,6 +804,7 @@ const Training = () => {
                   <span className="training-price-amount">3万円</span>
                   <span className="training-price-unit">／1回</span>
                 </div>
+                <div className="training-price-tax">(税込 33,000円)</div>
                 <div className="training-trial-note">
                   ※ご満足いただけなかった場合、お試しプランの研修費用は全額返金いたします。
                 </div>
@@ -830,6 +831,7 @@ const Training = () => {
                 <span className="training-price-amount">30万円</span>
                 <span className="training-price-unit">（3回・月1回実施）</span>
               </div>
+              <div className="training-price-tax">(税込 330,000円)</div>
               <div className="training-plan-features">
                 <ul>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> 短期集中で効果を実感</li>
@@ -841,6 +843,7 @@ const Training = () => {
               <div className="training-plan-value">
                 <span className="value-label">1回あたり</span>
                 <span className="value-amount">10万円</span>
+                <span className="value-tax">(税込 110,000円)</span>
               </div>
             </div>
             
@@ -855,6 +858,7 @@ const Training = () => {
                 <span className="training-price-amount">50万円</span>
                 <span className="training-price-unit">（6回・2ヶ月に1回実施）</span>
               </div>
+              <div className="training-price-tax">(税込 550,000円)</div>
               <div className="training-plan-features">
                 <ul>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> 継続的な効果を実感したい企業様向け</li>
@@ -866,6 +870,7 @@ const Training = () => {
               <div className="training-plan-value">
                 <span className="value-label">1回あたり</span>
                 <span className="value-amount">8.3万円</span>
+                <span className="value-tax">(税込 91,300円)</span>
                 <span className="value-discount">17%OFF</span>
               </div>
             </div>
@@ -880,6 +885,7 @@ const Training = () => {
                 <span className="training-price-amount">80万円</span>
                 <span className="training-price-unit">（12回・毎月実施）</span>
               </div>
+              <div className="training-price-tax">(税込 880,000円)</div>
               <div className="training-plan-features">
                 <ul>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> 本格的な組織変革を目指す企業様向け</li>
@@ -891,6 +897,7 @@ const Training = () => {
               <div className="training-plan-value">
                 <span className="value-label">1回あたり</span>
                 <span className="value-amount">6.7万円</span>
+                <span className="value-tax">(税込 73,700円)</span>
                 <span className="value-discount">33%OFF</span>
               </div>
             </div>
@@ -901,14 +908,14 @@ const Training = () => {
             <div className="pricing-notes-grid">
               <div className="pricing-note-item">
                 <div className="pricing-note-label">追加参加者料金</div>
-                <div className="pricing-note-value">5名まで7,500円</div>
-                <div className="pricing-note-detail">例）26名参加の場合: 追加16名 → 7,500円×4 = 30,000円</div>
+                <div className="pricing-note-value">5名まで7,500円 <span className="pricing-tax-small">(税込 8,250円)</span></div>
+                <div className="pricing-note-detail">例）26名参加の場合: 追加16名 → 7,500円×4 = 30,000円 <span className="pricing-tax-small">(税込 33,000円)</span></div>
               </div>
               <div className="pricing-note-item">
                 <div className="pricing-note-label">交通費</div>
                 <div className="pricing-note-value">
                   <span className="fee-item">秋田市内: 無料</span>
-                  <span className="fee-item">秋田県内: 一律5,000円</span>
+                  <span className="fee-item">秋田県内: 一律5,000円 <span className="pricing-tax-small">(税込 5,500円)</span></span>
                   <span className="fee-item">県外: 応相談</span>
                 </div>
               </div>
