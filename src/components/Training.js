@@ -439,7 +439,7 @@ const Training = () => {
           {/* 構成３：PDCAサイクル（左：画像、右：テキスト） */}
           <div className="training-comparison-row">
             <div className="training-comparison-image-left">
-              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&q=80" alt="PDCAサイクルを表すイラスト" />
+              <img src="/images/training/pdca_cycle.jpg" alt="PDCAサイクル図解 - Plan Do Check Act の継続的改善プロセス" />
             </div>
             <div className="training-comparison-content-right">
               <h5>2. 段階的PDCAサイクルで確実な成果創出</h5>
