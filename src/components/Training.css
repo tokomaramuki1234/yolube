@@ -1826,7 +1826,12 @@
 }
 
 /* レスポンシブ対応 */
+
+/* ========================================
+   タブレット (768px以下) - 統合版
+   ======================================== */
 @media (max-width: 768px) {
+  /* Trial Special (from line 1829-1851) */
   .training-trial-special {
     padding: 2rem 1.5rem;
     margin: 2rem 1rem;
@@ -1848,7 +1853,749 @@
   .training-trial-price .training-price-amount {
     font-size: 2.5rem;
   }
+
+  /* Container (from line 2506-2824) */
+  .training-container {
+    padding: 0 15px;
+  }
+
+  /* Typography */
+  .training-section-title {
+    font-size: 2rem;
+  }
+
+  .training-subsection-title {
+    font-size: 1.5rem;
+  }
+
+  .training-section-subtitle {
+    font-size: 1rem;
+  }
+
+  /* Hero Section */
+  .training-hero {
+    padding: 5rem 0 4rem;
+  }
+
+  .training-hero-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .training-hero-content-center {
+    text-align: center;
+  }
+
+  .training-title {
+    font-size: 4rem;
+    text-shadow:
+      3px 3px 0 #fff,
+      -3px 3px 0 #fff,
+      3px -3px 0 #fff,
+      -3px -3px 0 #fff,
+      3px 0 0 #fff,
+      -3px 0 0 #fff,
+      0 3px 0 #fff,
+      0 -3px 0 #fff,
+      2px 2px 0 #fff,
+      -2px 2px 0 #fff,
+      2px -2px 0 #fff,
+      -2px -2px 0 #fff;
+  }
+
+  .training-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .training-hero-stats {
+    gap: 2rem;
+  }
+
+  .training-stat-item .training-stat-number {
+    font-size: 2.5rem;
+  }
+
+  .training-hero-buttons {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .training-btn-hero {
+    font-size: 1.1rem;
+    padding: 1.25rem 2rem;
+  }
+
+  /* Social Proof */
+  .training-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .training-instructor-profile {
+    padding: 2rem;
+  }
+
+  .training-instructor-header {
+    padding-bottom: 1.5rem;
+  }
+
+  .training-instructor-image {
+    margin-bottom: 1.5rem;
+  }
+
+  .training-instructor-image img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .training-instructor-name-section h4 {
+    font-size: 1.8rem;
+  }
+
+  .training-expertise-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .training-expertise-number {
+    font-size: 2rem;
+  }
+
+  .training-expertise-label {
+    font-size: 1rem;
+  }
+
+  .training-expertise-item p {
+    font-size: 0.9rem;
+  }
+
+  .training-instructor-message {
+    padding: 1.5rem;
+  }
+
+  .training-instructor-message h5 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .training-instructor-message p {
+    font-size: 1rem;
+  }
+
+  /* Games Grid */
+  .training-games-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* FAQ */
+  .training-faq-question {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .training-faq-question h4 {
+    font-size: 1.05rem;
+  }
+
+  .training-faq-answer {
+    padding: 1.5rem;
+  }
+
+  /* Limited Offer */
+  .training-limited-offer {
+    padding: 2rem;
+  }
+
+  .training-limited-offer h3 {
+    font-size: 1.4rem;
+  }
+
+  /* Problems Grid */
+  .training-problems-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Solution Section */
+  .training-solution-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  /* Features Grid */
+  .training-features-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Program Section */
+  .training-timeline {
+    padding: 1rem 0;
+  }
+
+  .training-timeline-item {
+    grid-template-columns: 40px 120px 1fr;
+    gap: 1rem;
+  }
+
+  .training-timeline-image {
+    width: 120px;
+    height: 90px;
+  }
+
+  .training-timeline-arrow {
+    font-size: 1.5rem;
+  }
+
+  .training-comparison-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .training-comparison-arrow {
+    display: none;
+  }
+
+  .training-phase {
+    padding: 2rem;
+  }
+
+  .training-phase-images {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .training-phase-image img {
+    height: 200px;
+  }
+
+  /* Testimonials Grid */
+  .training-testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Pricing Grid */
+  .training-pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .training-recommended {
+    transform: none;
+  }
+
+  /* Contact Section */
+  .training-contact-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .training-contact-form {
+    padding: 2rem;
+  }
+
+  /* Footer */
+  .training-footer-content {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  /* Buttons */
+  .training-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .training-btn-large {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  /* Floating CTA Button - Mobile */
+  .training-floating-cta {
+    top: 5rem;
+    right: 1rem;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    max-width: calc(100% - 2rem);
+    white-space: nowrap;
+  }
+
+  .training-floating-cta:hover {
+    transform: translateY(-3px);
+  }
+
+  .training-floating-cta:active {
+    transform: translateY(-1px);
+  }
+
+  /* Back to Top Button */
+  .training-back-to-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 45px;
+    height: 45px;
+  }
+
+  /* Survey Results - Mobile Optimization */
+  .training-survey-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .bar-label {
+    width: 100%;
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  .bar-container {
+    width: 100%;
+    height: 40px;
+    min-width: 0;
+  }
+
+  .bar-percentage {
+    font-size: 1rem;
+    right: 12px;
+  }
+
+  .training-survey-details {
+    padding: 2rem 1.5rem;
+  }
+
+  .training-survey-question h4 {
+    font-size: 1.1rem;
+  }
+
+  /* Scroll Indicator (from line 3086-3090) */
+  .training-scroll-indicator {
+    display: block;
+  }
+
+  /* CTA Section (from line 3136-3170) */
+  .training-cta {
+    padding: 4rem 0;
+  }
+
+  .training-cta-icon {
+    font-size: 3rem;
+  }
+
+  .training-cta .training-section-title {
+    font-size: 2rem;
+  }
+
+  .training-cta .training-section-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .training-cta-features {
+    gap: 1rem;
+  }
+
+  .training-cta-feature {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+  }
+
+  .training-cta-message {
+    font-size: 1.1rem;
+  }
+
+  .training-btn-cta-primary {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+  }
 }
+
+
+/* ========================================
+   モバイル (480px以下) - 統合版
+   ======================================== */
+@media (max-width: 480px) {
+  /* Typography (from line 2826-3027) */
+  .training-section-title {
+    font-size: 1.75rem;
+  }
+
+  .training-title {
+    font-size: 3.2rem;
+    text-shadow:
+      3px 3px 0 #fff,
+      -3px 3px 0 #fff,
+      3px -3px 0 #fff,
+      -3px -3px 0 #fff,
+      3px 0 0 #fff,
+      -3px 0 0 #fff,
+      0 3px 0 #fff,
+      0 -3px 0 #fff,
+      2px 2px 0 #fff,
+      -2px 2px 0 #fff,
+      2px -2px 0 #fff,
+      -2px -2px 0 #fff;
+  }
+
+  /* Hero Section */
+  .training-hero {
+    min-height: 100vh; /* 画面全体の高さを確保 */
+    padding: 2rem 0;
+    display: flex;
+    align-items: center; /* コンテンツを縦方向に中央配置 */
+  }
+
+  .training-hero-content-center {
+    text-align: center;
+  }
+
+  .training-hero-text {
+    text-align: center;
+  }
+
+  .training-hero-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .training-stat-item .training-stat-number {
+    font-size: 2rem;
+  }
+
+  /* Limited Offer */
+  .training-limited-offer {
+    padding: 1.5rem;
+  }
+
+  .training-limited-offer h3 {
+    font-size: 1.2rem;
+  }
+
+  .training-offer-benefits {
+    text-align: center;
+  }
+
+  /* Instructor */
+  .training-instructor-profile {
+    padding: 1.5rem;
+  }
+
+  .training-instructor-header {
+    padding-bottom: 1.5rem;
+  }
+
+  .training-instructor-image {
+    margin-bottom: 1rem;
+  }
+
+  .training-instructor-image img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .training-instructor-name-section h4 {
+    font-size: 1.5rem;
+  }
+
+  .training-instructor-name-en {
+    font-size: 0.9rem;
+  }
+
+  .training-instructor-title {
+    font-size: 1rem;
+  }
+
+  .training-instructor-expertise h5 {
+    font-size: 1.3rem;
+  }
+
+  .training-expertise-number {
+    font-size: 1.8rem;
+  }
+
+  .training-expertise-label {
+    font-size: 0.95rem;
+  }
+
+  .training-expertise-item {
+    padding: 1.5rem 1rem;
+  }
+
+  .training-expertise-item p {
+    font-size: 0.85rem;
+  }
+
+  .training-instructor-message {
+    padding: 1.25rem;
+  }
+
+  .training-instructor-message h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .training-instructor-message p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  /* Sections */
+  .training-problem,
+  .training-solution,
+  .training-features,
+  .training-program,
+  .training-advantage,
+  .training-testimonials,
+  .training-pricing,
+  .training-cta,
+  .training-contact {
+    padding: 4rem 0;
+  }
+
+  /* Phase and unique items */
+  .training-phase,
+  .training-unique-item {
+    padding: 1.5rem;
+  }
+
+  /* Buttons */
+  .training-hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .training-btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+
+  /* Survey Results - Extra Small Mobile */
+  .training-survey-details {
+    padding: 1.5rem 1rem;
+  }
+
+  .training-survey-question h4 {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .bar-label {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  .bar-container {
+    height: 45px;
+  }
+
+  .bar-percentage {
+    font-size: 0.95rem;
+  }
+
+  .training-survey-stat-large {
+    padding: 2rem 1.5rem;
+  }
+
+  .training-survey-percentage {
+    font-size: 3rem;
+  }
+
+  .training-survey-label {
+    font-size: 1.2rem;
+  }
+
+  /* Floating CTA Button - Extra Small Mobile */
+  .training-floating-cta {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+    gap: 0.5rem;
+  }
+
+  .training-floating-cta span {
+    display: inline;
+  }
+
+  /* CTA Section (from line 3172-3307) */
+  .training-cta {
+    padding: 3rem 0;
+  }
+
+  .training-cta-icon {
+    font-size: 2.5rem;
+  }
+
+  .training-cta .training-section-title {
+    font-size: 1.8rem;
+  }
+
+  .training-cta .training-section-subtitle {
+    font-size: 1rem;
+  }
+
+  .training-cta-features {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .training-cta-feature {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .training-cta-message {
+    font-size: 1rem;
+  }
+
+  .training-btn-cta-primary {
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+    width: 100%;
+  }
+
+  /* スマホ版のみタイトルの改行位置を調整 */
+  .training-section-title .mobile-break::before {
+    content: "\A";
+    white-space: pre;
+  }
+
+  /* 左右レイアウトをモバイルで背景画像オーバーレイ方式に変更 */
+  .training-comparison-row {
+    position: relative;
+    flex-direction: column;
+    gap: 0;
+    padding: 2rem 1.5rem;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* 各行に背景画像を設定 - data-bg-image属性でインラインスタイルとして設定 */
+  .training-comparison-row[data-bg-row="1"] {
+    background-image: linear-gradient(rgba(255, 255, 153, 0.92), rgba(255, 255, 153, 0.92)), 
+                      var(--bg-image);
+    background-position: center 70%; /* 講師と受講者全体が見えるように調整 */
+  }
+
+  .training-comparison-row[data-bg-row="3"] {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
+                      var(--bg-image);
+  }
+
+  .training-comparison-row[data-bg-row="4"] {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
+                      var(--bg-image);
+  }
+
+  .training-comparison-row[data-bg-row="5"] {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
+                      var(--bg-image);
+  }
+
+  /* 画像コンテナを非表示 */
+  .training-comparison-image-left,
+  .training-comparison-image-right {
+    display: none;
+  }
+
+  /* コンテンツエリアのスタイル調整 */
+  .training-comparison-content-left,
+  .training-comparison-content-right {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+  }
+
+  .training-comparison-content-left h5,
+  .training-comparison-content-right h5 {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  }
+
+  .training-comparison-content-left p,
+  .training-comparison-content-right p {
+    color: #2c3e50;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  }
+
+  .training-comparison-content-left ul,
+  .training-comparison-content-right ul {
+    color: #2c3e50;
+  }
+
+  .training-comparison-content-left li,
+  .training-comparison-content-right li {
+    color: #2c3e50;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  }
+
+  /* 一般的な研修の課題セクション（1行目）のスタイル */
+  .training-comparison-row:nth-of-type(1) h4 {
+    color: #000000;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+  }
+
+  .training-comparison-row:nth-of-type(1) .training-issue-item h5 {
+    color: #856404;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+  }
+
+  .training-comparison-row:nth-of-type(1) .training-issue-item p {
+    color: #856404;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+  }
+
+  .training-comparison-row:nth-of-type(1) .training-issue-item h5::before {
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+  }
+}
+
+
+/* ========================================
+   小型モバイル (390px以下) - iPhone 13 Pro and similar
+   ======================================== */
+@media (max-width: 390px) {
+  .training-hero {
+    min-height: 100vh; /* 画面全体の高さを確保 */
+    padding: 2rem 0;
+    display: flex;
+    align-items: center; /* コンテンツを縦方向に中央配置 */
+  }
+
+  .training-title {
+    font-size: 2.85rem;
+    text-align: center;
+    text-shadow:
+      3px 3px 0 #fff,
+      -3px 3px 0 #fff,
+      3px -3px 0 #fff,
+      -3px -3px 0 #fff,
+      3px 0 0 #fff,
+      -3px 0 0 #fff,
+      0 3px 0 #fff,
+      0 -3px 0 #fff,
+      2px 2px 0 #fff,
+      -2px 2px 0 #fff,
+      2px -2px 0 #fff,
+      -2px -2px 0 #fff;
+  }
+
+  .training-section-title {
+    font-size: 1.6rem;
+  }
+
+  .training-btn-hero {
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+}
+
 
 .training-pricing-guarantee {
   font-weight: bold;
@@ -2503,569 +3250,13 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  /* Container */
-  .training-container {
-    padding: 0 15px;
-  }
 
-  /* Typography */
-  .training-section-title {
-    font-size: 2rem;
-  }
-
-  .training-subsection-title {
-    font-size: 1.5rem;
-  }
-
-  .training-section-subtitle {
-    font-size: 1rem;
-  }
-
-  /* Hero Section */
-  .training-hero {
-    padding: 5rem 0 4rem;
-  }
-
-  .training-hero-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: center;
-  }
-
-  .training-hero-content-center {
-    text-align: center;
-  }
-
-  .training-title {
-    font-size: 4rem;
-    text-shadow:
-      3px 3px 0 #fff,
-      -3px 3px 0 #fff,
-      3px -3px 0 #fff,
-      -3px -3px 0 #fff,
-      3px 0 0 #fff,
-      -3px 0 0 #fff,
-      0 3px 0 #fff,
-      0 -3px 0 #fff,
-      2px 2px 0 #fff,
-      -2px 2px 0 #fff,
-      2px -2px 0 #fff,
-      -2px -2px 0 #fff;
-  }
-
-  .training-subtitle {
-    font-size: 1.1rem;
-  }
-
-  .training-hero-stats {
-    gap: 2rem;
-  }
-
-  .training-stat-item .training-stat-number {
-    font-size: 2.5rem;
-  }
-
-  .training-hero-buttons {
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .training-btn-hero {
-    font-size: 1.1rem;
-    padding: 1.25rem 2rem;
-  }
-
-  /* Social Proof */
-  .training-stats-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .training-instructor-profile {
-    padding: 2rem;
-  }
-
-  .training-instructor-header {
-    padding-bottom: 1.5rem;
-  }
-
-  .training-instructor-image {
-    margin-bottom: 1.5rem;
-  }
-
-  .training-instructor-image img {
-    width: 200px;
-    height: 200px;
-  }
-
-  .training-instructor-name-section h4 {
-    font-size: 1.8rem;
-  }
-
-  .training-expertise-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .training-expertise-number {
-    font-size: 2rem;
-  }
-
-  .training-expertise-label {
-    font-size: 1rem;
-  }
-
-  .training-expertise-item p {
-    font-size: 0.9rem;
-  }
-
-  .training-instructor-message {
-    padding: 1.5rem;
-  }
-
-  .training-instructor-message h5 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-  }
-
-  .training-instructor-message p {
-    font-size: 1rem;
-  }
-
-  /* Games Grid */
-  .training-games-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* FAQ */
-  .training-faq-question {
-    padding: 1.25rem 1.5rem;
-  }
-
-  .training-faq-question h4 {
-    font-size: 1.05rem;
-  }
-
-  .training-faq-answer {
-    padding: 1.5rem;
-  }
-
-  /* Limited Offer */
-  .training-limited-offer {
-    padding: 2rem;
-  }
-
-  .training-limited-offer h3 {
-    font-size: 1.4rem;
-  }
-
-  /* Problems Grid */
-  .training-problems-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  /* Solution Section */
-  .training-solution-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: center;
-  }
-
-  /* Features Grid */
-  .training-features-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  /* Program Section */
-  .training-timeline {
-    padding: 1rem 0;
-  }
-
-  .training-timeline-item {
-    grid-template-columns: 40px 120px 1fr;
-    gap: 1rem;
-  }
-
-  .training-timeline-image {
-    width: 120px;
-    height: 90px;
-  }
-
-  .training-timeline-arrow {
-    font-size: 1.5rem;
-  }
-
-  .training-comparison-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .training-comparison-arrow {
-    display: none;
-  }
-
-  .training-phase {
-    padding: 2rem;
-  }
-
-  .training-phase-images {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .training-phase-image img {
-    height: 200px;
-  }
-
-  /* Testimonials Grid */
-  .training-testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  /* Pricing Grid */
-  .training-pricing-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .training-recommended {
-    transform: none;
-  }
-
-  /* Contact Section */
-  .training-contact-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .training-contact-form {
-    padding: 2rem;
-  }
-
-  /* Footer */
-  .training-footer-content {
-    flex-direction: column;
-    gap: 2rem;
-    text-align: center;
-  }
-
-  /* Buttons */
-  .training-btn {
-    padding: 0.875rem 1.5rem;
-    font-size: 0.9rem;
-  }
-
-  .training-btn-large {
-    padding: 1rem 2rem;
-    font-size: 1rem;
-  }
-
-  /* Floating CTA Button - Mobile */
-  .training-floating-cta {
-    top: 5rem;
-    right: 1rem;
-    padding: 0.875rem 1.5rem;
-    font-size: 1rem;
-    max-width: calc(100% - 2rem);
-    white-space: nowrap;
-  }
-
-  .training-floating-cta:hover {
-    transform: translateY(-3px);
-  }
-
-  .training-floating-cta:active {
-    transform: translateY(-1px);
-  }
-
-  /* Back to Top Button */
-  .training-back-to-top {
-    bottom: 1rem;
-    right: 1rem;
-    width: 45px;
-    height: 45px;
-  }
-
-  /* Survey Results - Mobile Optimization */
-  .training-survey-bar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.5rem;
-  }
-
-  .bar-label {
-    width: 100%;
-    font-size: 0.9rem;
-    text-align: left;
-  }
-
-  .bar-container {
-    width: 100%;
-    height: 40px;
-    min-width: 0;
-  }
-
-  .bar-percentage {
-    font-size: 1rem;
-    right: 12px;
-  }
-
-  .training-survey-details {
-    padding: 2rem 1.5rem;
-  }
-
-  .training-survey-question h4 {
-    font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  /* Typography */
-  .training-section-title {
-    font-size: 1.75rem;
-  }
-
-  .training-title {
-    font-size: 3.2rem;
-    text-shadow:
-      3px 3px 0 #fff,
-      -3px 3px 0 #fff,
-      3px -3px 0 #fff,
-      -3px -3px 0 #fff,
-      3px 0 0 #fff,
-      -3px 0 0 #fff,
-      0 3px 0 #fff,
-      0 -3px 0 #fff,
-      2px 2px 0 #fff,
-      -2px 2px 0 #fff,
-      2px -2px 0 #fff,
-      -2px -2px 0 #fff;
-  }
-
-  /* Hero Section */
-  .training-hero {
-    min-height: 100vh; /* 画面全体の高さを確保 */
-    padding: 2rem 0;
-    display: flex;
-    align-items: center; /* コンテンツを縦方向に中央配置 */
-  }
-
-  .training-hero-content-center {
-    text-align: center;
-  }
-
-  .training-hero-text {
-    text-align: center;
-  }
-
-  .training-hero-stats {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .training-stat-item .training-stat-number {
-    font-size: 2rem;
-  }
-
-  /* Limited Offer */
-  .training-limited-offer {
-    padding: 1.5rem;
-  }
-
-  .training-limited-offer h3 {
-    font-size: 1.2rem;
-  }
-
-  .training-offer-benefits {
-    text-align: center;
-  }
-
-  /* Instructor */
-  .training-instructor-profile {
-    padding: 1.5rem;
-  }
-
-  .training-instructor-header {
-    padding-bottom: 1.5rem;
-  }
-
-  .training-instructor-image {
-    margin-bottom: 1rem;
-  }
-
-  .training-instructor-image img {
-    width: 160px;
-    height: 160px;
-  }
-
-  .training-instructor-name-section h4 {
-    font-size: 1.5rem;
-  }
-
-  .training-instructor-name-en {
-    font-size: 0.9rem;
-  }
-
-  .training-instructor-title {
-    font-size: 1rem;
-  }
-
-  .training-instructor-expertise h5 {
-    font-size: 1.3rem;
-  }
-
-  .training-expertise-number {
-    font-size: 1.8rem;
-  }
-
-  .training-expertise-label {
-    font-size: 0.95rem;
-  }
-
-  .training-expertise-item {
-    padding: 1.5rem 1rem;
-  }
-
-  .training-expertise-item p {
-    font-size: 0.85rem;
-  }
-
-  .training-instructor-message {
-    padding: 1.25rem;
-  }
-
-  .training-instructor-message h5 {
-    font-size: 1.1rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .training-instructor-message p {
-    font-size: 0.95rem;
-    line-height: 1.75;
-  }
-
-  /* Sections */
-  .training-problem,
-  .training-solution,
-  .training-features,
-  .training-program,
-  .training-advantage,
-  .training-testimonials,
-  .training-pricing,
-  .training-cta,
-  .training-contact {
-    padding: 4rem 0;
-  }
-
-  /* Phase and unique items */
-  .training-phase,
-  .training-unique-item {
-    padding: 1.5rem;
-  }
-
-  /* Buttons */
-  .training-hero-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .training-btn {
-    width: 100%;
-    max-width: 300px;
-    justify-content: center;
-  }
-
-  /* Survey Results - Extra Small Mobile */
-  .training-survey-details {
-    padding: 1.5rem 1rem;
-  }
-
-  .training-survey-question h4 {
-    font-size: 1rem;
-    line-height: 1.4;
-  }
-
-  .bar-label {
-    font-size: 0.85rem;
-    line-height: 1.3;
-  }
-
-  .bar-container {
-    height: 45px;
-  }
-
-  .bar-percentage {
-    font-size: 0.95rem;
-  }
-
-  .training-survey-stat-large {
-    padding: 2rem 1.5rem;
-  }
-
-  .training-survey-percentage {
-    font-size: 3rem;
-  }
-
-  .training-survey-label {
-    font-size: 1.2rem;
-  }
-
-  /* Floating CTA Button - Extra Small Mobile */
-  .training-floating-cta {
-    padding: 0.75rem 1.25rem;
-    font-size: 0.95rem;
-    gap: 0.5rem;
-  }
-
-  .training-floating-cta span {
-    display: inline;
-  }
-}
-
-/* iPhone 13 Pro and similar resolution devices */
-@media (max-width: 390px) {
-  .training-hero {
-    min-height: 100vh; /* 画面全体の高さを確保 */
-    padding: 2rem 0;
-    display: flex;
-    align-items: center; /* コンテンツを縦方向に中央配置 */
-  }
-
-  .training-hero-content-center {
-    text-align: center;
-  }
-
-  .training-hero-text {
-    text-align: center;
-  }
-
-  .training-title {
-    font-size: 2.85rem;
-    text-align: center;
-    text-shadow:
-      2.5px 2.5px 0 #fff,
-      -2.5px 2.5px 0 #fff,
-      2.5px -2.5px 0 #fff,
-      -2.5px -2.5px 0 #fff,
-      2.5px 0 0 #fff,
-      -2.5px 0 0 #fff,
-      0 2.5px 0 #fff,
-      0 -2.5px 0 #fff,
-      2px 2px 0 #fff,
-      -2px 2px 0 #fff,
-      2px -2px 0 #fff,
-      -2px -2px 0 #fff;
-  }
-}
-
-/* Scroll Indicator */
+/* ========================================
+   スクロールインジケーター
+   ======================================== */
 .training-scroll-indicator {
   margin-top: 3rem;
-  display: none; /* デフォルトは非表示 */
+  display: none; /* デフォルトで非表示 */
 }
 
 .training-scroll-icon {
@@ -3078,15 +3269,8 @@
 }
 
 .training-scroll-icon:hover {
-  color: #6fa865;
-  transform: translateY(5px);
-}
-
-/* スマホでのみ表示 */
-@media (max-width: 768px) {
-  .training-scroll-indicator {
-    display: block;
-  }
+  color: #6BA563;
+  transform: scale(1.1);
 }
 
 @keyframes bounce {
@@ -3101,207 +3285,3 @@
   }
 }
 
-/* Animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.training-problem-item,
-.training-feature-item,
-.training-testimonial,
-.training-pricing-plan {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Focus styles for accessibility */
-.training-btn:focus,
-.training-form-group input:focus,
-.training-form-group textarea:focus {
-  outline: 2px solid #8BC780;
-  outline-offset: 2px;
-}
-/* CTA Section Responsive */
-@media (max-width: 768px) {
-  .training-cta {
-    padding: 4rem 0;
-  }
-
-  .training-cta-icon {
-    font-size: 3rem;
-  }
-
-  .training-cta .training-section-title {
-    font-size: 2rem;
-  }
-
-  .training-cta .training-section-subtitle {
-    font-size: 1.1rem;
-  }
-
-  .training-cta-features {
-    gap: 1rem;
-  }
-
-  .training-cta-feature {
-    padding: 0.6rem 1.2rem;
-    font-size: 1rem;
-  }
-
-  .training-cta-message {
-    font-size: 1.1rem;
-  }
-
-  .training-btn-cta-primary {
-    font-size: 1.1rem;
-    padding: 1rem 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .training-cta {
-    padding: 3rem 0;
-  }
-
-  .training-cta-icon {
-    font-size: 2.5rem;
-  }
-
-  .training-cta .training-section-title {
-    font-size: 1.8rem;
-  }
-
-  .training-cta .training-section-subtitle {
-    font-size: 1rem;
-  }
-
-  .training-cta-features {
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: center;
-  }
-
-  .training-cta-feature {
-    padding: 0.5rem 1rem;
-    font-size: 0.95rem;
-  }
-
-  .training-cta-message {
-    font-size: 1rem;
-  }
-
-  .training-btn-cta-primary {
-    font-size: 1rem;
-    padding: 1rem 1.5rem;
-    width: 100%;
-  }
-
-  /* スマホ版のみタイトルの改行位置を調整 */
-  .training-section-title .mobile-break::before {
-    content: "\A";
-    white-space: pre;
-  }
-
-  /* 左右レイアウトをモバイルで背景画像オーバーレイ方式に変更 */
-  .training-comparison-row {
-    position: relative;
-    flex-direction: column;
-    gap: 0;
-    padding: 2rem 1.5rem;
-    min-height: 400px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  /* 各行に背景画像を設定 - data-bg-image属性でインラインスタイルとして設定 */
-  .training-comparison-row[data-bg-row="1"] {
-    background-image: linear-gradient(rgba(255, 255, 153, 0.92), rgba(255, 255, 153, 0.92)), 
-                      var(--bg-image);
-    background-position: center 60%; /* 講師と受講者全体が見えるように調整 */
-  }
-
-  .training-comparison-row[data-bg-row="3"] {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
-                      var(--bg-image);
-  }
-
-  .training-comparison-row[data-bg-row="4"] {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
-                      var(--bg-image);
-  }
-
-  .training-comparison-row[data-bg-row="5"] {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
-                      var(--bg-image);
-  }
-
-  /* 画像コンテナを非表示 */
-  .training-comparison-image-left,
-  .training-comparison-image-right {
-    display: none;
-  }
-
-  /* コンテンツエリアのスタイル調整 */
-  .training-comparison-content-left,
-  .training-comparison-content-right {
-    position: relative;
-    z-index: 1;
-    background: transparent;
-  }
-
-  .training-comparison-content-left h5,
-  .training-comparison-content-right h5 {
-    font-size: 1.1rem;
-    color: #2c3e50;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
-  }
-
-  .training-comparison-content-left p,
-  .training-comparison-content-right p {
-    color: #2c3e50;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
-  }
-
-  .training-comparison-content-left ul,
-  .training-comparison-content-right ul {
-    color: #2c3e50;
-  }
-
-  .training-comparison-content-left li,
-  .training-comparison-content-right li {
-    color: #2c3e50;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
-  }
-
-  /* 一般的な研修の課題セクション（1行目）のスタイル */
-  .training-comparison-row:nth-of-type(1) h4 {
-    color: #000000;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
-  }
-
-  .training-comparison-row:nth-of-type(1) .training-issue-item h5 {
-    color: #856404;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
-  }
-
-  .training-comparison-row:nth-of-type(1) .training-issue-item p {
-    color: #856404;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
-  }
-
-  .training-comparison-row:nth-of-type(1) .training-issue-item h5::before {
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
-  }
-}
