@@ -774,7 +774,7 @@ const Training = () => {
               <span className="desktop-only">今なら<strong>50万円 → 42.5万円（税別）</strong>で年間6回の研修を導入可能！</span>
               <span className="mobile-tablet-only">今なら<strong>50万円 → 42.5万円（税別）</strong><br />で年間6回の研修を導入可能！</span>
             </p>
-            <p className="training-offer-price-detail">（6回・2ヶ月に1回実施、1回あたり7.1万円）</p>
+            <p className="training-offer-price-detail">（6回：2ヶ月に1回実施）</p>
             
             <div className="training-offer-conditions">
               <h4>【適用条件】</h4>
