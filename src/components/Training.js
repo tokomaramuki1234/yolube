@@ -347,7 +347,7 @@ const Training = () => {
                 <FontAwesomeIcon icon={faArrowDown} />
               </div>
               <div className="training-timeline-image">
-                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&q=80" alt="経営分析・戦略立案" />
+                <img src="/images/training/session6_strategy.jpg" alt="YOLUBE経営分析研修 - SWOT分析による戦略立案" />
               </div>
               <div className="training-timeline-content">
                 <div className="training-timeline-badge">第6回</div>
