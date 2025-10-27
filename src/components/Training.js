@@ -459,7 +459,7 @@ const Training = () => {
               <p>研修で生まれた成功体験は日常業務でも思い返され、自然とポジティブな話題が増加。忘年会や日常会話でも話題となり、<strong>組織全体の雰囲気を根本から改善</strong>します。</p>
             </div>
             <div className="training-comparison-image-right">
-              <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop&q=80" alt="ボードゲームで盛り上がる人たちの画像" />
+              <img src="/images/training/shared_success.jpg" alt="笑顔で協力し合うビジネスチーム - 共有される成功体験" />
             </div>
           </div>
         </div>
