@@ -273,7 +273,7 @@ const Training = () => {
                 <FontAwesomeIcon icon={faArrowDown} />
               </div>
               <div className="training-timeline-image">
-                <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&h=300&fit=crop&q=80" alt="アイスブレイク" />
+                <img src="/images/training/session1_icebreak.jpg" alt="YOLUBEアイスブレイク研修 - カードゲームで緊張をほぐす" />
               </div>
               <div className="training-timeline-content">
                 <div className="training-timeline-badge">第1回</div>
