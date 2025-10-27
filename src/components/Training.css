@@ -223,8 +223,10 @@
 }
 
 .training-title {
+  font-family: "ab-megadot9", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 9rem;
-  font-weight: bold;
   line-height: 1.2;
   margin-bottom: 1.5rem;
   color: #2c3e50;
