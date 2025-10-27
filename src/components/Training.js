@@ -116,7 +116,6 @@ const Training = () => {
             </a>
           </div>
           <nav className={`ke-nav ${isMobileMenuOpen ? 'ke-nav-open' : ''}`}>
-            <a href="#problems" onClick={() => setIsMobileMenuOpen(false)}>研修について</a>
             <a href="#features" onClick={() => setIsMobileMenuOpen(false)}>特徴</a>
             <a href="#program" onClick={() => setIsMobileMenuOpen(false)}>プログラム</a>
             <a href="#pricing" onClick={() => setIsMobileMenuOpen(false)}>料金</a>
