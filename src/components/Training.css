@@ -1136,12 +1136,18 @@
 }
 
 /* 見出しスタイル */
-.training-comparison-content-left h5,
-.training-comparison-content-right h5 {
+.training-comparison-content-left h5 {
   font-size: 1.3rem;
   color: #2c3e50;
   margin-bottom: 1rem;
   text-align: center;
+}
+
+.training-comparison-content-right h5 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  text-align: left; /* デスクトップは左揃え */
 }
 
 /* テキストスタイル */
@@ -2509,6 +2515,11 @@
   .training-issue-item h5::before {
     display: none !important;
   }
+
+  /* より詳細度の高いセレクタにも明示的に適用 */
+  .training-comparison-content-right h5 {
+    text-align: center !important;
+  }
 }
 
 
@@ -2832,11 +2843,18 @@
     background: transparent;
   }
 
-  .training-comparison-content-left h5,
+  .training-comparison-content-left h5 {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    text-align: center;
+  }
+
   .training-comparison-content-right h5 {
     font-size: 1.1rem;
     color: #2c3e50;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    text-align: center; /* モバイルは中央揃え */
   }
 
   .training-comparison-content-left p,
@@ -2890,6 +2908,11 @@
 
   .training-issue-item h5::before {
     display: none !important;
+  }
+
+  /* より詳細度の高いセレクタにも明示的に適用 */
+  .training-comparison-content-right h5 {
+    text-align: center !important;
   }
 }
 
