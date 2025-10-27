@@ -288,7 +288,7 @@ const Training = () => {
                 <FontAwesomeIcon icon={faArrowDown} />
               </div>
               <div className="training-timeline-image">
-                <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=400&h=300&fit=crop&q=80" alt="コミュニケーション強化" />
+                <img src="/images/training/session2_communication.jpg" alt="YOLUBEコミュニケーション研修 - 対話と傾聴力の向上" />
               </div>
               <div className="training-timeline-content">
                 <div className="training-timeline-badge">第2回</div>
