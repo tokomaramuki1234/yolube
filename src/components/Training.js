@@ -11,6 +11,7 @@ const Training = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   // 背景画像のプリロード
   useEffect(() => {
@@ -41,6 +42,15 @@ const Training = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // スライドショーの自動再生
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % 5);
+    }, 4000); // 4秒ごとに切り替え
+
+    return () => clearInterval(timer);
   }, []);
 
   // トップへ戻る関数
@@ -242,6 +252,44 @@ const Training = () => {
               <p>
                 世界には<strong>30万種類以上</strong>のテーブルゲームがあると言われており、教育・心理・医療など様々な分野で研究が行われています。年齢、性別、経験は関係なく、<strong>ゲーム中はお互いにフラットな人間関係</strong>になるため、自然と会話が生まれ、気づけば数時間も夢中になっている、そんな魅力があります。
               </p>
+            </div>
+
+            {/* Table Game Slideshow */}
+            <div className="training-tablegame-slideshow">
+              <div className="slideshow-container">
+                <div className="slideshow-track" style={{transform: `translateX(-${currentSlide * 100}%)`}}>
+                  <div className="slideshow-slide">
+                    <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=800&h=500&fit=crop&q=80" alt="様々なテーブルゲームが棚に収まっている" />
+                    <p className="slideshow-caption">様々なテーブルゲーム</p>
+                  </div>
+                  <div className="slideshow-slide">
+                    <img src="https://cf.geekdo-images.com/sdxX8YRHBxK87cs7YkHCgg__opengraph/img/6HyKrQKw6kKjNKykzBXEPVkpzxY=/0x48:1024x585/fit-in/1200x630/filters:strip_icc()/pic3979766.png" alt="The Mind - 協力型カードゲーム" />
+                    <p className="slideshow-caption">The Mind</p>
+                  </div>
+                  <div className="slideshow-slide">
+                    <img src="https://cf.geekdo-images.com/W3Bsga_uLP9kO91gZ7H8yw__opengraph/img/M_3Vg1j2HlkNOVYcLLICbTdown0=/fit-in/1200x630/filters:strip_icc()/pic2419375.jpg" alt="CATAN - 開拓ボードゲーム" />
+                    <p className="slideshow-caption">CATAN（カタン）</p>
+                  </div>
+                  <div className="slideshow-slide">
+                    <img src="https://cf.geekdo-images.com/Efk-smcinHnIabAchDytIg__opengraph/img/gUGO8ER6fyNdGCR4csbBgPJtExY=/fit-in/1200x630/filters:strip_icc()/pic5235845.jpg" alt="ウボンゴ - パズルゲーム" />
+                    <p className="slideshow-caption">ウボンゴ</p>
+                  </div>
+                  <div className="slideshow-slide">
+                    <img src="https://cf.geekdo-images.com/Z3upN53-fsVPUDimN9SpOA__opengraph/img/xu944KcULjAKfrq7J6qoo3j94zM=/fit-in/1200x630/filters:strip_icc()/pic2337577.jpg" alt="カルカソンヌ - 地形タイルゲーム" />
+                    <p className="slideshow-caption">カルカソンヌ</p>
+                  </div>
+                </div>
+              </div>
+              <div className="slideshow-dots">
+                {[0, 1, 2, 3, 4].map((index) => (
+                  <button
+                    key={index}
+                    className={`slideshow-dot ${currentSlide === index ? 'active' : ''}`}
+                    onClick={() => setCurrentSlide(index)}
+                    aria-label={`スライド${index + 1}へ移動`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
