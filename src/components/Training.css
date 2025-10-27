@@ -3132,25 +3132,25 @@ html {
     background-repeat: no-repeat;
   }
 
-  /* 各行に背景画像を設定 */
-  .training-comparison-row:nth-of-type(1) {
+  /* 各行に背景画像を設定 - data-bg-image属性でインラインスタイルとして設定 */
+  .training-comparison-row[data-bg-row="1"] {
     background-image: linear-gradient(rgba(255, 255, 153, 0.92), rgba(255, 255, 153, 0.92)), 
-                      url('%PUBLIC_URL%/images/training/traditional_training.jpg');
+                      var(--bg-image);
   }
 
-  .training-comparison-row:nth-of-type(3) {
+  .training-comparison-row[data-bg-row="3"] {
     background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
-                      url('%PUBLIC_URL%/images/training/persona_worklife.jpg');
+                      var(--bg-image);
   }
 
-  .training-comparison-row:nth-of-type(4) {
+  .training-comparison-row[data-bg-row="4"] {
     background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
-                      url('%PUBLIC_URL%/images/training/pdca_cycle.jpg');
+                      var(--bg-image);
   }
 
-  .training-comparison-row:nth-of-type(5) {
+  .training-comparison-row[data-bg-row="5"] {
     background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
-                      url('%PUBLIC_URL%/images/training/shared_success.jpg');
+                      var(--bg-image);
   }
 
   /* 画像コンテナを非表示 */

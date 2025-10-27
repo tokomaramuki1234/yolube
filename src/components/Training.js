@@ -398,7 +398,7 @@ const Training = () => {
           <h2 className="training-section-title">なぜテーブルゲーム研修なのか？</h2>
 
           {/* 構成１：一般的な研修の課題（左：画像、右：テキスト） */}
-          <div className="training-comparison-row">
+          <div className="training-comparison-row" data-bg-row="1" style={{'--bg-image': 'url(/images/training/traditional_training.jpg)'}}>
             <div className="training-comparison-image-left">
               <img src="/images/training/traditional_training.jpg" alt="座学型の一般的な研修風景 - 受動的な学習環境" />
             </div>
@@ -426,7 +426,7 @@ const Training = () => {
           <h4 className="training-unique-title">テーブルゲーム研修だけの独自価値</h4>
           
           {/* 構成２：職場のペルソナ（左：テキスト、右：画像） */}
-          <div className="training-comparison-row">
+          <div className="training-comparison-row" data-bg-row="3" style={{'--bg-image': 'url(/images/training/persona_worklife.jpg)'}}>
             <div className="training-comparison-content-left">
               <h5>1. 「職場のペルソナ」を無効化する稀有な研修</h5>
               <p>従来研修では職場での立場や先入観が邪魔をしますが、テーブルゲームでは参加者全員がフラットな状態になります。ゲーム中は職位や部署に関係なく、純粋な人間性が表面化するため、<strong>"職場では見えなかった一面"</strong> での相互理解が深まります。</p>
@@ -437,7 +437,7 @@ const Training = () => {
           </div>
 
           {/* 構成３：PDCAサイクル（左：画像、右：テキスト） */}
-          <div className="training-comparison-row">
+          <div className="training-comparison-row" data-bg-row="4" style={{'--bg-image': 'url(/images/training/pdca_cycle.jpg)'}}>
             <div className="training-comparison-image-left">
               <img src="/images/training/pdca_cycle.jpg" alt="PDCAサイクル図解 - Plan Do Check Act の継続的改善プロセス" />
             </div>
@@ -453,7 +453,7 @@ const Training = () => {
           </div>
           
           {/* 構成４：共有される成功体験（左：テキスト、右：画像） */}
-          <div className="training-comparison-row">
+          <div className="training-comparison-row" data-bg-row="5" style={{'--bg-image': 'url(/images/training/shared_success.jpg)'}}>
             <div className="training-comparison-content-left">
               <h5>3. 共有される成功体験が組織文化を変える</h5>
               <p>研修で生まれた成功体験は日常業務でも思い返され、自然とポジティブな話題が増加。忘年会や日常会話でも話題となり、<strong>組織全体の雰囲気を根本から改善</strong>します。</p>
