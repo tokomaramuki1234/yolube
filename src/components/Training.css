@@ -342,6 +342,7 @@
   background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)),
               url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80') center/cover;
   position: relative;
+  scroll-margin-top: 80px;
 }
 
 .training-section-header {
@@ -479,6 +480,7 @@
 .training-features {
   padding: 6rem 0;
   background: #fff;
+  scroll-margin-top: 80px;
 }
 
 .training-features-grid {
@@ -558,6 +560,7 @@
 .training-program {
   padding: 6rem 0;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  scroll-margin-top: 80px;
 }
 
 /* Timeline */
@@ -1636,6 +1639,7 @@
 .training-pricing {
   padding: 6rem 0;
   background: #fff;
+  scroll-margin-top: 80px;
 }
 
 /* Limited Offer */
@@ -3195,6 +3199,7 @@
 .training-contact {
   padding: 6rem 0;
   background: #fff;
+  scroll-margin-top: 80px;
 }
 
 .training-contact-content {
