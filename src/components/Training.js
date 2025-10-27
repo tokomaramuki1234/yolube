@@ -404,12 +404,22 @@ const Training = () => {
             </div>
             <div className="training-comparison-content-right">
               <h4>一般的な研修の課題</h4>
-              <ul>
-                <li><strong>単発型：</strong> 効果が定着しにくい。また、根深い課題に対しアプローチしにくい</li>
-                <li><strong>座学型：</strong> 受動的な学習で定着率が低く、実践的なコミュニケーション機会がない</li>
-                <li><strong>オンライン研修：</strong> 画面越しでは本質的な人間関係構築が困難</li>
-                <li><strong>既存のチームビルディング：</strong> 一時的な効果に留まり、継続性に欠ける</li>
-              </ul>
+              <div className="training-issue-item">
+                <h5>単発型</h5>
+                <p>効果が定着しにくい。また、根深い課題に対しアプローチしにくい。</p>
+              </div>
+              <div className="training-issue-item">
+                <h5>座学型</h5>
+                <p>受動的な学習で定着率が低く、実践的なコミュニケーション機会がない。</p>
+              </div>
+              <div className="training-issue-item">
+                <h5>オンライン研修</h5>
+                <p>画面越しでは本質的な人間関係構築が困難。</p>
+              </div>
+              <div className="training-issue-item">
+                <h5>既存のチームビルディング</h5>
+                <p>一時的な効果に留まり、継続性に欠ける。</p>
+              </div>
             </div>
           </div>
           

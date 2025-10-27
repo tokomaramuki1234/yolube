@@ -879,28 +879,41 @@
 .training-comparison-row:first-of-type h4 {
   color: #856404;
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.training-comparison-row:first-of-type ul {
-  list-style: none;
-  padding: 0;
+/* 研修課題アイテム */
+.training-issue-item {
+  margin-bottom: 1.5rem;
 }
 
-.training-comparison-row:first-of-type li {
-  padding: 0.5rem 0;
-  padding-left: 1.5rem;
-  position: relative;
+.training-issue-item:last-child {
+  margin-bottom: 0;
+}
+
+.training-issue-item h5 {
   color: #856404;
-  line-height: 1.6;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
 }
 
-.training-comparison-row:first-of-type li::before {
+.training-issue-item h5::before {
   content: "×";
   position: absolute;
   left: 0;
   color: #dc3545;
   font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.training-issue-item p {
+  color: #856404;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 1.5rem;
 }
 
 /* 画像コンテナ（左配置） */
