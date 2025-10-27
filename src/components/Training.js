@@ -269,7 +269,8 @@ const Training = () => {
         <div className="training-container">
           <h2 className="training-section-title">研修プログラムの流れ</h2>
           <p className="training-section-subtitle">
-            モデルケース：年６回の研修を通して実施した場合
+            <span className="desktop-only">モデルケース：年６回の研修を通して実施した場合</span>
+            <span className="mobile-only"><strong>モデルケース</strong><br />年６回の研修を通して実施した場合</span>
           </p>
 
           {/* Program Phases */}

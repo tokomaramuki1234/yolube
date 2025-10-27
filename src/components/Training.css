@@ -38,6 +38,15 @@
   line-height: 1.8;
 }
 
+/* Responsive Display Utilities */
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: inline;
+}
+
 /* Buttons */
 .training-btn {
   display: inline-flex;
@@ -2481,6 +2490,15 @@
     font-size: 1rem;
     padding: 1rem 1.5rem;
     width: 100%;
+  }
+
+  /* Responsive Display - Mobile */
+  .mobile-only {
+    display: inline;
+  }
+
+  .desktop-only {
+    display: none;
   }
 
   /* スマホ版のみ改行位置を調整 */
