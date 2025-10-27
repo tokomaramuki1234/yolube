@@ -314,11 +314,11 @@ const Training = () => {
 
               <div className="training-phase-images">
                 <div className="training-phase-image">
-                  <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=500&h=350&fit=crop&q=80" alt="ブレインストーミング実施風景" />
+                  <img src="/images/training/phase2_brainstorm.jpg" alt="コミュニケーションを表現したアート作品 - ブレインストーミング研修のイメージ" />
                   <p className="training-image-caption">ブレインストーミング実施風景</p>
                 </div>
                 <div className="training-phase-image">
-                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=350&fit=crop&q=80" alt="SWOT分析に関する画像" />
+                  <img src="/images/training/phase2_swot.jpg" alt="SWOT分析図 - 経営戦略研修のイメージ" />
                   <p className="training-image-caption">SWOT分析に関する画像</p>
                 </div>
               </div>
