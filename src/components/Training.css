@@ -3120,22 +3120,94 @@ html {
     width: 100%;
   }
 
-  /* 左右レイアウトをモバイルで縦積み */
+  /* 左右レイアウトをモバイルで背景画像オーバーレイ方式に変更 */
   .training-comparison-row {
+    position: relative;
     flex-direction: column;
-    gap: 1.5rem;
-    padding: 1.5rem;
+    gap: 0;
+    padding: 2rem 1.5rem;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
+  /* 各行に背景画像を設定 */
+  .training-comparison-row:nth-of-type(1) {
+    background-image: linear-gradient(rgba(255, 255, 153, 0.92), rgba(255, 255, 153, 0.92)), 
+                      url('/images/training/traditional_training.jpg');
+  }
+
+  .training-comparison-row:nth-of-type(3) {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
+                      url('/images/training/persona_worklife.jpg');
+  }
+
+  .training-comparison-row:nth-of-type(4) {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
+                      url('/images/training/pdca_cycle.jpg');
+  }
+
+  .training-comparison-row:nth-of-type(5) {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
+                      url('/images/training/shared_success.jpg');
+  }
+
+  /* 画像コンテナを非表示 */
   .training-comparison-image-left,
   .training-comparison-image-right {
-    flex: 0 0 auto;
-    width: 100%;
-    height: 200px;
+    display: none;
+  }
+
+  /* コンテンツエリアのスタイル調整 */
+  .training-comparison-content-left,
+  .training-comparison-content-right {
+    position: relative;
+    z-index: 1;
+    background: transparent;
   }
 
   .training-comparison-content-left h5,
   .training-comparison-content-right h5 {
     font-size: 1.1rem;
+    color: #2c3e50;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  }
+
+  .training-comparison-content-left p,
+  .training-comparison-content-right p {
+    color: #2c3e50;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  }
+
+  .training-comparison-content-left ul,
+  .training-comparison-content-right ul {
+    color: #2c3e50;
+  }
+
+  .training-comparison-content-left li,
+  .training-comparison-content-right li {
+    color: #2c3e50;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  }
+
+  /* 一般的な研修の課題セクション（1行目）のスタイル */
+  .training-comparison-row:nth-of-type(1) h4 {
+    color: #000000;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+  }
+
+  .training-comparison-row:nth-of-type(1) .training-issue-item h5 {
+    color: #856404;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+  }
+
+  .training-comparison-row:nth-of-type(1) .training-issue-item p {
+    color: #856404;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+  }
+
+  .training-comparison-row:nth-of-type(1) .training-issue-item h5::before {
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
   }
 }
