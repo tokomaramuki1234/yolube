@@ -378,6 +378,7 @@
 .training-problem-content p {
   color: #666;
   line-height: 1.7;
+  text-align: left;
 }
 
 /* Solution Section */
