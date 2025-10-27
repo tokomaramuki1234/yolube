@@ -459,12 +459,12 @@ const Training = () => {
             </div>
           </div>
           
-          <h4 className="training-unique-title">テーブルゲーム研修だけの独自価値</h4>
+          <h4 className="training-unique-title">テーブルゲーム研修の強み</h4>
           
           {/* 構成２：職場のペルソナ（左：テキスト、右：画像） */}
           <div className="training-comparison-row" data-bg-row="3" style={{'--bg-image': 'url(/images/training/persona_worklife.jpg)'}}>
             <div className="training-comparison-content-left">
-              <h5>1. 「職場のペルソナ」を無効化する稀有な研修</h5>
+              <h5>“職場のペルソナ”を無効化する稀有な研修</h5>
               <p>従来研修では職場での立場や先入観が邪魔をしますが、テーブルゲームでは参加者全員がフラットな状態になります。ゲーム中は職位や部署に関係なく、純粋な人間性が表面化するため、<strong>"職場では見えなかった一面"</strong> での相互理解が深まります。</p>
             </div>
             <div className="training-comparison-image-right">
@@ -478,7 +478,7 @@ const Training = () => {
               <img src="/images/training/pdca_cycle.jpg" alt="PDCAサイクル図解 - Plan Do Check Act の継続的改善プロセス" />
             </div>
             <div className="training-comparison-content-right">
-              <h5>2. 段階的PDCAサイクルで確実な成果創出</h5>
+              <h5>段階的PDCAサイクルで確実な成果創出</h5>
               <ul>
                 <li><strong>第1～4回：</strong> アイスブレイク＆情報収集で土壌づくり</li>
                 <li><strong>毎回のアンケート分析</strong> で次回研修を最適化</li>
@@ -491,8 +491,8 @@ const Training = () => {
           {/* 構成４：共有される成功体験（左：テキスト、右：画像） */}
           <div className="training-comparison-row" data-bg-row="5" style={{'--bg-image': 'url(/images/training/shared_success.jpg)'}}>
             <div className="training-comparison-content-left">
-              <h5>3. 共有される成功体験が組織文化を変える</h5>
-              <p>研修で生まれた成功体験は日常業務でも思い返され、自然とポジティブな話題が増加。忘年会や日常会話でも話題となり、<strong>組織全体の雰囲気を根本から改善</strong>します。</p>
+              <h5>成功体験の共有が組織文化を変える</h5>
+              <p>研修中に体験した“ほかの社員との成功体験”は日常業務でも思い返され、「あの時の〇〇は楽しかったね！」と言った会話が自然に増えます。忘年会や日常会話でも共通の話題としやすく、<strong>組織全体の雰囲気を根本から改善</strong>します。</p>
             </div>
             <div className="training-comparison-image-right">
               <img src="/images/training/shared_success.jpg" alt="笑顔で協力し合うビジネスチーム - 共有される成功体験" />
@@ -597,7 +597,7 @@ const Training = () => {
               <div className="training-instructor-name-section">
                 <h4>木村 允</h4>
                 <p className="training-instructor-name-en">KIMURA MAKOTO</p>
-                <p className="training-instructor-title">YOLUBE 代表 / テーブルゲームイノベーター / <a href="https://www.mitsulu.style/" target="_blank" rel="noopener noreferrer">IT系便利屋 三流</a> 代表</p>
+                <p className="training-instructor-title">YOLUBE 代表 /<br />テーブルゲームイノベーター /<br /><a href="https://www.mitsulu.style/" target="_blank" rel="noopener noreferrer">IT系便利屋 三流</a> 代表</p>
               </div>
             </div>
 
