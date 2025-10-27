@@ -806,7 +806,6 @@ const Training = () => {
                 <p className="training-trial-subtitle">1回限りの体験研修</p>
                 <div className="training-trial-price">
                   <span className="training-price-amount">3万円</span>
-                  <span className="training-price-unit">／1回</span>
                 </div>
                 <div className="training-price-tax">(税込 33,000円)</div>
                 <div className="training-trial-note">
