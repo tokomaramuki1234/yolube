@@ -400,7 +400,7 @@ const Training = () => {
           {/* 構成１：一般的な研修の課題（左：画像、右：テキスト） */}
           <div className="training-comparison-row">
             <div className="training-comparison-image-left">
-              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=400&fit=crop&q=80" alt="一般的な研修風景" />
+              <img src="/images/training/traditional_training.jpg" alt="座学型の一般的な研修風景 - 受動的な学習環境" />
             </div>
             <div className="training-comparison-content-right">
               <h4>一般的な研修の課題</h4>
