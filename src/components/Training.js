@@ -414,7 +414,7 @@ const Training = () => {
 
               <div className="training-phase-images">
                 <div className="training-phase-image">
-                  <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&h=350&fit=crop&q=80" alt="ゲームを楽しむ会社員、OLたち" />
+                  <img src="/images/training/phase1_game.jpg" alt="YOLUBEゲーム研修 - 達成感と喜びを共有する参加者たち" />
                   <p className="training-image-caption">ゲームを楽しむ会社員、OLたち</p>
                 </div>
                 <div className="training-phase-image">
