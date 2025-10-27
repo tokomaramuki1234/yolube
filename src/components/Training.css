@@ -1081,6 +1081,11 @@
   text-align: left; /* デスクトップは左揃え */
 }
 
+/* デスクトップで .training-comparison-content-right 内の .training-issue-item h5 は左揃え */
+.training-comparison-content-right .training-issue-item h5 {
+  text-align: left;
+}
+
 .training-issue-item h5::before {
   content: "×";
   position: absolute;
@@ -1147,7 +1152,7 @@
   font-size: 1.3rem;
   color: #2c3e50;
   margin-bottom: 1rem;
-  text-align: left; /* デスクトップは左揃え */
+  text-align: center; /* 中央揃え */
 }
 
 /* テキストスタイル */
