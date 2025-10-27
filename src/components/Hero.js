@@ -41,7 +41,7 @@ const Hero = () => {
     },
     {
       id: 4,
-      image: '/images/slider4/image1.png',
+      image: '/images/slider4/training_new.jpg',
       alt: 'テーブルゲームを活用した企業研修の様子',
       title: '遊び心いっぱいの研修、\n試してみませんか？',
       subtitle: '主体的に学び、多角的に考える研修を目指します',
