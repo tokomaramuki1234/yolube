@@ -280,8 +280,8 @@ const Training = () => {
                   <p className="training-image-caption">ゲームを楽しむ会社員、OLたち</p>
                 </div>
                 <div className="training-phase-image">
-                  <img src="/images/training/phase1_survey.jpg" alt="YOLUBE研修アンケート結果 - 新人社員コミュニケーション研修の効果" />
-                  <p className="training-image-caption">アンケート結果（研修満足度85%、コミュニケーション改善78%）</p>
+                  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=350&fit=crop&q=80" alt="オンラインアンケート集計中" />
+                  <p className="training-image-caption">オンラインアンケート集計中</p>
                 </div>
               </div>
 
