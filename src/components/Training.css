@@ -2311,6 +2311,11 @@
     width: 45px;
     height: 45px;
   }
+
+  /* Offer Deadline - スマホ・タブレット版は左揃え */
+  .training-offer-deadline {
+    text-align: left;
+  }
 }
 
 
