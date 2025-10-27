@@ -893,7 +893,7 @@ const Training = () => {
                 <ul>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> 本格的な組織変革を目指す企業様向け</li>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> 研修参加者10名まで</li>
-                  <li><FontAwesomeIcon icon={faCheckCircle} /> 完全プログラム×2周</li>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 研修内容、スケジュールを自由にカスタマイズ可能</li>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> 6ヶ月無料相談サポート付</li>
                 </ul>
               </div>
