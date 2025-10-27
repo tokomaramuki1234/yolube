@@ -919,7 +919,7 @@
 /* 画像コンテナ（左配置） */
 .training-comparison-image-left {
   flex: 0 0 45%;
-  height: 300px;
+  height: 460px;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -943,7 +943,7 @@
 /* 画像コンテナ（右配置） */
 .training-comparison-image-right {
   flex: 0 0 45%;
-  height: 300px;
+  height: 460px;
   border-radius: 8px;
   overflow: hidden;
 }
