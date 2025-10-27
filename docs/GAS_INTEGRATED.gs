@@ -3,8 +3,8 @@
  * YOLUBE統合システム - Google Apps Script
  * ============================================
  *
- * 統合バージョン: v3.31
- * 統合日: 2025-10-07
+ * 統合バージョン: v3.32
+ * 統合日: 2025-10-25
  *
  * 【統合内容】
  * 1. 既存お問い合わせフォームシステム (v2.2)
@@ -20,6 +20,7 @@
  *    - JSON形式レスポンス
  *
  * 【更新履歴】
+ * v3.32 (2025-10-25): Trainingフォームに電話番号フィールド追加（ヘッダー、データ保存、自動返信メール対応）
  * v3.31 (2025-10-07): Logger.log()強化（ログ機能改善）。主要関数にトラブルシューティング用ログ追加
  * v3.30 (2025-10-07): LockService導入（予約ID生成時の競合対策）。同時アクセス時のID重複を防止
  * v3.29 (2025-10-07): CONFIG オブジェクト導入（設定値の一元管理）。会社情報、URL、制限値、メール設定、SNS設定を統合
@@ -335,7 +336,7 @@ function setupSheetHeaders(sheet, formType) {
         headers.push('電話番号', '参加希望日', '参加回数', 'メッセージ');
         break;
       case 'training':
-        headers.push('会社名・団体名', 'メッセージ');
+        headers.push('会社名・団体名', '電話番号', 'メッセージ');
         break;
       case 'reservation':
         headers.push('イベントID', '同行者数', '来場予定時刻', '遊びたいゲーム', '特記事項');
@@ -370,6 +371,7 @@ function createDataRow(formData) {
     case 'training':
       row.push(
         formData.company_name || '',
+        formData.user_phone || '',
         formData.message || ''
       );
       break;
@@ -458,6 +460,7 @@ ${formData.user_name} 様
     case 'training':
       specific = `
 会社名・団体名: ${formData.company_name || '未入力'}
+電話番号: ${formData.user_phone || '未入力'}
 メッセージ: ${formData.message || '未入力'}
 
 研修の詳細につきましては、担当者よりご連絡させていただきます。`;

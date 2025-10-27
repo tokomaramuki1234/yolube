@@ -42,6 +42,7 @@
 .training-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   padding: 1rem 2rem;
   border: none;
@@ -194,6 +195,14 @@
   font-weight: bold;
   margin-bottom: 1.5rem;
   box-shadow: 0 2px 10px rgba(255, 217, 61, 0.3);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.training-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 217, 61, 0.5);
 }
 
 .training-title {
@@ -300,7 +309,9 @@
 /* Problem Section */
 .training-problem {
   padding: 6rem 0;
-  background: #fff;
+  background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)),
+              url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80') center/cover;
+  position: relative;
 }
 
 .training-section-header {
@@ -527,55 +538,54 @@
 
 .training-timeline-item {
   display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 2rem;
+  grid-template-columns: 60px 200px 1fr;
+  gap: 1.5rem;
   margin-bottom: 2rem;
+  align-items: center;
 }
 
-.training-timeline-marker {
+.training-timeline-arrow {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #8BC780;
+  font-size: 2rem;
+  gap: 0;
+  line-height: 1;
+  position: relative;
 }
 
-.training-timeline-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  box-shadow: 0 4px 15px rgba(139, 199, 128, 0.3);
-  z-index: 2;
-}
-
-.training-timeline-icon-final {
-  background: linear-gradient(135deg, #FFD93D 0%, #FFC107 100%);
-  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
-  animation: pulse-icon 2s infinite;
-}
-
-@keyframes pulse-icon {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
+.training-timeline-arrow svg {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(to bottom, #8BC780, #8BC780);
+  background-size: 4px 60%;
+  background-position: center top;
+  background-repeat: no-repeat;
 }
 
 .training-timeline-line {
   width: 4px;
-  flex-grow: 1;
-  background: linear-gradient(to bottom, #8BC780, #e9ecef);
-  margin-top: 0.5rem;
+  height: 60px;
+  background: linear-gradient(to bottom, #e9ecef, #8BC780);
 }
 
-.training-timeline-item:last-child .training-timeline-line {
+.training-timeline-arrow-final .training-timeline-line {
   display: none;
+}
+
+.training-timeline-image {
+  width: 200px;
+  height: 150px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.training-timeline-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .training-timeline-content {
@@ -640,6 +650,20 @@
 
 .training-comparison-after {
   border-left: 4px solid #28a745;
+}
+
+.training-comparison-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.training-comparison-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .training-comparison-header {
@@ -748,6 +772,32 @@
   margin-bottom: 2rem;
 }
 
+.training-phase-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.training-phase-image {
+  text-align: center;
+}
+
+.training-phase-image img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.training-image-caption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
 .training-effects h4 {
   font-size: 1.3rem;
   color: #34495e;
@@ -815,6 +865,20 @@
   padding: 2rem;
 }
 
+.training-traditional-image {
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.training-traditional-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .training-traditional h4 {
   color: #856404;
   margin-bottom: 1rem;
@@ -857,6 +921,20 @@
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.training-unique-image {
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.training-unique-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .training-unique-item h5 {
@@ -1185,6 +1263,20 @@
   margin: 0;
 }
 
+.training-instructor-title a {
+  color: #4A90E2;
+  text-decoration: none;
+  border-bottom: 2px solid #4A90E2;
+  transition: all 0.3s ease;
+  padding-bottom: 2px;
+}
+
+.training-instructor-title a:hover {
+  color: #2563EB;
+  border-bottom-color: #2563EB;
+  background-color: rgba(74, 144, 226, 0.1);
+}
+
 .training-instructor-content {
   display: flex;
   flex-direction: column;
@@ -1386,7 +1478,6 @@
   padding: 1.5rem 2rem;
   background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
   color: white;
-  cursor: pointer;
 }
 
 .training-faq-question svg {
@@ -1398,6 +1489,7 @@
   margin: 0;
   font-size: 1.2rem;
   font-weight: bold;
+  color: white;
 }
 
 .training-faq-answer {
@@ -1411,7 +1503,15 @@
 }
 
 .training-faq-answer strong {
-  color: #8BC780;
+  font-weight: bold;
+  background: linear-gradient(transparent 60%, #FFD93D 60%);
+  padding: 0 0.2rem;
+}
+
+.highlight {
+  font-weight: bold;
+  background: linear-gradient(transparent 60%, #FFD93D 60%);
+  padding: 0 0.2rem;
 }
 
 .training-faq-cta {
@@ -1436,15 +1536,15 @@
 
 /* Limited Offer */
 .training-limited-offer {
-  background: linear-gradient(135deg, #FFD93D 0%, #FFC107 100%);
+  background: linear-gradient(rgba(255, 249, 235, 0.95), rgba(255, 243, 224, 0.95)),
+              url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&q=80') center/cover;
   padding: 3rem;
   border-radius: 12px;
   text-align: center;
   margin: 3rem auto;
   max-width: 900px;
-  box-shadow: 0 8px 30px rgba(255, 193, 7, 0.3);
+  box-shadow: 0 8px 30px rgba(139, 199, 128, 0.2);
   position: relative;
-  animation: shine 2s infinite;
 }
 
 @keyframes shine {
@@ -1935,13 +2035,59 @@
 }
 
 .training-pricing-notes {
-  text-align: center;
-  margin-top: 2rem;
-  color: #666;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
 }
 
-.training-pricing-notes p {
-  margin: 0.5rem 0;
+.training-pricing-notes h4 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.pricing-notes-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.pricing-note-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.pricing-note-label {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+}
+
+.pricing-note-value {
+  font-size: 1.05rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pricing-note-detail {
+  font-size: 0.9rem;
+  color: #777;
+  background: #f8f9fa;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+
+.fee-item {
+  display: inline-block;
+  padding: 0.25rem 0;
 }
 
 /* CTA Section */
@@ -2162,6 +2308,18 @@
   margin-bottom: 0.5rem;
   font-weight: bold;
   color: #2c3e50;
+}
+
+.required-mark {
+  color: #dc3545;
+  font-weight: bold;
+  margin-left: 0.25rem;
+}
+
+.optional-mark {
+  color: #6c757d;
+  font-weight: normal;
+  font-size: 0.9rem;
 }
 
 .training-form-group input,
@@ -2477,14 +2635,17 @@
   }
 
   .training-timeline-item {
-    grid-template-columns: 60px 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 40px 120px 1fr;
+    gap: 1rem;
   }
 
-  .training-timeline-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
+  .training-timeline-image {
+    width: 120px;
+    height: 90px;
+  }
+
+  .training-timeline-arrow {
+    font-size: 1.5rem;
   }
 
   .training-comparison-grid {
@@ -2498,6 +2659,15 @@
 
   .training-phase {
     padding: 2rem;
+  }
+
+  .training-phase-images {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .training-phase-image img {
+    height: 200px;
   }
 
   /* Testimonials Grid */
