@@ -277,9 +277,20 @@ const Training = () => {
           <div className="training-program-phases">
             <div className="training-phase">
               <div className="training-phase-header">
-                <h3>【第1～4回】アイスブレイク＆情報収集フェーズ</h3>
-                <p className="training-phase-purpose"><strong>目的：</strong> 社内コミュニケーション円滑化・エンゲージメント向上</p>
-                <p className="training-phase-purpose"><strong>実施内容：</strong> テーブルゲームを通じて、多面的に相互理解を得る機会を提供。毎回の研修後にアンケートにて効果測定。</p>
+                <h3>
+                  <span className="desktop-only">【第1～4回】アイスブレイク＆情報収集フェーズ</span>
+                  <span className="mobile-only">【第1～4回】<br />アイスブレイク<br />＆情報収集フェーズ</span>
+                </h3>
+                <p className="training-phase-purpose">
+                  <strong className="mobile-tablet-block">目的：</strong>
+                  <span className="desktop-only">社内コミュニケーション円滑化・エンゲージメント向上</span>
+                  <span className="mobile-tablet-only">社内コミュニケーション円滑化・エンゲージメント向上</span>
+                </p>
+                <p className="training-phase-purpose">
+                  <strong className="mobile-tablet-block">実施内容：</strong>
+                  <span className="desktop-only">テーブルゲームを通じて、多面的に相互理解を得る機会を提供。毎回の研修後にアンケートにて効果測定。</span>
+                  <span className="mobile-tablet-only">テーブルゲームを通じて、多面的に相互理解を得る機会を提供。毎回の研修後にアンケートにて効果測定。</span>
+                </p>
               </div>
 
               <div className="training-phase-images">
@@ -315,9 +326,20 @@ const Training = () => {
             
             <div className="training-phase">
               <div className="training-phase-header">
-                <h3>【第5～6回】実践活用フェーズ</h3>
-                <p className="training-phase-purpose"><strong>目的：</strong> 全員参加型での経営分析・戦略立案</p>
-                <p className="training-phase-purpose"><strong>実施内容：</strong> 第1～4回で構築した信頼関係を活かし、ブレインストーミング研修と経営分析研修を実施。</p>
+                <h3>
+                  <span className="desktop-only">【第5～6回】実践活用フェーズ</span>
+                  <span className="mobile-only">【第5～6回】<br />実践活用フェーズ</span>
+                </h3>
+                <p className="training-phase-purpose">
+                  <strong className="mobile-tablet-block">目的：</strong>
+                  <span className="desktop-only">全員参加型での経営分析・戦略立案</span>
+                  <span className="mobile-tablet-only">全員参加型での経営分析・戦略立案</span>
+                </p>
+                <p className="training-phase-purpose">
+                  <strong className="mobile-tablet-block">実施内容：</strong>
+                  <span className="desktop-only">第1～4回で構築した信頼関係を活かし、ブレインストーミング研修と経営分析研修を実施。</span>
+                  <span className="mobile-tablet-only">第1～4回で構築した信頼関係を活かし、ブレインストーミング研修と経営分析研修を実施。</span>
+                </p>
               </div>
 
               <div className="training-phase-images">

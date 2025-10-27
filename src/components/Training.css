@@ -43,7 +43,15 @@
   display: none;
 }
 
+.mobile-tablet-only {
+  display: none;
+}
+
 .desktop-only {
+  display: inline;
+}
+
+.mobile-tablet-block {
   display: inline;
 }
 
@@ -2207,6 +2215,19 @@
     font-size: 1.1rem;
   }
 
+  /* Phase Header - Tablet Responsive */
+  .training-phase-header h3 {
+    text-align: center;
+  }
+
+  .mobile-tablet-only {
+    display: inline;
+  }
+
+  .mobile-tablet-block {
+    display: block;
+  }
+
   /* Scroll Indicator (from line 3086-3090) */
   .training-scroll-indicator {
     display: block;
@@ -2497,8 +2518,21 @@
     display: inline;
   }
 
+  .mobile-tablet-only {
+    display: inline;
+  }
+
   .desktop-only {
     display: none;
+  }
+
+  .mobile-tablet-block {
+    display: block;
+  }
+
+  /* Phase Header - Mobile Responsive */
+  .training-phase-header h3 {
+    text-align: center;
   }
 
   /* スマホ版のみ改行位置を調整 */
