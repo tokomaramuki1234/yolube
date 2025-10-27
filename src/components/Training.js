@@ -296,11 +296,11 @@ const Training = () => {
               <div className="training-phase-images">
                 <div className="training-phase-image">
                   <img src="/images/training/phase1_game.jpg" alt="YOLUBEゲーム研修 - 達成感と喜びを共有する参加者たち" />
-                  <p className="training-image-caption">ゲームを楽しむ会社員、OLたち</p>
+                  <p className="training-image-caption">盛り上がること間違いなしのテーブルゲーム研修。</p>
                 </div>
                 <div className="training-phase-image">
                   <img src="/images/training/phase1_survey.jpg" alt="YOLUBE研修アンケート結果 - 新人社員コミュニケーション研修の効果" />
-                  <p className="training-image-caption">アンケート結果（研修満足度85%、コミュニケーション改善78%）</p>
+                  <p className="training-image-caption">集計結果は回答者を特定しにくい形でクライアントに報告します。</p>
                 </div>
               </div>
 
