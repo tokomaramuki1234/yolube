@@ -159,9 +159,7 @@ const Training = () => {
                 <span className="training-title-sub">組織を強くする。</span>
               </h1>
               <p className="training-subtitle">
-                <strong>"楽しい"が生み出す、本物の社内交流</strong><br />
-                テーブルゲームで実現する、誰もが参加したくなる企業研修
-              </p>
+                <strong>テーブルゲームで実現する、誰もが参加したくなる企業研修</strong></p>
               <div className="training-hero-buttons">
                 <a href="#contact" className="training-btn training-btn-primary training-btn-hero">
                   <FontAwesomeIcon icon={faComments} />
