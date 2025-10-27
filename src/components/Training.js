@@ -397,11 +397,12 @@ const Training = () => {
         <div className="training-container">
           <h2 className="training-section-title">なぜテーブルゲーム研修なのか？</h2>
 
-          <div className="training-comparison">
-            <div className="training-traditional">
-              <div className="training-traditional-image">
-                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=400&fit=crop&q=80" alt="一般的な研修風景" />
-              </div>
+          {/* 構成１：一般的な研修の課題（左：画像、右：テキスト） */}
+          <div className="training-comparison-row">
+            <div className="training-comparison-image-left">
+              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=400&fit=crop&q=80" alt="一般的な研修風景" />
+            </div>
+            <div className="training-comparison-content-right">
               <h4>一般的な研修の課題</h4>
               <ul>
                 <li><strong>単発型：</strong> 効果が定着しにくい。また、根深い課題に対しアプローチしにくい</li>
@@ -414,19 +415,23 @@ const Training = () => {
           
           <h4 className="training-unique-title">テーブルゲーム研修だけの独自価値</h4>
           
-          <div className="training-unique-values">
-            <div className="training-unique-item">
-              <div className="training-unique-image">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&q=80" alt="ペルソナを連想させる画像" />
-              </div>
+          {/* 構成２：職場のペルソナ（左：テキスト、右：画像） */}
+          <div className="training-comparison-row">
+            <div className="training-comparison-content-left">
               <h5>1. 「職場のペルソナ」を無効化する稀有な研修</h5>
               <p>従来研修では職場での立場や先入観が邪魔をしますが、テーブルゲームでは参加者全員がフラットな状態になります。ゲーム中は職位や部署に関係なく、純粋な人間性が表面化するため、<strong>"職場では見えなかった一面"</strong> での相互理解が深まります。</p>
             </div>
+            <div className="training-comparison-image-right">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&q=80" alt="ペルソナを連想させる画像" />
+            </div>
+          </div>
 
-            <div className="training-unique-item">
-              <div className="training-unique-image">
-                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&q=80" alt="PDCAサイクルを表すイラスト" />
-              </div>
+          {/* 構成３：PDCAサイクル（左：画像、右：テキスト） */}
+          <div className="training-comparison-row">
+            <div className="training-comparison-image-left">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&q=80" alt="PDCAサイクルを表すイラスト" />
+            </div>
+            <div className="training-comparison-content-right">
               <h5>2. 段階的PDCAサイクルで確実な成果創出</h5>
               <ul>
                 <li><strong>第1～4回：</strong> アイスブレイク＆情報収集で土壌づくり</li>
@@ -435,13 +440,16 @@ const Training = () => {
                 <li><strong>年間を通じた継続的改善</strong> で一時的でない組織変革を実現</li>
               </ul>
             </div>
-            
-            <div className="training-unique-item">
-              <div className="training-unique-image">
-                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop&q=80" alt="ボードゲームで盛り上がる人たちの画像" />
-              </div>
+          </div>
+          
+          {/* 構成４：共有される成功体験（左：テキスト、右：画像） */}
+          <div className="training-comparison-row">
+            <div className="training-comparison-content-left">
               <h5>3. 共有される成功体験が組織文化を変える</h5>
               <p>研修で生まれた成功体験は日常業務でも思い返され、自然とポジティブな話題が増加。忘年会や日常会話でも話題となり、<strong>組織全体の雰囲気を根本から改善</strong>します。</p>
+            </div>
+            <div className="training-comparison-image-right">
+              <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop&q=80" alt="ボードゲームで盛り上がる人たちの画像" />
             </div>
           </div>
         </div>

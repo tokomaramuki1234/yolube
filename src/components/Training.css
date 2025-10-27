@@ -858,49 +858,127 @@
   margin: 3rem 0;
 }
 
-.training-traditional {
-  background: #fff3cd;
-  border: 1px solid #ffeaa7;
-  border-radius: 8px;
+/* 左右レイアウト用の共通スタイル */
+.training-comparison-row {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin: 3rem 0;
+  background: #fff;
   padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-.training-traditional-image {
-  width: 100%;
+/* 構成１（一般的な研修の課題）専用スタイル */
+.training-comparison-row:first-of-type {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+}
+
+.training-comparison-row:first-of-type h4 {
+  color: #856404;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.training-comparison-row:first-of-type ul {
+  list-style: none;
+  padding: 0;
+}
+
+.training-comparison-row:first-of-type li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #856404;
+  line-height: 1.6;
+}
+
+.training-comparison-row:first-of-type li::before {
+  content: "×";
+  position: absolute;
+  left: 0;
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* 画像コンテナ（左配置） */
+.training-comparison-image-left {
+  flex: 0 0 45%;
   height: 300px;
   border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 1.5rem;
 }
 
-.training-traditional-image img {
+.training-comparison-image-left img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.training-traditional h4 {
-  color: #856404;
+/* コンテンツコンテナ（右配置） */
+.training-comparison-content-right {
+  flex: 1;
+}
+
+/* コンテンツコンテナ（左配置） */
+.training-comparison-content-left {
+  flex: 1;
+}
+
+/* 画像コンテナ（右配置） */
+.training-comparison-image-right {
+  flex: 0 0 45%;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.training-comparison-image-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 見出しスタイル */
+.training-comparison-content-left h5,
+.training-comparison-content-right h5 {
+  font-size: 1.3rem;
+  color: #2c3e50;
   margin-bottom: 1rem;
 }
 
-.training-traditional ul {
-  list-style: none;
-  padding: 0;
+/* テキストスタイル */
+.training-comparison-content-left p,
+.training-comparison-content-right p {
+  line-height: 1.8;
+  color: #555;
 }
 
-.training-traditional li {
+/* リストスタイル */
+.training-comparison-content-left ul,
+.training-comparison-content-right ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.training-comparison-content-left li,
+.training-comparison-content-right li {
   padding: 0.5rem 0;
   padding-left: 1.5rem;
   position: relative;
-  color: #856404;
+  line-height: 1.6;
+  color: #555;
 }
 
-.training-traditional li::before {
-  content: "×";
+.training-comparison-content-left li::before,
+.training-comparison-content-right li::before {
+  content: "✓";
   position: absolute;
   left: 0;
-  color: #dc3545;
+  color: #8BC780;
   font-weight: bold;
 }
 
@@ -909,65 +987,6 @@
   color: #2c3e50;
   margin: 3rem 0 2rem;
   text-align: center;
-}
-
-.training-unique-values {
-  display: grid;
-  gap: 2rem;
-}
-
-.training-unique-item {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.training-unique-image {
-  width: 100%;
-  height: 250px;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 1.5rem;
-}
-
-.training-unique-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.training-unique-item h5 {
-  font-size: 1.3rem;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-}
-
-.training-unique-item p {
-  line-height: 1.8;
-  color: #555;
-}
-
-.training-unique-item ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 1rem;
-}
-
-.training-unique-item li {
-  padding: 0.5rem 0;
-  padding-left: 1.5rem;
-  position: relative;
-  line-height: 1.6;
-  color: #555;
-}
-
-.training-unique-item li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: #8BC780;
-  font-weight: bold;
 }
 
 /* Survey Results Section */
@@ -3069,5 +3088,24 @@ html {
     font-size: 1rem;
     padding: 1rem 1.5rem;
     width: 100%;
+  }
+
+  /* 左右レイアウトをモバイルで縦積み */
+  .training-comparison-row {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .training-comparison-image-left,
+  .training-comparison-image-right {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 200px;
+  }
+
+  .training-comparison-content-left h5,
+  .training-comparison-content-right h5 {
+    font-size: 1.1rem;
   }
 }
