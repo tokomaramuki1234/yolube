@@ -2180,23 +2180,7 @@
     font-size: 1rem;
   }
 
-  /* Floating CTA Button - Mobile */
-  .training-floating-cta {
-    top: 5rem;
-    right: 1rem;
-    padding: 0.875rem 1.5rem;
-    font-size: 1rem;
-    max-width: calc(100% - 2rem);
-    white-space: nowrap;
-  }
-
-  .training-floating-cta:hover {
-    transform: translateY(-3px);
-  }
-
-  .training-floating-cta:active {
-    transform: translateY(-1px);
-  }
+  /* Floating CTA Button - Mobile (削除：Line 2295の定義を使用) */
 
   /* Back to Top Button */
   .training-back-to-top {
@@ -2293,15 +2277,23 @@
 
   /* Floating CTA - スマホ版は画面中央下に配置 */
   .training-floating-cta {
-    top: auto;
-    bottom: 1.5rem;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    padding: 0.9rem 1.8rem;
-    font-size: 1rem;
-    max-width: calc(100% - 6rem);
+    top: auto !important;
+    bottom: 2rem !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    padding: 0.9rem 1.8rem !important;
+    font-size: 1rem !important;
+    max-width: calc(100% - 4rem) !important;
     white-space: nowrap;
+  }
+
+  .training-floating-cta:hover {
+    transform: translateX(-50%) translateY(-3px) !important;
+  }
+
+  .training-floating-cta:active {
+    transform: translateX(-50%) translateY(-1px) !important;
   }
 
   /* Back to Top Button - スマホ版は右下に配置（お申し込みボタンと重ならないように） */
