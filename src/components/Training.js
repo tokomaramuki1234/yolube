@@ -237,31 +237,11 @@ const Training = () => {
           <div className="training-tablegame-content">
             <div className="training-tablegame-text">
               <p>
-                <strong>テーブルゲーム</strong>とは、<span className="highlight">机の上で遊ぶゲーム</span>のことです。ボードゲームやカードゲームなど、呼び方はいろいろありますが、共通しているのは<strong>「顔を合わせて、ワイワイ楽しむ」</strong>ということ。
+                <strong>テーブルゲーム</strong>とは、<span className="highlight">机の上で遊ぶアナログなゲーム</span>のことです。実は、<strong>囲碁・将棋・花札・トランプ・UNO</strong>などもすべてテーブルゲーム。ボードゲームやカードゲームなど、呼び方はいろいろありますが、共通しているのは<strong>「顔を合わせて、ワイワイ楽しむ」</strong>ということです。
               </p>
               <p>
-                年齢、性別、経験は関係ありません。<strong>ゲーム中はお互いにフラットな人間関係</strong>なので、上司や部下の顔色を伺う必要はありません。自然と会話が生まれ、気づけば数時間も夢中になっている、そんな魅力があります。
+                世界には<strong>30万種類以上</strong>のテーブルゲームがあると言われており、教育・心理・医療など様々な分野で研究が行われています。年齢、性別、経験は関係なく、<strong>ゲーム中はお互いにフラットな人間関係</strong>になるため、自然と会話が生まれ、気づけば数時間も夢中になっている、そんな魅力があります。
               </p>
-            </div>
-
-            <div className="training-tablegame-points">
-              <div className="training-tablegame-point">
-                <div className="point-icon">😆</div>
-                <h4>とにかく盛り上がる</h4>
-                <p>「それはやめて！」「勝った！」自然な会話と笑顔が生まれます</p>
-              </div>
-
-              <div className="training-tablegame-point">
-                <div className="point-icon">👥</div>
-                <h4>距離が縮まる</h4>
-                <p>共通の体験を通じて、相手の人となりが自然と伝わってきます</p>
-              </div>
-
-              <div className="training-tablegame-point">
-                <div className="point-icon">🧠</div>
-                <h4>新しい発見がある</h4>
-                <p>普段とは違う頭の使い方。意外な一面が見えることも</p>
-              </div>
             </div>
           </div>
 
