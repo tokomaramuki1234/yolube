@@ -345,11 +345,11 @@ const Training = () => {
               <div className="training-phase-images">
                 <div className="training-phase-image">
                   <img src="/images/training/phase2_brainstorm.jpg" alt="コミュニケーションを表現したアート作品 - ブレインストーミング研修のイメージ" />
-                  <p className="training-image-caption">ブレインストーミング実施風景</p>
+                  <p className="training-image-caption">形骸化したただのアイディア出しで終わらせるのではなく、参加者が主体的に取り組める環境づくりからデザインします。</p>
                 </div>
                 <div className="training-phase-image">
                   <img src="/images/training/phase2_swot.jpg" alt="SWOT分析図 - 経営戦略研修のイメージ" />
-                  <p className="training-image-caption">SWOT分析に関する画像</p>
+                  <p className="training-image-caption">SWOT分析はファシリテーターが居てこそ進めやすいもの。YOLUBEがしっかりご支援致します。</p>
                 </div>
               </div>
 
