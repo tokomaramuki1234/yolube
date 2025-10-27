@@ -432,7 +432,7 @@ const Training = () => {
               <p>従来研修では職場での立場や先入観が邪魔をしますが、テーブルゲームでは参加者全員がフラットな状態になります。ゲーム中は職位や部署に関係なく、純粋な人間性が表面化するため、<strong>"職場では見えなかった一面"</strong> での相互理解が深まります。</p>
             </div>
             <div className="training-comparison-image-right">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&q=80" alt="ペルソナを連想させる画像" />
+              <img src="/images/training/persona_worklife.jpg" alt="仕事と家庭の両面を持つ女性 - 職場のペルソナを超えた理解" />
             </div>
           </div>
 
