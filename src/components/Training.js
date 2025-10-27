@@ -464,7 +464,10 @@ const Training = () => {
           {/* 構成２：職場のペルソナ（左：テキスト、右：画像） */}
           <div className="training-comparison-row" data-bg-row="3" style={{'--bg-image': 'url(/images/training/persona_worklife.jpg)'}}>
             <div className="training-comparison-content-left">
-              <h5>“職場のペルソナ”を無効化する稀有な研修</h5>
+              <h5>
+                <span className="desktop-only">"職場のペルソナ"を無効化する稀有な研修</span>
+                <span className="mobile-only">"職場のペルソナ"を無効化する<br />稀有な研修</span>
+              </h5>
               <p>従来研修では職場での立場や先入観が邪魔をしますが、テーブルゲームでは参加者全員がフラットな状態になります。ゲーム中は職位や部署に関係なく、純粋な人間性が表面化するため、<strong>"職場では見えなかった一面"</strong> での相互理解が深まります。</p>
             </div>
             <div className="training-comparison-image-right">
