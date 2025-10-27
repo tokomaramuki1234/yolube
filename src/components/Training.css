@@ -785,7 +785,8 @@
   align-items: center;
   font-size: 3rem;
   color: #8BC780;
-  margin: 2rem 0;
+  margin: 2rem auto;
+  text-align: center;
   animation: slide-down 1.5s ease-in-out infinite;
 }
 
