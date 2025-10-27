@@ -11,7 +11,6 @@ const Training = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   // 背景画像のプリロード
   useEffect(() => {
@@ -42,15 +41,6 @@ const Training = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // スライドショーの自動再生
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 7);
-    }, 4000); // 4秒ごとに切り替え
-
-    return () => clearInterval(timer);
   }, []);
 
   // トップへ戻る関数
@@ -126,6 +116,7 @@ const Training = () => {
             </a>
           </div>
           <nav className={`ke-nav ${isMobileMenuOpen ? 'ke-nav-open' : ''}`}>
+            <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>研修について</a>
             <a href="#features" onClick={() => setIsMobileMenuOpen(false)}>特徴</a>
             <a href="#program" onClick={() => setIsMobileMenuOpen(false)}>プログラム</a>
             <a href="#pricing" onClick={() => setIsMobileMenuOpen(false)}>料金</a>
@@ -235,76 +226,6 @@ const Training = () => {
               
               <p>「遊び」という敷居の低さ。<span className="mobile-break"></span>目的に応じた柔軟性。<br />そのどちらも兼ね備えたテーブルゲームを<span className="mobile-break"></span>フル活用してご支援致します</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What is Table Game Section */}
-      <section className="training-tablegame-intro">
-        <div className="training-container">
-          <h2 className="training-section-title">テーブルゲームってなに？</h2>
-          
-          <div className="training-tablegame-content">
-            <div className="training-tablegame-text">
-              <p>
-                <strong>テーブルゲーム</strong>とは、<span className="highlight">机の上で遊ぶアナログなゲーム</span>のことです。実は、<strong>囲碁・将棋・花札・トランプ・UNO</strong>などもすべてテーブルゲーム。ボードゲームやカードゲームなど、呼び方はいろいろありますが、共通しているのは<strong>「顔を合わせて、ワイワイ楽しむ」</strong>ということです。
-              </p>
-              <p>
-                世界には<strong>30万種類以上</strong>のテーブルゲームがあると言われており、教育・心理・医療など様々な分野で研究が行われています。年齢、性別、経験は関係なく、<strong>ゲーム中はお互いにフラットな人間関係</strong>になるため、自然と会話が生まれ、気づけば数時間も夢中になっている、そんな魅力があります。
-              </p>
-            </div>
-
-            {/* Table Game Slideshow */}
-            <div className="training-tablegame-slideshow">
-              <div className="slideshow-container">
-                <div className="slideshow-track" style={{transform: `translateX(-${currentSlide * 100}%)`}}>
-                  <div className="slideshow-slide">
-                    <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=800&h=500&fit=crop&q=80" alt="様々なボードゲームが棚に並んでいる" />
-                    <p className="slideshow-caption">世界中の多様なボードゲーム</p>
-                  </div>
-                  <div className="slideshow-slide">
-                    <img src="https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=800&h=500&fit=crop&q=80" alt="友人たちがテーブルゲームを楽しんでいる様子" />
-                    <p className="slideshow-caption">チームワークとコミュニケーション</p>
-                  </div>
-                  <div className="slideshow-slide">
-                    <img src="https://images.unsplash.com/photo-1632501641765-e568d28b0015?w=800&h=500&fit=crop&q=80" alt="戦略的なボードゲームのプレイ風景" />
-                    <p className="slideshow-caption">戦略性と思考力を育むゲーム</p>
-                  </div>
-                  <div className="slideshow-slide">
-                    <img src="https://images.unsplash.com/photo-1611891487781-0854d11d0cb9?w=800&h=500&fit=crop&q=80" alt="カラフルなゲームコンポーネント" />
-                    <p className="slideshow-caption">視覚的に魅力的なゲームデザイン</p>
-                  </div>
-                  <div className="slideshow-slide">
-                    <img src="https://images.unsplash.com/photo-1566694271453-390536dd1f0d?w=800&h=500&fit=crop&q=80" alt="グループでボードゲームをプレイする人々" />
-                    <p className="slideshow-caption">世代を超えて楽しめる遊び</p>
-                  </div>
-                  <div className="slideshow-slide">
-                    <img src="https://images.unsplash.com/photo-1528819622765-d6bcf132f793?w=800&h=500&fit=crop&q=80" alt="チェスやクラシックなボードゲーム" />
-                    <p className="slideshow-caption">論理的思考を鍛えるゲーム</p>
-                  </div>
-                  <div className="slideshow-slide">
-                    <img src="https://images.unsplash.com/photo-1600264229872-bae5eefd65f3?w=800&h=500&fit=crop&q=80" alt="ダイスとカードを使ったゲーム" />
-                    <p className="slideshow-caption">運と戦略のバランスを楽しむ</p>
-                  </div>
-                </div>
-              </div>
-              <div className="slideshow-dots">
-                {[0, 1, 2, 3, 4, 5, 6].map((index) => (
-                  <button
-                    key={index}
-                    className={`slideshow-dot ${currentSlide === index ? 'active' : ''}`}
-                    onClick={() => setCurrentSlide(index)}
-                    aria-label={`スライド${index + 1}へ移動`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="training-tablegame-link">
-            <a href="https://yolube.jp/tablegame" target="_blank" rel="noopener noreferrer">
-              テーブルゲームについてより詳しい情報はこちら
-            </a>
           </div>
         </div>
       </section>
@@ -543,10 +464,7 @@ const Training = () => {
           {/* 構成２：職場のペルソナ（左：テキスト、右：画像） */}
           <div className="training-comparison-row" data-bg-row="3" style={{'--bg-image': 'url(/images/training/persona_worklife.jpg)'}}>
             <div className="training-comparison-content-left">
-              <h5>
-                <span className="desktop-only">"職場のペルソナ"を無効化する稀有な研修</span>
-                <span className="mobile-only">"職場のペルソナ"を無効化する<br />稀有な研修</span>
-              </h5>
+              <h5>“職場のペルソナ”を無効化する稀有な研修</h5>
               <p>従来研修では職場での立場や先入観が邪魔をしますが、テーブルゲームでは参加者全員がフラットな状態になります。ゲーム中は職位や部署に関係なく、純粋な人間性が表面化するため、<strong>"職場では見えなかった一面"</strong> での相互理解が深まります。</p>
             </div>
             <div className="training-comparison-image-right">
@@ -847,13 +765,9 @@ const Training = () => {
               <FontAwesomeIcon icon={faExclamationTriangle} />
               期間限定キャンペーン
             </div>
-            <h3>🎉 初回導入5社限定 🎉</h3>
-            <p className="training-offer-discount">スタンダードプラン15%OFF</p>
-            <p>
-              <span className="desktop-only">今なら<strong>50万円 → 42.5万円（税別）</strong>で年間6回の研修を導入可能！</span>
-              <span className="mobile-tablet-only">今なら<strong>50万円 → 42.5万円（税別）</strong><br />で年間6回の研修を導入可能！</span>
-            </p>
-            <p className="training-offer-price-detail">（6回：2ヶ月に1回実施）</p>
+            <h3>🎉 初回導入5社限定：スタンダードプラン15%OFF 🎉</h3>
+            <p>今なら<strong>50万円 → 42.5万円（税別）</strong>で年間6回の研修を導入可能！</p>
+            <p className="training-offer-price-detail">（6回・2ヶ月に1回実施、1回あたり7.1万円）</p>
             
             <div className="training-offer-conditions">
               <h4>【適用条件】</h4>
@@ -885,8 +799,8 @@ const Training = () => {
                 <p className="training-trial-subtitle">1回限りの体験研修</p>
                 <div className="training-trial-price">
                   <span className="training-price-amount">3万円</span>
+                  <span className="training-price-unit">／1回</span>
                 </div>
-                <div className="training-price-tax">(税込 33,000円)</div>
                 <div className="training-trial-note">
                   ※ご満足いただけなかった場合、お試しプランの研修費用は全額返金いたします。
                 </div>
@@ -913,7 +827,6 @@ const Training = () => {
                 <span className="training-price-amount">30万円</span>
                 <span className="training-price-unit">（3回・月1回実施）</span>
               </div>
-              <div className="training-price-tax">(税込 330,000円)</div>
               <div className="training-plan-features">
                 <ul>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> 短期集中で効果を実感</li>
@@ -925,7 +838,6 @@ const Training = () => {
               <div className="training-plan-value">
                 <span className="value-label">1回あたり</span>
                 <span className="value-amount">10万円</span>
-                <span className="value-tax">(税込 110,000円)</span>
               </div>
             </div>
             
@@ -940,7 +852,6 @@ const Training = () => {
                 <span className="training-price-amount">50万円</span>
                 <span className="training-price-unit">（6回・2ヶ月に1回実施）</span>
               </div>
-              <div className="training-price-tax">(税込 550,000円)</div>
               <div className="training-plan-features">
                 <ul>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> 継続的な効果を実感したい企業様向け</li>
@@ -952,7 +863,6 @@ const Training = () => {
               <div className="training-plan-value">
                 <span className="value-label">1回あたり</span>
                 <span className="value-amount">8.3万円</span>
-                <span className="value-tax">(税込 91,300円)</span>
                 <span className="value-discount">17%OFF</span>
               </div>
             </div>
@@ -967,19 +877,17 @@ const Training = () => {
                 <span className="training-price-amount">80万円</span>
                 <span className="training-price-unit">（12回・毎月実施）</span>
               </div>
-              <div className="training-price-tax">(税込 880,000円)</div>
               <div className="training-plan-features">
                 <ul>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> 本格的な組織変革を目指す企業様向け</li>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> 研修参加者10名まで</li>
-                  <li><FontAwesomeIcon icon={faCheckCircle} /> 研修内容、スケジュールを自由にカスタマイズ可能</li>
+                  <li><FontAwesomeIcon icon={faCheckCircle} /> 完全プログラム×2周</li>
                   <li><FontAwesomeIcon icon={faCheckCircle} /> 6ヶ月無料相談サポート付</li>
                 </ul>
               </div>
               <div className="training-plan-value">
                 <span className="value-label">1回あたり</span>
                 <span className="value-amount">6.7万円</span>
-                <span className="value-tax">(税込 73,700円)</span>
                 <span className="value-discount">33%OFF</span>
               </div>
             </div>
@@ -990,14 +898,14 @@ const Training = () => {
             <div className="pricing-notes-grid">
               <div className="pricing-note-item">
                 <div className="pricing-note-label">追加参加者料金</div>
-                <div className="pricing-note-value">5名まで7,500円 <span className="pricing-tax-small">(税込 8,250円)</span></div>
-                <div className="pricing-note-detail">例）26名参加の場合: 追加16名 → 7,500円×4 = 30,000円 <span className="pricing-tax-small">(税込 33,000円)</span></div>
+                <div className="pricing-note-value">5名まで7,500円</div>
+                <div className="pricing-note-detail">例）26名参加の場合: 追加16名 → 7,500円×4 = 30,000円</div>
               </div>
               <div className="pricing-note-item">
                 <div className="pricing-note-label">交通費</div>
                 <div className="pricing-note-value">
                   <span className="fee-item">秋田市内: 無料</span>
-                  <span className="fee-item">秋田県内: 一律5,000円 <span className="pricing-tax-small">(税込 5,500円)</span></span>
+                  <span className="fee-item">秋田県内: 一律5,000円</span>
                   <span className="fee-item">県外: 応相談</span>
                 </div>
               </div>
