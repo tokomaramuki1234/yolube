@@ -780,7 +780,7 @@
 }
 
 .training-comparison-arrow-mobile {
-  display: flex;
+  display: none; /* PC版では非表示 */
   justify-content: center;
   align-items: center;
   font-size: 3rem;
@@ -2315,6 +2315,11 @@
   /* Offer Deadline - スマホ・タブレット版は左揃え */
   .training-offer-deadline {
     text-align: left;
+  }
+
+  /* Comparison Arrow Mobile - スマホ・タブレット版で表示 */
+  .training-comparison-arrow-mobile {
+    display: flex;
   }
 }
 
