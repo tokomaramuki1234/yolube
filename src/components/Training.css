@@ -2290,6 +2290,16 @@
     font-size: 1.1rem;
     padding: 1rem 2rem;
   }
+
+  /* Floating CTA - スマホ版は画面中央下に配置 */
+  .training-floating-cta {
+    top: auto;
+    bottom: 2rem;
+    right: 50%;
+    transform: translateX(50%);
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+  }
 }
 
 
