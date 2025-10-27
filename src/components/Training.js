@@ -396,8 +396,12 @@ const Training = () => {
                 </ul>
               </div>
 
-              <div className="training-comparison-arrow">
+              <div className="training-comparison-arrow desktop-only">
                 <FontAwesomeIcon icon={faArrowRight} />
+              </div>
+
+              <div className="training-comparison-arrow-mobile mobile-tablet-only">
+                <FontAwesomeIcon icon={faArrowDown} />
               </div>
 
               <div className="training-comparison-after">

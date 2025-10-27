@@ -779,6 +779,25 @@
   }
 }
 
+.training-comparison-arrow-mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: #8BC780;
+  margin: 2rem 0;
+  animation: slide-down 1.5s ease-in-out infinite;
+}
+
+@keyframes slide-down {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
 .training-program-phases {
   margin-top: 3rem;
 }
