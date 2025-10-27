@@ -47,7 +47,7 @@ const Training = () => {
   // スライドショーの自動再生
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 7);
+      setCurrentSlide((prev) => (prev + 1) % 5);
     }, 4000); // 4秒ごとに切り替え
 
     return () => clearInterval(timer);
@@ -271,10 +271,6 @@ const Training = () => {
                     <p className="slideshow-caption">戦略性と思考力を育むゲーム</p>
                   </div>
                   <div className="slideshow-slide">
-                    <img src="https://images.unsplash.com/photo-1611891487781-0854d11d0cb9?w=800&h=500&fit=crop&q=80" alt="カラフルなゲームコンポーネント" />
-                    <p className="slideshow-caption">視覚的に魅力的なゲームデザイン</p>
-                  </div>
-                  <div className="slideshow-slide">
                     <img src="https://images.unsplash.com/photo-1566694271453-390536dd1f0d?w=800&h=500&fit=crop&q=80" alt="グループでボードゲームをプレイする人々" />
                     <p className="slideshow-caption">世代を超えて楽しめる遊び</p>
                   </div>
@@ -282,14 +278,10 @@ const Training = () => {
                     <img src="https://images.unsplash.com/photo-1528819622765-d6bcf132f793?w=800&h=500&fit=crop&q=80" alt="チェスやクラシックなボードゲーム" />
                     <p className="slideshow-caption">論理的思考を鍛えるゲーム</p>
                   </div>
-                  <div className="slideshow-slide">
-                    <img src="https://images.unsplash.com/photo-1600264229872-bae5eefd65f3?w=800&h=500&fit=crop&q=80" alt="ダイスとカードを使ったゲーム" />
-                    <p className="slideshow-caption">運と戦略のバランスを楽しむ</p>
-                  </div>
                 </div>
               </div>
               <div className="slideshow-dots">
-                {[0, 1, 2, 3, 4, 5, 6].map((index) => (
+                {[0, 1, 2, 3, 4].map((index) => (
                   <button
                     key={index}
                     className={`slideshow-dot ${currentSlide === index ? 'active' : ''}`}
