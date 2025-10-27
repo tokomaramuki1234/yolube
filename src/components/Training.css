@@ -2483,8 +2483,9 @@
     width: 100%;
   }
 
-  /* スマホ版のみタイトルの改行位置を調整 */
-  .training-section-title .mobile-break::before {
+  /* スマホ版のみ改行位置を調整 */
+  .training-section-title .mobile-break::before,
+  .training-solution-text p .mobile-break::before {
     content: "\A";
     white-space: pre;
   }

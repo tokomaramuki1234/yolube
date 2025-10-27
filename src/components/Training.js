@@ -224,7 +224,7 @@ const Training = () => {
             <div className="training-solution-text">
               <h2 className="training-section-title">そのお悩みを<br />「遊び」で解決します</h2>
               
-              <p>「遊び」という敷居の低さ。目的に応じた柔軟性。<br />そのどちらも兼ね備えたテーブルゲームをフル活用してご支援致します</p>
+              <p>「遊び」という敷居の低さ。<span className="mobile-break"></span>目的に応じた柔軟性。<br />そのどちらも兼ね備えたテーブルゲームを<span className="mobile-break"></span>フル活用してご支援致します</p>
             </div>
           </div>
         </div>
