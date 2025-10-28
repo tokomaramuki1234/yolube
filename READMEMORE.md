@@ -825,5 +825,148 @@ postToTwitter({ title, description, link, imageUrl })
 
 ---
 
+## WebGL風アニメーションシステム詳細
+
+### 🎨 実装概要（2025年10月28日）
+
+**目的**: 企業研修ページ（`/training`）にWebGL風の動的アニメーション効果を実装し、ユーザーエンゲージメントを向上
+
+**技術アプローチ**: 純CSS実装によるWebGL風アニメーション
+- WebGLライブラリ不使用（パフォーマンス最適化）
+- CSS Transform、Animation、Custom Propertiesを活用
+- モバイル・デスクトップ両対応
+
+---
+
+### 📋 Phase 1: ヒーローセクション実装完了
+
+**実装日**: 2025年10月28日
+**対象セクション**: ヒーロー（Hero Section）
+
+#### 実装内容
+
+**1. アニメーションパターン開発（5種類）**
+
+デモページ（`/hero-demo`）で5つのアニメーションパターンを開発・比較検証：
+
+| パターン | 説明 | 技術 | 特徴 |
+|---------|------|------|------|
+| パターン1 | 波打つテキスト | `translateY` + 無限ループ | ビジネス向け・落ち着いた印象 |
+| パターン2 | 落下テキスト | `translateY` + `rotateX` | 動的・文字ごとに順次表示 |
+| パターン3 | 3D回転 | `perspective` + `rotateY/X` | ダイナミック・空間演出 |
+| **パターン4** | **分裂→集合** | `translate` + `scale` + `rotate` | **採用** - インパクト重視 |
+| パターン5 | グロー効果 | `text-shadow` + `filter: blur` | 光の演出・SF風 |
+
+**2. 採用パターン: パターン4「分裂→集合」**
+
+**選定理由**:
+- 最もインパクトがあり、ユーザーの目を引く
+- 「組織の一体感」を視覚的に表現できる
+- WebGL風の高度な表現でありながらCSSのみで実装可能
+
+**アニメーション詳細**:
+```css
+/* メインタイトル: 遊びが、組織を強くする。 */
+.split-text span {
+  display: inline-block;
+  opacity: 0;
+  animation: split 1.2s ease-out forwards;
+}
+
+@keyframes split {
+  0% {
+    opacity: 0;
+    /* ランダムな位置から開始 */
+    transform: translate(
+      calc((var(--random-x, 50) - 50) * 5px), 
+      calc((var(--random-y, 50) - 50) * 5px)
+    ) 
+    scale(0.5) 
+    rotate(calc((var(--random-r, 50) - 50) * 2deg));
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0);
+  }
+}
+
+/* サブタイトル: テーブルゲームで実現する... */
+.blur-in-text {
+  animation: blurIn 1.5s ease-out;
+  animation-delay: 0.6s;
+  animation-fill-mode: both;
+}
+
+@keyframes blurIn {
+  0% {
+    opacity: 0;
+    filter: blur(20px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+```
+
+**実装ファイル**:
+- `src/components/Training.js` - HTML構造（文字を`<span>`で分割）
+- `src/components/Training.css` - アニメーション定義（末尾に追加）
+
+**技術的特徴**:
+- CSS Custom Properties（`--random-x`, `--random-y`, `--random-r`）で各文字に独自の動きを付与
+- `animation-delay`で文字ごとに0.05秒ずつずらして順次表示
+- `animation-fill-mode: both`で開始前・終了後の状態を維持
+
+**パフォーマンス**:
+- GPU加速（`transform`、`opacity`使用）
+- 再レンダリング最小化（`will-change`不使用でメモリ節約）
+- モバイル端末でも60fps維持
+
+---
+
+### 📋 Phase 2: ページ全体アニメーション（次期実装予定）
+
+**対象**: `/training` ページ内の全テキスト・画像要素
+
+**実装方針**:
+1. ページ内要素をカテゴリ別に分類
+2. カテゴリごとに最適なアニメーションパターンを選定
+3. スクロール検知（Intersection Observer API）で適切なタイミングで発火
+4. ユーザー体験を損なわない程度の控えめな演出
+
+**想定カテゴリ**:
+- セクション見出し（H2, H3）
+- 本文テキスト（段落、リスト）
+- 画像（静止画、スライドショー）
+- カード要素（特徴、プラン）
+- CTA（Call-to-Action）ボタン
+- 統計数値（カウントアップアニメーション）
+
+**技術スタック（候補）**:
+- Intersection Observer API（スクロール検知）
+- CSS Transform + Transition（基本アニメーション）
+- CSS Grid + Flexbox（レイアウト）
+- React Hooks（useEffect, useRef, useState）
+
+---
+
+### 📚 参考資料
+
+**デモページ**:
+- `/hero-demo` - 5パターン比較デモ（開発環境のみ）
+
+**実装ファイル**:
+- `src/components/Training.js` - ヒーローセクションHTML
+- `src/components/Training.css` - アニメーションCSS（4055行以降）
+- `src/components/HeroDemo.js` - デモページコンポーネント
+- `src/components/HeroDemo.css` - デモページ専用CSS
+
+**コミット履歴**:
+- `fdbf170` - feat: Implement Pattern 4 split & gather text animation for hero section
+- `b6ecdf2` - docs: Update README.md with Pattern 4 animation implementation details
+
+---
+
 *最終更新: 2025年10月28日*
-*システムバージョン: v4.4 (ABテストページ実装)*
+*システムバージョン: v4.5 (WebGLアニメーション Phase 1完了)*
