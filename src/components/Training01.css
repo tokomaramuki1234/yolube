@@ -73,14 +73,42 @@
 }
 
 .training-btn-primary {
-  background: linear-gradient(135deg, #8BC780 0%, #6BA563 100%);
+  background: linear-gradient(135deg, #FF8A00 0%, #FF6F00 100%);
   color: white;
-  box-shadow: 0 4px 15px rgba(139, 199, 128, 0.3);
+  box-shadow: 0 4px 15px rgba(255, 138, 0, 0.3);
+  height: 48px;
+  border-radius: 6px;
 }
 
 .training-btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(139, 199, 128, 0.4);
+  box-shadow: 0 6px 20px rgba(255, 138, 0, 0.4);
+}
+
+.training-btn-secondary {
+  background: white;
+  border: 2px solid #FF8A00;
+  color: #FF8A00;
+  height: 48px;
+  border-radius: 6px;
+}
+
+.training-btn-secondary:hover {
+  background: #FF8A00;
+  color: white;
+}
+
+.training-btn-secondary-outline {
+  background: transparent;
+  border: 2px solid #0A74DA;
+  color: #0A74DA;
+  height: 44px;
+  border-radius: 6px;
+}
+
+.training-btn-secondary-outline:hover {
+  background: #0A74DA;
+  color: white;
 }
 
 .training-btn-outline {
@@ -340,7 +368,7 @@
 
 /* Problem Section */
 .training-problem {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)),
               url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80') center/cover;
   position: relative;
@@ -392,13 +420,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   background: linear-gradient(135deg, #FF6B6B 0%, #EE5A52 100%);
   color: white;
   border-radius: 50%;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
 }
 
 .training-problem-content h4 {
@@ -416,7 +445,7 @@
 
 /* Solution Section */
 .training-solution {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
@@ -480,7 +509,7 @@
 
 /* Table Game Introduction Section */
 .training-tablegame-intro {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: #fff;
 }
 
@@ -505,6 +534,13 @@
   background: linear-gradient(transparent 60%, #8BC780 60%);
   font-weight: bold;
   padding: 0 0.2rem;
+}
+
+.training-highlight-text {
+  background: #FFF3E0;
+  padding: 0 0.3rem;
+  font-weight: 500;
+  border-radius: 2px;
 }
 
 /* Table Game Slideshow */
@@ -602,7 +638,7 @@
 
 /* Research Section */
 .training-research {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   scroll-margin-top: 80px;
 }
@@ -808,7 +844,7 @@
 
 /* Features Section */
 .training-features {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: #fff;
   scroll-margin-top: 80px;
 }
@@ -858,6 +894,54 @@
   margin-bottom: 2rem;
 }
 
+.training-feature-icon-large {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #0A74DA 0%, #0859B3 100%);
+  color: white;
+  border-radius: 50%;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 25px rgba(10, 116, 218, 0.3);
+}
+
+.training-feature-summary {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0A74DA;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: #F0F7FF;
+  border-radius: 8px;
+  border-left: 4px solid #0A74DA;
+}
+
+.training-feature-data {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px dashed #e9ecef;
+  text-align: center;
+}
+
+.training-data-number {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #FF8A00;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.training-data-label {
+  display: block;
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+}
+
 .training-feature-item h3 {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
@@ -888,7 +972,7 @@
 
 /* Program Section */
 .training-program {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   scroll-margin-top: 80px;
 }
@@ -1235,7 +1319,7 @@
 
 /* Advantage Section */
 .training-advantage {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: #fff;
 }
 
@@ -1403,7 +1487,7 @@
 
 /* Survey Results Section */
 .training-survey-results {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: linear-gradient(135deg, #fff8e1 0%, #ffe082 10%, #fff8e1 100%);
 }
 
@@ -1518,7 +1602,7 @@
 
 /* Instructor Section */
 .training-instructor {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
@@ -1903,7 +1987,7 @@
 
 /* FAQ Section */
 .training-faq {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
@@ -1963,6 +2047,101 @@
   padding: 0 0.2rem;
 }
 
+.training-section-cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.training-process-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 3rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, #F6F6F6 0%, #FFFFFF 100%);
+  border-radius: 12px;
+}
+
+.training-flow-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  max-width: 200px;
+}
+
+.training-flow-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0A74DA 0%, #0859B3 100%);
+  color: white;
+  border-radius: 50%;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(10, 116, 218, 0.3);
+}
+
+.training-flow-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+}
+
+.training-flow-item p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.training-flow-arrow {
+  font-size: 2rem;
+  color: #0A74DA;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .training-process-flow {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .training-flow-arrow {
+    transform: rotate(90deg);
+  }
+  
+  .training-flow-item {
+    max-width: 100%;
+  }
+  
+  .training-flow-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+  
+  .training-flow-label {
+    font-size: 1.1rem;
+  }
+  
+  .training-contact-benefits {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  .training-contact-benefit-item {
+    font-size: 1rem;
+  }
+}
+
 .training-faq-cta {
   text-align: center;
   margin-top: 3rem;
@@ -1979,7 +2158,7 @@
 
 /* Pricing Section */
 .training-pricing {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: #fff;
   scroll-margin-top: 80px;
 }
@@ -3751,9 +3930,31 @@
 
 /* Contact Section */
 .training-contact {
-  padding: 6rem 0;
-  background: #fff;
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFF3D4 100%);
   scroll-margin-top: 80px;
+}
+
+.training-contact-benefits {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+}
+
+.training-contact-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.training-contact-benefit-item svg {
+  color: #FF8A00;
+  font-size: 1.5rem;
 }
 
 .training-contact-content {

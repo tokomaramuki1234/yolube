@@ -156,15 +156,19 @@ const Training01 = () => {
             <div className="training-hero-text">
 
               <h1 className="training-title">
-                遊びが、<br />
-                <span className="training-title-sub">組織を強くする。</span>
+                遊びで、組織が変わる。<br />
+                <span className="training-title-sub">テーブルゲームで育む"本当のチーム力"</span>
               </h1>
               <p className="training-subtitle">
-                <strong>テーブルゲームで実現する、誰もが参加したくなる企業研修</strong></p>
+                短時間で対話・信頼・役割理解を促進。中小企業向けの実践型研修。
+              </p>
               <div className="training-hero-buttons">
                 <a href="#contact" className="training-btn training-btn-primary training-btn-hero">
                   <FontAwesomeIcon icon={faComments} />
-                  お申し込みはこちら
+                  無料で相談する（30分）
+                </a>
+                <a href="#pricing" className="training-btn training-btn-secondary training-btn-hero">
+                  資料をダウンロード
                 </a>
               </div><br />
               <a href="#limited-offer" className="training-badge">
@@ -193,34 +197,50 @@ const Training01 = () => {
           
           <div className="training-problems-grid">
             <div className="training-problem-item">
+              <div className="training-problem-icon">
+                <FontAwesomeIcon icon={faUsers} />
+              </div>
               <div className="training-problem-image">
                 <img src="/images/training_01_01.jpeg" alt="話しかける人が固定化している様子" />
               </div>
               <div className="training-problem-content">
                 <h4>話しかける人の固定化</h4>
-                <p>組織内で一部の人同士だけでコミュニケーションを取るため、重要な情報が全体に共有されない</p>
+                <p>一部の人同士だけで情報共有。重要な情報が全体に届かない。</p>
               </div>
             </div>
             
             <div className="training-problem-item">
+              <div className="training-problem-icon">
+                <FontAwesomeIcon icon={faBuilding} />
+              </div>
               <div className="training-problem-image">
                 <img src="/images/training_01_02.png" alt="部署間の情報共有が欠けている様子" />
               </div>
               <div className="training-problem-content">
                 <h4>部署間の情報共有不足</h4>
-                <p>関連部署とのコミュニケーション不足で予期せぬトラブルが発生</p>
+                <p>関連部署との連携不足で予期せぬトラブルが発生。</p>
               </div>
             </div>
             
             <div className="training-problem-item">
+              <div className="training-problem-icon">
+                <FontAwesomeIcon icon={faExclamationTriangle} />
+              </div>
               <div className="training-problem-image">
                 <img src="/images/training_01_03.jpeg" alt="新入社員が不安を感じている様子" />
               </div>
               <div className="training-problem-content">
                 <h4>新人を襲う漠然とした不安</h4>
-                <p>コミュニケーション不足により上司/同僚/組織の全体像が見えない</p>
+                <p>上司/同僚/組織の全体像が見えず、孤立感を感じやすい。</p>
               </div>
             </div>
+          </div>
+          
+          <div className="training-section-cta">
+            <a href="#features" className="training-btn training-btn-secondary-outline">
+              導入事例を見る
+              <FontAwesomeIcon icon={faArrowDown} />
+            </a>
           </div>
         </div>
       </section>
@@ -246,13 +266,22 @@ const Training01 = () => {
           <div className="training-tablegame-content">
             <div className="training-tablegame-text">
               <p>
-                <strong>テーブルゲーム</strong>とは、<span className="highlight">囲碁・将棋・花札・トランプ・UNO</span>などの<strong>机の上で遊ぶアナログなゲーム</strong>のことです。「ゲーム？それって遊びでしょう？」と思われるかもしれませんが、実は<strong>職場の"言いにくいこと"を自然に言える関係づくり</strong>に最適なツールなのです。
+                <strong>テーブルゲーム</strong>とは、<span className="training-highlight-text">囲碁・将棋・花札・トランプ・UNO</span>などの<strong>机の上で遊ぶアナログなゲーム</strong>のことです。
               </p>
               <p>
-                通常の研修では、<strong>役職や年齢の壁</strong>がどうしても邪魔をします。しかしテーブルゲームでは、社長も新入社員も同じルールの上で対等に競い合います。「課長、そこは違う手ですよ！」「部長、今のはずるいです（笑）」——こうした<strong>普段は言えない"ツッコミ"が笑いと共に飛び交う</strong>瞬間が、心理的な壁を溶かしていきます。
+                「ゲーム？それって遊びでしょう？」——そう思われるかもしれません。しかし実は<span className="training-highlight-text">職場の"言いにくいこと"を自然に言える関係づくり</span>に最適なツールなのです。
               </p>
               <p>
-                ゲーム終了後、不思議なことに会議室の空気が変わります。「さっきのゲーム面白かったですね」という会話から始まり、<strong>業務の相談や本音のやりとりが自然に生まれる</strong>ようになります。これこそが、座学では決して得られない「遊び」の力です。世界に30万種類以上あるテーブルゲームの中から、貴社の課題に最適なものを選定し、<strong>確実に成果につながる研修</strong>をご提案いたします。
+                通常の研修では役職や年齢の壁が邪魔をします。しかしテーブルゲームでは、<span className="training-highlight-text">社長も新入社員も同じルールの上で対等に競い合います。</span>
+              </p>
+              <p>
+                「課長、そこは違う手ですよ！」「部長、今のはずるいです（笑）」——こうした<span className="training-highlight-text">普段は言えない"ツッコミ"が笑いと共に飛び交う</span>瞬間が、心理的な壁を溶かしていきます。
+              </p>
+              <p>
+                ゲーム終了後、不思議なことに会議室の空気が変わります。「さっきのゲーム面白かったですね」という会話から始まり、<span className="training-highlight-text">業務の相談や本音のやりとりが自然に生まれる</span>ようになります。
+              </p>
+              <p>
+                これこそが、座学では決して得られない「遊び」の力です。世界に30万種類以上あるテーブルゲームの中から、貴社の課題に最適なものを選定し、確実に成果につながる研修をご提案いたします。
               </p>
             </div>
 
@@ -315,16 +344,19 @@ const Training01 = () => {
           <div className="training-research-content">
             <div className="training-research-overview">
               <p>
-                「社員同士の会話が少ない」「部署間の壁が厚い」「若手が職場に馴染めず早期離職してしまう」——こうした組織課題に対し、テーブルゲームを活用した研修が、<strong>学術的な裏付けのある解決策</strong>として注目されています。
+                「社員同士の会話が少ない」「部署間の壁が厚い」「若手が職場に馴染めず早期離職してしまう」——こうした組織課題に対し、テーブルゲームを活用した研修が、<span className="training-highlight-text">学術的な裏付けのある解決策</span>として注目されています。
               </p>
               <p>
-                近年の研究では、ボードゲームやカードゲームが<strong>「協調性・問題解決力・コミュニケーション能力」といったジェネリックスキルを効果的に育成する</strong>ことが定量的に検証されています。特に企業現場で求められる「思考の基盤トレーニング」や「社会的インタラクションの促進」といった効果が実証され、教育現場だけでなく、社会人基礎力育成の手段として高等教育機関や企業研修でも導入が進んでいます。
+                近年の研究では、ボードゲームやカードゲームが<span className="training-highlight-text">「協調性・問題解決力・コミュニケーション能力」といったジェネリックスキルを効果的に育成する</span>ことが定量的に検証されています。
               </p>
               <p>
-                カフェやイベントでの実地調査では、<strong>初対面同士でも自然に会話が生まれ、継続的な参加により人間関係が深まる</strong>プロセスが観察されています。コロナ禍を経て、対面でのコミュニケーション機会が減少した職場において、テーブルゲームは「楽しみながら自然に距離を縮める」ツールとして再評価されています。
+                カフェやイベントでの実地調査では、<span className="training-highlight-text">初対面同士でも自然に会話が生まれ、継続的な参加により人間関係が深まる</span>プロセスが観察されています。
               </p>
               <p>
-                これらの研究成果が示すのは、<strong>テーブルゲーム研修が単なる娯楽ではなく、社員のエンゲージメント向上・離職率低下・組織の心理的安全性構築に寄与する、科学的根拠のある施策</strong>だということです。多くの学術論文や実証データが蓄積されており、中小企業の限られた研修予算の中でも、確実な効果が期待できる投資として注目されています。
+                これらの研究成果が示すのは、<span className="training-highlight-text">テーブルゲーム研修が単なる娯楽ではなく、社員のエンゲージメント向上・離職率低下・組織の心理的安全性構築に寄与する、科学的根拠のある施策</span>だということです。
+              </p>
+              <p>
+                多くの学術論文や実証データが蓄積されており、中小企業の限られた研修予算の中でも、確実な効果が期待できる投資として注目されています。
               </p>
             </div>
 
@@ -360,32 +392,88 @@ const Training01 = () => {
       <section id="features" className="training-features">
         <div className="training-container">
           <h2 className="training-section-title">遊びがもたらす二つの効果</h2>
-              <p className="training-section-subtitle">テーブルゲームによるコミュニケーション研修を通じて下記の2点へ寄与してまいります。</p>
+          <p className="training-section-subtitle">テーブルゲームによるコミュニケーション研修を通じて下記の2点へ寄与してまいります。</p>
+          
+          {/* Process Flow Diagram */}
+          <div className="training-process-flow">
+            <div className="training-flow-item">
+              <div className="training-flow-icon">
+                <FontAwesomeIcon icon={faUsers} />
+              </div>
+              <div className="training-flow-label">体験</div>
+              <p>テーブルゲームで<br />フラットに交流</p>
+            </div>
+            <div className="training-flow-arrow">
+              <FontAwesomeIcon icon={faArrowRight} />
+            </div>
+            <div className="training-flow-item">
+              <div className="training-flow-icon">
+                <FontAwesomeIcon icon={faLightbulb} />
+              </div>
+              <div className="training-flow-label">気づき</div>
+              <p>相手の人間性・<br />強みを発見</p>
+            </div>
+            <div className="training-flow-arrow">
+              <FontAwesomeIcon icon={faArrowRight} />
+            </div>
+            <div className="training-flow-item">
+              <div className="training-flow-icon">
+                <FontAwesomeIcon icon={faHandshake} />
+              </div>
+              <div className="training-flow-label">行動</div>
+              <p>職場での<br />会話が増える</p>
+            </div>
+          </div>
+          
           <div className="training-features-grid">
             <div className="training-feature-item">
+              <div className="training-feature-icon-large">
+                <FontAwesomeIcon icon={faUsers} />
+              </div>
               <div className="training-feature-image">
                 <img src="/images/training_02_01.png" alt="社内交流の活性化" />
               </div>
               <h3>社内交流の活性化</h3>
+              <div className="training-feature-summary">
+                組織内に横断的な交流機会を創出
+              </div>
               <ul>
-                <li>組織内に横断的な交流機会を創出</li>
-                <li>お互いの「職場以外の一面」を知る機会で相互理解が進む</li>
-                <li>職位を超えた交流機会が自社への解像度を高める</li>
+                <li>お互いの<span className="training-highlight-text">「職場以外の一面」</span>を知る機会で相互理解が進む</li>
+                <li>職位を超えた交流機会が<span className="training-highlight-text">自社への解像度</span>を高める</li>
               </ul>
+              <div className="training-feature-data">
+                <span className="training-data-number">87.2%</span>
+                <span className="training-data-label">がコミュニケーション改善を実感</span>
+              </div>
             </div>
             
             <div className="training-feature-item">
+              <div className="training-feature-icon-large">
+                <FontAwesomeIcon icon={faHeart} />
+              </div>
               <div className="training-feature-image">
                 <img src="/images/training_02_02.jpeg" alt="エンゲージメント向上" />
               </div>
               <h3>エンゲージメント向上</h3>
+              <div className="training-feature-summary">
+                社員の定着率向上・離職率低下
+              </div>
               <ul>
-                <li>相互理解によってコミュニケーション感度を高め、社員の定着率を向上</li>
-                <li>組織の中で「話しかけやすい雰囲気」を創出</li>
-                <li>経営陣が求めている現場の声を拾いやすくする</li>
+                <li>組織の中で<span className="training-highlight-text">「話しかけやすい雰囲気」</span>を創出</li>
+                <li>経営陣が求めている<span className="training-highlight-text">現場の声</span>を拾いやすくする</li>
               </ul>
+              <div className="training-feature-data">
+                <span className="training-data-number">96.2%</span>
+                <span className="training-data-label">が継続参加を希望</span>
+              </div>
             </div>
-
+          </div>
+          
+          <div className="training-section-cta">
+            <a href="#program" className="training-btn training-btn-secondary-outline">
+              <FontAwesomeIcon icon={faArrowDown} />
+              研修プログラムの流れを見る
+            </a>
           </div>
         </div>
       </section>
@@ -435,17 +523,16 @@ const Training01 = () => {
                 
                 <div className="training-effect-item">
                   <h5>1. 相互理解が進む</h5>
-                  <p>テーブルゲームでは参加者がフラットな状態（＝職場でのペルソナが役に立たない状態）で臨むため、良くも悪くも人間性が表面化しやすくなります。この"職場では見えなかった一面"について相互理解が深まるほど、個々の強み・弱みを補完できる組織づくりを目指しやすくなります。</p>
-                  
+                  <p>参加者がフラットな状態で臨むため、人間性が表面化しやすくなります。<span className="training-highlight-text">"職場では見えなかった一面"</span>の相互理解が深まり、組織づくりを目指しやすくなります。</p>
                 </div>
                 
                 <div className="training-effect-item">
                   <h5>2. 成功体験を共有する</h5>
-                  <p>研修の参加者同士が共有する成功体験は、その後の何気ない日常の中でも思い返されることとなります。研修を重ねることでチームメンバーとの成功体験も増え、自然とポジティブな話題が増えていきます。</p>
+                  <p>参加者同士が共有する成功体験は日常でも思い返されます。研修を重ねることで<span className="training-highlight-text">チームメンバーとの成功体験も増え、ポジティブな話題が増えます。</span></p>
                 </div>
                 <div className="training-effect-item">
                   <h5>3. ボトムアップの下地作り</h5>
-                  <p>アイスブレイクのなかでアンケート実施するため、研修内容自体がPDCAサイクルを堅持しやすくなります。本丸であるエンゲージメント向上への道筋を探りやすくなります。</p>
+                  <p>アンケート実施により<span className="training-highlight-text">研修がPDCAサイクルを堅持しやすくなり、</span>エンゲージメント向上への道筋を探りやすくなります。</p>
                 </div>
               </div>
             </div>
@@ -484,17 +571,17 @@ const Training01 = () => {
 
                 <div className="training-effect-item">
                   <h5>1. 全員参加型の意思決定を実現</h5>
-                  <p>第1～4回で構築した「意見を出しやすい土壌」を活かし、経営層だけでなく現場社員も含めた全員参加型の意思決定プロセスを実現します。多様な視点からの意見が集まることで、より実効性の高い戦略立案が可能になります。</p>
+                  <p>第1～4回で構築した<span className="training-highlight-text">「意見を出しやすい土壌」</span>を活かし、全員参加型の意思決定プロセスを実現。実効性の高い戦略立案が可能になります。</p>
                 </div>
 
                 <div className="training-effect-item">
                   <h5>2. 組織への理解度向上</h5>
-                  <p>SWOT分析等の経営分析手法を実践することで、社員一人一人が自社の強み・弱み・機会・脅威を深く理解できるようになります。自社に対する解像度が高まることで、日常業務においても戦略的な判断ができるようになります。</p>
+                  <p>SWOT分析等を実践することで、<span className="training-highlight-text">社員一人一人が自社の強み・弱みを深く理解。</span>日常業務でも戦略的判断ができるようになります。</p>
                 </div>
 
                 <div className="training-effect-item">
                   <h5>3. 実践的なビジネススキルの習得</h5>
-                  <p>ブレインストーミングや経営分析といった実践的な手法を体験することで、問題解決力や論理的思考力が向上します。研修で学んだスキルは、日常業務やプロジェクトマネジメントにも応用可能です。</p>
+                  <p>ブレインストーミングや経営分析の体験で<span className="training-highlight-text">問題解決力や論理的思考力が向上。</span>日常業務やプロジェクトにも応用可能です。</p>
                 </div>
               </div>
             </div>
@@ -755,16 +842,23 @@ const Training01 = () => {
               <div className="training-instructor-message">
                 <h5>研修への想い</h5>
                 <p>
-                  ベトナムのIT企業で、異文化チームのマネジメントを経験する中で、<strong className="highlight">言葉や立場を超えた「本質的なコミュニケーション」の重要性</strong>に気づきました。SNSやチャットツールが発達した現代でも、<strong className="highlight">対面でしか築けない信頼関係</strong>があります。
+                  ベトナムのIT企業で異文化チームをマネジメントする中で、<strong className="highlight">言葉や立場を超えた「本質的なコミュニケーション」の重要性</strong>に気づきました。SNSやチャットツールが発達した現代でも、<strong className="highlight">対面でしか築けない信頼関係</strong>があります。
                 </p>
                 <p>
-                  テーブルゲーム研修では、「遊び」という安全な環境の中で、<strong className="highlight">参加者の素の人間性</strong>が表れます。この<strong className="highlight">「職場のペルソナを脱いだ状態」での交流こそが、真の相互理解と組織変革の第一歩</strong>だと考えています。
+                  テーブルゲーム研修では、「遊び」という安全な環境の中で<strong className="highlight">参加者の素の人間性</strong>が表れます。<strong className="highlight">「職場のペルソナを脱いだ状態」での交流こそが、真の相互理解と組織変革の第一歩</strong>だと考えています。
                 </p>
                 <p>
                   2023年から続けている<a href="https://yolube.jp/ke" target="_blank" rel="noopener noreferrer" className="training-link">テーブルゲーム交流会：Ke.</a>の運営で培った<strong className="highlight">1,000名以上へのファシリテーション経験</strong>を活かし、貴社の組織課題に寄り添った研修を設計いたします。
                 </p>
               </div>
             </div>
+          </div>
+          
+          <div className="training-section-cta">
+            <a href="#faq" className="training-btn training-btn-secondary-outline">
+              <FontAwesomeIcon icon={faArrowDown} />
+              よくあるご質問を見る
+            </a>
           </div>
         </div>
       </section>
@@ -867,7 +961,7 @@ const Training01 = () => {
             <p>その他のご質問は、お気軽にお問い合わせください</p>
             <a href="#contact" className="training-btn training-btn-primary">
               <FontAwesomeIcon icon={faComments} />
-              無料相談で詳しく聞く
+              30分無料で相談する
             </a>
           </div>
         </div>
@@ -1052,10 +1146,10 @@ const Training01 = () => {
           </div>
 
           {/* CTA Button */}
-          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+          <div className="training-section-cta">
             <a href="#contact" className="training-btn training-btn-primary training-btn-hero">
               <FontAwesomeIcon icon={faComments} />
-              お申し込みはこちら
+              無料相談を申し込む（30分）
             </a>
           </div>
         </div>
@@ -1064,8 +1158,27 @@ const Training01 = () => {
       {/* Contact Section */}
       <section id="contact" className="training-contact">
         <div className="training-container">
+          <h2 className="training-section-title">まずは無料相談から</h2>
+          <p className="training-section-subtitle">
+            30分の無料オンライン相談で、貴社の課題に合わせた研修プランをご提案します。
+          </p>
+          
+          <div className="training-contact-benefits">
+            <div className="training-contact-benefit-item">
+              <FontAwesomeIcon icon={faCheckCircle} />
+              <span>組織課題のヒアリング</span>
+            </div>
+            <div className="training-contact-benefit-item">
+              <FontAwesomeIcon icon={faCheckCircle} />
+              <span>最適な研修プランの提案</span>
+            </div>
+            <div className="training-contact-benefit-item">
+              <FontAwesomeIcon icon={faCheckCircle} />
+              <span>予算・スケジュールの相談</span>
+            </div>
+          </div>
+          
           <div className="training-contact-content">
-            
             <div className="training-contact-form">
               <h3>お問い合わせフォーム</h3>
               <form ref={form} onSubmit={handleSubmit} className="training-form">
