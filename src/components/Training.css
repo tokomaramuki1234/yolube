@@ -627,10 +627,10 @@
 .training-research-overview {
   background: white;
   padding: 2.5rem;
-  border-radius: 12px;
+  border-radius: 0;
   margin-bottom: 3rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  border-left: 5px solid #F73659;
+  box-shadow: none;
+  border: none;
 }
 
 .training-research-overview p {
