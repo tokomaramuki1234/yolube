@@ -600,6 +600,153 @@
   border-bottom-color: #8BC780;
 }
 
+/* Research Section */
+.training-research {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  scroll-margin-top: 80px;
+}
+
+.training-research-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.training-research-intro {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: #2c3e50;
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background: white;
+  border-left: 4px solid #8BC780;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.training-research-subtitle {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin: 3rem 0 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #8BC780;
+  font-weight: bold;
+}
+
+.training-research-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.training-research-section p {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: #555;
+  margin-bottom: 1.2rem;
+}
+
+.training-research-section p:last-child {
+  margin-bottom: 0;
+}
+
+.training-research-section strong {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.training-research-table {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+}
+
+.training-research-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.training-research-table thead {
+  background: #8BC780;
+  color: white;
+}
+
+.training-research-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid #ddd;
+}
+
+.training-research-table td {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  color: #555;
+  line-height: 1.6;
+}
+
+.training-research-table tbody tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+.training-research-table tbody tr:hover {
+  background: #e9ecef;
+  transition: background 0.2s ease;
+}
+
+.training-research-references {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-top: 3rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.training-research-references h4 {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #8BC780;
+}
+
+.training-research-references ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.training-research-references li {
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.training-research-references li::before {
+  content: "📄";
+  position: absolute;
+  left: 0;
+  font-size: 0.9rem;
+}
+
+.training-research-references a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.training-research-references a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
 /* Features Section */
 .training-features {
   padding: 6rem 0;
@@ -2400,6 +2547,55 @@
     padding: 2rem 1.5rem;
   }
 
+  /* Research Section - Mobile */
+  .training-research {
+    padding: 4rem 0;
+  }
+
+  .training-research-intro {
+    font-size: 1rem;
+    padding: 1.2rem;
+  }
+
+  .training-research-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .training-research-section {
+    padding: 1.5rem;
+  }
+
+  .training-research-section p {
+    font-size: 0.95rem;
+  }
+
+  .training-research-table {
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  .training-research-table table {
+    font-size: 0.85rem;
+    min-width: 600px;
+  }
+
+  .training-research-table th,
+  .training-research-table td {
+    padding: 0.8rem;
+  }
+
+  .training-research-references {
+    padding: 1.5rem;
+  }
+
+  .training-research-references h4 {
+    font-size: 1.1rem;
+  }
+
+  .training-research-references a {
+    font-size: 0.9rem;
+  }
+
   .training-survey-question h4 {
     font-size: 1.1rem;
   }
@@ -2748,6 +2944,60 @@
 
   .training-cta .training-section-subtitle {
     font-size: 1rem;
+  }
+
+  /* Research Section - Extra Small Mobile */
+  .training-research {
+    padding: 3rem 0;
+  }
+
+  .training-research-intro {
+    font-size: 0.95rem;
+    padding: 1rem;
+  }
+
+  .training-research-subtitle {
+    font-size: 1.2rem;
+    margin: 2rem 0 1rem;
+  }
+
+  .training-research-section {
+    padding: 1.2rem;
+  }
+
+  .training-research-section p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .training-research-table {
+    padding: 0.8rem;
+  }
+
+  .training-research-table table {
+    font-size: 0.8rem;
+  }
+
+  .training-research-table th,
+  .training-research-table td {
+    padding: 0.6rem;
+  }
+
+  .training-research-references {
+    padding: 1.2rem;
+  }
+
+  .training-research-references h4 {
+    font-size: 1rem;
+  }
+
+  .training-research-references li {
+    padding-left: 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .training-research-references a {
+    font-size: 0.85rem;
   }
 
   .training-cta-features {

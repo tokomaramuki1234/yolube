@@ -299,6 +299,105 @@ const Training = () => {
         </div>
       </section>
 
+      {/* Research Section */}
+      <section className="training-research">
+        <div className="training-container">
+          <h2 className="training-section-title">テーブルゲームの調査・研究動向</h2>
+          
+          <div className="training-research-content">
+            <p className="training-research-intro">
+              テーブルゲーム（ボードゲーム・カードゲーム）は、近年、教育的効果・認知発達・社会性・市場動向など多分野で活発な調査・論文発表が進んでいます。企業研修における活用も、こうした学術的な裏付けに基づいています。
+            </p>
+
+            <h3 className="training-research-subtitle">ボードゲーム分野の研究動向</h3>
+            <div className="training-research-section">
+              <p>
+                ボードゲームの教育利用に関する論文では、<strong>「思考の基盤トレーニング」「社会的インタラクションの促進」</strong>といったメリットが定量的に検証されています。児童を対象とした授業への導入や、高等教育現場での社会人基礎力育成、<strong>ジェネリックスキル（協調性・問題解決力など）</strong>を育む効果検討が盛んに行われています。
+              </p>
+              <p>
+                また、フィールドワークやカフェでの実地調査を通じて、受容度やプレイ行動パターンの変化を明らかにした事例もあります。コロナ禍での普及やイベントを通じた社会的・文化的インパクトに関する定量的・定性的な報告も増加傾向にあります。
+              </p>
+            </div>
+
+            <h3 className="training-research-subtitle">カードゲーム分野の研究動向</h3>
+            <div className="training-research-section">
+              <p>
+                トレーディングカードゲーム（TCG）は、<strong>「デッキ構築の最適化」「カードシャッフル方法の比較」「対戦アルゴリズム」</strong>など、数理情報学分野から実験的研究が進んでいます。画像認識・AR（拡張現実）を用いた現実カードとデジタル対戦の統合技術開発や、オンライン対戦環境の構築事例も報告されています。
+              </p>
+              <p>
+                初期手札枚数と勝率の関係、流通価格高騰や市場インフレの分析など、ゲームバランスや経済的側面からのアプローチも行われています。
+              </p>
+            </div>
+
+            <h3 className="training-research-subtitle">代表的な研究テーマ</h3>
+            <div className="training-research-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>分野</th>
+                    <th>研究テーマ</th>
+                    <th>内容の概要</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>ボードゲーム</td>
+                    <td>教育・社会的効果の分析</td>
+                    <td>教育現場での活用、認知機能・社会的スキルの向上効果の検証</td>
+                  </tr>
+                  <tr>
+                    <td>ボードゲーム</td>
+                    <td>ジェネリックスキルの育成</td>
+                    <td>問題解決力・協調性・コミュニケーション能力の育成事例</td>
+                  </tr>
+                  <tr>
+                    <td>ボードゲーム</td>
+                    <td>実地調査・受容度分析</td>
+                    <td>カフェなどでのフィールドワーク、プレイ行動パターンの考察</td>
+                  </tr>
+                  <tr>
+                    <td>カードゲーム</td>
+                    <td>デッキ最適化・アルゴリズム</td>
+                    <td>対戦アルゴリズム、画像認識技術、実験システム構築</td>
+                  </tr>
+                  <tr>
+                    <td>カードゲーム</td>
+                    <td>ゲームバランス分析</td>
+                    <td>初期手札枚数と勝率の関係、最適パラメータの分析</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="training-research-subtitle">今後の展望と課題</h3>
+            <div className="training-research-section">
+              <p>
+                テーブルゲーム分野の研究論文数は年々増加傾向にあり、教育・心理・認知・技術・市場の多方面で研究が進み続けています。今後は、<strong>デジタル要素を加味した統合型研究</strong>や、ジェンダー・世代間ギャップ分析、社会変化への応答、イベントによるコミュニティ構築の効果検証などが重要な課題とされています。
+              </p>
+              <p>
+                テーブルゲームは、教育的・社会的・技術的視点から多角的に研究されており、近年は<strong>実証データやシステム開発事例も蓄積</strong>されています。こうした研究成果は、企業研修への応用においても、科学的根拠に基づいた効果的なプログラム設計を可能にしています。
+              </p>
+            </div>
+
+            <div className="training-research-references">
+              <h4>参考文献・情報源</h4>
+              <ul>
+                <li><a href="https://www.r-gscefs.jp/?p=10021" target="_blank" rel="noopener noreferrer">立命館大学 地域研究センター</a></li>
+                <li><a href="https://gamescience.jp/2021/Paper/Teramura_2021.pdf" target="_blank" rel="noopener noreferrer">日本ゲーム学会論文誌（寺村, 2021）</a></li>
+                <li><a href="https://www.jstage.jst.go.jp/article/jjske/advpub/0/advpub_TJSKE-D-20-00046/_pdf" target="_blank" rel="noopener noreferrer">日本感性工学会論文誌</a></li>
+                <li><a href="https://gamescience.jp/2022/Paper/Etou_2022.pdf" target="_blank" rel="noopener noreferrer">日本ゲーム学会論文誌（江藤, 2022）</a></li>
+                <li><a href="https://www.jstage.jst.go.jp/article/konpyutariyoukyouiku/31/0/31_34/_pdf" target="_blank" rel="noopener noreferrer">コンピュータ利用教育学会</a></li>
+                <li><a href="https://researchmap.jp/satoruyamakawa/published_papers/33783558/attachment_file.pdf" target="_blank" rel="noopener noreferrer">山川聡「ジェネリックスキルに関する考察」</a></li>
+                <li><a href="https://www.jstage.jst.go.jp/article/digrajproc/11/0/11_35/_pdf/-char/ja" target="_blank" rel="noopener noreferrer">日本デジタルゲーム学会</a></li>
+                <li><a href="https://osu.repo.nii.ac.jp/record/2438/files/011-027.pdf" target="_blank" rel="noopener noreferrer">岡山商科大学リポジトリ</a></li>
+                <li><a href="https://ipsj.ixsq.nii.ac.jp/record/213429/files/IPSJ-GPWS2021008.pdf" target="_blank" rel="noopener noreferrer">情報処理学会論文誌</a></li>
+                <li>その他多数の学術論文・市場調査レポート</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section id="features" className="training-features">
         <div className="training-container">
