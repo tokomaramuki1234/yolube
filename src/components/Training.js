@@ -164,7 +164,7 @@ const Training = () => {
               <div className="training-hero-buttons">
                 <a href="#contact" className="training-btn training-btn-primary training-btn-hero">
                   <FontAwesomeIcon icon={faComments} />
-                  お申し込みはこちら
+                  無料で相談する
                 </a>
               </div><br />
               <a href="#limited-offer" className="training-badge">
@@ -246,13 +246,10 @@ const Training = () => {
           <div className="training-tablegame-content">
             <div className="training-tablegame-text">
               <p>
-                <strong>テーブルゲーム</strong>とは、<span className="highlight">囲碁・将棋・花札・トランプ・UNO</span>などの<strong>机の上で遊ぶアナログなゲーム</strong>のことです。「ゲーム？それって遊びでしょう？」と思われるかもしれませんが、実は<strong>職場の"言いにくいこと"を自然に言える関係づくり</strong>に最適なツールなのです。
+                <strong>テーブルゲーム</strong>とは、囲碁・将棋・トランプ・UNOなどの<strong>対面で遊ぶゲーム</strong>の総称です。「ゲームで研修？ただ遊ぶだけじゃないの？」と思われるかもしれませんが、実は<strong>職場の"言いにくいこと"を自然に言える関係づくり</strong>に最適なツールなのです。
               </p>
               <p>
-                通常の研修では、<strong>役職や年齢の壁</strong>がどうしても邪魔をします。しかしテーブルゲームでは、社長も新入社員も同じルールの上で対等に競い合います。「課長、そこは違う手ですよ！」「部長、今のはずるいです（笑）」——こうした<strong>普段は言えない"ツッコミ"が笑いと共に飛び交う</strong>瞬間が、心理的な壁を溶かしていきます。
-              </p>
-              <p>
-                ゲーム終了後、不思議なことに会議室の空気が変わります。「さっきのゲーム面白かったですね」という会話から始まり、<strong>業務の相談や本音のやりとりが自然に生まれる</strong>ようになります。これこそが、座学では決して得られない「遊び」の力です。世界に30万種類以上あるテーブルゲームの中から、貴社の課題に最適なものを選定し、<strong>確実に成果につながる研修</strong>をご提案いたします。
+                通常の研修では<strong>役職や年齢の壁</strong>が邪魔をします。しかしテーブルゲームでは、社長も新入社員も対等の立場。「課長、そこは違う手ですよ！」「部長、今のはずるいです（笑）」——こうした<strong>普段は言えない"本音"が笑いと共に飛び交う</strong>瞬間が、心理的な壁を溶かします。
               </p>
             </div>
 
@@ -265,24 +262,24 @@ const Training = () => {
                     <p className="slideshow-caption">横手市内での研修風景</p>
                   </div>
                   <div className="slideshow-slide">
-                    <img src="https://page.gensparksite.com/v1/base64_upload/579539f209a60bc6ad8c1939ee031eed" alt="テーブルゲームに関する様々な書籍" />
+                    <img src="https://page.gensparksite.com/v1/base64_upload/821aadd68e790b981414404298b08b81" alt="テーブルゲームに関する様々な書籍" />
                     <p className="slideshow-caption">テーブルゲームに関する様々な書籍</p>
                   </div>
                   <div className="slideshow-slide">
-                    <img src="https://page.gensparksite.com/v1/base64_upload/821aadd68e790b981414404298b08b81" alt="賞金付きの世界大会も存在するテーブルゲーム「カタン」の最新作" />
-                    <p className="slideshow-caption">賞金付きの世界大会も存在するテーブルゲーム「カタン」の最新作</p>
+                    <img src="https://page.gensparksite.com/v1/base64_upload/abb43042ad1c4db38c2fd7a9e560705e" alt="賞金付きの世界大会も存在するテーブルゲーム「カタン」の最新作" />
+                    <p className="slideshow-caption">賞金付きの世界大会も存在する「カタン」</p>
                   </div>
                   <div className="slideshow-slide">
-                    <img src="https://page.gensparksite.com/v1/base64_upload/278cbc3a7b005776512025fb58a1d825" alt="近年になって３Dプリンタを用いた作品が増加しています" />
-                    <p className="slideshow-caption">近年になって３Dプリンタを用いた作品が増加しています</p>
+                    <img src="https://page.gensparksite.com/v1/base64_upload/579539f209a60bc6ad8c1939ee031eed" alt="近年になって３Dプリンタを用いた作品が増加しています" />
+                    <p className="slideshow-caption">近年になって３Dプリンタを用いた作品が増加</p>
                   </div>
                   <div className="slideshow-slide">
-                    <img src="https://page.gensparksite.com/v1/base64_upload/abb43042ad1c4db38c2fd7a9e560705e" alt="テーブルゲームには３時間以上かかる大作も数多く存在しています" />
-                    <p className="slideshow-caption">テーブルゲームには３時間以上かかる大作も数多く存在しています</p>
+                    <img src="https://page.gensparksite.com/v1/base64_upload/278cbc3a7b005776512025fb58a1d825" alt="テーブルゲームには３時間以上かかる大作も数多く存在しています" />
+                    <p className="slideshow-caption">テーブルゲームには３時間以上かかる大作も数多く存在</p>
                   </div>
                   <div className="slideshow-slide">
                     <img src="https://page.gensparksite.com/v1/base64_upload/c4a30fb6cb5c06bc14f534c325ca88cd" alt="テーブルゲーム業界の有名タイトル「宝石の煌めき」" />
-                    <p className="slideshow-caption">テーブルゲーム業界の有名タイトル「宝石の煌めき」</p>
+                    <p className="slideshow-caption">テーブルゲーム業界の名作「宝石の煌めき」</p>
                   </div>
                 </div>
               </div>
@@ -315,16 +312,10 @@ const Training = () => {
           <div className="training-research-content">
             <div className="training-research-overview">
               <p>
-                「社員同士の会話が少ない」「部署間の壁が厚い」「若手が職場に馴染めず早期離職してしまう」——こうした組織課題に対し、テーブルゲームを活用した研修が、<strong>学術的な裏付けのある解決策</strong>として注目されています。
+                「社員同士の会話が少ない」「部署間の壁が厚い」「若手が早期離職してしまう」——こうした組織課題に対し、テーブルゲーム研修が<strong>学術的な裏付けのある解決策</strong>として注目されています。
               </p>
               <p>
-                近年の研究では、ボードゲームやカードゲームが<strong>「協調性・問題解決力・コミュニケーション能力」といったジェネリックスキルを効果的に育成する</strong>ことが定量的に検証されています。特に企業現場で求められる「思考の基盤トレーニング」や「社会的インタラクションの促進」といった効果が実証され、教育現場だけでなく、社会人基礎力育成の手段として高等教育機関や企業研修でも導入が進んでいます。
-              </p>
-              <p>
-                カフェやイベントでの実地調査では、<strong>初対面同士でも自然に会話が生まれ、継続的な参加により人間関係が深まる</strong>プロセスが観察されています。コロナ禍を経て、対面でのコミュニケーション機会が減少した職場において、テーブルゲームは「楽しみながら自然に距離を縮める」ツールとして再評価されています。
-              </p>
-              <p>
-                これらの研究成果が示すのは、<strong>テーブルゲーム研修が単なる娯楽ではなく、社員のエンゲージメント向上・離職率低下・組織の心理的安全性構築に寄与する、科学的根拠のある施策</strong>だということです。多くの学術論文や実証データが蓄積されており、中小企業の限られた研修予算の中でも、確実な効果が期待できる投資として注目されています。
+                近年の研究では、テーブルゲームが<strong>「協調性・問題解決力・コミュニケーション能力」を効果的に育成する</strong>ことが実証され、教育現場だけでなく<strong>社会人基礎力育成の手段として企業研修でも導入が進んでいます</strong>。初対面同士でも自然に会話が生まれ、継続参加により人間関係が深まるプロセスが観察されており、<strong>社員エンゲージメント向上・離職率低下・心理的安全性構築に寄与する、科学的根拠のある施策</strong>として、中小企業の限られた研修予算の中でも確実な効果が期待できる投資です。
               </p>
             </div>
 
@@ -359,8 +350,38 @@ const Training = () => {
       {/* Features Section */}
       <section id="features" className="training-features">
         <div className="training-container">
-          <h2 className="training-section-title">遊びがもたらす二つの効果</h2>
-              <p className="training-section-subtitle">テーブルゲームによるコミュニケーション研修を通じて下記の2点へ寄与してまいります。</p>
+          <h2 className="training-section-title">「遊び」がもたらす効果</h2>
+          {/* Process Flow */}
+          <div className="training-process-flow">
+            <div className="training-flow-item">
+              <div className="training-flow-icon">
+                <FontAwesomeIcon icon={faUsers} />
+              </div>
+              <div className="training-flow-label">体験</div>
+              <p>テーブルゲームで<br />自然体のまま交流</p>
+            </div>
+            <div className="training-flow-arrow">
+              <FontAwesomeIcon icon={faArrowRight} />
+            </div>
+            <div className="training-flow-item">
+              <div className="training-flow-icon">
+                <FontAwesomeIcon icon={faLightbulb} />
+              </div>
+              <div className="training-flow-label">気づき</div>
+              <p>相手の人間性・<br />強みを発見</p>
+            </div>
+            <div className="training-flow-arrow">
+              <FontAwesomeIcon icon={faArrowRight} />
+            </div>
+            <div className="training-flow-item">
+              <div className="training-flow-icon">
+                <FontAwesomeIcon icon={faHandshake} />
+              </div>
+              <div className="training-flow-label">行動</div>
+              <p>職場での<br />会話が増える</p>
+            </div>
+          </div>
+
           <div className="training-features-grid">
             <div className="training-feature-item">
               <div className="training-feature-image">
@@ -368,9 +389,8 @@ const Training = () => {
               </div>
               <h3>社内交流の活性化</h3>
               <ul>
-                <li>組織内に横断的な交流機会を創出</li>
+                <li>組織内に横断的な交流機会を創出。自社への解像度が高まる。</li>
                 <li>お互いの「職場以外の一面」を知る機会で相互理解が進む</li>
-                <li>職位を超えた交流機会が自社への解像度を高める</li>
               </ul>
             </div>
             
@@ -380,7 +400,6 @@ const Training = () => {
               </div>
               <h3>エンゲージメント向上</h3>
               <ul>
-                <li>相互理解によってコミュニケーション感度を高め、社員の定着率を向上</li>
                 <li>組織の中で「話しかけやすい雰囲気」を創出</li>
                 <li>経営陣が求めている現場の声を拾いやすくする</li>
               </ul>
@@ -426,7 +445,7 @@ const Training = () => {
                 </div>
                 <div className="training-phase-image">
                   <img src="/images/training/phase1_survey.jpg" alt="YOLUBE研修アンケート結果 - 新人社員コミュニケーション研修の効果" />
-                  <p className="training-image-caption">集計結果は回答者を特定しにくい形でクライアントに報告します。</p>
+                  <p className="training-image-caption">集計結果は回答者を特定しにくい形で貴社に報告します。</p>
                 </div>
               </div>
 
@@ -435,7 +454,7 @@ const Training = () => {
                 
                 <div className="training-effect-item">
                   <h5>1. 相互理解が進む</h5>
-                  <p>テーブルゲームでは参加者がフラットな状態（＝職場でのペルソナが役に立たない状態）で臨むため、良くも悪くも人間性が表面化しやすくなります。この"職場では見えなかった一面"について相互理解が深まるほど、個々の強み・弱みを補完できる組織づくりを目指しやすくなります。</p>
+                  <p>研修では参加者がフラットな状態（＝職場でのペルソナが役に立たない状態）で臨むため、良くも悪くも人間性が表面化しやすくなります。この"職場では見えなかった一面"について相互理解が深まるほど、個々の強み・弱みを補完できる組織づくりを目指しやすくなります。</p>
                   
                 </div>
                 
@@ -494,7 +513,7 @@ const Training = () => {
 
                 <div className="training-effect-item">
                   <h5>3. 実践的なビジネススキルの習得</h5>
-                  <p>ブレインストーミングや経営分析といった実践的な手法を体験することで、問題解決力や論理的思考力が向上します。研修で学んだスキルは、日常業務やプロジェクトマネジメントにも応用可能です。</p>
+                  <p>ブレインストーミングや経営分析といった実践的な手法を体験することで、問題解決力や論理的思考力が向上します。研修で学んだスキルは、日常業務やプロジェクト管理にも活かせます。</p>
                 </div>
               </div>
             </div>
@@ -737,7 +756,7 @@ const Training = () => {
                   <div className="training-expertise-item">
                     <div className="training-expertise-number">1,000+</div>
                     <div className="training-expertise-label">イベント来場者数</div>
-                    <p>2023年より「テーブルゲーム交流会：Ke.」を運営。累計参加者数約<strong className="highlight">1,100名超</strong>のイベントの中で、数多の参加者へテーブルゲームのルール説明等を実施。</p>
+                    <p>2023年より<a href="https://yolube.jp/ke" target="_blank" rel="noopener noreferrer" className="training-link">テーブルゲーム交流会：Ke.</a>を運営。累計参加者数約<strong className="highlight">1,100名超</strong>のイベントの中で、数多の参加者へテーブルゲームのルール説明等を実施。</p>
                   </div>
                   <div className="training-expertise-item">
                     <div className="training-expertise-number">87.2%</div>
@@ -755,13 +774,10 @@ const Training = () => {
               <div className="training-instructor-message">
                 <h5>研修への想い</h5>
                 <p>
-                  ベトナムのIT企業で、異文化チームのマネジメントを経験する中で、<strong className="highlight">言葉や立場を超えた「本質的なコミュニケーション」の重要性</strong>に気づきました。SNSやチャットツールが発達した現代でも、<strong className="highlight">対面でしか築けない信頼関係</strong>があります。
+                  ベトナムのIT企業で、異文化チームのマネジメントを経験する中で、<strong className="highlight">言葉や立場を超えた「本質的なコミュニケーション」の重要性</strong>を学んでまいりました。SNSやチャットツールが発達した現代でも、対面でしか築けない信頼関係があります。
                 </p>
                 <p>
-                  テーブルゲーム研修では、「遊び」という安全な環境の中で、<strong className="highlight">参加者の素の人間性</strong>が表れます。この<strong className="highlight">「職場のペルソナを脱いだ状態」での交流こそが、真の相互理解と組織変革の第一歩</strong>だと考えています。
-                </p>
-                <p>
-                  2023年から続けている<a href="https://yolube.jp/ke" target="_blank" rel="noopener noreferrer" className="training-link">テーブルゲーム交流会：Ke.</a>の運営で培った<strong className="highlight">1,000名以上へのファシリテーション経験</strong>を活かし、貴社の組織課題に寄り添った研修を設計いたします。
+                  テーブルゲーム研修では、「遊び」を通じて参加者の素の人間性が表れます。この<strong className="highlight">「職場のペルソナを脱いだ状態」での交流</strong>こそが、真の相互理解と組織変革の第一歩だと考えています。
                 </p>
               </div>
             </div>
@@ -876,17 +892,7 @@ const Training = () => {
       {/* Target & Pricing Section */}
       <section id="pricing" className="training-pricing">
         <div className="training-container">
-          <h2 className="training-section-title">こんな企業様におすすめ</h2>
-          
-          <div className="training-target-companies">
-            <ul>
-              <li>地方の中小企業（マンパワー不足、エンゲージメント課題）</li>
-              <li>初めて本格的な研修導入を検討している企業</li>
-              <li>従業員数の少ない新規企業</li>
-              <li>福利厚生・人材育成への投資意欲がある中堅〜大企業</li>
-              <li>社外交流・インバウンド戦略に関心のある企業</li>
-            </ul>
-          </div>
+          <h2 className="training-section-title">料金プラン</h2>
           
           {/* Limited Offer Banner */}
           <div id="limited-offer" className="training-limited-offer">
@@ -915,8 +921,6 @@ const Training = () => {
               ※ 5社に達し次第、または2025年12月31日まで（いずれか早い方）で受付終了となります
             </p>
           </div>
-
-          <h3 className="training-subsection-title">料金プラン</h3>
           <p className="training-pricing-intro">
             まずはお試しから。効果を実感いただいてから本格導入をご検討ください。
           </p>
