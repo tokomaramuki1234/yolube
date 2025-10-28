@@ -19,6 +19,7 @@ import BackToTop from './components/BackToTop';
 import KeLP from './pages/ke/KeLPWeb3';
 import RadarLP from './pages/radar/RadarLPWeb';
 import Training from './components/Training';
+import Training01 from './components/Training01';
 import ReservationDetail from './components/ReservationDetail';
 import NewsPage from './pages/NewsPage';
 import YolubePage from './pages/YolubePage';
@@ -128,6 +129,7 @@ function App() {
             <Route path="/ke/reservations/:eventId" element={<ReservationDetail />} />
             <Route path="/radar" element={<RadarLP />} />
             <Route path="/training" element={<Training />} />
+            <Route path="/training01" element={<Training01 />} />
 
             {/* 管理画面ルート */}
             <Route path="/admin/login" element={<Login />} />
