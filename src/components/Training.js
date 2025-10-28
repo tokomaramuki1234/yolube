@@ -320,56 +320,6 @@ const Training = () => {
               </p>
             </div>
 
-            <h3 className="training-research-subtitle">代表的な研究テーマ</h3>
-            <div className="training-research-table">
-              <table>
-                <thead>
-                  <tr>
-                    <th>分野</th>
-                    <th>研究テーマ</th>
-                    <th>内容の概要</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>ボードゲーム</td>
-                    <td>教育・社会的効果の分析</td>
-                    <td>教育現場での活用、認知機能・社会的スキルの向上効果の検証</td>
-                  </tr>
-                  <tr>
-                    <td>ボードゲーム</td>
-                    <td>ジェネリックスキルの育成</td>
-                    <td>問題解決力・協調性・コミュニケーション能力の育成事例</td>
-                  </tr>
-                  <tr>
-                    <td>ボードゲーム</td>
-                    <td>実地調査・受容度分析</td>
-                    <td>カフェなどでのフィールドワーク、プレイ行動パターンの考察</td>
-                  </tr>
-                  <tr>
-                    <td>カードゲーム</td>
-                    <td>デッキ最適化・アルゴリズム</td>
-                    <td>対戦アルゴリズム、画像認識技術、実験システム構築</td>
-                  </tr>
-                  <tr>
-                    <td>カードゲーム</td>
-                    <td>ゲームバランス分析</td>
-                    <td>初期手札枚数と勝率の関係、最適パラメータの分析</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <h3 className="training-research-subtitle">今後の展望と課題</h3>
-            <div className="training-research-section">
-              <p>
-                テーブルゲーム分野の研究論文数は年々増加傾向にあり、教育・心理・認知・技術・市場の多方面で研究が進み続けています。今後は、<strong>デジタル要素を加味した統合型研究</strong>や、ジェンダー・世代間ギャップ分析、社会変化への応答、イベントによるコミュニティ構築の効果検証などが重要な課題とされています。
-              </p>
-              <p>
-                テーブルゲームは、教育的・社会的・技術的視点から多角的に研究されており、近年は<strong>実証データやシステム開発事例も蓄積</strong>されています。こうした研究成果は、企業研修への応用においても、科学的根拠に基づいた効果的なプログラム設計を可能にしています。
-              </p>
-            </div>
-
             <div className="training-research-references">
               <h4>参考文献・情報源</h4>
               <ul>
