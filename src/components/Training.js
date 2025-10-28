@@ -48,7 +48,7 @@ const Training = () => {
   // スライドショーの自動再生
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 5);
+      setCurrentSlide((prev) => (prev + 1) % 6);
     }, 4000); // 4秒ごとに切り替え
 
     return () => clearInterval(timer);
@@ -241,7 +241,7 @@ const Training = () => {
       {/* What is Table Game Section */}
       <section className="training-tablegame-intro">
         <div className="training-container">
-          <h2 className="training-section-title">テーブルゲームってなに？</h2>
+          <h2 className="training-section-title">テーブルゲームとは？</h2>
           
           <div className="training-tablegame-content">
             <div className="training-tablegame-text">
@@ -261,29 +261,33 @@ const Training = () => {
               <div className="slideshow-container">
                 <div className="slideshow-track" style={{transform: `translateX(-${currentSlide * 100}%)`}}>
                   <div className="slideshow-slide">
-                    <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=800&h=500&fit=crop&q=80" alt="様々なボードゲームが棚に並んでいる" />
-                    <p className="slideshow-caption">世界中の多様なボードゲーム</p>
+                    <img src="https://page.gensparksite.com/v1/base64_upload/09a75843134de930ac96d3294bc39eea" alt="横手市内での研修風景" />
+                    <p className="slideshow-caption">横手市内での研修風景</p>
                   </div>
                   <div className="slideshow-slide">
-                    <img src="https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=800&h=500&fit=crop&q=80" alt="友人たちがテーブルゲームを楽しんでいる様子" />
-                    <p className="slideshow-caption">チームワークとコミュニケーション</p>
+                    <img src="https://page.gensparksite.com/v1/base64_upload/579539f209a60bc6ad8c1939ee031eed" alt="テーブルゲームに関する様々な書籍" />
+                    <p className="slideshow-caption">テーブルゲームに関する様々な書籍</p>
                   </div>
                   <div className="slideshow-slide">
-                    <img src="https://images.unsplash.com/photo-1632501641765-e568d28b0015?w=800&h=500&fit=crop&q=80" alt="戦略的なボードゲームのプレイ風景" />
-                    <p className="slideshow-caption">戦略性と思考力を育むゲーム</p>
+                    <img src="https://page.gensparksite.com/v1/base64_upload/821aadd68e790b981414404298b08b81" alt="賞金付きの世界大会も存在するテーブルゲーム「カタン」の最新作" />
+                    <p className="slideshow-caption">賞金付きの世界大会も存在するテーブルゲーム「カタン」の最新作</p>
                   </div>
                   <div className="slideshow-slide">
-                    <img src="https://images.unsplash.com/photo-1566694271453-390536dd1f0d?w=800&h=500&fit=crop&q=80" alt="グループでボードゲームをプレイする人々" />
-                    <p className="slideshow-caption">世代を超えて楽しめる遊び</p>
+                    <img src="https://page.gensparksite.com/v1/base64_upload/278cbc3a7b005776512025fb58a1d825" alt="近年になって３Dプリンタを用いた作品が増加しています" />
+                    <p className="slideshow-caption">近年になって３Dプリンタを用いた作品が増加しています</p>
                   </div>
                   <div className="slideshow-slide">
-                    <img src="https://images.unsplash.com/photo-1528819622765-d6bcf132f793?w=800&h=500&fit=crop&q=80" alt="チェスやクラシックなボードゲーム" />
-                    <p className="slideshow-caption">論理的思考を鍛えるゲーム</p>
+                    <img src="https://page.gensparksite.com/v1/base64_upload/abb43042ad1c4db38c2fd7a9e560705e" alt="テーブルゲームには３時間以上かかる大作も数多く存在しています" />
+                    <p className="slideshow-caption">テーブルゲームには３時間以上かかる大作も数多く存在しています</p>
+                  </div>
+                  <div className="slideshow-slide">
+                    <img src="https://page.gensparksite.com/v1/base64_upload/c4a30fb6cb5c06bc14f534c325ca88cd" alt="テーブルゲーム業界の有名タイトル「宝石の煌めき」" />
+                    <p className="slideshow-caption">テーブルゲーム業界の有名タイトル「宝石の煌めき」</p>
                   </div>
                 </div>
               </div>
               <div className="slideshow-dots">
-                {[0, 1, 2, 3, 4].map((index) => (
+                {[0, 1, 2, 3, 4, 5].map((index) => (
                   <button
                     key={index}
                     className={`slideshow-dot ${currentSlide === index ? 'active' : ''}`}
