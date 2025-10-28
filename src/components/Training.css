@@ -491,7 +491,7 @@
 .training-tablegame-text {
   max-width: 900px;
   margin: 0 auto 2rem;
-  text-align: center;
+  text-align: left;
 }
 
 .training-tablegame-text p {
@@ -2449,6 +2449,10 @@
   /* Table Game Introduction Section */
   .training-tablegame-intro {
     padding: 4rem 0;
+  }
+
+  .training-tablegame-text {
+    text-align: left;
   }
 
   .training-tablegame-text p {
