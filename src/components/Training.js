@@ -14,21 +14,33 @@ const Training = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isReferencesOpen, setIsReferencesOpen] = useState(false);
 
-  // 背景画像のプリロード
-  useEffect(() => {
-    const imageUrls = [
-      'https://images.unsplash.com/photo-1611891487253-156f9817e54d?w=1200&h=675&fit=crop&q=80&fm=webp',
-      'https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=1200&h=675&fit=crop&q=80&fm=webp',
-      'https://images.unsplash.com/photo-1566694271453-390536dd1f0d?w=1200&h=675&fit=crop&q=80&fm=webp'
-    ];
+  // デバイスタイプを検出（PC/タブレット/スマホ）
+  const [isMobile, setIsMobile] = useState(() => {
+    // 初期値を正確に設定（SSR対応）
+    if (typeof window !== 'undefined') {
+      return window.innerWidth <= 768;
+    }
+    return false;
+  });
 
-    imageUrls.forEach(url => {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'image';
-      link.href = url;
-      document.head.appendChild(link);
-    });
+  const [videoSrc, setVideoSrc] = useState('');
+
+  useEffect(() => {
+    const checkDevice = () => {
+      // タブレットとスマホを同じカテゴリとして扱う（768px以下）
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      
+      // 動画URLを更新
+      setVideoSrc(mobile
+        ? 'https://page.gensparksite.com/get_upload_url/9777a8c05392943141ff32a764d2a518d905d719b3791598f5bb2f4d31408cd1/default/96355463-781b-4268-b4cd-8b99e9ef2bd6'
+        : 'https://page.gensparksite.com/get_upload_url/9777a8c05392943141ff32a764d2a518d905d719b3791598f5bb2f4d31408cd1/default/a911c925-9e8b-43d6-991f-2d5c20962511'
+      );
+    };
+
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
   }, []);
 
   // スクロール位置を監視
@@ -144,22 +156,32 @@ const Training = () => {
 
       {/* Hero Section */}
       <section className="training-hero">
-        {/* 背景スライドショー */}
-        <div className="training-hero-slideshow">
-          <div className="training-hero-slide training-hero-slide-1"></div>
-          <div className="training-hero-slide training-hero-slide-2"></div>
-          <div className="training-hero-slide training-hero-slide-3"></div>
+        {/* 背景動画 */}
+        <div className="training-hero-video">
+          {videoSrc && (
+            <video
+              className="training-hero-video-element"
+              autoPlay
+              loop
+              muted
+              playsInline
+              key={videoSrc}
+              src={videoSrc}
+            >
+              お使いのブラウザは動画再生に対応していません。
+            </video>
+          )}
         </div>
         <div className="training-hero-overlay"></div>
         <div className="training-container">
           <div className="training-hero-content-center">
             <div className="training-hero-text">
 
-              <h1 className="training-title">
-                遊びが、<br />
-                <span className="training-title-sub">組織を強くする。</span>
+              <h1 className="training-title split-text">
+                <span>遊</span><span>び</span><span>が</span><span>、</span><br />
+                <span className="training-title-sub split-text-sub"><span>組</span><span>織</span><span>を</span><span>強</span><span>く</span><span>す</span><span>る</span><span>。</span></span>
               </h1>
-              <p className="training-subtitle">
+              <p className="training-subtitle blur-in-text">
                 <strong>テーブルゲームで実現する、誰もが参加したくなる企業研修</strong></p>
               <div className="training-hero-buttons">
                 <a href="#contact" className="training-btn training-btn-primary training-btn-hero">

@@ -1,0 +1,547 @@
+.hero-demo-page {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #fff;
+}
+
+/* ナビゲーション */
+.demo-nav {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+  text-align: center;
+  color: white;
+}
+
+.demo-nav h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  color: white;
+}
+
+.demo-description p {
+  margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* パターンセレクター */
+.pattern-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pattern-info {
+  text-align: center;
+  flex: 1;
+}
+
+.pattern-info h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  color: #FFD700;
+}
+
+.pattern-info p {
+  margin: 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.pattern-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pattern-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.pattern-btn-large {
+  padding: 1.25rem 2.5rem;
+  font-size: 1.1rem;
+}
+
+/* ヒーローセクション */
+.demo-hero {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.demo-hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.video-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-placeholder p {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+.demo-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.70) 0%, rgba(248, 249, 250, 0.65) 100%);
+  z-index: 1;
+}
+
+.demo-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+/* 共通テキストスタイル */
+.demo-title {
+  font-size: 4rem;
+  font-weight: 900;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+  color: #2c3e50;
+}
+
+.demo-title-sub {
+  display: block;
+  font-size: 3rem;
+  color: #8BC780;
+}
+
+.demo-subtitle {
+  font-size: 1.5rem;
+  margin: 1.5rem 0 0 0;
+  color: #34495e;
+}
+
+.demo-subtitle strong {
+  font-weight: 600;
+}
+
+.pattern-container {
+  animation: patternEnter 0.5s ease-out;
+}
+
+@keyframes patternEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ========================================
+   パターン1: 波打つテキスト
+======================================== */
+.pattern-1 .wave-text {
+  animation: none;
+}
+
+.pattern-1 .wave-text,
+.pattern-1 .demo-title-sub {
+  display: inline-block;
+  animation: wave 3s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  75% {
+    transform: translateY(10px);
+  }
+}
+
+.pattern-1 .fade-in-text {
+  animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   パターン2: 落下テキスト
+======================================== */
+.pattern-2 .drop-text span {
+  display: inline-block;
+  opacity: 0;
+  animation: drop 0.8s ease-out forwards;
+}
+
+@keyframes drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px) rotateX(-90deg);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.pattern-2 .drop-text-slow span {
+  display: inline-block;
+  opacity: 0;
+  animation: dropSlow 1s ease-out forwards;
+}
+
+@keyframes dropSlow {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   パターン3: 3D回転
+======================================== */
+.pattern-3 .rotate-3d-text {
+  animation: rotate3D 2s ease-out;
+  transform-style: preserve-3d;
+}
+
+@keyframes rotate3D {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(-90deg) rotateX(30deg);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0) rotateX(0);
+  }
+}
+
+.pattern-3 .scale-in-text {
+  animation: scaleIn 1.5s ease-out;
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ========================================
+   パターン4: 分裂→集合
+======================================== */
+.pattern-4 .split-text span {
+  display: inline-block;
+  opacity: 0;
+  animation: split 1.2s ease-out forwards;
+}
+
+@keyframes split {
+  0% {
+    opacity: 0;
+    transform: translate(calc((var(--random-x, 50) - 50) * 5px), calc((var(--random-y, 50) - 50) * 5px)) scale(0.5) rotate(calc((var(--random-r, 50) - 50) * 2deg));
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0);
+  }
+}
+
+.pattern-4 .split-text span:nth-child(1) { --random-x: 20; --random-y: 80; --random-r: 30; }
+.pattern-4 .split-text span:nth-child(2) { --random-x: 70; --random-y: 40; --random-r: 60; }
+.pattern-4 .split-text span:nth-child(3) { --random-x: 30; --random-y: 90; --random-r: 20; }
+.pattern-4 .split-text span:nth-child(4) { --random-x: 85; --random-y: 25; --random-r: 75; }
+.pattern-4 .split-text span:nth-child(5) { --random-x: 15; --random-y: 60; --random-r: 40; }
+.pattern-4 .split-text span:nth-child(6) { --random-x: 65; --random-y: 95; --random-r: 55; }
+.pattern-4 .split-text span:nth-child(7) { --random-x: 45; --random-y: 10; --random-r: 85; }
+.pattern-4 .split-text span:nth-child(8) { --random-x: 90; --random-y: 70; --random-r: 15; }
+
+.pattern-4 .blur-in-text {
+  animation: blurIn 1.5s ease-out;
+}
+
+@keyframes blurIn {
+  0% {
+    opacity: 0;
+    filter: blur(20px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* ========================================
+   パターン5: グロー効果
+======================================== */
+.pattern-5 .glow-text {
+  animation: glow 2s ease-out;
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0;
+    text-shadow: 0 0 40px rgba(139, 199, 128, 0);
+  }
+  50% {
+    text-shadow: 0 0 40px rgba(139, 199, 128, 1),
+                 0 0 80px rgba(139, 199, 128, 0.8),
+                 0 0 120px rgba(139, 199, 128, 0.6);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(139, 199, 128, 0.3);
+  }
+}
+
+.pattern-5 .shimmer-text {
+  animation: shimmer 2s ease-out;
+  background: linear-gradient(90deg, #34495e 0%, #8BC780 50%, #34495e 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    background-position: 200% 0;
+    opacity: 1;
+  }
+}
+
+/* 情報セクション */
+.demo-info {
+  background: #fff;
+  padding: 4rem 2rem;
+  color: #333;
+}
+
+.demo-info h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0 0 3rem 0;
+  color: #2c3e50;
+}
+
+.pattern-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+}
+
+.pattern-detail-card {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pattern-detail-card h3 {
+  margin: 0 0 1rem 0;
+  color: #2c3e50;
+  font-size: 1.3rem;
+}
+
+.pattern-detail-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pattern-detail-card li {
+  padding: 0.5rem 0;
+  color: #555;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.pattern-detail-card li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #8BC780;
+  font-weight: bold;
+}
+
+.recommendation-section {
+  max-width: 800px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+}
+
+.recommendation-section h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.recommendation-content p {
+  font-weight: 600;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.recommendation-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+.recommendation-content li {
+  padding: 0.4rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.recommendation-content li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #FFD700;
+  font-weight: bold;
+}
+
+/* フッターナビゲーション */
+.pattern-navigation-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pattern-indicator {
+  display: flex;
+  gap: 1rem;
+}
+
+.indicator-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator-dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(1.2);
+}
+
+.indicator-dot.active {
+  background: #FFD700;
+  transform: scale(1.3);
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .demo-nav h1 {
+    font-size: 1.3rem;
+  }
+
+  .pattern-selector {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pattern-info h2 {
+    font-size: 1.2rem;
+  }
+
+  .demo-title {
+    font-size: 2.5rem;
+  }
+
+  .demo-title-sub {
+    font-size: 2rem;
+  }
+
+  .demo-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .pattern-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pattern-navigation-footer {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .pattern-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
