@@ -12,6 +12,7 @@ const Training = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isReferencesOpen, setIsReferencesOpen] = useState(false);
 
   // 背景画像のプリロード
   useEffect(() => {
@@ -324,19 +325,28 @@ const Training = () => {
             </div>
 
             <div className="training-research-references">
-              <h4>参考文献・情報源</h4>
-              <ul>
-                <li><a href="https://www.r-gscefs.jp/?p=10021" target="_blank" rel="noopener noreferrer">立命館大学 地域研究センター</a></li>
-                <li><a href="https://gamescience.jp/2021/Paper/Teramura_2021.pdf" target="_blank" rel="noopener noreferrer">日本ゲーム学会論文誌（寺村, 2021）</a></li>
-                <li><a href="https://www.jstage.jst.go.jp/article/jjske/advpub/0/advpub_TJSKE-D-20-00046/_pdf" target="_blank" rel="noopener noreferrer">日本感性工学会論文誌</a></li>
-                <li><a href="https://gamescience.jp/2022/Paper/Etou_2022.pdf" target="_blank" rel="noopener noreferrer">日本ゲーム学会論文誌（江藤, 2022）</a></li>
-                <li><a href="https://www.jstage.jst.go.jp/article/konpyutariyoukyouiku/31/0/31_34/_pdf" target="_blank" rel="noopener noreferrer">コンピュータ利用教育学会</a></li>
-                <li><a href="https://researchmap.jp/satoruyamakawa/published_papers/33783558/attachment_file.pdf" target="_blank" rel="noopener noreferrer">山川聡「ジェネリックスキルに関する考察」</a></li>
-                <li><a href="https://www.jstage.jst.go.jp/article/digrajproc/11/0/11_35/_pdf/-char/ja" target="_blank" rel="noopener noreferrer">日本デジタルゲーム学会</a></li>
-                <li><a href="https://osu.repo.nii.ac.jp/record/2438/files/011-027.pdf" target="_blank" rel="noopener noreferrer">岡山商科大学リポジトリ</a></li>
-                <li><a href="https://ipsj.ixsq.nii.ac.jp/record/213429/files/IPSJ-GPWS2021008.pdf" target="_blank" rel="noopener noreferrer">情報処理学会論文誌</a></li>
-                <li>その他多数の学術論文・市場調査レポート</li>
-              </ul>
+              <button 
+                className="training-research-references-toggle"
+                onClick={() => setIsReferencesOpen(!isReferencesOpen)}
+                aria-expanded={isReferencesOpen}
+              >
+                <span>参考文献・情報源</span>
+                <i className={`fas fa-chevron-${isReferencesOpen ? 'up' : 'down'}`}></i>
+              </button>
+              {isReferencesOpen && (
+                <ul className="training-research-references-list">
+                  <li><a href="https://www.r-gscefs.jp/?p=10021" target="_blank" rel="noopener noreferrer">立命館大学 地域研究センター</a></li>
+                  <li><a href="https://gamescience.jp/2021/Paper/Teramura_2021.pdf" target="_blank" rel="noopener noreferrer">日本ゲーム学会論文誌（寺村, 2021）</a></li>
+                  <li><a href="https://www.jstage.jst.go.jp/article/jjske/advpub/0/advpub_TJSKE-D-20-00046/_pdf" target="_blank" rel="noopener noreferrer">日本感性工学会論文誌</a></li>
+                  <li><a href="https://gamescience.jp/2022/Paper/Etou_2022.pdf" target="_blank" rel="noopener noreferrer">日本ゲーム学会論文誌（江藤, 2022）</a></li>
+                  <li><a href="https://www.jstage.jst.go.jp/article/konpyutariyoukyouiku/31/0/31_34/_pdf" target="_blank" rel="noopener noreferrer">コンピュータ利用教育学会</a></li>
+                  <li><a href="https://researchmap.jp/satoruyamakawa/published_papers/33783558/attachment_file.pdf" target="_blank" rel="noopener noreferrer">山川聡「ジェネリックスキルに関する考察」</a></li>
+                  <li><a href="https://www.jstage.jst.go.jp/article/digrajproc/11/0/11_35/_pdf/-char/ja" target="_blank" rel="noopener noreferrer">日本デジタルゲーム学会</a></li>
+                  <li><a href="https://osu.repo.nii.ac.jp/record/2438/files/011-027.pdf" target="_blank" rel="noopener noreferrer">岡山商科大学リポジトリ</a></li>
+                  <li><a href="https://ipsj.ixsq.nii.ac.jp/record/213429/files/IPSJ-GPWS2021008.pdf" target="_blank" rel="noopener noreferrer">情報処理学会論文誌</a></li>
+                  <li>その他多数の学術論文・市場調査レポート</li>
+                </ul>
+              )}
             </div>
           </div>
         </div>
