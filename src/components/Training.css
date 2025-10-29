@@ -4394,17 +4394,16 @@
    YOLUBEキャラクターアニメーション
 ======================================== */
 .yolube-character {
-  position: fixed;
-  top: 0;
-  right: 0;
-  /* 画面サイズに比例: 最小150px、理想18vw、最大350px */
-  width: clamp(150px, 18vw, 350px);
+  animation: slideInBounce 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s forwards;
   height: clamp(150px, 18vw, 350px);
   overflow: hidden;
-  z-index: 999;
   pointer-events: none;
+  position: fixed;
+  right: -155px;
+  top: -85px;
   transform: translate(70%, -70%);
-  animation: slideInBounce 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s forwards;
+  width: clamp(150px, 18vw, 350px);
+  z-index: 999;
 }
 
 .yolube-character img {
