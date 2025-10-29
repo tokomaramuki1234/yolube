@@ -4411,6 +4411,7 @@
   height: 100%;
   object-fit: contain;
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+  mix-blend-mode: screen; /* 黒背景を透明にする */
 }
 
 @keyframes slideInBounce {
