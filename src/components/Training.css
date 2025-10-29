@@ -4120,3 +4120,223 @@
   }
 }
 
+/* ========================================
+   H2見出しアニメーション: パターン4 (スケール拡大)
+======================================== */
+
+/* H2見出しアニメーション用クラス */
+.training-section-title.animate-h2 span {
+  display: inline-block;
+  opacity: 0;
+}
+
+/* アニメーション発火時のクラス */
+.training-section-title.animate-h2.is-visible span {
+  animation: scaleInH2 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes scaleInH2 {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 各文字の遅延時間を設定 (最大20文字まで対応) */
+.training-section-title.animate-h2.is-visible span:nth-child(1) { animation-delay: 0s; }
+.training-section-title.animate-h2.is-visible span:nth-child(2) { animation-delay: 0.05s; }
+.training-section-title.animate-h2.is-visible span:nth-child(3) { animation-delay: 0.1s; }
+.training-section-title.animate-h2.is-visible span:nth-child(4) { animation-delay: 0.15s; }
+.training-section-title.animate-h2.is-visible span:nth-child(5) { animation-delay: 0.2s; }
+.training-section-title.animate-h2.is-visible span:nth-child(6) { animation-delay: 0.25s; }
+.training-section-title.animate-h2.is-visible span:nth-child(7) { animation-delay: 0.3s; }
+.training-section-title.animate-h2.is-visible span:nth-child(8) { animation-delay: 0.35s; }
+.training-section-title.animate-h2.is-visible span:nth-child(9) { animation-delay: 0.4s; }
+.training-section-title.animate-h2.is-visible span:nth-child(10) { animation-delay: 0.45s; }
+.training-section-title.animate-h2.is-visible span:nth-child(11) { animation-delay: 0.5s; }
+.training-section-title.animate-h2.is-visible span:nth-child(12) { animation-delay: 0.55s; }
+.training-section-title.animate-h2.is-visible span:nth-child(13) { animation-delay: 0.6s; }
+.training-section-title.animate-h2.is-visible span:nth-child(14) { animation-delay: 0.65s; }
+.training-section-title.animate-h2.is-visible span:nth-child(15) { animation-delay: 0.7s; }
+.training-section-title.animate-h2.is-visible span:nth-child(16) { animation-delay: 0.75s; }
+.training-section-title.animate-h2.is-visible span:nth-child(17) { animation-delay: 0.8s; }
+.training-section-title.animate-h2.is-visible span:nth-child(18) { animation-delay: 0.85s; }
+.training-section-title.animate-h2.is-visible span:nth-child(19) { animation-delay: 0.9s; }
+.training-section-title.animate-h2.is-visible span:nth-child(20) { animation-delay: 0.95s; }
+
+/* モバイルでは短めのアニメーション */
+@media (max-width: 768px) {
+  .training-section-title.animate-h2.is-visible span {
+    animation-duration: 0.4s;
+  }
+}
+
+/* アクセシビリティ: アニメーション無効設定 */
+@media (prefers-reduced-motion: reduce) {
+  .training-section-title.animate-h2.is-visible span {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ========================================
+   H3/H4見出しアニメーション: パターン4 (スケール拡大) - 文字単位
+======================================== */
+
+/* H3/H4見出しの各文字 */
+.animate-h3 span,
+.animate-h4 span {
+  display: inline-block;
+  opacity: 0;
+}
+
+/* アニメーション発火時 */
+.animate-h3.is-visible span,
+.animate-h4.is-visible span {
+  animation: scaleInChar 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes scaleInChar {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 各文字の遅延時間 (最大30文字対応) */
+.animate-h3.is-visible span:nth-child(1),
+.animate-h4.is-visible span:nth-child(1) { animation-delay: 0s; }
+.animate-h3.is-visible span:nth-child(2),
+.animate-h4.is-visible span:nth-child(2) { animation-delay: 0.04s; }
+.animate-h3.is-visible span:nth-child(3),
+.animate-h4.is-visible span:nth-child(3) { animation-delay: 0.08s; }
+.animate-h3.is-visible span:nth-child(4),
+.animate-h4.is-visible span:nth-child(4) { animation-delay: 0.12s; }
+.animate-h3.is-visible span:nth-child(5),
+.animate-h4.is-visible span:nth-child(5) { animation-delay: 0.16s; }
+.animate-h3.is-visible span:nth-child(6),
+.animate-h4.is-visible span:nth-child(6) { animation-delay: 0.2s; }
+.animate-h3.is-visible span:nth-child(7),
+.animate-h4.is-visible span:nth-child(7) { animation-delay: 0.24s; }
+.animate-h3.is-visible span:nth-child(8),
+.animate-h4.is-visible span:nth-child(8) { animation-delay: 0.28s; }
+.animate-h3.is-visible span:nth-child(9),
+.animate-h4.is-visible span:nth-child(9) { animation-delay: 0.32s; }
+.animate-h3.is-visible span:nth-child(10),
+.animate-h4.is-visible span:nth-child(10) { animation-delay: 0.36s; }
+.animate-h3.is-visible span:nth-child(11),
+.animate-h4.is-visible span:nth-child(11) { animation-delay: 0.4s; }
+.animate-h3.is-visible span:nth-child(12),
+.animate-h4.is-visible span:nth-child(12) { animation-delay: 0.44s; }
+.animate-h3.is-visible span:nth-child(13),
+.animate-h4.is-visible span:nth-child(13) { animation-delay: 0.48s; }
+.animate-h3.is-visible span:nth-child(14),
+.animate-h4.is-visible span:nth-child(14) { animation-delay: 0.52s; }
+.animate-h3.is-visible span:nth-child(15),
+.animate-h4.is-visible span:nth-child(15) { animation-delay: 0.56s; }
+.animate-h3.is-visible span:nth-child(16),
+.animate-h4.is-visible span:nth-child(16) { animation-delay: 0.6s; }
+.animate-h3.is-visible span:nth-child(17),
+.animate-h4.is-visible span:nth-child(17) { animation-delay: 0.64s; }
+.animate-h3.is-visible span:nth-child(18),
+.animate-h4.is-visible span:nth-child(18) { animation-delay: 0.68s; }
+.animate-h3.is-visible span:nth-child(19),
+.animate-h4.is-visible span:nth-child(19) { animation-delay: 0.72s; }
+.animate-h3.is-visible span:nth-child(20),
+.animate-h4.is-visible span:nth-child(20) { animation-delay: 0.76s; }
+.animate-h3.is-visible span:nth-child(21),
+.animate-h4.is-visible span:nth-child(21) { animation-delay: 0.8s; }
+.animate-h3.is-visible span:nth-child(22),
+.animate-h4.is-visible span:nth-child(22) { animation-delay: 0.84s; }
+.animate-h3.is-visible span:nth-child(23),
+.animate-h4.is-visible span:nth-child(23) { animation-delay: 0.88s; }
+.animate-h3.is-visible span:nth-child(24),
+.animate-h4.is-visible span:nth-child(24) { animation-delay: 0.92s; }
+.animate-h3.is-visible span:nth-child(25),
+.animate-h4.is-visible span:nth-child(25) { animation-delay: 0.96s; }
+.animate-h3.is-visible span:nth-child(26),
+.animate-h4.is-visible span:nth-child(26) { animation-delay: 1s; }
+.animate-h3.is-visible span:nth-child(27),
+.animate-h4.is-visible span:nth-child(27) { animation-delay: 1.04s; }
+.animate-h3.is-visible span:nth-child(28),
+.animate-h4.is-visible span:nth-child(28) { animation-delay: 1.08s; }
+.animate-h3.is-visible span:nth-child(29),
+.animate-h4.is-visible span:nth-child(29) { animation-delay: 1.12s; }
+.animate-h3.is-visible span:nth-child(30),
+.animate-h4.is-visible span:nth-child(30) { animation-delay: 1.16s; }
+
+/* ========================================
+   Body Text (P, Li) アニメーション: ブロック単位フェードイン
+======================================== */
+
+/* P/Li要素全体をふわっと表示 */
+.animate-text {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* アニメーション発火時 */
+.animate-text.is-visible {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   モバイル最適化
+======================================== */
+@media (max-width: 768px) {
+  .animate-h3.is-visible span,
+  .animate-h4.is-visible span {
+    animation-duration: 0.4s;
+  }
+
+  .animate-text.is-visible {
+    animation-duration: 0.6s;
+  }
+}
+
+/* ========================================
+   アクセシビリティ: アニメーション無効設定
+======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .animate-h3 span,
+  .animate-h4 span {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  
+  .animate-text {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+

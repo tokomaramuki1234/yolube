@@ -1,0 +1,490 @@
+/* ================================================
+   H2見出しアニメーションデモページ スタイル
+   ================================================ */
+
+.h2-demo-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding-bottom: 60px;
+}
+
+/* ヘッダー */
+.h2-demo-header {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.h2-demo-header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.h2-demo-header h1 {
+  font-size: 2rem;
+  color: #2d3748;
+  margin-bottom: 10px;
+}
+
+.h2-demo-header p {
+  color: #718096;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.back-link {
+  display: inline-block;
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.back-link:hover {
+  color: #764ba2;
+  transform: translateX(-5px);
+}
+
+/* ナビゲーション */
+.h2-demo-nav {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.h2-pattern-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.h2-pattern-buttons button {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid transparent;
+  padding: 15px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #2d3748;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.h2-pattern-buttons button:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.h2-pattern-buttons button.active {
+  background: white;
+  border-color: #667eea;
+  color: #667eea;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.replay-button {
+  background: #48bb78;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(72, 187, 120, 0.3);
+  width: 100%;
+}
+
+.replay-button:hover {
+  background: #38a169;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
+}
+
+/* メインコンテンツ */
+.h2-demo-main {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.h2-demo-container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 60px 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.h2-demo-container h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 40px;
+  text-align: center;
+  /* 色とフォントサイズは変更しない（明示的に指定） */
+}
+
+.h2-demo-container h2 span {
+  display: inline-block;
+}
+
+.pattern-info {
+  background: #f7fafc;
+  padding: 30px;
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+  max-width: 600px;
+}
+
+.pattern-info h3 {
+  color: #667eea;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.pattern-info p {
+  color: #4a5568;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.pattern-info p:last-child {
+  margin-bottom: 0;
+}
+
+/* ================================================
+   パターン1: スライドイン (左から)
+   ================================================ */
+.h2-pattern-1 span {
+  opacity: 0;
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.h2-pattern-1 span:nth-child(1) { animation-delay: 0s; }
+.h2-pattern-1 span:nth-child(2) { animation-delay: 0.1s; }
+.h2-pattern-1 span:nth-child(3) { animation-delay: 0.2s; }
+.h2-pattern-1 span:nth-child(4) { animation-delay: 0.3s; }
+.h2-pattern-1 span:nth-child(5) { animation-delay: 0.4s; }
+.h2-pattern-1 span:nth-child(6) { animation-delay: 0.5s; }
+.h2-pattern-1 span:nth-child(7) { animation-delay: 0.6s; }
+.h2-pattern-1 span:nth-child(8) { animation-delay: 0.7s; }
+
+/* ================================================
+   パターン2: フェードイン + 上昇
+   ================================================ */
+.h2-pattern-2 span {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.h2-pattern-2 span:nth-child(1) { animation-delay: 0s; }
+.h2-pattern-2 span:nth-child(2) { animation-delay: 0.08s; }
+.h2-pattern-2 span:nth-child(3) { animation-delay: 0.16s; }
+.h2-pattern-2 span:nth-child(4) { animation-delay: 0.24s; }
+.h2-pattern-2 span:nth-child(5) { animation-delay: 0.32s; }
+.h2-pattern-2 span:nth-child(6) { animation-delay: 0.4s; }
+.h2-pattern-2 span:nth-child(7) { animation-delay: 0.48s; }
+.h2-pattern-2 span:nth-child(8) { animation-delay: 0.56s; }
+
+/* ================================================
+   パターン3: 回転フェードイン
+   ================================================ */
+.h2-pattern-3 span {
+  opacity: 0;
+  animation: rotateIn 0.8s ease-out forwards;
+  transform-origin: center center;
+}
+
+@keyframes rotateIn {
+  0% {
+    opacity: 0;
+    transform: rotateY(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(0);
+  }
+}
+
+.h2-pattern-3 span:nth-child(1) { animation-delay: 0s; }
+.h2-pattern-3 span:nth-child(2) { animation-delay: 0.1s; }
+.h2-pattern-3 span:nth-child(3) { animation-delay: 0.2s; }
+.h2-pattern-3 span:nth-child(4) { animation-delay: 0.3s; }
+.h2-pattern-3 span:nth-child(5) { animation-delay: 0.4s; }
+.h2-pattern-3 span:nth-child(6) { animation-delay: 0.5s; }
+.h2-pattern-3 span:nth-child(7) { animation-delay: 0.6s; }
+.h2-pattern-3 span:nth-child(8) { animation-delay: 0.7s; }
+
+/* ================================================
+   パターン4: スケール (拡大)
+   ================================================ */
+.h2-pattern-4 span {
+  opacity: 0;
+  animation: scaleIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.h2-pattern-4 span:nth-child(1) { animation-delay: 0s; }
+.h2-pattern-4 span:nth-child(2) { animation-delay: 0.08s; }
+.h2-pattern-4 span:nth-child(3) { animation-delay: 0.16s; }
+.h2-pattern-4 span:nth-child(4) { animation-delay: 0.24s; }
+.h2-pattern-4 span:nth-child(5) { animation-delay: 0.32s; }
+.h2-pattern-4 span:nth-child(6) { animation-delay: 0.4s; }
+.h2-pattern-4 span:nth-child(7) { animation-delay: 0.48s; }
+.h2-pattern-4 span:nth-child(8) { animation-delay: 0.56s; }
+
+/* ================================================
+   パターン5: タイプライター風
+   ================================================ */
+.h2-pattern-5 span {
+  opacity: 0;
+  animation: typewriter 0.15s steps(1) forwards;
+}
+
+@keyframes typewriter {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.h2-pattern-5 span:nth-child(1) { animation-delay: 0s; }
+.h2-pattern-5 span:nth-child(2) { animation-delay: 0.15s; }
+.h2-pattern-5 span:nth-child(3) { animation-delay: 0.3s; }
+.h2-pattern-5 span:nth-child(4) { animation-delay: 0.45s; }
+.h2-pattern-5 span:nth-child(5) { animation-delay: 0.6s; }
+.h2-pattern-5 span:nth-child(6) { animation-delay: 0.75s; }
+.h2-pattern-5 span:nth-child(7) { animation-delay: 0.9s; }
+.h2-pattern-5 span:nth-child(8) { animation-delay: 1.05s; }
+
+/* ================================================
+   パターン6: 波打ち (縦方向)
+   ================================================ */
+.h2-pattern-6 span {
+  opacity: 0;
+  animation: wave 1s ease-in-out forwards;
+}
+
+@keyframes wave {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  75% {
+    transform: translateY(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.h2-pattern-6 span:nth-child(1) { animation-delay: 0s; }
+.h2-pattern-6 span:nth-child(2) { animation-delay: 0.1s; }
+.h2-pattern-6 span:nth-child(3) { animation-delay: 0.2s; }
+.h2-pattern-6 span:nth-child(4) { animation-delay: 0.3s; }
+.h2-pattern-6 span:nth-child(5) { animation-delay: 0.4s; }
+.h2-pattern-6 span:nth-child(6) { animation-delay: 0.5s; }
+.h2-pattern-6 span:nth-child(7) { animation-delay: 0.6s; }
+.h2-pattern-6 span:nth-child(8) { animation-delay: 0.7s; }
+
+/* ================================================
+   比較表
+   ================================================ */
+.h2-demo-comparison {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.h2-demo-comparison h2 {
+  font-size: 2rem;
+  color: #2d3748;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.h2-demo-comparison table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.h2-demo-comparison th {
+  background: #667eea;
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.h2-demo-comparison td {
+  padding: 15px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #4a5568;
+}
+
+.h2-demo-comparison tr:last-child td {
+  border-bottom: none;
+}
+
+.h2-demo-comparison tr:hover {
+  background: #f7fafc;
+}
+
+/* ================================================
+   注意点セクション
+   ================================================ */
+.h2-demo-notes {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.h2-demo-notes h2 {
+  font-size: 2rem;
+  color: #2d3748;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.h2-demo-notes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.h2-demo-notes li {
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  background: #f7fafc;
+  border-left: 4px solid #667eea;
+  border-radius: 8px;
+  color: #4a5568;
+  line-height: 1.8;
+}
+
+.h2-demo-notes li:last-child {
+  margin-bottom: 0;
+}
+
+.h2-demo-notes strong {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+/* ================================================
+   レスポンシブ対応
+   ================================================ */
+@media (max-width: 768px) {
+  .h2-demo-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .h2-demo-container {
+    padding: 40px 20px;
+    min-height: 300px;
+  }
+
+  .h2-demo-container h2 {
+    font-size: 2rem;
+  }
+
+  .h2-pattern-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .h2-demo-comparison table {
+    font-size: 0.9rem;
+  }
+
+  .h2-demo-comparison th,
+  .h2-demo-comparison td {
+    padding: 10px;
+  }
+
+  /* モバイルではアニメーション時間を短縮 */
+  .h2-pattern-1 span { animation-duration: 0.4s; }
+  .h2-pattern-2 span { animation-duration: 0.5s; }
+  .h2-pattern-3 span { animation-duration: 0.5s; }
+  .h2-pattern-4 span { animation-duration: 0.4s; }
+  .h2-pattern-5 span { animation-duration: 0.1s; }
+  .h2-pattern-6 span { animation-duration: 0.7s; }
+}
+
+/* ================================================
+   アクセシビリティ: アニメーション無効設定
+   ================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .h2-pattern-1 span,
+  .h2-pattern-2 span,
+  .h2-pattern-3 span,
+  .h2-pattern-4 span,
+  .h2-pattern-5 span,
+  .h2-pattern-6 span {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

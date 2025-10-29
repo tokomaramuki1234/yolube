@@ -14,6 +14,16 @@ const Training = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isReferencesOpen, setIsReferencesOpen] = useState(false);
 
+  // H2見出しのアニメーション用ref
+  const h2Refs = useRef([]);
+
+  // 文字列を1文字ずつspan要素で囲むヘルパー関数
+  const splitText = (text) => {
+    return text.split('').map((char, index) => (
+      <span key={index}>{char}</span>
+    ));
+  };
+
   // デバイスタイプを検出（PC/タブレット/スマホ）
   const [isMobile, setIsMobile] = useState(() => {
     // 初期値を正確に設定（SSR対応）
@@ -55,6 +65,119 @@ const Training = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // スクロールアニメーション (Intersection Observer)
+  useEffect(() => {
+    // HTMLタグを保持しながら文字列を1文字ずつspanで囲む関数
+    const wrapCharsInSpan = (element) => {
+      // 既に処理済みの場合はスキップ
+      if (element.dataset.animated === 'true') return;
+      
+      let charIndex = 0; // 要素全体での文字インデックス
+      
+      const processNode = (node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          // テキストノードの場合、各文字をspanで囲む
+          const text = node.textContent;
+          const fragment = document.createDocumentFragment();
+          
+          text.split('').forEach(char => {
+            const span = document.createElement('span');
+            span.textContent = char;
+            // data-char-index属性で順番を記録
+            span.setAttribute('data-char-index', charIndex);
+            // インラインスタイルで遅延時間を設定
+            const delay = charIndex * 0.04; // 0.04s刻み
+            span.style.animationDelay = `${delay}s`;
+            fragment.appendChild(span);
+            charIndex++;
+          });
+          
+          node.parentNode.replaceChild(fragment, node);
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          // 要素ノードの場合、子ノードを再帰的に処理
+          const childNodes = Array.from(node.childNodes);
+          childNodes.forEach(child => processNode(child));
+        }
+      };
+      
+      processNode(element);
+      element.dataset.animated = 'true';
+    };
+
+    // 主要セクション内のH3/H4/P/Li要素にアニメーションクラスを自動付与
+    const mainSections = document.querySelectorAll('.training-problem, .training-solution, .training-tablegame-intro, .training-research, .training-features, .training-program, .training-advantage, .training-survey-results, .training-instructor, .training-faq, .training-pricing');
+    
+    mainSections.forEach(section => {
+      // H3要素にクラス追加と文字分割
+      const h3Elements = section.querySelectorAll('h3');
+      h3Elements.forEach(el => {
+        if (!el.classList.contains('animate-h3')) {
+          el.classList.add('animate-h3');
+          wrapCharsInSpan(el);
+        }
+      });
+
+      // H4要素にクラス追加と文字分割
+      const h4Elements = section.querySelectorAll('h4');
+      h4Elements.forEach(el => {
+        if (!el.classList.contains('animate-h4')) {
+          el.classList.add('animate-h4');
+          wrapCharsInSpan(el);
+        }
+      });
+
+      // P要素にクラス追加（文字分割なし、ブロック単位でフェードイン）
+      const pElements = section.querySelectorAll('p:not(.training-btn):not(.training-hero-buttons p)');
+      pElements.forEach(el => {
+        if (!el.classList.contains('animate-text') && el.textContent.trim().length > 0) {
+          el.classList.add('animate-text');
+          // 文字分割しない - ブロック単位でアニメーション
+        }
+      });
+
+      // Li要素にクラス追加（文字分割なし、ブロック単位でフェードイン）
+      const liElements = section.querySelectorAll('li');
+      liElements.forEach(el => {
+        if (!el.classList.contains('animate-text') && el.textContent.trim().length > 0) {
+          el.classList.add('animate-text');
+          // 文字分割しない - ブロック単位でアニメーション
+        }
+      });
+    });
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2 // 要素の20%が表示されたらアニメーション発火
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // 全てのH2見出しを監視対象に追加
+    h2Refs.current.forEach(ref => {
+      if (ref) observer.observe(ref);
+    });
+
+    // H3, H4, P, Li要素も監視対象に追加
+    const animatedElements = document.querySelectorAll('.animate-h3, .animate-h4, .animate-text');
+    animatedElements.forEach(el => observer.observe(el));
+
+    return () => {
+      h2Refs.current.forEach(ref => {
+        if (ref) observer.unobserve(ref);
+      });
+      animatedElements.forEach(el => observer.unobserve(el));
+    };
   }, []);
 
   // スライドショーの自動再生
@@ -208,8 +331,8 @@ const Training = () => {
       <section id="problems" className="training-problem">
         <div className="training-container">
           <div className="training-section-header">
-            <h2 className="training-section-title">
-              こんなお悩みありませんか？
+            <h2 className="training-section-title animate-h2" ref={el => h2Refs.current[0] = el}>
+              {splitText('こんなお悩みありませんか？')}
             </h2>
           </div>
           
@@ -252,7 +375,9 @@ const Training = () => {
         <div className="training-container">
           <div className="training-solution-content">
             <div className="training-solution-text">
-              <h2 className="training-section-title">そのお悩みを<br />「遊び」で解決します</h2>
+              <h2 className="training-section-title animate-h2" ref={el => h2Refs.current[1] = el}>
+                {splitText('そのお悩みを')}<br />{splitText('「遊び」で解決します')}
+              </h2>
               
               <p>「遊び」という敷居の低さ。<span className="mobile-break"></span>目的に応じた柔軟性。<br />そのどちらも兼ね備えたテーブルゲームを<span className="mobile-break"></span>フル活用してご支援致します</p>
             </div>
@@ -263,7 +388,9 @@ const Training = () => {
       {/* What is Table Game Section */}
       <section className="training-tablegame-intro">
         <div className="training-container">
-          <h2 className="training-section-title">テーブルゲームとは？</h2>
+          <h2 className="training-section-title animate-h2" ref={el => h2Refs.current[2] = el}>
+            {splitText('テーブルゲームとは？')}
+          </h2>
           
           <div className="training-tablegame-content">
             <div className="training-tablegame-text">
@@ -329,7 +456,9 @@ const Training = () => {
       {/* Research Section */}
       <section className="training-research">
         <div className="training-container">
-          <h2 className="training-section-title">テーブルゲームの調査・研究動向</h2>
+          <h2 className="training-section-title animate-h2" ref={el => h2Refs.current[3] = el}>
+            {splitText('テーブルゲームの調査・研究動向')}
+          </h2>
           
           <div className="training-research-content">
             <div className="training-research-overview">
@@ -372,7 +501,9 @@ const Training = () => {
       {/* Features Section */}
       <section id="features" className="training-features">
         <div className="training-container">
-          <h2 className="training-section-title">「遊び」がもたらす効果</h2>
+          <h2 className="training-section-title animate-h2" ref={el => h2Refs.current[4] = el}>
+            {splitText('「遊び」がもたらす効果')}
+          </h2>
           {/* Process Flow */}
           <div className="training-process-flow">
             <div className="training-flow-item">
@@ -434,7 +565,9 @@ const Training = () => {
       {/* Program Section */}
       <section id="program" className="training-program">
         <div className="training-container">
-          <h2 className="training-section-title">研修プログラムの流れ</h2>
+          <h2 className="training-section-title animate-h2" ref={el => h2Refs.current[5] = el}>
+            {splitText('研修プログラムの流れ')}
+          </h2>
           <p className="training-section-subtitle">
             <span className="desktop-only">モデルケース：年６回の研修を通して実施した場合</span>
             <span className="mobile-only"><strong>モデルケース</strong><br />年６回の研修を通して実施した場合</span>
@@ -596,8 +729,8 @@ const Training = () => {
       {/* Competitive Advantage Section */}
       <section className="training-advantage">
         <div className="training-container">
-          <h2 className="training-section-title">
-            なぜテーブルゲーム研修<span className="mobile-break">なのか？</span>
+          <h2 className="training-section-title animate-h2" ref={el => h2Refs.current[6] = el}>
+            {splitText('なぜテーブルゲーム研修')}<span className="mobile-break">{splitText('なのか？')}</span>
           </h2>
 
           {/* 構成１：一般的な研修の課題（左：画像、右：テキスト） */}
@@ -674,7 +807,9 @@ const Training = () => {
       {/* Survey Results Section */}
       <section className="training-survey-results">
         <div className="training-container">
-          <h2 className="training-section-title">研修参加者アンケート結果</h2>
+          <h2 className="training-section-title animate-h2" ref={el => h2Refs.current[7] = el}>
+            {splitText('研修参加者アンケート結果')}
+          </h2>
           <p className="training-section-subtitle">
             実際の参加者の声をデータで可視化しました
           </p>
@@ -757,7 +892,9 @@ const Training = () => {
       {/* Instructor Section */}
       <section className="training-instructor">
         <div className="training-container">
-          <h2 className="training-section-title">研修講師・ファシリテーター</h2>
+          <h2 className="training-section-title animate-h2" ref={el => h2Refs.current[8] = el}>
+            {splitText('研修講師・ファシリテーター')}
+          </h2>
 
           <div className="training-instructor-profile">
             <div className="training-instructor-header">
@@ -810,7 +947,9 @@ const Training = () => {
       {/* FAQ Section */}
       <section id="faq" className="training-faq">
         <div className="training-container">
-          <h2 className="training-section-title">よくあるご質問</h2>
+          <h2 className="training-section-title animate-h2" ref={el => h2Refs.current[9] = el}>
+            {splitText('よくあるご質問')}
+          </h2>
           <p className="training-section-subtitle">
             研修導入前の疑問にお答えします
           </p>
@@ -914,7 +1053,9 @@ const Training = () => {
       {/* Target & Pricing Section */}
       <section id="pricing" className="training-pricing">
         <div className="training-container">
-          <h2 className="training-section-title">料金プラン</h2>
+          <h2 className="training-section-title animate-h2" ref={el => h2Refs.current[10] = el}>
+            {splitText('料金プラン')}
+          </h2>
           
           {/* Limited Offer Banner */}
           <div id="limited-offer" className="training-limited-offer">

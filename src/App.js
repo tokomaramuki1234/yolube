@@ -21,6 +21,7 @@ import RadarLP from './pages/radar/RadarLPWeb';
 import Training from './components/Training';
 import Training01 from './components/Training01';
 import HeroDemo from './components/HeroDemo';
+import H2Demo from './components/H2Demo';
 import ReservationDetail from './components/ReservationDetail';
 import NewsPage from './pages/NewsPage';
 import YolubePage from './pages/YolubePage';
@@ -132,6 +133,7 @@ function App() {
             <Route path="/training" element={<Training />} />
             <Route path="/training01" element={<Training01 />} />
             <Route path="/hero-demo" element={<HeroDemo />} />
+            <Route path="/h2-demo" element={<H2Demo />} />
 
             {/* 管理画面ルート */}
             <Route path="/admin/login" element={<Login />} />
