@@ -4395,14 +4395,14 @@
 ======================================== */
 .yolube-character {
   animation: slideInBounce 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s forwards;
-  height: clamp(150px, 35vw, 800px);
+  height: clamp(150px, 100vw, 1550px);
   overflow: hidden;
   pointer-events: none;
   position: fixed;
-  right: -155px;
-  top: -85px;
+  right: -850px;
+  top: -614px;
   transform: translate(70%, -70%);
-  width: clamp(150px, 35vw, 800px);
+  width: clamp(458px, 100vw, 2000px);
   z-index: 999;
 }
 
@@ -4431,11 +4431,33 @@
   }
 }
 
-/* 小型モバイル向け - キャラクターを少し小さく */
+/* タブレット・モバイル向け - サイズと位置調整 */
+@media (max-width: 1024px) {
+  .yolube-character {
+    width: clamp(200px, 40vw, 500px);
+    height: clamp(200px, 40vw, 500px);
+    right: -200px;
+    top: -150px;
+  }
+}
+
+/* スマホ向け - さらに小さく */
+@media (max-width: 768px) {
+  .yolube-character {
+    width: clamp(150px, 35vw, 350px);
+    height: clamp(150px, 35vw, 350px);
+    right: -100px;
+    top: -80px;
+  }
+}
+
+/* 小型スマホ向け */
 @media (max-width: 480px) {
   .yolube-character {
-    width: clamp(100px, 15vw, 150px);
-    height: clamp(100px, 15vw, 150px);
+    width: clamp(120px, 30vw, 250px);
+    height: clamp(120px, 30vw, 250px);
+    right: -60px;
+    top: -50px;
   }
 }
 
