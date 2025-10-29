@@ -4397,8 +4397,9 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 180px;
-  height: 180px;
+  /* 画面サイズに比例: 最小150px、理想18vw、最大350px */
+  width: clamp(150px, 18vw, 350px);
+  height: clamp(150px, 18vw, 350px);
   overflow: hidden;
   z-index: 999;
   pointer-events: none;
@@ -4410,7 +4411,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.25));
 }
 
 @keyframes slideInBounce {
@@ -4431,26 +4432,11 @@
   }
 }
 
-/* タブレット向け調整 */
-@media (max-width: 1024px) {
-  .yolube-character {
-    width: 150px;
-    height: 150px;
-  }
-}
-
-/* モバイル向け調整 */
-@media (max-width: 768px) {
-  .yolube-character {
-    width: 120px;
-    height: 120px;
-  }
-}
-
-/* 小型モバイル向け - キャラクターを非表示 */
+/* 小型モバイル向け - キャラクターを少し小さく */
 @media (max-width: 480px) {
   .yolube-character {
-    display: none;
+    width: clamp(100px, 15vw, 150px);
+    height: clamp(100px, 15vw, 150px);
   }
 }
 
