@@ -346,7 +346,7 @@ const Training = () => {
                 <span className="training-title-sub split-text-sub"><span>組</span><span>織</span><span>を</span><span>強</span><span>く</span><span>す</span><span>る</span><span>。</span></span>
               </h1>
               <p className="training-subtitle blur-in-text">
-                <strong>テーブルゲームで実現する、誰もが参加したくなるテーブルゲーム研修</strong></p>
+                <strong>テーブルゲームで実現する、誰もが参加したくなるコミュニケーション研修</strong></p>
               <div className="training-hero-buttons">
                 <a href="#contact" className="training-btn training-btn-primary training-btn-hero">
                   <FontAwesomeIcon icon={faComments} />
@@ -504,7 +504,7 @@ const Training = () => {
           <div className="training-research-content">
             <div className="training-research-overview">
               <p>
-                「社員同士の会話が少ない」「部署間の壁が厚い」「若手が早期離職してしまう」——こうした組織課題に対し、テーブルゲーム研修が<span className="emphasis-benefit">学術的な裏付けのある解決策</span>として注目されています。
+                「社員同士の会話が少ない」「部署間の壁が厚い」「若手が早期離職してしまう」——こうした組織課題に対し、テーブルゲームを用いたコミュニケーション研修が<span className="emphasis-benefit">学術的な裏付けのある解決策</span>として注目されています。
               </p>
               <p>
                 近年の研究では、テーブルゲームが<span className="emphasis-benefit">「協調性・問題解決力・コミュニケーション能力」を効果的に育成する</span>ことが実証され、教育現場だけでなく<span className="emphasis-benefit">社会人基礎力育成の手段として企業研修でも導入が進んでいます</span>。初対面同士でも自然に会話が生まれ、継続参加により人間関係が深まるプロセスが観察されており、<span className="emphasis-benefit">社員エンゲージメント向上・離職率低下・心理的安全性構築に寄与する、科学的根拠のある施策</span>として、中小企業の限られた研修予算の中でも確実な効果が期待できる投資です。
