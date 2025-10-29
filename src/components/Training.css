@@ -4395,14 +4395,14 @@
 ======================================== */
 .yolube-character {
   animation: slideInBounce 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s forwards;
-  height: clamp(150px, 18vw, 350px);
+  height: clamp(150px, 35vw, 800px);
   overflow: hidden;
   pointer-events: none;
   position: fixed;
   right: -155px;
   top: -85px;
   transform: translate(70%, -70%);
-  width: clamp(150px, 18vw, 350px);
+  width: clamp(150px, 35vw, 800px);
   z-index: 999;
 }
 
