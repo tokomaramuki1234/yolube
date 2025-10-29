@@ -1070,7 +1070,7 @@ const Training = () => {
               </div>
               <div className="training-faq-answer">
                 <p>
-                  <strong>貴社の会議室や社内スペース</strong>で実施可能です。机と椅子があれば十分です。秋田市内であれば交通費無料、秋田県内一律5,000円で伺います。県外の場合は別途ご相談ください。また、YOLUBEの拠点（<a href="https://maps.app.goo.gl/wYrJSoRWovWHiD997" target="_blank" rel="noopener noreferrer" className="training-location-link">秋田ベイパラダイス</a>）でも実施可能です。
+                  <strong>貴社の会議室や社内スペース</strong>で実施可能です。机と椅子があれば十分です。秋田市内であれば交通費無料、秋田県内一律5,000円で伺います。県外の場合は別途ご相談ください。また、YOLUBEの拠点（<a href="https://maps.app.goo.gl/wYrJSoRWovWHiD997" target="_blank" rel="noopener noreferrer" className="training-location-link">秋田ベイパラダイス</a>、<a href="https://maps.app.goo.gl/fEy86N2gPsf6FSEs5" target="_blank" rel="noopener noreferrer" className="training-location-link">みんなの実家 門脇家</a>）でも実施可能です。
                 </p>
               </div>
             </div>
@@ -1082,7 +1082,7 @@ const Training = () => {
               </div>
               <div className="training-faq-answer">
                 <p>
-                  年間契約プラン（スタンダード・プレミアム）の途中解約は原則として承っておりません。ただし、やむを得ない事情がある場合はご相談ください。まずはお試しプラン（単発）で体験いただき、効果を実感された上で年間契約をご検討いただくことをおすすめします。
+                  年間契約プラン（ライト／スタンダード／プレミアム）の途中解約は原則として承っておりません。ただし、やむを得ない事情がある場合はご相談ください。まずはお試しプラン（単発）で体験いただき、効果を実感された上で年間契約をご検討いただくことをおすすめします。
                 </p>
               </div>
             </div>
@@ -1277,7 +1277,7 @@ const Training = () => {
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <a href="#contact" className="training-btn training-btn-primary training-btn-hero">
               <FontAwesomeIcon icon={faComments} />
-              お申し込みはこちら
+              無料相談はこちら
             </a>
           </div>
         </div>
@@ -1366,10 +1366,10 @@ const Training = () => {
         <button
           className="training-floating-cta"
           onClick={scrollToContact}
-          aria-label="お申し込みはこちら"
+          aria-label="無料相談はこちら"
         >
           <FontAwesomeIcon icon={faComments} />
-          <span>お申し込みはこちら</span>
+          <span>無料相談はこちら</span>
         </button>
       )}
 
