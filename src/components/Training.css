@@ -466,11 +466,7 @@
   margin-bottom: 1.5rem;
 }
 
-.training-tablegame-text .highlight {
-  background: linear-gradient(transparent 60%, #8BC780 60%);
-  font-weight: bold;
-  padding: 0 0.2rem;
-}
+/* テーブルゲームテキストのhighlight（削除 - 統一クラスを使用） */
 
 /* Table Game Slideshow */
 .training-tablegame-slideshow {
@@ -609,10 +605,7 @@
   margin-bottom: 0;
 }
 
-.training-research-overview strong {
-  color: #F73659;
-  font-weight: 600;
-}
+/* 研究セクションのstrong（削除 - HTMLで個別指定） */
 
 .training-research-subtitle {
   font-size: 1.5rem;
@@ -642,10 +635,7 @@
   margin-bottom: 0;
 }
 
-.training-research-section strong {
-  color: #2c3e50;
-  font-weight: 600;
-}
+/* 研究セクション詳細のstrong（削除 - HTMLで個別指定） */
 
 .training-research-table {
   background: white;
@@ -1168,6 +1158,7 @@
   font-size: 1.5rem;
   color: #2c3e50;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .training-phase-purpose {
@@ -1977,10 +1968,22 @@
   padding: 0 0.2rem;
 }
 
-.highlight {
+/* ========================================
+   統一された強調装飾システム (2段階)
+======================================== */
+
+/* Level 1: 黄色マーカー（最重要 - 数値実績・独自性）*/
+.highlight,
+.emphasis-primary {
   font-weight: bold;
   background: linear-gradient(transparent 60%, #FFD93D 60%);
   padding: 0 0.2rem;
+}
+
+/* Level 2: 赤色テキスト（重要 - ベネフィット・効果）*/
+.emphasis-benefit {
+  color: #F73659;
+  font-weight: 600;
 }
 
 .training-faq-cta {
@@ -4323,6 +4326,47 @@
 }
 
 /* ========================================
+   ブロック要素 (カード/アイテム系) アニメーション: ブロック単位フェードイン
+======================================== */
+
+/* カード/アイテム要素全体をふわっと表示 */
+.animate-block {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* アニメーション発火時 */
+.animate-block.is-visible {
+  animation: fadeInUpBlock 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUpBlock {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   モバイル最適化
+======================================== */
+@media (max-width: 768px) {
+  .animate-h3.is-visible span,
+  .animate-h4.is-visible span {
+    animation-duration: 0.4s;
+  }
+
+  .animate-text.is-visible,
+  .animate-block.is-visible {
+    animation-duration: 0.6s;
+  }
+}
+
+/* ========================================
    アクセシビリティ: アニメーション無効設定
 ======================================== */
 @media (prefers-reduced-motion: reduce) {
@@ -4333,7 +4377,8 @@
     animation: none !important;
   }
   
-  .animate-text {
+  .animate-text,
+  .animate-block {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;

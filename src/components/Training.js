@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers, faCalendarAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faChevronDown, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faBuilding, faArrowRight, faArrowDown, faCheckCircle, faStar, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faCalendarAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faChevronDown, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faBuilding, faArrowRight, faArrowDown, faCheckCircle, faStar, faQuestionCircle, faGift } from '@fortawesome/free-solid-svg-icons';
 import Footer from './Footer';
 import './Training.css';
 
@@ -110,8 +110,8 @@ const Training = () => {
     const mainSections = document.querySelectorAll('.training-problem, .training-solution, .training-tablegame-intro, .training-research, .training-features, .training-program, .training-advantage, .training-survey-results, .training-instructor, .training-faq, .training-pricing');
     
     mainSections.forEach(section => {
-      // H3要素にクラス追加と文字分割
-      const h3Elements = section.querySelectorAll('h3');
+      // H3要素にクラス追加と文字分割（ただし、.training-phase-header内のH3は除外）
+      const h3Elements = section.querySelectorAll('h3:not(.training-phase-header h3)');
       h3Elements.forEach(el => {
         if (!el.classList.contains('animate-h3')) {
           el.classList.add('animate-h3');
@@ -145,6 +145,18 @@ const Training = () => {
           // 文字分割しない - ブロック単位でアニメーション
         }
       });
+
+      // カード/アイテム系要素にクラス追加（ブロック単位でフェードイン）
+      const itemElements = section.querySelectorAll(
+        '.training-problem-item, .training-solution-item, .training-flow-item, ' +
+        '.training-feature-item, .training-effect-item, .training-issue-item, ' +
+        '.training-expertise-item, .training-plan-card, .training-phase'
+      );
+      itemElements.forEach(el => {
+        if (!el.classList.contains('animate-block')) {
+          el.classList.add('animate-block');
+        }
+      });
     });
 
     const observerOptions = {
@@ -168,8 +180,8 @@ const Training = () => {
       if (ref) observer.observe(ref);
     });
 
-    // H3, H4, P, Li要素も監視対象に追加
-    const animatedElements = document.querySelectorAll('.animate-h3, .animate-h4, .animate-text');
+    // H3, H4, P, Li要素、およびブロック要素も監視対象に追加
+    const animatedElements = document.querySelectorAll('.animate-h3, .animate-h4, .animate-text, .animate-block');
     animatedElements.forEach(el => observer.observe(el));
 
     return () => {
@@ -305,7 +317,7 @@ const Training = () => {
                 <span className="training-title-sub split-text-sub"><span>組</span><span>織</span><span>を</span><span>強</span><span>く</span><span>す</span><span>る</span><span>。</span></span>
               </h1>
               <p className="training-subtitle blur-in-text">
-                <strong>テーブルゲームで実現する、誰もが参加したくなる企業研修</strong></p>
+                <strong>テーブルゲームで実現する、誰もが参加したくなるコミュニケーション研修</strong></p>
               <div className="training-hero-buttons">
                 <a href="#contact" className="training-btn training-btn-primary training-btn-hero">
                   <FontAwesomeIcon icon={faComments} />
@@ -362,8 +374,8 @@ const Training = () => {
                 <img src="/images/training_01_03.jpeg" alt="新入社員が不安を感じている様子" />
               </div>
               <div className="training-problem-content">
-                <h4>新人を襲う漠然とした不安</h4>
-                <p>コミュニケーション不足により上司/同僚/組織の全体像が見えない</p>
+                <h4>社員の定着率が低い</h4>
+                <p>上司/同僚/組織の全体像が伝わらず、先行きに不安を感じさせてしまう</p>
               </div>
             </div>
           </div>
@@ -395,10 +407,10 @@ const Training = () => {
           <div className="training-tablegame-content">
             <div className="training-tablegame-text">
               <p>
-                <strong>テーブルゲーム</strong>とは、囲碁・将棋・トランプ・UNOなどの<strong>対面で遊ぶゲーム</strong>の総称です。「ゲームで研修？ただ遊ぶだけじゃないの？」と思われるかもしれませんが、実は<strong>職場の"言いにくいこと"を自然に言える関係づくり</strong>に最適なツールなのです。
+                <strong>テーブルゲーム</strong>とは、囲碁・将棋・トランプ・UNOなどの対面で遊ぶゲームの総称です。「ゲームで研修？ただ遊ぶだけじゃないの？」と思われるかもしれませんが、実は<span className="emphasis-benefit">職場の"言いにくいこと"を自然に言える関係づくり</span>に最適なツールなのです。
               </p>
               <p>
-                通常の研修では<strong>役職や年齢の壁</strong>が邪魔をします。しかしテーブルゲームでは、社長も新入社員も対等の立場。「課長、そこは違う手ですよ！」「部長、今のはずるいです（笑）」——こうした<strong>普段は言えない"本音"が笑いと共に飛び交う</strong>瞬間が、心理的な壁を溶かします。
+                通常の研修では役職や年齢の壁が邪魔をします。しかしテーブルゲームでは、社長も新入社員も対等の立場。「課長、そこは違う手ですよ！」「部長、今のはずるいです（笑）」——こうした<span className="emphasis-benefit">普段は言えない"本音"が笑いと共に飛び交う</span>瞬間が、心理的な壁を溶かします。
               </p>
             </div>
 
@@ -457,16 +469,16 @@ const Training = () => {
       <section className="training-research">
         <div className="training-container">
           <h2 className="training-section-title animate-h2" ref={el => h2Refs.current[3] = el}>
-            {splitText('テーブルゲームの調査・研究動向')}
+            {splitText('テーブルゲーム研修について')}
           </h2>
           
           <div className="training-research-content">
             <div className="training-research-overview">
               <p>
-                「社員同士の会話が少ない」「部署間の壁が厚い」「若手が早期離職してしまう」——こうした組織課題に対し、テーブルゲーム研修が<strong>学術的な裏付けのある解決策</strong>として注目されています。
+                「社員同士の会話が少ない」「部署間の壁が厚い」「若手が早期離職してしまう」——こうした組織課題に対し、テーブルゲーム研修が<span className="emphasis-benefit">学術的な裏付けのある解決策</span>として注目されています。
               </p>
               <p>
-                近年の研究では、テーブルゲームが<strong>「協調性・問題解決力・コミュニケーション能力」を効果的に育成する</strong>ことが実証され、教育現場だけでなく<strong>社会人基礎力育成の手段として企業研修でも導入が進んでいます</strong>。初対面同士でも自然に会話が生まれ、継続参加により人間関係が深まるプロセスが観察されており、<strong>社員エンゲージメント向上・離職率低下・心理的安全性構築に寄与する、科学的根拠のある施策</strong>として、中小企業の限られた研修予算の中でも確実な効果が期待できる投資です。
+                近年の研究では、テーブルゲームが<span className="emphasis-benefit">「協調性・問題解決力・コミュニケーション能力」を効果的に育成する</span>ことが実証され、教育現場だけでなく<span className="emphasis-benefit">社会人基礎力育成の手段として企業研修でも導入が進んでいます</span>。初対面同士でも自然に会話が生まれ、継続参加により人間関係が深まるプロセスが観察されており、<span className="emphasis-benefit">社員エンゲージメント向上・離職率低下・心理的安全性構築に寄与する、科学的根拠のある施策</span>として、中小企業の限られた研修予算の中でも確実な効果が期待できる投資です。
               </p>
             </div>
 
@@ -569,8 +581,8 @@ const Training = () => {
             {splitText('研修プログラムの流れ')}
           </h2>
           <p className="training-section-subtitle">
-            <span className="desktop-only">モデルケース：年６回の研修を通して実施した場合</span>
-            <span className="mobile-only"><strong>モデルケース</strong><br />年６回の研修を通して実施した場合</span>
+            <span className="desktop-only">全員参加型経営におけるモデルケース：年６回の研修を通して実施した場合</span>
+            <span className="mobile-only"><strong>全員参加型経営におけるモデルケース</strong><br />年６回の研修を通して実施した場合</span>
           </p>
 
           {/* Program Phases */}
@@ -618,8 +630,8 @@ const Training = () => {
                   <p>研修の参加者同士が共有する成功体験は、その後の何気ない日常の中でも思い返されることとなります。研修を重ねることでチームメンバーとの成功体験も増え、自然とポジティブな話題が増えていきます。</p>
                 </div>
                 <div className="training-effect-item">
-                  <h5>3. ボトムアップの下地作り</h5>
-                  <p>アイスブレイクのなかでアンケート実施するため、研修内容自体がPDCAサイクルを堅持しやすくなります。本丸であるエンゲージメント向上への道筋を探りやすくなります。</p>
+                  <h5>3. エンゲージメントの向上</h5>
+                  <p>相互理解・成功体験の共有が進む中で、社員一人一人が社内の人間関係を理解していきます。「この会社は〇〇だから××だと思う」という先入観が減り、風通しも良くなることで離職率低下にも寄与します。</p>
                 </div>
               </div>
             </div>
@@ -687,12 +699,12 @@ const Training = () => {
                   <h4>研修前</h4>
                 </div>
                 <ul>
-                  <li>話しかける人が固定化</li>
-                  <li>部署間の情報共有不足</li>
-                  <li>新入社員の不安感</li>
-                  <li>研修が座学中心で退屈</li>
-                  <li>上司への相談がしづらい</li>
-                  <li>意見を言いづらい雰囲気</li>
+                  <li>社内の人間関係が薄っぺらい</li>
+                  <li>部署間の情報共有が不足している</li>
+                  <li>経営に対する当事者意識が欠如している</li>
+                  <li>研修が座学中心で退屈。惰性で参加してしまう。</li>
+                  <li>意見を言いづらい雰囲気に包まれている</li>
+                  <li>ヒューマンスキルが伸び悩む</li>
                 </ul>
               </div>
 
@@ -713,12 +725,12 @@ const Training = () => {
                   <h4>研修後</h4>
                 </div>
                 <ul>
-                  <li>自然な会話が生まれる</li>
-                  <li>部署を越えた情報交換</li>
-                  <li>先輩に相談しやすい環境</li>
+                  <li>社内の人間関係に関心を持つ</li>
+                  <li>部署を越えた交流が活性化する</li>
+                  <li>経営への当事者意識の向上</li>
                   <li>研修への積極的参加</li>
-                  <li>心理的安全性の確保</li>
-                  <li>ボトムアップが機能する</li>
+                  <li>他者に相談しやすい環境が育まれる</li>
+                  <li>ヒューマンスキルの向上</li>
                 </ul>
               </div>
             </div>
@@ -933,10 +945,10 @@ const Training = () => {
               <div className="training-instructor-message">
                 <h5>研修への想い</h5>
                 <p>
-                  ベトナムのIT企業で、異文化チームのマネジメントを経験する中で、<strong className="highlight">言葉や立場を超えた「本質的なコミュニケーション」の重要性</strong>を学んでまいりました。SNSやチャットツールが発達した現代でも、対面でしか築けない信頼関係があります。
+                  ベトナムのIT企業で、異文化チームのマネジメントを経験する中で、<span className="emphasis-benefit">言葉や立場を超えた「本質的なコミュニケーション」の重要性</span>を学んでまいりました。SNSやチャットツールが発達した現代でも、対面でしか築けない信頼関係があります。
                 </p>
                 <p>
-                  テーブルゲーム研修では、「遊び」を通じて参加者の素の人間性が表れます。この<strong className="highlight">「職場のペルソナを脱いだ状態」での交流</strong>こそが、真の相互理解と組織変革の第一歩だと考えています。
+                  テーブルゲーム研修では、「遊び」を通じて参加者の素の人間性が表れます。この<span className="highlight">「職場のペルソナを脱いだ状態」での交流</span>こそが、真の相互理解と組織変革の第一歩だと考えています。
                 </p>
               </div>
             </div>
@@ -1063,7 +1075,11 @@ const Training = () => {
               <FontAwesomeIcon icon={faExclamationTriangle} />
               期間限定キャンペーン
             </div>
-            <h3>🎉 初回導入5社限定 🎉</h3>
+            <h3>
+              <FontAwesomeIcon icon={faGift} style={{ color: '#FFD93D', marginRight: '0.5rem' }} />
+              初回導入5社限定
+              <FontAwesomeIcon icon={faGift} style={{ color: '#FFD93D', marginLeft: '0.5rem' }} />
+            </h3>
             <p className="training-offer-discount">スタンダードプラン15%OFF</p>
             <p>
               <span className="desktop-only">今なら<strong>50万円 → 42.5万円（税別）</strong>で年間6回の研修を導入可能！</span>
