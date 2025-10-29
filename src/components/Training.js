@@ -344,11 +344,6 @@ const Training = () => {
             </div>
           </div>
         </div>
-        
-        {/* YOLUBE Character Animation */}
-        <div className="yolube-character">
-          <img src="/yolube-character.svg" alt="YOLUBE キャラクター" />
-        </div>
       </section>
 
       {/* Problem Section */}
