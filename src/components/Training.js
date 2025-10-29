@@ -1076,9 +1076,9 @@ const Training = () => {
               期間限定キャンペーン
             </div>
             <h3>
-              <FontAwesomeIcon icon={faGift} style={{ color: '#FFD93D', marginRight: '0.5rem' }} />
+              <FontAwesomeIcon icon={faGift} style={{ color: 'rgb(220, 53, 69)', marginRight: '0.5rem' }} />
               初回導入5社限定
-              <FontAwesomeIcon icon={faGift} style={{ color: '#FFD93D', marginLeft: '0.5rem' }} />
+              <FontAwesomeIcon icon={faGift} style={{ color: 'rgb(220, 53, 69)', marginLeft: '0.5rem' }} />
             </h3>
             <p className="training-offer-discount">スタンダードプラン15%OFF</p>
             <p>
