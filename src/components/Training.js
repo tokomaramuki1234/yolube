@@ -343,7 +343,7 @@ const Training = () => {
 
               <h1 className="training-title split-text">
                 <span>遊</span><span>び</span><span>が</span><span>、</span><br />
-                <span className="training-title-sub split-text-sub"><span>組</span><span>織</span><span>を</span><span>強</span><span>く</span><span>す</span><span>る</span><span>。</span></span>
+                <span className="training-title-sub split-text-sub" style={{ whiteSpace: 'nowrap' }}><span>組</span><span>織</span><span>を</span><span>強</span><span>く</span><span>す</span><span>る</span><span>。</span></span>
               </h1>
               <p className="training-subtitle blur-in-text">
                 <strong>テーブルゲームで実現する、誰もが参加したくなるコミュニケーション研修</strong></p>
