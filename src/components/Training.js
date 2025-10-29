@@ -344,6 +344,11 @@ const Training = () => {
             </div>
           </div>
         </div>
+        
+        {/* YOLUBE Character Animation */}
+        <div className="yolube-character">
+          <img src="/yolube-character.png" alt="YOLUBE キャラクター" />
+        </div>
       </section>
 
       {/* Problem Section */}
@@ -1092,7 +1097,7 @@ const Training = () => {
             <p>その他のご質問は、お気軽にお問い合わせください</p>
             <a href="#contact" className="training-btn training-btn-primary">
               <FontAwesomeIcon icon={faComments} />
-              無料相談で詳しく聞く
+              無料相談はこちら
             </a>
           </div>
         </div>
@@ -1277,7 +1282,7 @@ const Training = () => {
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <a href="#contact" className="training-btn training-btn-primary training-btn-hero">
               <FontAwesomeIcon icon={faComments} />
-              無料相談はこちら
+              お申し込みはこちら
             </a>
           </div>
         </div>
@@ -1366,10 +1371,10 @@ const Training = () => {
         <button
           className="training-floating-cta"
           onClick={scrollToContact}
-          aria-label="無料相談はこちら"
+          aria-label="お申し込みはこちら"
         >
           <FontAwesomeIcon icon={faComments} />
-          <span>無料相談はこちら</span>
+          <span>お申し込みはこちら</span>
         </button>
       )}
 
