@@ -512,6 +512,8 @@ const Training = () => {
                   <li><a href="https://www.jstage.jst.go.jp/article/digrajproc/11/0/11_35/_pdf/-char/ja" target="_blank" rel="noopener noreferrer">日本デジタルゲーム学会</a></li>
                   <li><a href="https://osu.repo.nii.ac.jp/record/2438/files/011-027.pdf" target="_blank" rel="noopener noreferrer">岡山商科大学リポジトリ</a></li>
                   <li><a href="https://ipsj.ixsq.nii.ac.jp/record/213429/files/IPSJ-GPWS2021008.pdf" target="_blank" rel="noopener noreferrer">情報処理学会論文誌</a></li>
+                  <li><a href="https://www.talentlms.com/blog/gamification-survey-results/" target="_blank" rel="noopener noreferrer">TalentLMS「2019 Gamification at Work Survey」（学習者エンゲージメント60%向上データ）</a></li>
+                  <li><a href="https://www.gallup.com/workplace/285674/improve-employee-engagement-workplace.aspx" target="_blank" rel="noopener noreferrer">Gallup「How to Improve Employee Engagement in the Workplace」（高エンゲージメント組織の利益23%増加データ）</a></li>
                   <li>その他多数の学術論文・市場調査レポート</li>
                 </ul>
               )}
