@@ -1,6 +1,10 @@
 {
   "routes": [
     {
+      "src": "/training",
+      "dest": "/training/index.html"
+    },
+    {
       "src": "/ke",
       "dest": "/ke/index.html"
     },
