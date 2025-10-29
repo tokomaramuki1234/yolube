@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faClock, faBars, faTimes, faChevronUp, faChevronDown, faComments, faExclamationTriangle, faHandshake, faLightbulb, faArrowRight, faArrowDown, faCheckCircle, faQuestionCircle, faGift } from '@fortawesome/free-solid-svg-icons';
 import Footer from './Footer';
@@ -272,6 +273,27 @@ const Training = () => {
 
   return (
     <div className="training-lp">
+      <Helmet>
+        <title>遊びが、組織を強くする。テーブルゲーム研修 | YOLUBE</title>
+        <meta name="description" content="テーブルゲームで実現する、誰もが参加したくなるコミュニケーション研修。社員同士の会話が少ない、部署間の壁が厚い、若手が早期離職してしまう、こうした組織課題を「遊び」で解決します。" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://yolube.jp/training" />
+        <meta property="og:title" content="遊びが、組織を強くする。テーブルゲーム研修 | YOLUBE" />
+        <meta property="og:description" content="テーブルゲームで実現する、誰もが参加したくなるコミュニケーション研修。社員同士の会話が少ない、部署間の壁が厚い、若手が早期離職してしまう、こうした組織課題を「遊び」で解決します。" />
+        <meta property="og:image" content="https://yolube.jp/images/training-ogp.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://yolube.jp/training" />
+        <meta name="twitter:title" content="遊びが、組織を強くする。テーブルゲーム研修 | YOLUBE" />
+        <meta name="twitter:description" content="テーブルゲームで実現する、誰もが参加したくなるコミュニケーション研修。社員同士の会話が少ない、部署間の壁が厚い、若手が早期離職してしまう、こうした組織課題を「遊び」で解決します。" />
+        <meta name="twitter:image" content="https://yolube.jp/images/training-ogp.png" />
+      </Helmet>
+      
       {/* Header */}
       <header className="ke-header">
         <div className="ke-header-container">
