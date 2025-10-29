@@ -274,13 +274,13 @@ const Training = () => {
   return (
     <div className="training-lp">
       <Helmet>
-        <title>遊びが、組織を強くする。テーブルゲーム研修 | YOLUBE</title>
+        <title>遊びが、組織を強くする。コミュニケーション研修 | YOLUBE</title>
         <meta name="description" content="テーブルゲームで実現する、誰もが参加したくなるコミュニケーション研修。社員同士の会話が少ない、部署間の壁が厚い、若手が早期離職してしまう、こうした組織課題を「遊び」で解決します。" />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://yolube.jp/training" />
-        <meta property="og:title" content="遊びが、組織を強くする。テーブルゲーム研修 | YOLUBE" />
+        <meta property="og:title" content="遊びが、組織を強くする。コミュニケーション研修 | YOLUBE" />
         <meta property="og:description" content="テーブルゲームで実現する、誰もが参加したくなるコミュニケーション研修。社員同士の会話が少ない、部署間の壁が厚い、若手が早期離職してしまう、こうした組織課題を「遊び」で解決します。" />
         <meta property="og:image" content="https://yolube.jp/images/training-ogp.png" />
         <meta property="og:image:width" content="1200" />
@@ -289,7 +289,7 @@ const Training = () => {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://yolube.jp/training" />
-        <meta name="twitter:title" content="遊びが、組織を強くする。テーブルゲーム研修 | YOLUBE" />
+        <meta name="twitter:title" content="遊びが、組織を強くする。コミュニケーション研修 | YOLUBE" />
         <meta name="twitter:description" content="テーブルゲームで実現する、誰もが参加したくなるコミュニケーション研修。社員同士の会話が少ない、部署間の壁が厚い、若手が早期離職してしまう、こうした組織課題を「遊び」で解決します。" />
         <meta name="twitter:image" content="https://yolube.jp/images/training-ogp.png" />
       </Helmet>
@@ -498,19 +498,19 @@ const Training = () => {
       <section className="training-research">
         <div className="training-container">
           <h2 className="training-section-title animate-h2" ref={el => h2Refs.current[3] = el}>
-            {splitText('テーブルゲーム研修について')}
+            {splitText('コミュニケーション研修について')}
           </h2>
           
           <div className="training-research-content">
             <div className="training-research-overview">
               <p>
-                「社員同士の会話が少ない」「部署間の壁が厚い」「若手が早期離職してしまう」——こうした組織課題に対し、テーブルゲーム研修が<span className="emphasis-benefit">学術的な裏付けのある解決策</span>として注目されています。
+                「社員同士の会話が少ない」「部署間の壁が厚い」「若手が早期離職してしまう」——こうした組織課題に対し、コミュニケーション研修が<span className="emphasis-benefit">学術的な裏付けのある解決策</span>として注目されています。
               </p>
               <p>
                 近年の研究では、テーブルゲームが<span className="emphasis-benefit">「協調性・問題解決力・コミュニケーション能力」を効果的に育成する</span>ことが実証され、教育現場だけでなく<span className="emphasis-benefit">社会人基礎力育成の手段として企業研修でも導入が進んでいます</span>。初対面同士でも自然に会話が生まれ、継続参加により人間関係が深まるプロセスが観察されており、<span className="emphasis-benefit">社員エンゲージメント向上・離職率低下・心理的安全性構築に寄与する、科学的根拠のある施策</span>として、中小企業の限られた研修予算の中でも確実な効果が期待できる投資です。
               </p>
               <p>
-                海外の研究では、ゲーミフィケーションを取り入れた研修で<span className="highlight">学習者エンゲージメントが60%向上</span>し、また高エンゲージメント組織では<span className="highlight">利益が23%増加</span>することが報告されています（TalentLMS Survey、Gallup調査より）。テーブルゲーム研修は、これらの効果を対面形式で最大化する手法として、今最も注目されているアプローチです。
+                海外の研究では、ゲーミフィケーションを取り入れた研修で<span className="highlight">学習者エンゲージメントが60%向上</span>し、また高エンゲージメント組織では<span className="highlight">利益が23%増加</span>することが報告されています（TalentLMS Survey、Gallup調査より）。コミュニケーション研修は、これらの効果を対面形式で最大化する手法として、今最も注目されているアプローチです。
               </p>
             </div>
 
@@ -642,7 +642,7 @@ const Training = () => {
               <div className="training-phase-images">
                 <div className="training-phase-image">
                   <img src="/images/training/phase1_game.jpg" alt="YOLUBEゲーム研修 - 達成感と喜びを共有する参加者たち" />
-                  <p className="training-image-caption">盛り上がること間違いなしのテーブルゲーム研修。</p>
+                  <p className="training-image-caption">盛り上がること間違いなしのコミュニケーション研修。</p>
                 </div>
                 <div className="training-phase-image">
                   <img src="/images/training/phase1_survey.jpg" alt="YOLUBE研修アンケート結果 - 新人社員コミュニケーション研修の効果" />
@@ -776,7 +776,7 @@ const Training = () => {
       <section className="training-advantage">
         <div className="training-container">
           <h2 className="training-section-title animate-h2" ref={el => h2Refs.current[6] = el}>
-            {splitText('なぜテーブルゲーム研修')}<span className="mobile-break">{splitText('なのか？')}</span>
+            {splitText('なぜコミュニケーション研修')}<span className="mobile-break">{splitText('なのか？')}</span>
           </h2>
 
           {/* 構成１：一般的な研修の課題（左：画像、右：テキスト） */}
@@ -805,7 +805,7 @@ const Training = () => {
             </div>
           </div>
           
-          <h4 className="training-unique-title">テーブルゲーム研修の強み</h4>
+          <h4 className="training-unique-title">コミュニケーション研修の強み</h4>
           
           {/* 構成２：職場のペルソナ（左：テキスト、右：画像） */}
           <div className="training-comparison-row" data-bg-row="3" style={{'--bg-image': 'url(/images/training/persona_worklife.jpg)'}}>
@@ -982,7 +982,7 @@ const Training = () => {
                   ベトナムのIT企業で、異文化チームのマネジメントを経験する中で、<span className="emphasis-benefit">言葉や立場を超えた「本質的なコミュニケーション」の重要性</span>を学んでまいりました。SNSやチャットツールが発達した現代でも、対面でしか築けない信頼関係があります。
                 </p>
                 <p>
-                  テーブルゲーム研修では、「遊び」を通じて参加者の素の人間性が表れます。この<span className="highlight">「職場の仮面を脱いだ状態」での交流</span>こそが、真の相互理解と組織変革の第一歩だと考えています。
+                  コミュニケーション研修では、「遊び」を通じて参加者の素の人間性が表れます。この<span className="highlight">「職場の仮面を脱いだ状態」での交流</span>こそが、真の相互理解と組織変革の第一歩だと考えています。
                 </p>
               </div>
             </div>
@@ -1068,7 +1068,7 @@ const Training = () => {
               </div>
               <div className="training-faq-answer">
                 <p>
-                  申し訳ございません、当研修は<strong>対面実施のみ</strong>となっております。テーブルゲーム研修の最大の価値は、実際に顔を合わせて遊ぶことで生まれる「本物のコミュニケーション」です。画面越しでは得られない、表情・雰囲気・空気感を共有することで、組織の関係性が根本から変わります。
+                  申し訳ございません、当研修は<strong>対面実施のみ</strong>となっております。コミュニケーション研修の最大の価値は、実際に顔を合わせて遊ぶことで生まれる「本物のコミュニケーション」です。画面越しでは得られない、表情・雰囲気・空気感を共有することで、組織の関係性が根本から変わります。
                 </p>
               </div>
             </div>
