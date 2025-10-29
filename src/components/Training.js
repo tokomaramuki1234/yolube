@@ -986,7 +986,7 @@ const Training = () => {
               </div>
               <div className="training-faq-answer">
                 <p>
-                  <strong>いいえ、かかりません。</strong>提示している料金には、講師料・ゲーム貸出料・教材費・アンケート分析費がすべて含まれています。秋田市内なら交通費も無料、秋田県内一律5,000円のみです。追加料金なしで安心してご利用いただけます。
+                  <strong>いいえ、かかりません。</strong>提示している料金には、講師料・ゲーム貸出料・教材費・アンケート分析費がすべて含まれています。秋田市内なら交通費も無料、秋田県内一律5,000円のみです。追加料金なしで安心してご利用いただけます。ただし、別途で研修会場が必要となった場合のみ会場費をご負担いただきます。
                 </p>
               </div>
             </div>
@@ -1070,7 +1070,7 @@ const Training = () => {
               </div>
               <div className="training-faq-answer">
                 <p>
-                  <strong>貴社の会議室や社内スペース</strong>で実施可能です。机と椅子があれば十分です。秋田市内であれば交通費無料、秋田県内一律5,000円で伺います。県外の場合は別途ご相談ください。また、YOLUBEの拠点（秋田ベイパラダイス）でも実施可能です。
+                  <strong>貴社の会議室や社内スペース</strong>で実施可能です。机と椅子があれば十分です。秋田市内であれば交通費無料、秋田県内一律5,000円で伺います。県外の場合は別途ご相談ください。また、YOLUBEの拠点（<a href="https://maps.app.goo.gl/wYrJSoRWovWHiD997" target="_blank" rel="noopener noreferrer" className="training-location-link">秋田ベイパラダイス</a>）でも実施可能です。
                 </p>
               </div>
             </div>
