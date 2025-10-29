@@ -1,8 +1,31 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers, faCalendarAlt, faClock, faHeart, faBars, faTimes, faChevronUp, faChevronDown, faComments, faExclamationTriangle, faHandshake, faLightbulb, faChartLine, faBuilding, faArrowRight, faArrowDown, faCheckCircle, faStar, faQuestionCircle, faGift } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faClock, faBars, faTimes, faChevronUp, faChevronDown, faComments, faExclamationTriangle, faHandshake, faLightbulb, faArrowRight, faArrowDown, faCheckCircle, faQuestionCircle, faGift } from '@fortawesome/free-solid-svg-icons';
 import Footer from './Footer';
 import './Training.css';
+
+// アニメーション設定定数
+const ANIMATION_CONFIG = {
+  CHAR_DELAY: 0.04, // 秒
+  INTERSECTION_THRESHOLD: 0.2,
+  SLIDESHOW_INTERVAL: 4000, // ミリ秒
+  SLIDESHOW_COUNT: 6,
+};
+
+// アニメーション対象セクションのセレクタ
+const ANIMATION_SECTION_SELECTORS = [
+  '.training-problem',
+  '.training-solution',
+  '.training-tablegame-intro',
+  '.training-research',
+  '.training-features',
+  '.training-program',
+  '.training-advantage',
+  '.training-survey-results',
+  '.training-instructor',
+  '.training-faq',
+  '.training-pricing'
+].join(', ');
 
 const Training = () => {
   const form = useRef();
@@ -74,31 +97,33 @@ const Training = () => {
       // 既に処理済みの場合はスキップ
       if (element.dataset.animated === 'true') return;
       
-      let charIndex = 0; // 要素全体での文字インデックス
+      const text = element.textContent;
+      // 長文（100文字以上）はスキップしてブロック単位アニメーションのみ
+      if (text.length > 100) {
+        element.classList.add('animate-text');
+        element.dataset.animated = 'true';
+        return;
+      }
+      
+      let charIndex = 0;
       
       const processNode = (node) => {
         if (node.nodeType === Node.TEXT_NODE) {
-          // テキストノードの場合、各文字をspanで囲む
-          const text = node.textContent;
+          const nodeText = node.textContent;
+          const temp = document.createElement('div');
+          
+          // HTML文字列として一括構築
+          temp.innerHTML = nodeText.split('').map((char, index) => {
+            const delay = (charIndex + index) * ANIMATION_CONFIG.CHAR_DELAY;
+            return `<span data-char-index="${charIndex + index}" style="animation-delay: ${delay}s">${char}</span>`;
+          }).join('');
+          
           const fragment = document.createDocumentFragment();
-          
-          text.split('').forEach(char => {
-            const span = document.createElement('span');
-            span.textContent = char;
-            // data-char-index属性で順番を記録
-            span.setAttribute('data-char-index', charIndex);
-            // インラインスタイルで遅延時間を設定
-            const delay = charIndex * 0.04; // 0.04s刻み
-            span.style.animationDelay = `${delay}s`;
-            fragment.appendChild(span);
-            charIndex++;
-          });
-          
+          fragment.append(...temp.childNodes);
           node.parentNode.replaceChild(fragment, node);
+          charIndex += nodeText.length;
         } else if (node.nodeType === Node.ELEMENT_NODE) {
-          // 要素ノードの場合、子ノードを再帰的に処理
-          const childNodes = Array.from(node.childNodes);
-          childNodes.forEach(child => processNode(child));
+          Array.from(node.childNodes).forEach(child => processNode(child));
         }
       };
       
@@ -106,55 +131,37 @@ const Training = () => {
       element.dataset.animated = 'true';
     };
 
-    // 主要セクション内のH3/H4/P/Li要素にアニメーションクラスを自動付与
-    const mainSections = document.querySelectorAll('.training-problem, .training-solution, .training-tablegame-intro, .training-research, .training-features, .training-program, .training-advantage, .training-survey-results, .training-instructor, .training-faq, .training-pricing');
+    // アニメーションクラスを追加するヘルパー関数
+    const addAnimationClass = (elements, className, shouldWrap = false) => {
+      elements.forEach(el => {
+        if (!el.classList.contains(className)) {
+          el.classList.add(className);
+          if (shouldWrap) wrapCharsInSpan(el);
+        }
+      });
+    };
+
+    // 主要セクション内の要素にアニメーションクラスを自動付与
+    const mainSections = document.querySelectorAll(ANIMATION_SECTION_SELECTORS);
     
     mainSections.forEach(section => {
-      // H3要素にクラス追加と文字分割（ただし、.training-phase-header内のH3は除外）
-      const h3Elements = section.querySelectorAll('h3:not(.training-phase-header h3)');
-      h3Elements.forEach(el => {
-        if (!el.classList.contains('animate-h3')) {
-          el.classList.add('animate-h3');
-          wrapCharsInSpan(el);
-        }
-      });
-
-      // H4要素にクラス追加と文字分割
-      const h4Elements = section.querySelectorAll('h4');
-      h4Elements.forEach(el => {
-        if (!el.classList.contains('animate-h4')) {
-          el.classList.add('animate-h4');
-          wrapCharsInSpan(el);
-        }
-      });
-
-      // P要素にクラス追加（文字分割なし、ブロック単位でフェードイン）
-      const pElements = section.querySelectorAll('p:not(.training-btn):not(.training-hero-buttons p)');
-      pElements.forEach(el => {
-        if (!el.classList.contains('animate-text') && el.textContent.trim().length > 0) {
-          el.classList.add('animate-text');
-          // 文字分割しない - ブロック単位でアニメーション
-        }
-      });
-
-      // Li要素にクラス追加（文字分割なし、ブロック単位でフェードイン）
-      const liElements = section.querySelectorAll('li');
-      liElements.forEach(el => {
-        if (!el.classList.contains('animate-text') && el.textContent.trim().length > 0) {
-          el.classList.add('animate-text');
-          // 文字分割しない - ブロック単位でアニメーション
-        }
-      });
-
-      // カード/アイテム系要素にクラス追加（ブロック単位でフェードイン）
-      const itemElements = section.querySelectorAll(
-        '.training-problem-item, .training-solution-item, .training-flow-item, ' +
-        '.training-feature-item, .training-effect-item, .training-issue-item, ' +
-        '.training-expertise-item, .training-plan-card, .training-phase'
-      );
-      itemElements.forEach(el => {
-        if (!el.classList.contains('animate-block')) {
-          el.classList.add('animate-block');
+      // 一度に全要素を取得
+      const allElements = section.querySelectorAll('h3, h4, p, li, .training-problem-item, .training-solution-item, .training-flow-item, .training-feature-item, .training-effect-item, .training-issue-item, .training-expertise-item, .training-plan-card, .training-phase');
+      
+      allElements.forEach(el => {
+        const tagName = el.tagName.toLowerCase();
+        const hasContent = el.textContent.trim().length > 0;
+        
+        if (tagName === 'h3' && !el.closest('.training-phase-header')) {
+          addAnimationClass([el], 'animate-h3', true);
+        } else if (tagName === 'h4') {
+          addAnimationClass([el], 'animate-h4', true);
+        } else if (tagName === 'p' && hasContent && !el.classList.contains('training-btn') && !el.closest('.training-hero-buttons')) {
+          addAnimationClass([el], 'animate-text', false);
+        } else if (tagName === 'li' && hasContent) {
+          addAnimationClass([el], 'animate-text', false);
+        } else if (el.classList.contains('training-problem-item') || el.classList.contains('training-solution-item') || el.classList.contains('training-flow-item') || el.classList.contains('training-feature-item') || el.classList.contains('training-effect-item') || el.classList.contains('training-issue-item') || el.classList.contains('training-expertise-item') || el.classList.contains('training-plan-card') || el.classList.contains('training-phase')) {
+          addAnimationClass([el], 'animate-block', false);
         }
       });
     });
@@ -162,7 +169,7 @@ const Training = () => {
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.2 // 要素の20%が表示されたらアニメーション発火
+      threshold: ANIMATION_CONFIG.INTERSECTION_THRESHOLD
     };
 
     const observerCallback = (entries) => {
@@ -195,8 +202,8 @@ const Training = () => {
   // スライドショーの自動再生
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 6);
-    }, 4000); // 4秒ごとに切り替え
+      setCurrentSlide((prev) => (prev + 1) % ANIMATION_CONFIG.SLIDESHOW_COUNT);
+    }, ANIMATION_CONFIG.SLIDESHOW_INTERVAL);
 
     return () => clearInterval(timer);
   }, []);
@@ -479,6 +486,9 @@ const Training = () => {
               </p>
               <p>
                 近年の研究では、テーブルゲームが<span className="emphasis-benefit">「協調性・問題解決力・コミュニケーション能力」を効果的に育成する</span>ことが実証され、教育現場だけでなく<span className="emphasis-benefit">社会人基礎力育成の手段として企業研修でも導入が進んでいます</span>。初対面同士でも自然に会話が生まれ、継続参加により人間関係が深まるプロセスが観察されており、<span className="emphasis-benefit">社員エンゲージメント向上・離職率低下・心理的安全性構築に寄与する、科学的根拠のある施策</span>として、中小企業の限られた研修予算の中でも確実な効果が期待できる投資です。
+              </p>
+              <p>
+                海外の研究では、ゲーミフィケーションを取り入れた研修で<span className="highlight">学習者エンゲージメントが60%向上</span>し、また高エンゲージメント組織では<span className="highlight">利益が23%増加</span>することが報告されています（TalentLMS Survey、Gallup調査より）。テーブルゲーム研修は、これらの効果を対面形式で最大化する手法として、今最も注目されているアプローチです。
               </p>
             </div>
 
@@ -777,8 +787,8 @@ const Training = () => {
           <div className="training-comparison-row" data-bg-row="3" style={{'--bg-image': 'url(/images/training/persona_worklife.jpg)'}}>
             <div className="training-comparison-content-left">
               <h5>
-                <span className="desktop-only">"職場のペルソナ"を無効化する稀有な研修</span>
-                <span className="mobile-only">"職場のペルソナ"を無効化する<br />稀有な研修</span>
+                <span className="desktop-only">"職場の仮面"を脱いで本音で向き合える稀有な研修</span>
+                <span className="mobile-only">"職場の仮面"を脱いで本音で向き合える<br />稀有な研修</span>
               </h5>
               <p>従来研修では職場での立場や先入観が邪魔をしますが、テーブルゲームでは参加者全員がフラットな状態になります。ゲーム中は職位や部署に関係なく、純粋な人間性が表面化するため、<strong>"職場では見えなかった一面"</strong> での相互理解が深まります。</p>
             </div>
@@ -948,7 +958,7 @@ const Training = () => {
                   ベトナムのIT企業で、異文化チームのマネジメントを経験する中で、<span className="emphasis-benefit">言葉や立場を超えた「本質的なコミュニケーション」の重要性</span>を学んでまいりました。SNSやチャットツールが発達した現代でも、対面でしか築けない信頼関係があります。
                 </p>
                 <p>
-                  テーブルゲーム研修では、「遊び」を通じて参加者の素の人間性が表れます。この<span className="highlight">「職場のペルソナを脱いだ状態」での交流</span>こそが、真の相互理解と組織変革の第一歩だと考えています。
+                  テーブルゲーム研修では、「遊び」を通じて参加者の素の人間性が表れます。この<span className="highlight">「職場の仮面を脱いだ状態」での交流</span>こそが、真の相互理解と組織変革の第一歩だと考えています。
                 </p>
               </div>
             </div>
@@ -967,6 +977,66 @@ const Training = () => {
           </p>
 
           <div className="training-faq-list">
+            <div className="training-faq-item">
+              <div className="training-faq-question">
+                <FontAwesomeIcon icon={faQuestionCircle} />
+                <h4>料金以外に追加費用はかかりますか？</h4>
+              </div>
+              <div className="training-faq-answer">
+                <p>
+                  <strong>いいえ、かかりません。</strong>提示している料金には、講師料・ゲーム貸出料・教材費・アンケート分析費がすべて含まれています。秋田市内なら交通費も無料、秋田県内一律5,000円のみです。追加料金なしで安心してご利用いただけます。
+                </p>
+              </div>
+            </div>
+
+            <div className="training-faq-item">
+              <div className="training-faq-question">
+                <FontAwesomeIcon icon={faQuestionCircle} />
+                <h4>参加人数に制限はありますか？</h4>
+              </div>
+              <div className="training-faq-answer">
+                <p>
+                  基本プランは<strong>10名まで</strong>対応しています。それ以上の参加者は、5名ごとに7,500円（税込8,250円）の追加料金で対応可能です。小規模（3〜5名）から中規模（30名程度）まで、幅広い人数でご利用いただけます。
+                </p>
+              </div>
+            </div>
+
+            <div className="training-faq-item">
+              <div className="training-faq-question">
+                <FontAwesomeIcon icon={faQuestionCircle} />
+                <h4>単発での実施も可能ですか？</h4>
+              </div>
+              <div className="training-faq-answer">
+                <p>
+                  <strong>可能です！</strong>お試しプラン（3万円/回）で単発実施いただけます。ただし、継続研修（年6回）の方が効果は圧倒的に高くなります。1〜4回で信頼関係の土壌を作り、5〜6回で本格的な経営分析を行う設計のため、単発では得られない組織変革を実感いただけます。
+                </p>
+              </div>
+            </div>
+
+            <div className="training-faq-item">
+              <div className="training-faq-question">
+                <FontAwesomeIcon icon={faQuestionCircle} />
+                <h4>1回の研修時間はどれくらいですか？</h4>
+              </div>
+              <div className="training-faq-answer">
+                <p>
+                  <strong>標準2〜3時間</strong>を想定しています。参加人数や実施内容によって調整可能です。半日コース（4時間）や、業務後の夕方実施（1.5時間×複数回）など、貴社のご都合に合わせて柔軟に対応いたします。
+                </p>
+              </div>
+            </div>
+
+            <div className="training-faq-item">
+              <div className="training-faq-question">
+                <FontAwesomeIcon icon={faQuestionCircle} />
+                <h4>効果測定はどのように行いますか？</h4>
+              </div>
+              <div className="training-faq-answer">
+                <p>
+                  毎回の研修後に<strong>参加者アンケート</strong>を実施し、満足度・気づき・改善点を収集します。このデータをもとに次回研修を最適化するPDCAサイクルを回します。また、初回と最終回でエンゲージメントスコアを測定し、数値で効果を可視化することも可能です。
+                </p>
+              </div>
+            </div>
+
             <div className="training-faq-item">
               <div className="training-faq-question">
                 <FontAwesomeIcon icon={faQuestionCircle} />
@@ -994,47 +1064,11 @@ const Training = () => {
             <div className="training-faq-item">
               <div className="training-faq-question">
                 <FontAwesomeIcon icon={faQuestionCircle} />
-                <h4>1回の研修時間はどれくらいですか？</h4>
-              </div>
-              <div className="training-faq-answer">
-                <p>
-                  <strong>標準2〜3時間</strong>を想定しています。参加人数や実施内容によって調整可能です。半日コース（4時間）や、業務後の夕方実施（1.5時間×複数回）など、貴社のご都合に合わせて柔軟に対応いたします。
-                </p>
-              </div>
-            </div>
-
-            <div className="training-faq-item">
-              <div className="training-faq-question">
-                <FontAwesomeIcon icon={faQuestionCircle} />
                 <h4>会場はどこで実施しますか？</h4>
               </div>
               <div className="training-faq-answer">
                 <p>
                   <strong>貴社の会議室や社内スペース</strong>で実施可能です。机と椅子があれば十分です。秋田市内であれば交通費無料、秋田県内一律5,000円で伺います。県外の場合は別途ご相談ください。また、YOLUBEの拠点（秋田ベイパラダイス）でも実施可能です。
-                </p>
-              </div>
-            </div>
-
-            <div className="training-faq-item">
-              <div className="training-faq-question">
-                <FontAwesomeIcon icon={faQuestionCircle} />
-                <h4>単発での実施も可能ですか？</h4>
-              </div>
-              <div className="training-faq-answer">
-                <p>
-                  <strong>可能です！</strong>お試しプラン（3万円/回）で単発実施いただけます。ただし、継続研修（年6回）の方が効果は圧倒的に高くなります。1〜4回で信頼関係の土壌を作り、5〜6回で本格的な経営分析を行う設計のため、単発では得られない組織変革を実感いただけます。
-                </p>
-              </div>
-            </div>
-
-            <div className="training-faq-item">
-              <div className="training-faq-question">
-                <FontAwesomeIcon icon={faQuestionCircle} />
-                <h4>効果測定はどのように行いますか？</h4>
-              </div>
-              <div className="training-faq-answer">
-                <p>
-                  毎回の研修後に<strong>参加者アンケート</strong>を実施し、満足度・気づき・改善点を収集します。このデータをもとに次回研修を最適化するPDCAサイクルを回します。また、初回と最終回でエンゲージメントスコアを測定し、数値で効果を可視化することも可能です。
                 </p>
               </div>
             </div>
@@ -1097,7 +1131,10 @@ const Training = () => {
             </div>
             
             <p className="training-offer-deadline">
-              ※ 5社に達し次第、または2025年12月31日まで（いずれか早い方）で受付終了となります
+              <FontAwesomeIcon icon={faClock} style={{ marginRight: '0.5rem' }} />
+              【申込期限】<span className="training-offer-remaining">2025年3月31日まで</span>
+              <br />
+              <strong>残り<span className="training-offer-remaining">5社</span>限定！お早めにお申し込みください。</strong>
             </p>
           </div>
           <p className="training-pricing-intro">
