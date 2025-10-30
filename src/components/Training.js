@@ -655,7 +655,7 @@ const Training = () => {
                 
                 <div className="training-effect-item">
                   <h5>1. 相互理解が進む</h5>
-                  <p>研修では参加者がフラットな状態（＝職場でのペルソナが役に立たない状態）で臨むため、良くも悪くも人間性が表面化しやすくなります。この"職場では見えなかった一面"について相互理解が深まるほど、個々の強み・弱みを補完できる組織づくりを目指しやすくなります。</p>
+                  <p>研修では参加者がフラットな状態（＝職場でのキャラクター性が通用しない状態）で臨むため、良くも悪くも人間性が表面化しやすくなります。この"職場では見えなかった一面"について相互理解が深まるほど、個々の強み・弱みを補完できる組織づくりを目指しやすくなります。</p>
                   
                 </div>
                 
@@ -807,7 +807,7 @@ const Training = () => {
           
           <h4 className="training-unique-title">テーブルゲーム研修の強み</h4>
           
-          {/* 構成２：職場のペルソナ（左：テキスト、右：画像） */}
+          {/* 構成２：職場のキャラクター性（左：テキスト、右：画像） */}
           <div className="training-comparison-row" data-bg-row="3" style={{'--bg-image': 'url(/images/training/persona_worklife.jpg)'}}>
             <div className="training-comparison-content-left">
               <h5>
@@ -817,7 +817,7 @@ const Training = () => {
               <p>従来研修では職場での立場や先入観が邪魔をしますが、テーブルゲームでは参加者全員がフラットな状態になります。ゲーム中は職位や部署に関係なく、純粋な人間性が表面化するため、<strong>"職場では見えなかった一面"</strong> での相互理解が深まります。</p>
             </div>
             <div className="training-comparison-image-right">
-              <img src="/images/training/persona_worklife.jpg" alt="仕事と家庭の両面を持つ女性 - 職場のペルソナを超えた理解" />
+              <img src="/images/training/persona_worklife.jpg" alt="仕事と家庭の両面を持つ女性 - 職場のキャラクター性を超えた理解" />
             </div>
           </div>
 
@@ -1109,7 +1109,18 @@ const Training = () => {
               </div>
             </div>
           </div>
-
+            <div className="training-faq-item">
+              <div className="training-faq-question">
+                <FontAwesomeIcon icon={faQuestionCircle} />
+                <h4>なぜこんな研修を始めようと思ったの？</h4>
+              </div>
+              <div className="training-faq-answer">
+                <p>
+                  我々YOLUBEは"テーブルゲームを通じて秋田県内の社会課題を解決する"を目的に創立しました。秋田県を初めとする地方都市では人口流出に伴う社員の定着率低下が大きな課題となっています。<br />この課題はエンゲージメント（ビジネスでは特に企業と従業員や顧客との間に生まれる「深い結びつき」や「愛着」を指します）の向上が重要と考え、コミュニケーション活性化を導入することで地元企業全般に共通する「社員の定着率向上」に寄与すべく本サービスを開発致しました。<br />
+                  これ以上、地元が衰退していく姿を見ていられない。その思いをお持ちのお方々とは本サービスご利用の有無を問わず協力していければと考えております。<br />どうぞよろしくお願い致します。
+                </p>
+              </div>
+            </div>
           <div className="training-faq-cta">
             <p>その他のご質問は、お気軽にお問い合わせください</p>
             <a href="#contact" className="training-btn training-btn-primary">
