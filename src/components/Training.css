@@ -1682,7 +1682,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  transform: scale(1.6) translateY(3%);
+  transform: scale(1.6) translateY(5%);
   border: none;
 }
 
