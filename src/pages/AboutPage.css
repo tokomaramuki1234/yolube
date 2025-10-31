@@ -20,7 +20,7 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: center 55%;
+  object-position: center 60%;
   transform: scale(1.25);
 }
 
