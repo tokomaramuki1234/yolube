@@ -1668,16 +1668,22 @@
 
 .training-instructor-image {
   margin-bottom: 2rem;
-}
-
-.training-instructor-image img {
   width: 275px;
   height: 275px;
   border-radius: 50%;
+  border: 4px solid #8BC780;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.training-instructor-image img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center center;
-  border: 4px solid #8BC780;
   transform: scale(1.6) translateY(3%);
+  border: none;
 }
 
 .training-instructor-name-section {
