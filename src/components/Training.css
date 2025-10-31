@@ -1671,12 +1671,13 @@
 }
 
 .training-instructor-image img {
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   border: 4px solid #8BC780;
+  transform: scale(1.15) translateY(3%);
 }
 
 .training-instructor-name-section {
@@ -2389,8 +2390,8 @@
   }
 
   .training-instructor-image img {
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 240px;
   }
 
   .training-instructor-name-section h4 {
@@ -2932,8 +2933,8 @@
   }
 
   .training-instructor-image img {
-    width: 160px;
-    height: 160px;
+    width: 200px;
+    height: 200px;
   }
 
   .training-instructor-name-section h4 {
