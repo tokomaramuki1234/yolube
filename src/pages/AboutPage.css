@@ -21,6 +21,7 @@
   display: block;
   object-fit: cover;
   object-position: center center;
+  transform: scale(1.15);
 }
 
 .profile-overlay {
