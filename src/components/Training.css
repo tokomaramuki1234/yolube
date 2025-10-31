@@ -1677,7 +1677,7 @@
   object-fit: cover;
   object-position: center center;
   border: 4px solid #8BC780;
-  transform: scale(1.15) translateY(3%);
+  transform: scale(1.3) translateY(3%);
 }
 
 .training-instructor-name-section {
